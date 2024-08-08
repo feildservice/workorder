@@ -1,0 +1,29 @@
+{
+    "name": "workorders",
+    "version": "1.0.0",
+    "description": "Feild service enterprise application for managing work orders",
+    "license": "MIT",
+    "author": {
+        "name": "Solmon",
+        "email": "solmon@gmail.com"
+    },
+    "keywords": [
+        "workorders",
+        "field service",
+        "enterprise application"
+    ],
+    "main": "index.js",
+    "engines": {
+        "node": ">=10",
+        "pnpm": ">=3"
+    },
+    "scripts": {
+        "check-engines": "pnpm run check-engines -r",
+        "prebuild": "pnpm run check-engines",
+        "build": "pnpm run build -r"
+    },
+    "dependencies": {
+        "typescript": "^5.5.4",
+        "pnpm": "9.7.0"
+    }
+}
