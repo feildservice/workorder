@@ -18,9 +18,9 @@
         "pnpm": ">=3"
     },
     "scripts": {
-        "check-engines": "pnpm run check-engines -r",
+        "check-engines": "pnpm check-engines",
         "prebuild": "pnpm run check-engines",
-        "build": "pnpm run build -r"
+        "build": "pnpm build -r"
     },
     "dependencies": {
         "typescript": "^5.5.4",
