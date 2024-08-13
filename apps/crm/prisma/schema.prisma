@@ -19,6 +19,8 @@ model Customer {
   hierarchy   Hierarchy? @relation(fields: [hierarchyId], references: [id])
   hierarchyId Int?
   locations   Location[]
+  services    Service[]
+  agreements  Agreement[]
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 }
@@ -63,6 +65,37 @@ model Location {
   name        String
   latitude    Float
   longitude   Float
+  customer    Customer  @relation(fields: [customerId], references: [id])
+  customerId  Int
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Service {
+  id          Int       @id @default(autoincrement())
+  name        String
+  description String
+  customer    Customer  @relation(fields: [customerId], references: [id])
+  customerId  Int
+  sla         SLA[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model SLA {
+  id          Int       @id @default(autoincrement())
+  parameter   String
+  value       String
+  service     Service   @relation(fields: [serviceId], references: [id])
+  serviceId   Int
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Agreement {
+  id          Int       @id @default(autoincrement())
+  title       String
+  description String
   customer    Customer  @relation(fields: [customerId], references: [id])
   customerId  Int
   createdAt   DateTime  @default(now())
