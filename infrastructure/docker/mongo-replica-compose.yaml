@@ -18,7 +18,18 @@ services:
     volumes:
       - "mongo1_data:/data/db"
       - "mongo1_config:/data/configdb"
+  postgres:
+    image: postgres:14-alpine
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=Yarn@2021
+      - POSTGRES_USER=fielduser
+      - POSTGRES_DB=crm_db  
 
 volumes:
   mongo1_data:
   mongo1_config:
+  postgres_data:
