@@ -1,22 +1,22 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { WorkOrderController } from './cutomer.controller';
-import { WorkOrderService } from '../providers';
+import { CustomerController } from './cutomer.controller';
+import { CustomerService } from '../providers';
 
 describe('AppController', () => {
-  let workOrderController: WorkOrderController;
+  let customerController: CustomerController;
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
-      controllers: [WorkOrderController],
-      providers: [WorkOrderService],
+      controllers: [CustomerController],
+      providers: [CustomerService],
     }).compile();
 
-    workOrderController = app.get<WorkOrderController>(WorkOrderController);
+    customerController = app.get<CustomerController>(CustomerController);
   });
 
   describe('root', () => {
     it('should return "Hello World!"', () => {
-      expect(workOrderController.getWorkOrders()).toBe('Hello World!');
+      expect(customerController.getCustomers()).toBe('Hello World!');
     });
   });
 });

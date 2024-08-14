@@ -5,6 +5,7 @@ datasource db {
 
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["relationJoins"]
 }
 
 generator nestjsDto {
@@ -30,10 +31,10 @@ generator nestjsDto {
 
 model Customer {
   id          Int       @id @default(autoincrement())
-  name        String
+  name        String    @db.VarChar(150)
   email       String    @unique
-  phone       String?
-  company     String
+  phone       String?   @db.VarChar(15)
+  company     String    @db.VarChar(150)
   contacts    Contact[]
   addresses   Address[]
   hierarchy   Hierarchy? @relation(fields: [hierarchyId], references: [id])
@@ -46,10 +47,10 @@ model Customer {
 
 model Contact {
   id          Int       @id @default(autoincrement())
-  firstName   String
-  lastName    String
+  firstName   String    @db.VarChar(150)
+  lastName    String    @db.VarChar(150)
   email       String    @unique
-  phone       String?
+  phone       String?   @db.VarChar(15)
   customer    Customer  @relation(fields: [customerId], references: [id])
   customerId  Int
   isPrimary   Boolean
@@ -59,11 +60,11 @@ model Contact {
 
 model Address {
   id          Int       @id @default(autoincrement())
-  street      String
-  city        String
-  state       String
-  zipCode     String
-  country     String
+  street      String    @db.VarChar(150)
+  city        String    @db.VarChar(150)
+  state       String    @db.VarChar(150)
+  zipCode     String    @db.VarChar(12)
+  country     String    @db.VarChar(150)
   latitude    Float?
   longitude   Float?
   isPrimary   Boolean
@@ -86,10 +87,10 @@ model Hierarchy {
 
 model Service {
   id          Int       @id @default(autoincrement())
-  name        String
-  description String
+  name        String    @db.VarChar(150)
+  description String    @db.VarChar(500)
   customer    Customer  @relation(fields: [customerId], references: [id])
-  customerId  Int
+  customerId  Int   
   sla         SLA[]
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
@@ -97,18 +98,18 @@ model Service {
 
 model SLA {
   id          Int       @id @default(autoincrement())
-  parameter   String
-  value       String
+  parameter   String    @db.VarChar(150)
+  value       String    @db.VarChar(150)
   service     Service   @relation(fields: [serviceId], references: [id])
-  serviceId   Int
+  serviceId   Int     
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 }
 
 model Agreement {
   id          Int       @id @default(autoincrement())
-  title       String
-  description String
+  title       String    @db.VarChar(150)
+  description String    @db.VarChar(500)
   customer    Customer  @relation(fields: [customerId], references: [id])
   customerId  Int
   createdAt   DateTime  @default(now())

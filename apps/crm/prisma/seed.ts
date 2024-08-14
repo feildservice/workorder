@@ -7,6 +7,7 @@ async function main() {
     await prisma.sLA.deleteMany();
     await prisma.service.deleteMany();
     await prisma.address.deleteMany();
+    await prisma.contact.deleteMany();
     await prisma.hierarchy.deleteMany();
     await prisma.customer.deleteMany();
 

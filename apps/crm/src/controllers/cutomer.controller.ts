@@ -8,7 +8,9 @@ import {
     Delete,
   } from '@nestjs/common';
   import { CustomerService } from '../providers';
-  import { Customer as CustomerModel, Location as LocationModel } from '@prisma/client';
+  import { Customer as CustomerModel } from '@prisma/client';
+  import { CreateCustomerDto } from '../generated/nestjs-dto/create-customer.dto';
+import { Address } from 'src/generated/nestjs-dto/address.entity';
   
   @Controller()
   export class CustomerController {
@@ -23,11 +25,8 @@ import {
   
     @Get('customers')
     async getCustomers(): Promise<CustomerModel[]> {
-      // return this.workOrderService.WorkOrders({
-      //   where: { published: true },
-      // });
-      return this.customerService.Customers({
-          
+      return this.customerService.Customers({        
+        where:{}        
       });
     }
   
@@ -39,7 +38,7 @@ import {
         where: {
           OR: [
             {
-              title: { contains: searchString },
+              name: { contains: searchString },
             }
           ],
         },
@@ -48,13 +47,11 @@ import {
   
     @Post('customer')
     async createCustomer(
-      @Body() CustomerData: { title: string; description?: string },
+      @Body() customerData: CreateCustomerDto,
     ): Promise<CustomerModel> {
-      const { title, description } = CustomerData;
-      return this.customerService.createCustomer({
-        title,
-        description
-      });
+      return this.customerService.createCustomer(
+        customerData as CustomerModel
+      );
     }
     
     @Delete('customer/:id')
