@@ -17,8 +17,8 @@ import {
     ) {}
   
     @Get('customer/:id')
-    async getCustomerById(@Param('id') id: string): Promise<CustomerModel> {
-      return this.customerService.Customer({ id: String(id) });
+    async getCustomerById(@Param('id') id: number): Promise<CustomerModel> {
+      return this.customerService.Customer({ id: id });
     }
   
     @Get('customers')
@@ -58,7 +58,7 @@ import {
     }
     
     @Delete('customer/:id')
-    async deleteCustomer(@Param('id') id: string): Promise<CustomerModel> {
-      return this.customerService.deleteCustomer({ id: String(id) });
+    async deleteCustomer(@Param('id') id: number): Promise<CustomerModel> {
+      return this.customerService.deleteCustomer({ id: id });
     }
   }

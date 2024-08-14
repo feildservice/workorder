@@ -7,18 +7,37 @@ generator client {
   provider = "prisma-client-js"
 }
 
+generator nestjsDto {
+  provider                        = "prisma-generator-nestjs-dto"
+  output                          = "../src/generated/nestjs-dto"
+  outputToNestJsResourceStructure = "false"
+  flatResourceStructure           = "false"
+  exportRelationModifierClasses   = "true"
+  reExport                        = "false"
+  createDtoPrefix                 = "Create"
+  updateDtoPrefix                 = "Update"
+  dtoSuffix                       = "Dto"
+  entityPrefix                    = ""
+  entitySuffix                    = ""
+  classValidation                 = "true"
+  fileNamingStyle                 = "camel"
+  noDependencies                  = "false"
+  outputType                      = "class"
+  definiteAssignmentAssertion     = "true"
+  prettier                        = "false"
+  forceIdOnConnect                = "false"
+}
+
 model Customer {
   id          Int       @id @default(autoincrement())
   name        String
   email       String    @unique
   phone       String?
-  address     Address?  @relation(fields: [addressId], references: [id])
-  addressId   Int?
   company     String
   contacts    Contact[]
+  addresses   Address[]
   hierarchy   Hierarchy? @relation(fields: [hierarchyId], references: [id])
   hierarchyId Int?
-  locations   Location[]
   services    Service[]
   agreements  Agreement[]
   createdAt   DateTime  @default(now())
@@ -33,6 +52,7 @@ model Contact {
   phone       String?
   customer    Customer  @relation(fields: [customerId], references: [id])
   customerId  Int
+  isPrimary   Boolean
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 }
@@ -44,7 +64,11 @@ model Address {
   state       String
   zipCode     String
   country     String
-  customers   Customer[]
+  latitude    Float?
+  longitude   Float?
+  isPrimary   Boolean
+  customer    Customer  @relation(fields: [customerId], references: [id])
+  customerId  Int
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 }
@@ -56,17 +80,6 @@ model Hierarchy {
   parent      Hierarchy? @relation("HierarchyToParent", fields: [parentId], references: [id])
   children    Hierarchy[] @relation("HierarchyToParent")
   customers   Customer[]
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-}
-
-model Location {
-  id          Int       @id @default(autoincrement())
-  name        String
-  latitude    Float
-  longitude   Float
-  customer    Customer  @relation(fields: [customerId], references: [id])
-  customerId  Int
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 }
