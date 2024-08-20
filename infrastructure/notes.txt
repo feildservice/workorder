@@ -1,0 +1,5 @@
+https://www.tecmint.com/open-source-reverse-proxy-servers-for-linux/
+https://github.com/apache/apisix - ApiGateway - 
+nginx - reverse proxy
+https://github.com/prisma-labs/get-graphql-schema
+get-graphql-schema http://localhost:3001/graphql > schema.graphql
