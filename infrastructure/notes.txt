@@ -3,3 +3,5 @@ https://github.com/apache/apisix - ApiGateway -
 nginx - reverse proxy
 https://github.com/prisma-labs/get-graphql-schema
 get-graphql-schema http://localhost:3001/graphql > schema.graphql
+export NODE_TLS_REJECT_UNAUTHORIZED=0
+https://the-guild.dev/graphql/codegen/docs/guides/react-vue

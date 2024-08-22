@@ -64,6 +64,6 @@ export class BaseCrudService<
     return this.prisma[this.getModelName()].deleteMany(args);
   }
   private getModelName(): string {
-    return this.constructor.name.replace('Service', '');
+    return this.constructor.name.replace('CrudService', '');
   }
 }
