@@ -1,0 +1,1907 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Address {
+  city: String!
+  country: String!
+  createdAt: DateTime!
+  customer: Customer!
+  customerId: Int!
+  id: ID!
+  isPrimary: Boolean!
+  latitude: Float
+  longitude: Float
+  state: String!
+  street: String!
+  updatedAt: DateTime!
+  zipCode: String!
+}
+
+input AddressCreateManyCustomerInput {
+  city: String!
+  country: String!
+  createdAt: DateTime
+  id: Int
+  isPrimary: Boolean!
+  latitude: Float
+  longitude: Float
+  state: String!
+  street: String!
+  updatedAt: DateTime
+  zipCode: String!
+}
+
+input AddressCreateManyCustomerInputEnvelope {
+  data: [AddressCreateManyCustomerInput!]!
+  skipDuplicates: Boolean
+}
+
+input AddressCreateNestedManyWithoutCustomerInput {
+  connect: [AddressWhereUniqueInput!]
+  connectOrCreate: [AddressCreateOrConnectWithoutCustomerInput!]
+  create: [AddressCreateWithoutCustomerInput!]
+  createMany: AddressCreateManyCustomerInputEnvelope
+}
+
+input AddressCreateOrConnectWithoutCustomerInput {
+  create: AddressCreateWithoutCustomerInput!
+  where: AddressWhereUniqueInput!
+}
+
+input AddressCreateWithoutCustomerInput {
+  city: String!
+  country: String!
+  createdAt: DateTime
+  isPrimary: Boolean!
+  latitude: Float
+  longitude: Float
+  state: String!
+  street: String!
+  updatedAt: DateTime
+  zipCode: String!
+}
+
+input AddressListRelationFilter {
+  every: AddressWhereInput
+  none: AddressWhereInput
+  some: AddressWhereInput
+}
+
+input AddressOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input AddressScalarWhereInput {
+  AND: [AddressScalarWhereInput!]
+  NOT: [AddressScalarWhereInput!]
+  OR: [AddressScalarWhereInput!]
+  city: StringFilter
+  country: StringFilter
+  createdAt: DateTimeFilter
+  customerId: IntFilter
+  id: IntFilter
+  isPrimary: BoolFilter
+  latitude: FloatNullableFilter
+  longitude: FloatNullableFilter
+  state: StringFilter
+  street: StringFilter
+  updatedAt: DateTimeFilter
+  zipCode: StringFilter
+}
+
+input AddressUpdateManyMutationInput {
+  city: StringFieldUpdateOperationsInput
+  country: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  isPrimary: BoolFieldUpdateOperationsInput
+  latitude: NullableFloatFieldUpdateOperationsInput
+  longitude: NullableFloatFieldUpdateOperationsInput
+  state: StringFieldUpdateOperationsInput
+  street: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  zipCode: StringFieldUpdateOperationsInput
+}
+
+input AddressUpdateManyWithWhereWithoutCustomerInput {
+  data: AddressUpdateManyMutationInput!
+  where: AddressScalarWhereInput!
+}
+
+input AddressUpdateManyWithoutCustomerNestedInput {
+  connect: [AddressWhereUniqueInput!]
+  connectOrCreate: [AddressCreateOrConnectWithoutCustomerInput!]
+  create: [AddressCreateWithoutCustomerInput!]
+  createMany: AddressCreateManyCustomerInputEnvelope
+  delete: [AddressWhereUniqueInput!]
+  deleteMany: [AddressScalarWhereInput!]
+  disconnect: [AddressWhereUniqueInput!]
+  set: [AddressWhereUniqueInput!]
+  update: [AddressUpdateWithWhereUniqueWithoutCustomerInput!]
+  updateMany: [AddressUpdateManyWithWhereWithoutCustomerInput!]
+  upsert: [AddressUpsertWithWhereUniqueWithoutCustomerInput!]
+}
+
+input AddressUpdateWithWhereUniqueWithoutCustomerInput {
+  data: AddressUpdateWithoutCustomerInput!
+  where: AddressWhereUniqueInput!
+}
+
+input AddressUpdateWithoutCustomerInput {
+  city: StringFieldUpdateOperationsInput
+  country: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  isPrimary: BoolFieldUpdateOperationsInput
+  latitude: NullableFloatFieldUpdateOperationsInput
+  longitude: NullableFloatFieldUpdateOperationsInput
+  state: StringFieldUpdateOperationsInput
+  street: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  zipCode: StringFieldUpdateOperationsInput
+}
+
+input AddressUpsertWithWhereUniqueWithoutCustomerInput {
+  create: AddressCreateWithoutCustomerInput!
+  update: AddressUpdateWithoutCustomerInput!
+  where: AddressWhereUniqueInput!
+}
+
+input AddressWhereInput {
+  AND: [AddressWhereInput!]
+  NOT: [AddressWhereInput!]
+  OR: [AddressWhereInput!]
+  city: StringFilter
+  country: StringFilter
+  createdAt: DateTimeFilter
+  customer: CustomerRelationFilter
+  customerId: IntFilter
+  id: IntFilter
+  isPrimary: BoolFilter
+  latitude: FloatNullableFilter
+  longitude: FloatNullableFilter
+  state: StringFilter
+  street: StringFilter
+  updatedAt: DateTimeFilter
+  zipCode: StringFilter
+}
+
+input AddressWhereUniqueInput {
+  AND: [AddressWhereInput!]
+  NOT: [AddressWhereInput!]
+  OR: [AddressWhereInput!]
+  city: StringFilter
+  country: StringFilter
+  createdAt: DateTimeFilter
+  customer: CustomerRelationFilter
+  customerId: IntFilter
+  id: Int
+  isPrimary: BoolFilter
+  latitude: FloatNullableFilter
+  longitude: FloatNullableFilter
+  state: StringFilter
+  street: StringFilter
+  updatedAt: DateTimeFilter
+  zipCode: StringFilter
+}
+
+type AffectedRows {
+  count: Int!
+}
+
+type AggregateCustomer {
+  _avg: CustomerAvgAggregate
+  _count: CustomerCountAggregate
+  _max: CustomerMaxAggregate
+  _min: CustomerMinAggregate
+  _sum: CustomerSumAggregate
+}
+
+type Agreement {
+  createdAt: DateTime!
+  customer: Customer!
+  customerId: Int!
+  description: String!
+  id: ID!
+  title: String!
+  updatedAt: DateTime!
+}
+
+input AgreementCreateManyCustomerInput {
+  createdAt: DateTime
+  description: String!
+  id: Int
+  title: String!
+  updatedAt: DateTime
+}
+
+input AgreementCreateManyCustomerInputEnvelope {
+  data: [AgreementCreateManyCustomerInput!]!
+  skipDuplicates: Boolean
+}
+
+input AgreementCreateNestedManyWithoutCustomerInput {
+  connect: [AgreementWhereUniqueInput!]
+  connectOrCreate: [AgreementCreateOrConnectWithoutCustomerInput!]
+  create: [AgreementCreateWithoutCustomerInput!]
+  createMany: AgreementCreateManyCustomerInputEnvelope
+}
+
+input AgreementCreateOrConnectWithoutCustomerInput {
+  create: AgreementCreateWithoutCustomerInput!
+  where: AgreementWhereUniqueInput!
+}
+
+input AgreementCreateWithoutCustomerInput {
+  createdAt: DateTime
+  description: String!
+  title: String!
+  updatedAt: DateTime
+}
+
+input AgreementListRelationFilter {
+  every: AgreementWhereInput
+  none: AgreementWhereInput
+  some: AgreementWhereInput
+}
+
+input AgreementOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input AgreementScalarWhereInput {
+  AND: [AgreementScalarWhereInput!]
+  NOT: [AgreementScalarWhereInput!]
+  OR: [AgreementScalarWhereInput!]
+  createdAt: DateTimeFilter
+  customerId: IntFilter
+  description: StringFilter
+  id: IntFilter
+  title: StringFilter
+  updatedAt: DateTimeFilter
+}
+
+input AgreementUpdateManyMutationInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input AgreementUpdateManyWithWhereWithoutCustomerInput {
+  data: AgreementUpdateManyMutationInput!
+  where: AgreementScalarWhereInput!
+}
+
+input AgreementUpdateManyWithoutCustomerNestedInput {
+  connect: [AgreementWhereUniqueInput!]
+  connectOrCreate: [AgreementCreateOrConnectWithoutCustomerInput!]
+  create: [AgreementCreateWithoutCustomerInput!]
+  createMany: AgreementCreateManyCustomerInputEnvelope
+  delete: [AgreementWhereUniqueInput!]
+  deleteMany: [AgreementScalarWhereInput!]
+  disconnect: [AgreementWhereUniqueInput!]
+  set: [AgreementWhereUniqueInput!]
+  update: [AgreementUpdateWithWhereUniqueWithoutCustomerInput!]
+  updateMany: [AgreementUpdateManyWithWhereWithoutCustomerInput!]
+  upsert: [AgreementUpsertWithWhereUniqueWithoutCustomerInput!]
+}
+
+input AgreementUpdateWithWhereUniqueWithoutCustomerInput {
+  data: AgreementUpdateWithoutCustomerInput!
+  where: AgreementWhereUniqueInput!
+}
+
+input AgreementUpdateWithoutCustomerInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input AgreementUpsertWithWhereUniqueWithoutCustomerInput {
+  create: AgreementCreateWithoutCustomerInput!
+  update: AgreementUpdateWithoutCustomerInput!
+  where: AgreementWhereUniqueInput!
+}
+
+input AgreementWhereInput {
+  AND: [AgreementWhereInput!]
+  NOT: [AgreementWhereInput!]
+  OR: [AgreementWhereInput!]
+  createdAt: DateTimeFilter
+  customer: CustomerRelationFilter
+  customerId: IntFilter
+  description: StringFilter
+  id: IntFilter
+  title: StringFilter
+  updatedAt: DateTimeFilter
+}
+
+input AgreementWhereUniqueInput {
+  AND: [AgreementWhereInput!]
+  NOT: [AgreementWhereInput!]
+  OR: [AgreementWhereInput!]
+  createdAt: DateTimeFilter
+  customer: CustomerRelationFilter
+  customerId: IntFilter
+  description: StringFilter
+  id: Int
+  title: StringFilter
+  updatedAt: DateTimeFilter
+}
+
+input BoolFieldUpdateOperationsInput {
+  set: Boolean
+}
+
+input BoolFilter {
+  equals: Boolean
+  not: NestedBoolFilter
+}
+
+type Contact {
+  createdAt: DateTime!
+  customer: Customer!
+  customerId: Int!
+  email: String!
+  firstName: String!
+  id: ID!
+  isPrimary: Boolean!
+  lastName: String!
+  phone: String
+  updatedAt: DateTime!
+}
+
+input ContactCreateManyCustomerInput {
+  createdAt: DateTime
+  email: String!
+  firstName: String!
+  id: Int
+  isPrimary: Boolean!
+  lastName: String!
+  phone: String
+  updatedAt: DateTime
+}
+
+input ContactCreateManyCustomerInputEnvelope {
+  data: [ContactCreateManyCustomerInput!]!
+  skipDuplicates: Boolean
+}
+
+input ContactCreateNestedManyWithoutCustomerInput {
+  connect: [ContactWhereUniqueInput!]
+  connectOrCreate: [ContactCreateOrConnectWithoutCustomerInput!]
+  create: [ContactCreateWithoutCustomerInput!]
+  createMany: ContactCreateManyCustomerInputEnvelope
+}
+
+input ContactCreateOrConnectWithoutCustomerInput {
+  create: ContactCreateWithoutCustomerInput!
+  where: ContactWhereUniqueInput!
+}
+
+input ContactCreateWithoutCustomerInput {
+  createdAt: DateTime
+  email: String!
+  firstName: String!
+  isPrimary: Boolean!
+  lastName: String!
+  phone: String
+  updatedAt: DateTime
+}
+
+input ContactListRelationFilter {
+  every: ContactWhereInput
+  none: ContactWhereInput
+  some: ContactWhereInput
+}
+
+input ContactOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input ContactScalarWhereInput {
+  AND: [ContactScalarWhereInput!]
+  NOT: [ContactScalarWhereInput!]
+  OR: [ContactScalarWhereInput!]
+  createdAt: DateTimeFilter
+  customerId: IntFilter
+  email: StringFilter
+  firstName: StringFilter
+  id: IntFilter
+  isPrimary: BoolFilter
+  lastName: StringFilter
+  phone: StringNullableFilter
+  updatedAt: DateTimeFilter
+}
+
+input ContactUpdateManyMutationInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  firstName: StringFieldUpdateOperationsInput
+  isPrimary: BoolFieldUpdateOperationsInput
+  lastName: StringFieldUpdateOperationsInput
+  phone: NullableStringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input ContactUpdateManyWithWhereWithoutCustomerInput {
+  data: ContactUpdateManyMutationInput!
+  where: ContactScalarWhereInput!
+}
+
+input ContactUpdateManyWithoutCustomerNestedInput {
+  connect: [ContactWhereUniqueInput!]
+  connectOrCreate: [ContactCreateOrConnectWithoutCustomerInput!]
+  create: [ContactCreateWithoutCustomerInput!]
+  createMany: ContactCreateManyCustomerInputEnvelope
+  delete: [ContactWhereUniqueInput!]
+  deleteMany: [ContactScalarWhereInput!]
+  disconnect: [ContactWhereUniqueInput!]
+  set: [ContactWhereUniqueInput!]
+  update: [ContactUpdateWithWhereUniqueWithoutCustomerInput!]
+  updateMany: [ContactUpdateManyWithWhereWithoutCustomerInput!]
+  upsert: [ContactUpsertWithWhereUniqueWithoutCustomerInput!]
+}
+
+input ContactUpdateWithWhereUniqueWithoutCustomerInput {
+  data: ContactUpdateWithoutCustomerInput!
+  where: ContactWhereUniqueInput!
+}
+
+input ContactUpdateWithoutCustomerInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  firstName: StringFieldUpdateOperationsInput
+  isPrimary: BoolFieldUpdateOperationsInput
+  lastName: StringFieldUpdateOperationsInput
+  phone: NullableStringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input ContactUpsertWithWhereUniqueWithoutCustomerInput {
+  create: ContactCreateWithoutCustomerInput!
+  update: ContactUpdateWithoutCustomerInput!
+  where: ContactWhereUniqueInput!
+}
+
+input ContactWhereInput {
+  AND: [ContactWhereInput!]
+  NOT: [ContactWhereInput!]
+  OR: [ContactWhereInput!]
+  createdAt: DateTimeFilter
+  customer: CustomerRelationFilter
+  customerId: IntFilter
+  email: StringFilter
+  firstName: StringFilter
+  id: IntFilter
+  isPrimary: BoolFilter
+  lastName: StringFilter
+  phone: StringNullableFilter
+  updatedAt: DateTimeFilter
+}
+
+input ContactWhereUniqueInput {
+  AND: [ContactWhereInput!]
+  NOT: [ContactWhereInput!]
+  OR: [ContactWhereInput!]
+  createdAt: DateTimeFilter
+  customer: CustomerRelationFilter
+  customerId: IntFilter
+  email: String
+  firstName: StringFilter
+  id: Int
+  isPrimary: BoolFilter
+  lastName: StringFilter
+  phone: StringNullableFilter
+  updatedAt: DateTimeFilter
+}
+
+type Customer {
+  _count: CustomerCount!
+  addresses: [Address!]
+  agreements: [Agreement!]
+  company: String!
+  contacts: [Contact!]
+  createdAt: DateTime!
+  email: String!
+  hierarchy: Hierarchy
+  hierarchyId: Int
+  id: ID!
+  name: String!
+  phone: String
+  services: [Service!]
+  updatedAt: DateTime!
+}
+
+type CustomerAvgAggregate {
+  hierarchyId: Float
+  id: Float
+}
+
+input CustomerAvgAggregateInput {
+  hierarchyId: Boolean
+  id: Boolean
+}
+
+input CustomerAvgOrderByAggregateInput {
+  hierarchyId: SortOrder
+  id: SortOrder
+}
+
+type CustomerCount {
+  addresses: Int!
+  agreements: Int!
+  contacts: Int!
+  services: Int!
+}
+
+type CustomerCountAggregate {
+  _all: Int!
+  company: Int!
+  createdAt: Int!
+  email: Int!
+  hierarchyId: Int!
+  id: Int!
+  name: Int!
+  phone: Int!
+  updatedAt: Int!
+}
+
+input CustomerCountAggregateInput {
+  _all: Boolean
+  company: Boolean
+  createdAt: Boolean
+  email: Boolean
+  hierarchyId: Boolean
+  id: Boolean
+  name: Boolean
+  phone: Boolean
+  updatedAt: Boolean
+}
+
+input CustomerCountOrderByAggregateInput {
+  company: SortOrder
+  createdAt: SortOrder
+  email: SortOrder
+  hierarchyId: SortOrder
+  id: SortOrder
+  name: SortOrder
+  phone: SortOrder
+  updatedAt: SortOrder
+}
+
+input CustomerCreateInput {
+  addresses: AddressCreateNestedManyWithoutCustomerInput
+  agreements: AgreementCreateNestedManyWithoutCustomerInput
+  company: String!
+  contacts: ContactCreateNestedManyWithoutCustomerInput
+  createdAt: DateTime
+  email: String!
+  hierarchy: HierarchyCreateNestedOneWithoutCustomersInput
+  name: String!
+  phone: String
+  services: ServiceCreateNestedManyWithoutCustomerInput
+  updatedAt: DateTime
+}
+
+input CustomerCreateManyHierarchyInput {
+  company: String!
+  createdAt: DateTime
+  email: String!
+  id: Int
+  name: String!
+  phone: String
+  updatedAt: DateTime
+}
+
+input CustomerCreateManyHierarchyInputEnvelope {
+  data: [CustomerCreateManyHierarchyInput!]!
+  skipDuplicates: Boolean
+}
+
+input CustomerCreateManyInput {
+  company: String!
+  createdAt: DateTime
+  email: String!
+  hierarchyId: Int
+  id: Int
+  name: String!
+  phone: String
+  updatedAt: DateTime
+}
+
+input CustomerCreateNestedManyWithoutHierarchyInput {
+  connect: [CustomerWhereUniqueInput!]
+  connectOrCreate: [CustomerCreateOrConnectWithoutHierarchyInput!]
+  create: [CustomerCreateWithoutHierarchyInput!]
+  createMany: CustomerCreateManyHierarchyInputEnvelope
+}
+
+input CustomerCreateOrConnectWithoutHierarchyInput {
+  create: CustomerCreateWithoutHierarchyInput!
+  where: CustomerWhereUniqueInput!
+}
+
+input CustomerCreateWithoutHierarchyInput {
+  addresses: AddressCreateNestedManyWithoutCustomerInput
+  agreements: AgreementCreateNestedManyWithoutCustomerInput
+  company: String!
+  contacts: ContactCreateNestedManyWithoutCustomerInput
+  createdAt: DateTime
+  email: String!
+  name: String!
+  phone: String
+  services: ServiceCreateNestedManyWithoutCustomerInput
+  updatedAt: DateTime
+}
+
+type CustomerGroupBy {
+  _avg: CustomerAvgAggregate
+  _count: CustomerCountAggregate
+  _max: CustomerMaxAggregate
+  _min: CustomerMinAggregate
+  _sum: CustomerSumAggregate
+  company: String!
+  createdAt: DateTime!
+  email: String!
+  hierarchyId: Int
+  id: Int!
+  name: String!
+  phone: String
+  updatedAt: DateTime!
+}
+
+input CustomerListRelationFilter {
+  every: CustomerWhereInput
+  none: CustomerWhereInput
+  some: CustomerWhereInput
+}
+
+type CustomerMaxAggregate {
+  company: String
+  createdAt: DateTime
+  email: String
+  hierarchyId: Int
+  id: Int
+  name: String
+  phone: String
+  updatedAt: DateTime
+}
+
+input CustomerMaxAggregateInput {
+  company: Boolean
+  createdAt: Boolean
+  email: Boolean
+  hierarchyId: Boolean
+  id: Boolean
+  name: Boolean
+  phone: Boolean
+  updatedAt: Boolean
+}
+
+input CustomerMaxOrderByAggregateInput {
+  company: SortOrder
+  createdAt: SortOrder
+  email: SortOrder
+  hierarchyId: SortOrder
+  id: SortOrder
+  name: SortOrder
+  phone: SortOrder
+  updatedAt: SortOrder
+}
+
+type CustomerMinAggregate {
+  company: String
+  createdAt: DateTime
+  email: String
+  hierarchyId: Int
+  id: Int
+  name: String
+  phone: String
+  updatedAt: DateTime
+}
+
+input CustomerMinAggregateInput {
+  company: Boolean
+  createdAt: Boolean
+  email: Boolean
+  hierarchyId: Boolean
+  id: Boolean
+  name: Boolean
+  phone: Boolean
+  updatedAt: Boolean
+}
+
+input CustomerMinOrderByAggregateInput {
+  company: SortOrder
+  createdAt: SortOrder
+  email: SortOrder
+  hierarchyId: SortOrder
+  id: SortOrder
+  name: SortOrder
+  phone: SortOrder
+  updatedAt: SortOrder
+}
+
+input CustomerOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input CustomerOrderByWithAggregationInput {
+  _avg: CustomerAvgOrderByAggregateInput
+  _count: CustomerCountOrderByAggregateInput
+  _max: CustomerMaxOrderByAggregateInput
+  _min: CustomerMinOrderByAggregateInput
+  _sum: CustomerSumOrderByAggregateInput
+  company: SortOrder
+  createdAt: SortOrder
+  email: SortOrder
+  hierarchyId: SortOrderInput
+  id: SortOrder
+  name: SortOrder
+  phone: SortOrderInput
+  updatedAt: SortOrder
+}
+
+input CustomerOrderByWithRelationInput {
+  addresses: AddressOrderByRelationAggregateInput
+  agreements: AgreementOrderByRelationAggregateInput
+  company: SortOrder
+  contacts: ContactOrderByRelationAggregateInput
+  createdAt: SortOrder
+  email: SortOrder
+  hierarchy: HierarchyOrderByWithRelationInput
+  hierarchyId: SortOrderInput
+  id: SortOrder
+  name: SortOrder
+  phone: SortOrderInput
+  services: ServiceOrderByRelationAggregateInput
+  updatedAt: SortOrder
+}
+
+input CustomerRelationFilter {
+  is: CustomerWhereInput
+  isNot: CustomerWhereInput
+}
+
+enum CustomerScalarFieldEnum {
+  company
+  createdAt
+  email
+  hierarchyId
+  id
+  name
+  phone
+  updatedAt
+}
+
+input CustomerScalarWhereInput {
+  AND: [CustomerScalarWhereInput!]
+  NOT: [CustomerScalarWhereInput!]
+  OR: [CustomerScalarWhereInput!]
+  company: StringFilter
+  createdAt: DateTimeFilter
+  email: StringFilter
+  hierarchyId: IntNullableFilter
+  id: IntFilter
+  name: StringFilter
+  phone: StringNullableFilter
+  updatedAt: DateTimeFilter
+}
+
+input CustomerScalarWhereWithAggregatesInput {
+  AND: [CustomerScalarWhereWithAggregatesInput!]
+  NOT: [CustomerScalarWhereWithAggregatesInput!]
+  OR: [CustomerScalarWhereWithAggregatesInput!]
+  company: StringWithAggregatesFilter
+  createdAt: DateTimeWithAggregatesFilter
+  email: StringWithAggregatesFilter
+  hierarchyId: IntNullableWithAggregatesFilter
+  id: IntWithAggregatesFilter
+  name: StringWithAggregatesFilter
+  phone: StringNullableWithAggregatesFilter
+  updatedAt: DateTimeWithAggregatesFilter
+}
+
+type CustomerSumAggregate {
+  hierarchyId: Int
+  id: Int
+}
+
+input CustomerSumAggregateInput {
+  hierarchyId: Boolean
+  id: Boolean
+}
+
+input CustomerSumOrderByAggregateInput {
+  hierarchyId: SortOrder
+  id: SortOrder
+}
+
+input CustomerUpdateInput {
+  addresses: AddressUpdateManyWithoutCustomerNestedInput
+  agreements: AgreementUpdateManyWithoutCustomerNestedInput
+  company: StringFieldUpdateOperationsInput
+  contacts: ContactUpdateManyWithoutCustomerNestedInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  hierarchy: HierarchyUpdateOneWithoutCustomersNestedInput
+  name: StringFieldUpdateOperationsInput
+  phone: NullableStringFieldUpdateOperationsInput
+  services: ServiceUpdateManyWithoutCustomerNestedInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input CustomerUpdateManyMutationInput {
+  company: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  phone: NullableStringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input CustomerUpdateManyWithWhereWithoutHierarchyInput {
+  data: CustomerUpdateManyMutationInput!
+  where: CustomerScalarWhereInput!
+}
+
+input CustomerUpdateManyWithoutHierarchyNestedInput {
+  connect: [CustomerWhereUniqueInput!]
+  connectOrCreate: [CustomerCreateOrConnectWithoutHierarchyInput!]
+  create: [CustomerCreateWithoutHierarchyInput!]
+  createMany: CustomerCreateManyHierarchyInputEnvelope
+  delete: [CustomerWhereUniqueInput!]
+  deleteMany: [CustomerScalarWhereInput!]
+  disconnect: [CustomerWhereUniqueInput!]
+  set: [CustomerWhereUniqueInput!]
+  update: [CustomerUpdateWithWhereUniqueWithoutHierarchyInput!]
+  updateMany: [CustomerUpdateManyWithWhereWithoutHierarchyInput!]
+  upsert: [CustomerUpsertWithWhereUniqueWithoutHierarchyInput!]
+}
+
+input CustomerUpdateWithWhereUniqueWithoutHierarchyInput {
+  data: CustomerUpdateWithoutHierarchyInput!
+  where: CustomerWhereUniqueInput!
+}
+
+input CustomerUpdateWithoutHierarchyInput {
+  addresses: AddressUpdateManyWithoutCustomerNestedInput
+  agreements: AgreementUpdateManyWithoutCustomerNestedInput
+  company: StringFieldUpdateOperationsInput
+  contacts: ContactUpdateManyWithoutCustomerNestedInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  phone: NullableStringFieldUpdateOperationsInput
+  services: ServiceUpdateManyWithoutCustomerNestedInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input CustomerUpsertWithWhereUniqueWithoutHierarchyInput {
+  create: CustomerCreateWithoutHierarchyInput!
+  update: CustomerUpdateWithoutHierarchyInput!
+  where: CustomerWhereUniqueInput!
+}
+
+input CustomerWhereInput {
+  AND: [CustomerWhereInput!]
+  NOT: [CustomerWhereInput!]
+  OR: [CustomerWhereInput!]
+  addresses: AddressListRelationFilter
+  agreements: AgreementListRelationFilter
+  company: StringFilter
+  contacts: ContactListRelationFilter
+  createdAt: DateTimeFilter
+  email: StringFilter
+  hierarchy: HierarchyNullableRelationFilter
+  hierarchyId: IntNullableFilter
+  id: IntFilter
+  name: StringFilter
+  phone: StringNullableFilter
+  services: ServiceListRelationFilter
+  updatedAt: DateTimeFilter
+}
+
+input CustomerWhereUniqueInput {
+  AND: [CustomerWhereInput!]
+  NOT: [CustomerWhereInput!]
+  OR: [CustomerWhereInput!]
+  addresses: AddressListRelationFilter
+  agreements: AgreementListRelationFilter
+  company: StringFilter
+  contacts: ContactListRelationFilter
+  createdAt: DateTimeFilter
+  email: String
+  hierarchy: HierarchyNullableRelationFilter
+  hierarchyId: IntNullableFilter
+  id: Int
+  name: StringFilter
+  phone: StringNullableFilter
+  services: ServiceListRelationFilter
+  updatedAt: DateTimeFilter
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+input DateTimeFieldUpdateOperationsInput {
+  set: DateTime
+}
+
+input DateTimeFilter {
+  equals: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  not: NestedDateTimeFilter
+  notIn: [DateTime!]
+}
+
+input DateTimeWithAggregatesFilter {
+  _count: NestedIntFilter
+  _max: NestedDateTimeFilter
+  _min: NestedDateTimeFilter
+  equals: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  not: NestedDateTimeWithAggregatesFilter
+  notIn: [DateTime!]
+}
+
+input FloatNullableFilter {
+  equals: Float
+  gt: Float
+  gte: Float
+  in: [Float!]
+  lt: Float
+  lte: Float
+  not: NestedFloatNullableFilter
+  notIn: [Float!]
+}
+
+type Hierarchy {
+  _count: HierarchyCount!
+  children: [Hierarchy!]
+  createdAt: DateTime!
+  customers: [Customer!]
+  id: ID!
+  level: String!
+  parent: Hierarchy
+  parentId: Int
+  updatedAt: DateTime!
+}
+
+type HierarchyCount {
+  children: Int!
+  customers: Int!
+}
+
+input HierarchyCreateManyParentInput {
+  createdAt: DateTime
+  id: Int
+  level: String!
+  updatedAt: DateTime
+}
+
+input HierarchyCreateManyParentInputEnvelope {
+  data: [HierarchyCreateManyParentInput!]!
+  skipDuplicates: Boolean
+}
+
+input HierarchyCreateNestedManyWithoutParentInput {
+  connect: [HierarchyWhereUniqueInput!]
+  connectOrCreate: [HierarchyCreateOrConnectWithoutParentInput!]
+  create: [HierarchyCreateWithoutParentInput!]
+  createMany: HierarchyCreateManyParentInputEnvelope
+}
+
+input HierarchyCreateNestedOneWithoutChildrenInput {
+  connect: HierarchyWhereUniqueInput
+  connectOrCreate: HierarchyCreateOrConnectWithoutChildrenInput
+  create: HierarchyCreateWithoutChildrenInput
+}
+
+input HierarchyCreateNestedOneWithoutCustomersInput {
+  connect: HierarchyWhereUniqueInput
+  connectOrCreate: HierarchyCreateOrConnectWithoutCustomersInput
+  create: HierarchyCreateWithoutCustomersInput
+}
+
+input HierarchyCreateOrConnectWithoutChildrenInput {
+  create: HierarchyCreateWithoutChildrenInput!
+  where: HierarchyWhereUniqueInput!
+}
+
+input HierarchyCreateOrConnectWithoutCustomersInput {
+  create: HierarchyCreateWithoutCustomersInput!
+  where: HierarchyWhereUniqueInput!
+}
+
+input HierarchyCreateOrConnectWithoutParentInput {
+  create: HierarchyCreateWithoutParentInput!
+  where: HierarchyWhereUniqueInput!
+}
+
+input HierarchyCreateWithoutChildrenInput {
+  createdAt: DateTime
+  customers: CustomerCreateNestedManyWithoutHierarchyInput
+  level: String!
+  parent: HierarchyCreateNestedOneWithoutChildrenInput
+  updatedAt: DateTime
+}
+
+input HierarchyCreateWithoutCustomersInput {
+  children: HierarchyCreateNestedManyWithoutParentInput
+  createdAt: DateTime
+  level: String!
+  parent: HierarchyCreateNestedOneWithoutChildrenInput
+  updatedAt: DateTime
+}
+
+input HierarchyCreateWithoutParentInput {
+  children: HierarchyCreateNestedManyWithoutParentInput
+  createdAt: DateTime
+  customers: CustomerCreateNestedManyWithoutHierarchyInput
+  level: String!
+  updatedAt: DateTime
+}
+
+input HierarchyListRelationFilter {
+  every: HierarchyWhereInput
+  none: HierarchyWhereInput
+  some: HierarchyWhereInput
+}
+
+input HierarchyNullableRelationFilter {
+  is: HierarchyWhereInput
+  isNot: HierarchyWhereInput
+}
+
+input HierarchyOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input HierarchyOrderByWithRelationInput {
+  children: HierarchyOrderByRelationAggregateInput
+  createdAt: SortOrder
+  customers: CustomerOrderByRelationAggregateInput
+  id: SortOrder
+  level: SortOrder
+  parent: HierarchyOrderByWithRelationInput
+  parentId: SortOrderInput
+  updatedAt: SortOrder
+}
+
+input HierarchyScalarWhereInput {
+  AND: [HierarchyScalarWhereInput!]
+  NOT: [HierarchyScalarWhereInput!]
+  OR: [HierarchyScalarWhereInput!]
+  createdAt: DateTimeFilter
+  id: IntFilter
+  level: StringFilter
+  parentId: IntNullableFilter
+  updatedAt: DateTimeFilter
+}
+
+input HierarchyUpdateManyMutationInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  level: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input HierarchyUpdateManyWithWhereWithoutParentInput {
+  data: HierarchyUpdateManyMutationInput!
+  where: HierarchyScalarWhereInput!
+}
+
+input HierarchyUpdateManyWithoutParentNestedInput {
+  connect: [HierarchyWhereUniqueInput!]
+  connectOrCreate: [HierarchyCreateOrConnectWithoutParentInput!]
+  create: [HierarchyCreateWithoutParentInput!]
+  createMany: HierarchyCreateManyParentInputEnvelope
+  delete: [HierarchyWhereUniqueInput!]
+  deleteMany: [HierarchyScalarWhereInput!]
+  disconnect: [HierarchyWhereUniqueInput!]
+  set: [HierarchyWhereUniqueInput!]
+  update: [HierarchyUpdateWithWhereUniqueWithoutParentInput!]
+  updateMany: [HierarchyUpdateManyWithWhereWithoutParentInput!]
+  upsert: [HierarchyUpsertWithWhereUniqueWithoutParentInput!]
+}
+
+input HierarchyUpdateOneWithoutChildrenNestedInput {
+  connect: HierarchyWhereUniqueInput
+  connectOrCreate: HierarchyCreateOrConnectWithoutChildrenInput
+  create: HierarchyCreateWithoutChildrenInput
+  delete: HierarchyWhereInput
+  disconnect: HierarchyWhereInput
+  update: HierarchyUpdateToOneWithWhereWithoutChildrenInput
+  upsert: HierarchyUpsertWithoutChildrenInput
+}
+
+input HierarchyUpdateOneWithoutCustomersNestedInput {
+  connect: HierarchyWhereUniqueInput
+  connectOrCreate: HierarchyCreateOrConnectWithoutCustomersInput
+  create: HierarchyCreateWithoutCustomersInput
+  delete: HierarchyWhereInput
+  disconnect: HierarchyWhereInput
+  update: HierarchyUpdateToOneWithWhereWithoutCustomersInput
+  upsert: HierarchyUpsertWithoutCustomersInput
+}
+
+input HierarchyUpdateToOneWithWhereWithoutChildrenInput {
+  data: HierarchyUpdateWithoutChildrenInput!
+  where: HierarchyWhereInput
+}
+
+input HierarchyUpdateToOneWithWhereWithoutCustomersInput {
+  data: HierarchyUpdateWithoutCustomersInput!
+  where: HierarchyWhereInput
+}
+
+input HierarchyUpdateWithWhereUniqueWithoutParentInput {
+  data: HierarchyUpdateWithoutParentInput!
+  where: HierarchyWhereUniqueInput!
+}
+
+input HierarchyUpdateWithoutChildrenInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  customers: CustomerUpdateManyWithoutHierarchyNestedInput
+  level: StringFieldUpdateOperationsInput
+  parent: HierarchyUpdateOneWithoutChildrenNestedInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input HierarchyUpdateWithoutCustomersInput {
+  children: HierarchyUpdateManyWithoutParentNestedInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  level: StringFieldUpdateOperationsInput
+  parent: HierarchyUpdateOneWithoutChildrenNestedInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input HierarchyUpdateWithoutParentInput {
+  children: HierarchyUpdateManyWithoutParentNestedInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  customers: CustomerUpdateManyWithoutHierarchyNestedInput
+  level: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input HierarchyUpsertWithWhereUniqueWithoutParentInput {
+  create: HierarchyCreateWithoutParentInput!
+  update: HierarchyUpdateWithoutParentInput!
+  where: HierarchyWhereUniqueInput!
+}
+
+input HierarchyUpsertWithoutChildrenInput {
+  create: HierarchyCreateWithoutChildrenInput!
+  update: HierarchyUpdateWithoutChildrenInput!
+  where: HierarchyWhereInput
+}
+
+input HierarchyUpsertWithoutCustomersInput {
+  create: HierarchyCreateWithoutCustomersInput!
+  update: HierarchyUpdateWithoutCustomersInput!
+  where: HierarchyWhereInput
+}
+
+input HierarchyWhereInput {
+  AND: [HierarchyWhereInput!]
+  NOT: [HierarchyWhereInput!]
+  OR: [HierarchyWhereInput!]
+  children: HierarchyListRelationFilter
+  createdAt: DateTimeFilter
+  customers: CustomerListRelationFilter
+  id: IntFilter
+  level: StringFilter
+  parent: HierarchyNullableRelationFilter
+  parentId: IntNullableFilter
+  updatedAt: DateTimeFilter
+}
+
+input HierarchyWhereUniqueInput {
+  AND: [HierarchyWhereInput!]
+  NOT: [HierarchyWhereInput!]
+  OR: [HierarchyWhereInput!]
+  children: HierarchyListRelationFilter
+  createdAt: DateTimeFilter
+  customers: CustomerListRelationFilter
+  id: Int
+  level: StringFilter
+  parent: HierarchyNullableRelationFilter
+  parentId: IntNullableFilter
+  updatedAt: DateTimeFilter
+}
+
+input IntFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: NestedIntFilter
+  notIn: [Int!]
+}
+
+input IntNullableFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: NestedIntNullableFilter
+  notIn: [Int!]
+}
+
+input IntNullableWithAggregatesFilter {
+  _avg: NestedFloatNullableFilter
+  _count: NestedIntNullableFilter
+  _max: NestedIntNullableFilter
+  _min: NestedIntNullableFilter
+  _sum: NestedIntNullableFilter
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: NestedIntNullableWithAggregatesFilter
+  notIn: [Int!]
+}
+
+input IntWithAggregatesFilter {
+  _avg: NestedFloatFilter
+  _count: NestedIntFilter
+  _max: NestedIntFilter
+  _min: NestedIntFilter
+  _sum: NestedIntFilter
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: NestedIntWithAggregatesFilter
+  notIn: [Int!]
+}
+
+type Mutation {
+  createCustomer(
+    data: CustomerCreateInput!
+    relationLoadStrategy: RelationLoadStrategy
+  ): Customer
+  createManyCustomer(
+    data: [CustomerCreateManyInput!]!
+    skipDuplicates: Boolean
+  ): AffectedRows
+  deleteCustomer(
+    relationLoadStrategy: RelationLoadStrategy
+    where: CustomerWhereUniqueInput!
+  ): Customer
+  deleteManyCustomer(where: CustomerWhereInput): AffectedRows
+  updateCustomer(
+    data: CustomerUpdateInput!
+    relationLoadStrategy: RelationLoadStrategy
+    where: CustomerWhereUniqueInput!
+  ): Customer
+  updateManyCustomer(
+    data: CustomerUpdateManyMutationInput!
+    where: CustomerWhereInput
+  ): AffectedRows
+}
+
+input NestedBoolFilter {
+  equals: Boolean
+  not: NestedBoolFilter
+}
+
+input NestedDateTimeFilter {
+  equals: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  not: NestedDateTimeFilter
+  notIn: [DateTime!]
+}
+
+input NestedDateTimeWithAggregatesFilter {
+  _count: NestedIntFilter
+  _max: NestedDateTimeFilter
+  _min: NestedDateTimeFilter
+  equals: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  not: NestedDateTimeWithAggregatesFilter
+  notIn: [DateTime!]
+}
+
+input NestedFloatFilter {
+  equals: Float
+  gt: Float
+  gte: Float
+  in: [Float!]
+  lt: Float
+  lte: Float
+  not: NestedFloatFilter
+  notIn: [Float!]
+}
+
+input NestedFloatNullableFilter {
+  equals: Float
+  gt: Float
+  gte: Float
+  in: [Float!]
+  lt: Float
+  lte: Float
+  not: NestedFloatNullableFilter
+  notIn: [Float!]
+}
+
+input NestedIntFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: NestedIntFilter
+  notIn: [Int!]
+}
+
+input NestedIntNullableFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: NestedIntNullableFilter
+  notIn: [Int!]
+}
+
+input NestedIntNullableWithAggregatesFilter {
+  _avg: NestedFloatNullableFilter
+  _count: NestedIntNullableFilter
+  _max: NestedIntNullableFilter
+  _min: NestedIntNullableFilter
+  _sum: NestedIntNullableFilter
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: NestedIntNullableWithAggregatesFilter
+  notIn: [Int!]
+}
+
+input NestedIntWithAggregatesFilter {
+  _avg: NestedFloatFilter
+  _count: NestedIntFilter
+  _max: NestedIntFilter
+  _min: NestedIntFilter
+  _sum: NestedIntFilter
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: NestedIntWithAggregatesFilter
+  notIn: [Int!]
+}
+
+input NestedStringFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  not: NestedStringFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+input NestedStringNullableFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  not: NestedStringNullableFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+input NestedStringNullableWithAggregatesFilter {
+  _count: NestedIntNullableFilter
+  _max: NestedStringNullableFilter
+  _min: NestedStringNullableFilter
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  not: NestedStringNullableWithAggregatesFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+input NestedStringWithAggregatesFilter {
+  _count: NestedIntFilter
+  _max: NestedStringFilter
+  _min: NestedStringFilter
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  not: NestedStringWithAggregatesFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+input NullableFloatFieldUpdateOperationsInput {
+  decrement: Float
+  divide: Float
+  increment: Float
+  multiply: Float
+  set: Float
+}
+
+input NullableStringFieldUpdateOperationsInput {
+  set: String
+}
+
+enum NullsOrder {
+  first
+  last
+}
+
+type Query {
+  aggregateCustomer(
+    _avg: CustomerAvgAggregateInput
+    _count: CustomerCountAggregateInput
+    _max: CustomerMaxAggregateInput
+    _min: CustomerMinAggregateInput
+    _sum: CustomerSumAggregateInput
+    cursor: CustomerWhereUniqueInput
+    orderBy: [CustomerOrderByWithRelationInput!]
+    skip: Int
+    take: Int
+    where: CustomerWhereInput
+  ): AggregateCustomer!
+  findFirstCustomer(
+    cursor: CustomerWhereUniqueInput
+    distinct: [CustomerScalarFieldEnum!]
+    orderBy: [CustomerOrderByWithRelationInput!]
+    relationLoadStrategy: RelationLoadStrategy
+    skip: Int
+    take: Int
+    where: CustomerWhereInput
+  ): Customer!
+  findUniqueCustomer(
+    relationLoadStrategy: RelationLoadStrategy
+    where: CustomerWhereUniqueInput!
+  ): Customer!
+  groupByCustomer(
+    _avg: CustomerAvgAggregateInput
+    _count: CustomerCountAggregateInput
+    _max: CustomerMaxAggregateInput
+    _min: CustomerMinAggregateInput
+    _sum: CustomerSumAggregateInput
+    by: [CustomerScalarFieldEnum!]!
+    having: CustomerScalarWhereWithAggregatesInput
+    orderBy: [CustomerOrderByWithAggregationInput!]
+    skip: Int
+    take: Int
+    where: CustomerWhereInput
+  ): [CustomerGroupBy!]!
+  listCustomers(
+    cursor: CustomerWhereUniqueInput
+    distinct: [CustomerScalarFieldEnum!]
+    orderBy: [CustomerOrderByWithRelationInput!]
+    relationLoadStrategy: RelationLoadStrategy
+    skip: Int
+    take: Int
+    where: CustomerWhereInput
+  ): [Customer!]!
+}
+
+enum QueryMode {
+  default
+  insensitive
+}
+
+enum RelationLoadStrategy {
+  join
+  query
+}
+
+type SLA {
+  createdAt: DateTime!
+  id: ID!
+  parameter: String!
+  service: Service!
+  serviceId: Int!
+  updatedAt: DateTime!
+  value: String!
+}
+
+input SLACreateManyServiceInput {
+  createdAt: DateTime
+  id: Int
+  parameter: String!
+  updatedAt: DateTime
+  value: String!
+}
+
+input SLACreateManyServiceInputEnvelope {
+  data: [SLACreateManyServiceInput!]!
+  skipDuplicates: Boolean
+}
+
+input SLACreateNestedManyWithoutServiceInput {
+  connect: [SLAWhereUniqueInput!]
+  connectOrCreate: [SLACreateOrConnectWithoutServiceInput!]
+  create: [SLACreateWithoutServiceInput!]
+  createMany: SLACreateManyServiceInputEnvelope
+}
+
+input SLACreateOrConnectWithoutServiceInput {
+  create: SLACreateWithoutServiceInput!
+  where: SLAWhereUniqueInput!
+}
+
+input SLACreateWithoutServiceInput {
+  createdAt: DateTime
+  parameter: String!
+  updatedAt: DateTime
+  value: String!
+}
+
+input SLAListRelationFilter {
+  every: SLAWhereInput
+  none: SLAWhereInput
+  some: SLAWhereInput
+}
+
+input SLAScalarWhereInput {
+  AND: [SLAScalarWhereInput!]
+  NOT: [SLAScalarWhereInput!]
+  OR: [SLAScalarWhereInput!]
+  createdAt: DateTimeFilter
+  id: IntFilter
+  parameter: StringFilter
+  serviceId: IntFilter
+  updatedAt: DateTimeFilter
+  value: StringFilter
+}
+
+input SLAUpdateManyMutationInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  parameter: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  value: StringFieldUpdateOperationsInput
+}
+
+input SLAUpdateManyWithWhereWithoutServiceInput {
+  data: SLAUpdateManyMutationInput!
+  where: SLAScalarWhereInput!
+}
+
+input SLAUpdateManyWithoutServiceNestedInput {
+  connect: [SLAWhereUniqueInput!]
+  connectOrCreate: [SLACreateOrConnectWithoutServiceInput!]
+  create: [SLACreateWithoutServiceInput!]
+  createMany: SLACreateManyServiceInputEnvelope
+  delete: [SLAWhereUniqueInput!]
+  deleteMany: [SLAScalarWhereInput!]
+  disconnect: [SLAWhereUniqueInput!]
+  set: [SLAWhereUniqueInput!]
+  update: [SLAUpdateWithWhereUniqueWithoutServiceInput!]
+  updateMany: [SLAUpdateManyWithWhereWithoutServiceInput!]
+  upsert: [SLAUpsertWithWhereUniqueWithoutServiceInput!]
+}
+
+input SLAUpdateWithWhereUniqueWithoutServiceInput {
+  data: SLAUpdateWithoutServiceInput!
+  where: SLAWhereUniqueInput!
+}
+
+input SLAUpdateWithoutServiceInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  parameter: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  value: StringFieldUpdateOperationsInput
+}
+
+input SLAUpsertWithWhereUniqueWithoutServiceInput {
+  create: SLACreateWithoutServiceInput!
+  update: SLAUpdateWithoutServiceInput!
+  where: SLAWhereUniqueInput!
+}
+
+input SLAWhereInput {
+  AND: [SLAWhereInput!]
+  NOT: [SLAWhereInput!]
+  OR: [SLAWhereInput!]
+  createdAt: DateTimeFilter
+  id: IntFilter
+  parameter: StringFilter
+  service: ServiceRelationFilter
+  serviceId: IntFilter
+  updatedAt: DateTimeFilter
+  value: StringFilter
+}
+
+input SLAWhereUniqueInput {
+  AND: [SLAWhereInput!]
+  NOT: [SLAWhereInput!]
+  OR: [SLAWhereInput!]
+  createdAt: DateTimeFilter
+  id: Int
+  parameter: StringFilter
+  service: ServiceRelationFilter
+  serviceId: IntFilter
+  updatedAt: DateTimeFilter
+  value: StringFilter
+}
+
+type Service {
+  _count: ServiceCount!
+  createdAt: DateTime!
+  customer: Customer!
+  customerId: Int!
+  description: String!
+  id: ID!
+  name: String!
+  sla: [SLA!]
+  updatedAt: DateTime!
+}
+
+type ServiceCount {
+  sla: Int!
+}
+
+input ServiceCreateManyCustomerInput {
+  createdAt: DateTime
+  description: String!
+  id: Int
+  name: String!
+  updatedAt: DateTime
+}
+
+input ServiceCreateManyCustomerInputEnvelope {
+  data: [ServiceCreateManyCustomerInput!]!
+  skipDuplicates: Boolean
+}
+
+input ServiceCreateNestedManyWithoutCustomerInput {
+  connect: [ServiceWhereUniqueInput!]
+  connectOrCreate: [ServiceCreateOrConnectWithoutCustomerInput!]
+  create: [ServiceCreateWithoutCustomerInput!]
+  createMany: ServiceCreateManyCustomerInputEnvelope
+}
+
+input ServiceCreateOrConnectWithoutCustomerInput {
+  create: ServiceCreateWithoutCustomerInput!
+  where: ServiceWhereUniqueInput!
+}
+
+input ServiceCreateWithoutCustomerInput {
+  createdAt: DateTime
+  description: String!
+  name: String!
+  sla: SLACreateNestedManyWithoutServiceInput
+  updatedAt: DateTime
+}
+
+input ServiceListRelationFilter {
+  every: ServiceWhereInput
+  none: ServiceWhereInput
+  some: ServiceWhereInput
+}
+
+input ServiceOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input ServiceRelationFilter {
+  is: ServiceWhereInput
+  isNot: ServiceWhereInput
+}
+
+input ServiceScalarWhereInput {
+  AND: [ServiceScalarWhereInput!]
+  NOT: [ServiceScalarWhereInput!]
+  OR: [ServiceScalarWhereInput!]
+  createdAt: DateTimeFilter
+  customerId: IntFilter
+  description: StringFilter
+  id: IntFilter
+  name: StringFilter
+  updatedAt: DateTimeFilter
+}
+
+input ServiceUpdateManyMutationInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input ServiceUpdateManyWithWhereWithoutCustomerInput {
+  data: ServiceUpdateManyMutationInput!
+  where: ServiceScalarWhereInput!
+}
+
+input ServiceUpdateManyWithoutCustomerNestedInput {
+  connect: [ServiceWhereUniqueInput!]
+  connectOrCreate: [ServiceCreateOrConnectWithoutCustomerInput!]
+  create: [ServiceCreateWithoutCustomerInput!]
+  createMany: ServiceCreateManyCustomerInputEnvelope
+  delete: [ServiceWhereUniqueInput!]
+  deleteMany: [ServiceScalarWhereInput!]
+  disconnect: [ServiceWhereUniqueInput!]
+  set: [ServiceWhereUniqueInput!]
+  update: [ServiceUpdateWithWhereUniqueWithoutCustomerInput!]
+  updateMany: [ServiceUpdateManyWithWhereWithoutCustomerInput!]
+  upsert: [ServiceUpsertWithWhereUniqueWithoutCustomerInput!]
+}
+
+input ServiceUpdateWithWhereUniqueWithoutCustomerInput {
+  data: ServiceUpdateWithoutCustomerInput!
+  where: ServiceWhereUniqueInput!
+}
+
+input ServiceUpdateWithoutCustomerInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  description: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  sla: SLAUpdateManyWithoutServiceNestedInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input ServiceUpsertWithWhereUniqueWithoutCustomerInput {
+  create: ServiceCreateWithoutCustomerInput!
+  update: ServiceUpdateWithoutCustomerInput!
+  where: ServiceWhereUniqueInput!
+}
+
+input ServiceWhereInput {
+  AND: [ServiceWhereInput!]
+  NOT: [ServiceWhereInput!]
+  OR: [ServiceWhereInput!]
+  createdAt: DateTimeFilter
+  customer: CustomerRelationFilter
+  customerId: IntFilter
+  description: StringFilter
+  id: IntFilter
+  name: StringFilter
+  sla: SLAListRelationFilter
+  updatedAt: DateTimeFilter
+}
+
+input ServiceWhereUniqueInput {
+  AND: [ServiceWhereInput!]
+  NOT: [ServiceWhereInput!]
+  OR: [ServiceWhereInput!]
+  createdAt: DateTimeFilter
+  customer: CustomerRelationFilter
+  customerId: IntFilter
+  description: StringFilter
+  id: Int
+  name: StringFilter
+  sla: SLAListRelationFilter
+  updatedAt: DateTimeFilter
+}
+
+enum SortOrder {
+  asc
+  desc
+}
+
+input SortOrderInput {
+  nulls: NullsOrder
+  sort: SortOrder!
+}
+
+input StringFieldUpdateOperationsInput {
+  set: String
+}
+
+input StringFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: NestedStringFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+input StringNullableFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: NestedStringNullableFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+input StringNullableWithAggregatesFilter {
+  _count: NestedIntNullableFilter
+  _max: NestedStringNullableFilter
+  _min: NestedStringNullableFilter
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: NestedStringNullableWithAggregatesFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+input StringWithAggregatesFilter {
+  _count: NestedIntFilter
+  _max: NestedStringFilter
+  _min: NestedStringFilter
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: NestedStringWithAggregatesFilter
+  notIn: [String!]
+  startsWith: String
+}

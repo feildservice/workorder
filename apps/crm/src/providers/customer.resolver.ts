@@ -38,6 +38,7 @@ export class CustomerResolver {
 
     @Query(() => [Customer], { nullable: false })
     listCustomers(@Args() args: FindManyCustomerArgs) {
+      console.log('args', args);
       return this.customerService.findMany(args);
     }
 

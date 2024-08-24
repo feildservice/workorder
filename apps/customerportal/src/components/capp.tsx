@@ -1,27 +1,24 @@
 import React from 'react';
+import { graphql } from '../graphql/gql'; // Import the useQuery function
 import { useQuery } from '@apollo/client';
+// import { Customer } from '@/graphql/graphql';
 
-// import './App.css';
-// import Film from './Film';
-import { graphql } from '../gql/gql';
 
-const allFilmsWithVariablesQueryDocument = graphql(/* GraphQL */ `
-  query allFilmsWithVariablesQuery($first: Int!) {
-    allFilms(first: $first) {
-      edges {
-        node {
-          ...FilmItem
-        }
-      }
+
+const CustomerListQueryDocument = graphql(/* GraphQL */ `
+  query CustomerListQuery($first: Int!) {
+    listCustomers(take: $first) {
+      name
+      phone
     }
   }
 `);
 
 function CApp() {
-  const { data } = useQuery(allFilmsWithVariablesQueryDocument, { variables: { first: 10 } });
+  const { data } = useQuery(CustomerListQueryDocument, { variables: { first: 10 } });
   return (
     <div className="App">
-      {data && <ul>{data.allFilms?.edges?.map((e, i) => e?.node && <Film film={e?.node} key={`film-${i}`} />)}</ul>}
+      {data && <ul>{data.listCustomers?.map((e, i) => <li key={i}>{e.name}</li>)}</ul>}
     </div>
   );
 }

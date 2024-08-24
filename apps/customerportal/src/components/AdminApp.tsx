@@ -5,7 +5,7 @@ import React from 'react';
 // import jsonServerProvider from "ra-data-json-server";
 // import { dataProvider } from "ra-data-simple-prisma";
 import buildGraphQLProvider from 'ra-data-graphql';
-import { __schema as schema } from '../schema.json';
+// import { __schema as schema } from '../schema.json';
 import { ApolloClient, InMemoryCache, ApolloProvider  } from '@apollo/client';
 import buildApolloClient, {
     buildQuery as buildQueryFactory,
