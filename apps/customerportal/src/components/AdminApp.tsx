@@ -20,16 +20,11 @@ const client = new ApolloClient({
 });
 
 
-// const dataProvider = buildApolloClient({
-//     clientOptions: {
-//         uri: 'http://localhost:3001/graphql',
-//     },
-    
-//     buildQuery: customBuildQuery,
-// });
-
-
-
+const dataProvider = buildApolloClient({
+    clientOptions: {
+        uri: 'http://localhost:3001/graphql',
+    }
+});
 
 // const dataProvider = buildGraphQLProvider({
 //     introspection: { schema },
@@ -43,30 +38,31 @@ const client = new ApolloClient({
 //import { PostCreate, PostEdit, PostList } from '../components/admin/posts';
 
 // const dataProvider = buildGraphQLProvider({ buildQuery });
-
-{/* <Admin dataProvider={dataProvider}>
-<Resource
-  name="Customer"
-  list={ListGuesser}
-  edit={EditGuesser}
-  recordRepresentation="name"
-/>
-<Resource
-  name="posts"
-  list={ListGuesser}
-  edit={EditGuesser}
-  recordRepresentation="title"
-/>
-<Resource name="comments" list={ListGuesser} edit={EditGuesser} />
-</Admin> */}
-
-
 const AdminApp = () => (
-  <React.StrictMode>
-    <ApolloProvider client={client}>
-      <CApp />
-    </ApolloProvider>
-  </React.StrictMode>
+  <Admin dataProvider={dataProvider}>
+    <Resource
+      name="Customer"
+      list={ListGuesser}
+      edit={EditGuesser}
+      recordRepresentation="name"
+    />
+    <Resource
+      name="posts"
+      list={ListGuesser}
+      edit={EditGuesser}
+      recordRepresentation="title"
+    />
+    <Resource name="comments" list={ListGuesser} edit={EditGuesser} />
+  </Admin>
 );
+
+
+// const AdminApp = () => (
+//   <React.StrictMode>
+//     <ApolloProvider client={client}>
+//       <CApp />
+//     </ApolloProvider>
+//   </React.StrictMode>
+// );
 
 export default AdminApp;

@@ -21,6 +21,11 @@ async function main() {
             name: 'Alice',
             phone: '1234567890',
             company: 'Acme Enterprises',
+            yearFounded: '2000',    
+            country: 'USA',
+            domain: 'acme.com',
+            industry: 'Tech',
+            empsize: '1000',
             addresses: {
                 create: [
                     {
