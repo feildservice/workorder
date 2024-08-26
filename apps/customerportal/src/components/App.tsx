@@ -12,6 +12,8 @@ import { themes, ThemeName } from './themes/themes';
 import { Layout, Login } from './layout';
 import englishMessages from '../i18n/en';
 
+import visitors  from './visitors';
+
 const i18nProvider = polyglotI18nProvider(
     (locale: string) => {
         if (locale === 'fr') {
@@ -50,7 +52,7 @@ const App = () => {
             darkTheme={darkTheme}
             defaultTheme="light"
         >
-            <Resource name="customers"/>
+            <Resource name="customers" {...visitors} />
             {/* <CustomRoutes>
                 <Route path="/segments" element={<Segments />} />
             </CustomRoutes>
@@ -66,7 +68,7 @@ const App = () => {
 
 const AppWrapper = () => (
     <StoreContextProvider value={store}>
-        <App />
+        <App/>
     </StoreContextProvider>
 );
 
