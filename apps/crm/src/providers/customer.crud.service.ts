@@ -1,6 +1,6 @@
-import { Injectable } from "@nestjs/common";
-import { PrismaService } from "./prisma.service";
-import { BaseCrudService } from "./basecrud.service";
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from './prisma.service';
+import { BaseCrudService } from './basecrud.service';
 import {
   CreateManyCustomerArgs,
   CreateOneCustomerArgs,
@@ -14,7 +14,7 @@ import {
   Customer,
   CustomerAggregateArgs,
   CustomerGroupByArgs,
-} from "../generated/prismagraphql/customer";
+} from '../generated/prismagraphql/customer';
 
 @Injectable()
 export class CustomerCrudService extends BaseCrudService<
