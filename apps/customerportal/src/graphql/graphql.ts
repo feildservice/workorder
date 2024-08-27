@@ -558,17 +558,29 @@ export type Customer = {
   _count: CustomerCount;
   addresses?: Maybe<Array<Address>>;
   agreements?: Maybe<Array<Agreement>>;
+  city?: Maybe<Scalars["String"]["output"]>;
   company: Scalars["String"]["output"];
   contacts?: Maybe<Array<Contact>>;
+  country?: Maybe<Scalars["String"]["output"]>;
   createdAt: Scalars["DateTime"]["output"];
+  description?: Maybe<Scalars["String"]["output"]>;
+  domain: Scalars["String"]["output"];
   email: Scalars["String"]["output"];
+  empsize?: Maybe<Scalars["String"]["output"]>;
   hierarchy?: Maybe<Hierarchy>;
   hierarchyId?: Maybe<Scalars["Int"]["output"]>;
   id: Scalars["ID"]["output"];
+  industry?: Maybe<Scalars["String"]["output"]>;
+  linkedinUrl: Scalars["String"]["output"];
   name: Scalars["String"]["output"];
   phone?: Maybe<Scalars["String"]["output"]>;
+  revenue?: Maybe<Scalars["String"]["output"]>;
   services?: Maybe<Array<Service>>;
+  taxIdentifier?: Maybe<Scalars["String"]["output"]>;
   updatedAt: Scalars["DateTime"]["output"];
+  website?: Maybe<Scalars["String"]["output"]>;
+  yearFounded?: Maybe<Scalars["String"]["output"]>;
+  zipcode?: Maybe<Scalars["String"]["output"]>;
 };
 
 export type CustomerAvgAggregate = {
@@ -598,61 +610,121 @@ export type CustomerCount = {
 export type CustomerCountAggregate = {
   __typename?: "CustomerCountAggregate";
   _all: Scalars["Int"]["output"];
+  city: Scalars["Int"]["output"];
   company: Scalars["Int"]["output"];
+  country: Scalars["Int"]["output"];
   createdAt: Scalars["Int"]["output"];
+  description: Scalars["Int"]["output"];
+  domain: Scalars["Int"]["output"];
   email: Scalars["Int"]["output"];
+  empsize: Scalars["Int"]["output"];
   hierarchyId: Scalars["Int"]["output"];
   id: Scalars["Int"]["output"];
+  industry: Scalars["Int"]["output"];
+  linkedinUrl: Scalars["Int"]["output"];
   name: Scalars["Int"]["output"];
   phone: Scalars["Int"]["output"];
+  revenue: Scalars["Int"]["output"];
+  taxIdentifier: Scalars["Int"]["output"];
   updatedAt: Scalars["Int"]["output"];
+  website: Scalars["Int"]["output"];
+  yearFounded: Scalars["Int"]["output"];
+  zipcode: Scalars["Int"]["output"];
 };
 
 export type CustomerCountAggregateInput = {
   _all?: InputMaybe<Scalars["Boolean"]["input"]>;
+  city?: InputMaybe<Scalars["Boolean"]["input"]>;
   company?: InputMaybe<Scalars["Boolean"]["input"]>;
+  country?: InputMaybe<Scalars["Boolean"]["input"]>;
   createdAt?: InputMaybe<Scalars["Boolean"]["input"]>;
+  description?: InputMaybe<Scalars["Boolean"]["input"]>;
+  domain?: InputMaybe<Scalars["Boolean"]["input"]>;
   email?: InputMaybe<Scalars["Boolean"]["input"]>;
+  empsize?: InputMaybe<Scalars["Boolean"]["input"]>;
   hierarchyId?: InputMaybe<Scalars["Boolean"]["input"]>;
   id?: InputMaybe<Scalars["Boolean"]["input"]>;
+  industry?: InputMaybe<Scalars["Boolean"]["input"]>;
+  linkedinUrl?: InputMaybe<Scalars["Boolean"]["input"]>;
   name?: InputMaybe<Scalars["Boolean"]["input"]>;
   phone?: InputMaybe<Scalars["Boolean"]["input"]>;
+  revenue?: InputMaybe<Scalars["Boolean"]["input"]>;
+  taxIdentifier?: InputMaybe<Scalars["Boolean"]["input"]>;
   updatedAt?: InputMaybe<Scalars["Boolean"]["input"]>;
+  website?: InputMaybe<Scalars["Boolean"]["input"]>;
+  yearFounded?: InputMaybe<Scalars["Boolean"]["input"]>;
+  zipcode?: InputMaybe<Scalars["Boolean"]["input"]>;
 };
 
 export type CustomerCountOrderByAggregateInput = {
+  city?: InputMaybe<SortOrder>;
   company?: InputMaybe<SortOrder>;
+  country?: InputMaybe<SortOrder>;
   createdAt?: InputMaybe<SortOrder>;
+  description?: InputMaybe<SortOrder>;
+  domain?: InputMaybe<SortOrder>;
   email?: InputMaybe<SortOrder>;
+  empsize?: InputMaybe<SortOrder>;
   hierarchyId?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
+  industry?: InputMaybe<SortOrder>;
+  linkedinUrl?: InputMaybe<SortOrder>;
   name?: InputMaybe<SortOrder>;
   phone?: InputMaybe<SortOrder>;
+  revenue?: InputMaybe<SortOrder>;
+  taxIdentifier?: InputMaybe<SortOrder>;
   updatedAt?: InputMaybe<SortOrder>;
+  website?: InputMaybe<SortOrder>;
+  yearFounded?: InputMaybe<SortOrder>;
+  zipcode?: InputMaybe<SortOrder>;
 };
 
 export type CustomerCreateInput = {
   addresses?: InputMaybe<AddressCreateNestedManyWithoutCustomerInput>;
   agreements?: InputMaybe<AgreementCreateNestedManyWithoutCustomerInput>;
+  city?: InputMaybe<Scalars["String"]["input"]>;
   company: Scalars["String"]["input"];
   contacts?: InputMaybe<ContactCreateNestedManyWithoutCustomerInput>;
+  country?: InputMaybe<Scalars["String"]["input"]>;
   createdAt?: InputMaybe<Scalars["DateTime"]["input"]>;
+  description?: InputMaybe<Scalars["String"]["input"]>;
+  domain: Scalars["String"]["input"];
   email: Scalars["String"]["input"];
+  empsize?: InputMaybe<Scalars["String"]["input"]>;
   hierarchy?: InputMaybe<HierarchyCreateNestedOneWithoutCustomersInput>;
+  industry?: InputMaybe<Scalars["String"]["input"]>;
+  linkedinUrl: Scalars["String"]["input"];
   name: Scalars["String"]["input"];
   phone?: InputMaybe<Scalars["String"]["input"]>;
+  revenue?: InputMaybe<Scalars["String"]["input"]>;
   services?: InputMaybe<ServiceCreateNestedManyWithoutCustomerInput>;
+  taxIdentifier?: InputMaybe<Scalars["String"]["input"]>;
   updatedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
+  website?: InputMaybe<Scalars["String"]["input"]>;
+  yearFounded?: InputMaybe<Scalars["String"]["input"]>;
+  zipcode?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 export type CustomerCreateManyHierarchyInput = {
+  city?: InputMaybe<Scalars["String"]["input"]>;
   company: Scalars["String"]["input"];
+  country?: InputMaybe<Scalars["String"]["input"]>;
   createdAt?: InputMaybe<Scalars["DateTime"]["input"]>;
+  description?: InputMaybe<Scalars["String"]["input"]>;
+  domain: Scalars["String"]["input"];
   email: Scalars["String"]["input"];
+  empsize?: InputMaybe<Scalars["String"]["input"]>;
   id?: InputMaybe<Scalars["Int"]["input"]>;
+  industry?: InputMaybe<Scalars["String"]["input"]>;
+  linkedinUrl: Scalars["String"]["input"];
   name: Scalars["String"]["input"];
   phone?: InputMaybe<Scalars["String"]["input"]>;
+  revenue?: InputMaybe<Scalars["String"]["input"]>;
+  taxIdentifier?: InputMaybe<Scalars["String"]["input"]>;
   updatedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
+  website?: InputMaybe<Scalars["String"]["input"]>;
+  yearFounded?: InputMaybe<Scalars["String"]["input"]>;
+  zipcode?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 export type CustomerCreateManyHierarchyInputEnvelope = {
@@ -661,14 +733,26 @@ export type CustomerCreateManyHierarchyInputEnvelope = {
 };
 
 export type CustomerCreateManyInput = {
+  city?: InputMaybe<Scalars["String"]["input"]>;
   company: Scalars["String"]["input"];
+  country?: InputMaybe<Scalars["String"]["input"]>;
   createdAt?: InputMaybe<Scalars["DateTime"]["input"]>;
+  description?: InputMaybe<Scalars["String"]["input"]>;
+  domain: Scalars["String"]["input"];
   email: Scalars["String"]["input"];
+  empsize?: InputMaybe<Scalars["String"]["input"]>;
   hierarchyId?: InputMaybe<Scalars["Int"]["input"]>;
   id?: InputMaybe<Scalars["Int"]["input"]>;
+  industry?: InputMaybe<Scalars["String"]["input"]>;
+  linkedinUrl: Scalars["String"]["input"];
   name: Scalars["String"]["input"];
   phone?: InputMaybe<Scalars["String"]["input"]>;
+  revenue?: InputMaybe<Scalars["String"]["input"]>;
+  taxIdentifier?: InputMaybe<Scalars["String"]["input"]>;
   updatedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
+  website?: InputMaybe<Scalars["String"]["input"]>;
+  yearFounded?: InputMaybe<Scalars["String"]["input"]>;
+  zipcode?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 export type CustomerCreateNestedManyWithoutHierarchyInput = {
@@ -688,14 +772,26 @@ export type CustomerCreateOrConnectWithoutHierarchyInput = {
 export type CustomerCreateWithoutHierarchyInput = {
   addresses?: InputMaybe<AddressCreateNestedManyWithoutCustomerInput>;
   agreements?: InputMaybe<AgreementCreateNestedManyWithoutCustomerInput>;
+  city?: InputMaybe<Scalars["String"]["input"]>;
   company: Scalars["String"]["input"];
   contacts?: InputMaybe<ContactCreateNestedManyWithoutCustomerInput>;
+  country?: InputMaybe<Scalars["String"]["input"]>;
   createdAt?: InputMaybe<Scalars["DateTime"]["input"]>;
+  description?: InputMaybe<Scalars["String"]["input"]>;
+  domain: Scalars["String"]["input"];
   email: Scalars["String"]["input"];
+  empsize?: InputMaybe<Scalars["String"]["input"]>;
+  industry?: InputMaybe<Scalars["String"]["input"]>;
+  linkedinUrl: Scalars["String"]["input"];
   name: Scalars["String"]["input"];
   phone?: InputMaybe<Scalars["String"]["input"]>;
+  revenue?: InputMaybe<Scalars["String"]["input"]>;
   services?: InputMaybe<ServiceCreateNestedManyWithoutCustomerInput>;
+  taxIdentifier?: InputMaybe<Scalars["String"]["input"]>;
   updatedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
+  website?: InputMaybe<Scalars["String"]["input"]>;
+  yearFounded?: InputMaybe<Scalars["String"]["input"]>;
+  zipcode?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 export type CustomerGroupBy = {
@@ -705,14 +801,26 @@ export type CustomerGroupBy = {
   _max?: Maybe<CustomerMaxAggregate>;
   _min?: Maybe<CustomerMinAggregate>;
   _sum?: Maybe<CustomerSumAggregate>;
+  city?: Maybe<Scalars["String"]["output"]>;
   company: Scalars["String"]["output"];
+  country?: Maybe<Scalars["String"]["output"]>;
   createdAt: Scalars["DateTime"]["output"];
+  description?: Maybe<Scalars["String"]["output"]>;
+  domain: Scalars["String"]["output"];
   email: Scalars["String"]["output"];
+  empsize?: Maybe<Scalars["String"]["output"]>;
   hierarchyId?: Maybe<Scalars["Int"]["output"]>;
   id: Scalars["Int"]["output"];
+  industry?: Maybe<Scalars["String"]["output"]>;
+  linkedinUrl: Scalars["String"]["output"];
   name: Scalars["String"]["output"];
   phone?: Maybe<Scalars["String"]["output"]>;
+  revenue?: Maybe<Scalars["String"]["output"]>;
+  taxIdentifier?: Maybe<Scalars["String"]["output"]>;
   updatedAt: Scalars["DateTime"]["output"];
+  website?: Maybe<Scalars["String"]["output"]>;
+  yearFounded?: Maybe<Scalars["String"]["output"]>;
+  zipcode?: Maybe<Scalars["String"]["output"]>;
 };
 
 export type CustomerListRelationFilter = {
@@ -723,70 +831,142 @@ export type CustomerListRelationFilter = {
 
 export type CustomerMaxAggregate = {
   __typename?: "CustomerMaxAggregate";
+  city?: Maybe<Scalars["String"]["output"]>;
   company?: Maybe<Scalars["String"]["output"]>;
+  country?: Maybe<Scalars["String"]["output"]>;
   createdAt?: Maybe<Scalars["DateTime"]["output"]>;
+  description?: Maybe<Scalars["String"]["output"]>;
+  domain?: Maybe<Scalars["String"]["output"]>;
   email?: Maybe<Scalars["String"]["output"]>;
+  empsize?: Maybe<Scalars["String"]["output"]>;
   hierarchyId?: Maybe<Scalars["Int"]["output"]>;
   id?: Maybe<Scalars["Int"]["output"]>;
+  industry?: Maybe<Scalars["String"]["output"]>;
+  linkedinUrl?: Maybe<Scalars["String"]["output"]>;
   name?: Maybe<Scalars["String"]["output"]>;
   phone?: Maybe<Scalars["String"]["output"]>;
+  revenue?: Maybe<Scalars["String"]["output"]>;
+  taxIdentifier?: Maybe<Scalars["String"]["output"]>;
   updatedAt?: Maybe<Scalars["DateTime"]["output"]>;
+  website?: Maybe<Scalars["String"]["output"]>;
+  yearFounded?: Maybe<Scalars["String"]["output"]>;
+  zipcode?: Maybe<Scalars["String"]["output"]>;
 };
 
 export type CustomerMaxAggregateInput = {
+  city?: InputMaybe<Scalars["Boolean"]["input"]>;
   company?: InputMaybe<Scalars["Boolean"]["input"]>;
+  country?: InputMaybe<Scalars["Boolean"]["input"]>;
   createdAt?: InputMaybe<Scalars["Boolean"]["input"]>;
+  description?: InputMaybe<Scalars["Boolean"]["input"]>;
+  domain?: InputMaybe<Scalars["Boolean"]["input"]>;
   email?: InputMaybe<Scalars["Boolean"]["input"]>;
+  empsize?: InputMaybe<Scalars["Boolean"]["input"]>;
   hierarchyId?: InputMaybe<Scalars["Boolean"]["input"]>;
   id?: InputMaybe<Scalars["Boolean"]["input"]>;
+  industry?: InputMaybe<Scalars["Boolean"]["input"]>;
+  linkedinUrl?: InputMaybe<Scalars["Boolean"]["input"]>;
   name?: InputMaybe<Scalars["Boolean"]["input"]>;
   phone?: InputMaybe<Scalars["Boolean"]["input"]>;
+  revenue?: InputMaybe<Scalars["Boolean"]["input"]>;
+  taxIdentifier?: InputMaybe<Scalars["Boolean"]["input"]>;
   updatedAt?: InputMaybe<Scalars["Boolean"]["input"]>;
+  website?: InputMaybe<Scalars["Boolean"]["input"]>;
+  yearFounded?: InputMaybe<Scalars["Boolean"]["input"]>;
+  zipcode?: InputMaybe<Scalars["Boolean"]["input"]>;
 };
 
 export type CustomerMaxOrderByAggregateInput = {
+  city?: InputMaybe<SortOrder>;
   company?: InputMaybe<SortOrder>;
+  country?: InputMaybe<SortOrder>;
   createdAt?: InputMaybe<SortOrder>;
+  description?: InputMaybe<SortOrder>;
+  domain?: InputMaybe<SortOrder>;
   email?: InputMaybe<SortOrder>;
+  empsize?: InputMaybe<SortOrder>;
   hierarchyId?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
+  industry?: InputMaybe<SortOrder>;
+  linkedinUrl?: InputMaybe<SortOrder>;
   name?: InputMaybe<SortOrder>;
   phone?: InputMaybe<SortOrder>;
+  revenue?: InputMaybe<SortOrder>;
+  taxIdentifier?: InputMaybe<SortOrder>;
   updatedAt?: InputMaybe<SortOrder>;
+  website?: InputMaybe<SortOrder>;
+  yearFounded?: InputMaybe<SortOrder>;
+  zipcode?: InputMaybe<SortOrder>;
 };
 
 export type CustomerMinAggregate = {
   __typename?: "CustomerMinAggregate";
+  city?: Maybe<Scalars["String"]["output"]>;
   company?: Maybe<Scalars["String"]["output"]>;
+  country?: Maybe<Scalars["String"]["output"]>;
   createdAt?: Maybe<Scalars["DateTime"]["output"]>;
+  description?: Maybe<Scalars["String"]["output"]>;
+  domain?: Maybe<Scalars["String"]["output"]>;
   email?: Maybe<Scalars["String"]["output"]>;
+  empsize?: Maybe<Scalars["String"]["output"]>;
   hierarchyId?: Maybe<Scalars["Int"]["output"]>;
   id?: Maybe<Scalars["Int"]["output"]>;
+  industry?: Maybe<Scalars["String"]["output"]>;
+  linkedinUrl?: Maybe<Scalars["String"]["output"]>;
   name?: Maybe<Scalars["String"]["output"]>;
   phone?: Maybe<Scalars["String"]["output"]>;
+  revenue?: Maybe<Scalars["String"]["output"]>;
+  taxIdentifier?: Maybe<Scalars["String"]["output"]>;
   updatedAt?: Maybe<Scalars["DateTime"]["output"]>;
+  website?: Maybe<Scalars["String"]["output"]>;
+  yearFounded?: Maybe<Scalars["String"]["output"]>;
+  zipcode?: Maybe<Scalars["String"]["output"]>;
 };
 
 export type CustomerMinAggregateInput = {
+  city?: InputMaybe<Scalars["Boolean"]["input"]>;
   company?: InputMaybe<Scalars["Boolean"]["input"]>;
+  country?: InputMaybe<Scalars["Boolean"]["input"]>;
   createdAt?: InputMaybe<Scalars["Boolean"]["input"]>;
+  description?: InputMaybe<Scalars["Boolean"]["input"]>;
+  domain?: InputMaybe<Scalars["Boolean"]["input"]>;
   email?: InputMaybe<Scalars["Boolean"]["input"]>;
+  empsize?: InputMaybe<Scalars["Boolean"]["input"]>;
   hierarchyId?: InputMaybe<Scalars["Boolean"]["input"]>;
   id?: InputMaybe<Scalars["Boolean"]["input"]>;
+  industry?: InputMaybe<Scalars["Boolean"]["input"]>;
+  linkedinUrl?: InputMaybe<Scalars["Boolean"]["input"]>;
   name?: InputMaybe<Scalars["Boolean"]["input"]>;
   phone?: InputMaybe<Scalars["Boolean"]["input"]>;
+  revenue?: InputMaybe<Scalars["Boolean"]["input"]>;
+  taxIdentifier?: InputMaybe<Scalars["Boolean"]["input"]>;
   updatedAt?: InputMaybe<Scalars["Boolean"]["input"]>;
+  website?: InputMaybe<Scalars["Boolean"]["input"]>;
+  yearFounded?: InputMaybe<Scalars["Boolean"]["input"]>;
+  zipcode?: InputMaybe<Scalars["Boolean"]["input"]>;
 };
 
 export type CustomerMinOrderByAggregateInput = {
+  city?: InputMaybe<SortOrder>;
   company?: InputMaybe<SortOrder>;
+  country?: InputMaybe<SortOrder>;
   createdAt?: InputMaybe<SortOrder>;
+  description?: InputMaybe<SortOrder>;
+  domain?: InputMaybe<SortOrder>;
   email?: InputMaybe<SortOrder>;
+  empsize?: InputMaybe<SortOrder>;
   hierarchyId?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
+  industry?: InputMaybe<SortOrder>;
+  linkedinUrl?: InputMaybe<SortOrder>;
   name?: InputMaybe<SortOrder>;
   phone?: InputMaybe<SortOrder>;
+  revenue?: InputMaybe<SortOrder>;
+  taxIdentifier?: InputMaybe<SortOrder>;
   updatedAt?: InputMaybe<SortOrder>;
+  website?: InputMaybe<SortOrder>;
+  yearFounded?: InputMaybe<SortOrder>;
+  zipcode?: InputMaybe<SortOrder>;
 };
 
 export type CustomerOrderByRelationAggregateInput = {
@@ -799,30 +979,54 @@ export type CustomerOrderByWithAggregationInput = {
   _max?: InputMaybe<CustomerMaxOrderByAggregateInput>;
   _min?: InputMaybe<CustomerMinOrderByAggregateInput>;
   _sum?: InputMaybe<CustomerSumOrderByAggregateInput>;
+  city?: InputMaybe<SortOrderInput>;
   company?: InputMaybe<SortOrder>;
+  country?: InputMaybe<SortOrderInput>;
   createdAt?: InputMaybe<SortOrder>;
+  description?: InputMaybe<SortOrderInput>;
+  domain?: InputMaybe<SortOrder>;
   email?: InputMaybe<SortOrder>;
+  empsize?: InputMaybe<SortOrderInput>;
   hierarchyId?: InputMaybe<SortOrderInput>;
   id?: InputMaybe<SortOrder>;
+  industry?: InputMaybe<SortOrderInput>;
+  linkedinUrl?: InputMaybe<SortOrder>;
   name?: InputMaybe<SortOrder>;
   phone?: InputMaybe<SortOrderInput>;
+  revenue?: InputMaybe<SortOrderInput>;
+  taxIdentifier?: InputMaybe<SortOrderInput>;
   updatedAt?: InputMaybe<SortOrder>;
+  website?: InputMaybe<SortOrderInput>;
+  yearFounded?: InputMaybe<SortOrderInput>;
+  zipcode?: InputMaybe<SortOrderInput>;
 };
 
 export type CustomerOrderByWithRelationInput = {
   addresses?: InputMaybe<AddressOrderByRelationAggregateInput>;
   agreements?: InputMaybe<AgreementOrderByRelationAggregateInput>;
+  city?: InputMaybe<SortOrderInput>;
   company?: InputMaybe<SortOrder>;
   contacts?: InputMaybe<ContactOrderByRelationAggregateInput>;
+  country?: InputMaybe<SortOrderInput>;
   createdAt?: InputMaybe<SortOrder>;
+  description?: InputMaybe<SortOrderInput>;
+  domain?: InputMaybe<SortOrder>;
   email?: InputMaybe<SortOrder>;
+  empsize?: InputMaybe<SortOrderInput>;
   hierarchy?: InputMaybe<HierarchyOrderByWithRelationInput>;
   hierarchyId?: InputMaybe<SortOrderInput>;
   id?: InputMaybe<SortOrder>;
+  industry?: InputMaybe<SortOrderInput>;
+  linkedinUrl?: InputMaybe<SortOrder>;
   name?: InputMaybe<SortOrder>;
   phone?: InputMaybe<SortOrderInput>;
+  revenue?: InputMaybe<SortOrderInput>;
   services?: InputMaybe<ServiceOrderByRelationAggregateInput>;
+  taxIdentifier?: InputMaybe<SortOrderInput>;
   updatedAt?: InputMaybe<SortOrder>;
+  website?: InputMaybe<SortOrderInput>;
+  yearFounded?: InputMaybe<SortOrderInput>;
+  zipcode?: InputMaybe<SortOrderInput>;
 };
 
 export type CustomerRelationFilter = {
@@ -831,42 +1035,78 @@ export type CustomerRelationFilter = {
 };
 
 export enum CustomerScalarFieldEnum {
+  City = "city",
   Company = "company",
+  Country = "country",
   CreatedAt = "createdAt",
+  Description = "description",
+  Domain = "domain",
   Email = "email",
+  Empsize = "empsize",
   HierarchyId = "hierarchyId",
   Id = "id",
+  Industry = "industry",
+  LinkedinUrl = "linkedinUrl",
   Name = "name",
   Phone = "phone",
+  Revenue = "revenue",
+  TaxIdentifier = "taxIdentifier",
   UpdatedAt = "updatedAt",
+  Website = "website",
+  YearFounded = "yearFounded",
+  Zipcode = "zipcode",
 }
 
 export type CustomerScalarWhereInput = {
   AND?: InputMaybe<Array<CustomerScalarWhereInput>>;
   NOT?: InputMaybe<Array<CustomerScalarWhereInput>>;
   OR?: InputMaybe<Array<CustomerScalarWhereInput>>;
+  city?: InputMaybe<StringNullableFilter>;
   company?: InputMaybe<StringFilter>;
+  country?: InputMaybe<StringNullableFilter>;
   createdAt?: InputMaybe<DateTimeFilter>;
+  description?: InputMaybe<StringNullableFilter>;
+  domain?: InputMaybe<StringFilter>;
   email?: InputMaybe<StringFilter>;
+  empsize?: InputMaybe<StringNullableFilter>;
   hierarchyId?: InputMaybe<IntNullableFilter>;
   id?: InputMaybe<IntFilter>;
+  industry?: InputMaybe<StringNullableFilter>;
+  linkedinUrl?: InputMaybe<StringFilter>;
   name?: InputMaybe<StringFilter>;
   phone?: InputMaybe<StringNullableFilter>;
+  revenue?: InputMaybe<StringNullableFilter>;
+  taxIdentifier?: InputMaybe<StringNullableFilter>;
   updatedAt?: InputMaybe<DateTimeFilter>;
+  website?: InputMaybe<StringNullableFilter>;
+  yearFounded?: InputMaybe<StringNullableFilter>;
+  zipcode?: InputMaybe<StringNullableFilter>;
 };
 
 export type CustomerScalarWhereWithAggregatesInput = {
   AND?: InputMaybe<Array<CustomerScalarWhereWithAggregatesInput>>;
   NOT?: InputMaybe<Array<CustomerScalarWhereWithAggregatesInput>>;
   OR?: InputMaybe<Array<CustomerScalarWhereWithAggregatesInput>>;
+  city?: InputMaybe<StringNullableWithAggregatesFilter>;
   company?: InputMaybe<StringWithAggregatesFilter>;
+  country?: InputMaybe<StringNullableWithAggregatesFilter>;
   createdAt?: InputMaybe<DateTimeWithAggregatesFilter>;
+  description?: InputMaybe<StringNullableWithAggregatesFilter>;
+  domain?: InputMaybe<StringWithAggregatesFilter>;
   email?: InputMaybe<StringWithAggregatesFilter>;
+  empsize?: InputMaybe<StringNullableWithAggregatesFilter>;
   hierarchyId?: InputMaybe<IntNullableWithAggregatesFilter>;
   id?: InputMaybe<IntWithAggregatesFilter>;
+  industry?: InputMaybe<StringNullableWithAggregatesFilter>;
+  linkedinUrl?: InputMaybe<StringWithAggregatesFilter>;
   name?: InputMaybe<StringWithAggregatesFilter>;
   phone?: InputMaybe<StringNullableWithAggregatesFilter>;
+  revenue?: InputMaybe<StringNullableWithAggregatesFilter>;
+  taxIdentifier?: InputMaybe<StringNullableWithAggregatesFilter>;
   updatedAt?: InputMaybe<DateTimeWithAggregatesFilter>;
+  website?: InputMaybe<StringNullableWithAggregatesFilter>;
+  yearFounded?: InputMaybe<StringNullableWithAggregatesFilter>;
+  zipcode?: InputMaybe<StringNullableWithAggregatesFilter>;
 };
 
 export type CustomerSumAggregate = {
@@ -888,24 +1128,48 @@ export type CustomerSumOrderByAggregateInput = {
 export type CustomerUpdateInput = {
   addresses?: InputMaybe<AddressUpdateManyWithoutCustomerNestedInput>;
   agreements?: InputMaybe<AgreementUpdateManyWithoutCustomerNestedInput>;
+  city?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   company?: InputMaybe<StringFieldUpdateOperationsInput>;
   contacts?: InputMaybe<ContactUpdateManyWithoutCustomerNestedInput>;
+  country?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  description?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  domain?: InputMaybe<StringFieldUpdateOperationsInput>;
   email?: InputMaybe<StringFieldUpdateOperationsInput>;
+  empsize?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   hierarchy?: InputMaybe<HierarchyUpdateOneWithoutCustomersNestedInput>;
+  industry?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  linkedinUrl?: InputMaybe<StringFieldUpdateOperationsInput>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
   phone?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  revenue?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   services?: InputMaybe<ServiceUpdateManyWithoutCustomerNestedInput>;
+  taxIdentifier?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  website?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  yearFounded?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  zipcode?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
 };
 
 export type CustomerUpdateManyMutationInput = {
+  city?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   company?: InputMaybe<StringFieldUpdateOperationsInput>;
+  country?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  description?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  domain?: InputMaybe<StringFieldUpdateOperationsInput>;
   email?: InputMaybe<StringFieldUpdateOperationsInput>;
+  empsize?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  industry?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  linkedinUrl?: InputMaybe<StringFieldUpdateOperationsInput>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
   phone?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  revenue?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  taxIdentifier?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  website?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  yearFounded?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  zipcode?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
 };
 
 export type CustomerUpdateManyWithWhereWithoutHierarchyInput = {
@@ -943,14 +1207,26 @@ export type CustomerUpdateWithWhereUniqueWithoutHierarchyInput = {
 export type CustomerUpdateWithoutHierarchyInput = {
   addresses?: InputMaybe<AddressUpdateManyWithoutCustomerNestedInput>;
   agreements?: InputMaybe<AgreementUpdateManyWithoutCustomerNestedInput>;
+  city?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   company?: InputMaybe<StringFieldUpdateOperationsInput>;
   contacts?: InputMaybe<ContactUpdateManyWithoutCustomerNestedInput>;
+  country?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  description?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  domain?: InputMaybe<StringFieldUpdateOperationsInput>;
   email?: InputMaybe<StringFieldUpdateOperationsInput>;
+  empsize?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  industry?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  linkedinUrl?: InputMaybe<StringFieldUpdateOperationsInput>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
   phone?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  revenue?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   services?: InputMaybe<ServiceUpdateManyWithoutCustomerNestedInput>;
+  taxIdentifier?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  website?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  yearFounded?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  zipcode?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
 };
 
 export type CustomerUpsertWithWhereUniqueWithoutHierarchyInput = {
@@ -965,17 +1241,29 @@ export type CustomerWhereInput = {
   OR?: InputMaybe<Array<CustomerWhereInput>>;
   addresses?: InputMaybe<AddressListRelationFilter>;
   agreements?: InputMaybe<AgreementListRelationFilter>;
+  city?: InputMaybe<StringNullableFilter>;
   company?: InputMaybe<StringFilter>;
   contacts?: InputMaybe<ContactListRelationFilter>;
+  country?: InputMaybe<StringNullableFilter>;
   createdAt?: InputMaybe<DateTimeFilter>;
+  description?: InputMaybe<StringNullableFilter>;
+  domain?: InputMaybe<StringFilter>;
   email?: InputMaybe<StringFilter>;
+  empsize?: InputMaybe<StringNullableFilter>;
   hierarchy?: InputMaybe<HierarchyNullableRelationFilter>;
   hierarchyId?: InputMaybe<IntNullableFilter>;
   id?: InputMaybe<IntFilter>;
+  industry?: InputMaybe<StringNullableFilter>;
+  linkedinUrl?: InputMaybe<StringFilter>;
   name?: InputMaybe<StringFilter>;
   phone?: InputMaybe<StringNullableFilter>;
+  revenue?: InputMaybe<StringNullableFilter>;
   services?: InputMaybe<ServiceListRelationFilter>;
+  taxIdentifier?: InputMaybe<StringNullableFilter>;
   updatedAt?: InputMaybe<DateTimeFilter>;
+  website?: InputMaybe<StringNullableFilter>;
+  yearFounded?: InputMaybe<StringNullableFilter>;
+  zipcode?: InputMaybe<StringNullableFilter>;
 };
 
 export type CustomerWhereUniqueInput = {
@@ -984,17 +1272,29 @@ export type CustomerWhereUniqueInput = {
   OR?: InputMaybe<Array<CustomerWhereInput>>;
   addresses?: InputMaybe<AddressListRelationFilter>;
   agreements?: InputMaybe<AgreementListRelationFilter>;
+  city?: InputMaybe<StringNullableFilter>;
   company?: InputMaybe<StringFilter>;
   contacts?: InputMaybe<ContactListRelationFilter>;
+  country?: InputMaybe<StringNullableFilter>;
   createdAt?: InputMaybe<DateTimeFilter>;
+  description?: InputMaybe<StringNullableFilter>;
+  domain?: InputMaybe<StringFilter>;
   email?: InputMaybe<Scalars["String"]["input"]>;
+  empsize?: InputMaybe<StringNullableFilter>;
   hierarchy?: InputMaybe<HierarchyNullableRelationFilter>;
   hierarchyId?: InputMaybe<IntNullableFilter>;
   id?: InputMaybe<Scalars["Int"]["input"]>;
+  industry?: InputMaybe<StringNullableFilter>;
+  linkedinUrl?: InputMaybe<StringFilter>;
   name?: InputMaybe<StringFilter>;
   phone?: InputMaybe<StringNullableFilter>;
+  revenue?: InputMaybe<StringNullableFilter>;
   services?: InputMaybe<ServiceListRelationFilter>;
+  taxIdentifier?: InputMaybe<StringNullableFilter>;
   updatedAt?: InputMaybe<DateTimeFilter>;
+  website?: InputMaybe<StringNullableFilter>;
+  yearFounded?: InputMaybe<StringNullableFilter>;
+  zipcode?: InputMaybe<StringNullableFilter>;
 };
 
 export type DateTimeFieldUpdateOperationsInput = {

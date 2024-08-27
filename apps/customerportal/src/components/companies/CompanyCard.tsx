@@ -11,14 +11,14 @@ import {
 } from 'react-admin';
 
 import { CompanyAvatar } from './CompanyAvatar';
-import { Company } from '../types';
+import { Customer } from '../../graphql/graphql';
 import { useConfigurationContext } from '../root/ConfigurationContext';
 
-export const CompanyCard = (props: { record?: Company }) => {
+export const CompanyCard = (props: { record?: Customer }) => {
     const { companySectors } = useConfigurationContext();
     const [elevation, setElevation] = useState(1);
     const createPath = useCreatePath();
-    const record = useRecordContext<Company>(props);
+    const record = useRecordContext<Customer>(props);
     if (!record) return null;
 
     return (
@@ -63,10 +63,10 @@ export const CompanyCard = (props: { record?: Company }) => {
                         <ContactsIcon color="disabled" sx={{ mr: 1 }} />
                         <div>
                             <Typography variant="subtitle2" sx={{ mb: -1 }}>
-                                {record.nb_contacts}
+                                {record.contacts?.length}
                             </Typography>
                             <Typography variant="caption" color="textSecondary">
-                                {record.nb_contacts > 1
+                                {record.contacts && record.contacts.length > 1
                                     ? 'contacts'
                                     : 'contact'}
                             </Typography>
@@ -76,10 +76,10 @@ export const CompanyCard = (props: { record?: Company }) => {
                         <DealIcon color="disabled" sx={{ mr: 1 }} />
                         <div>
                             <Typography variant="subtitle2" sx={{ mb: -1 }}>
-                                {record.nb_deals}
+                                {record.addresses?.length}
                             </Typography>
                             <Typography variant="caption" color="textSecondary">
-                                {record.nb_deals > 1 ? 'deals' : 'deal'}
+                                {record.addresses && record.addresses?.length > 1 ? 'deals' : 'deal'}
                             </Typography>
                         </div>
                     </Box>

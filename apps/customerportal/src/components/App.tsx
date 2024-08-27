@@ -11,8 +11,8 @@ import {
 import { themes, ThemeName } from './themes/themes';
 import { Layout, Login } from './layout';
 import englishMessages from '../i18n/en';
-
-import visitors  from './visitors';
+import dataProviderFactory from './dataProvider';
+import companies  from './companies';
 
 const i18nProvider = polyglotI18nProvider(
     (locale: string) => {
@@ -38,9 +38,9 @@ const App = () => {
     return (
         <Admin
             title=""
-            // dataProvider={dataProviderFactory(
-            //     process.env.REACT_APP_DATA_PROVIDER || ''
-            // )}
+            dataProvider={dataProviderFactory(
+                process.env.REACT_APP_DATA_PROVIDER || ''
+            )}
             store={store}
             // authProvider={authProvider}
             // dashboard={Dashboard}
@@ -52,7 +52,7 @@ const App = () => {
             darkTheme={darkTheme}
             defaultTheme="light"
         >
-            <Resource name="customers" {...visitors} />
+            <Resource name="customers" {...companies} />
             {/* <CustomRoutes>
                 <Route path="/segments" element={<Segments />} />
             </CustomRoutes>

@@ -502,17 +502,29 @@ type Customer {
   _count: CustomerCount!
   addresses: [Address!]
   agreements: [Agreement!]
+  city: String
   company: String!
   contacts: [Contact!]
+  country: String
   createdAt: DateTime!
+  description: String
+  domain: String!
   email: String!
+  empsize: String
   hierarchy: Hierarchy
   hierarchyId: Int
   id: ID!
+  industry: String
+  linkedinUrl: String!
   name: String!
   phone: String
+  revenue: String
   services: [Service!]
+  taxIdentifier: String
   updatedAt: DateTime!
+  website: String
+  yearFounded: String
+  zipcode: String
 }
 
 type CustomerAvgAggregate {
@@ -539,61 +551,121 @@ type CustomerCount {
 
 type CustomerCountAggregate {
   _all: Int!
+  city: Int!
   company: Int!
+  country: Int!
   createdAt: Int!
+  description: Int!
+  domain: Int!
   email: Int!
+  empsize: Int!
   hierarchyId: Int!
   id: Int!
+  industry: Int!
+  linkedinUrl: Int!
   name: Int!
   phone: Int!
+  revenue: Int!
+  taxIdentifier: Int!
   updatedAt: Int!
+  website: Int!
+  yearFounded: Int!
+  zipcode: Int!
 }
 
 input CustomerCountAggregateInput {
   _all: Boolean
+  city: Boolean
   company: Boolean
+  country: Boolean
   createdAt: Boolean
+  description: Boolean
+  domain: Boolean
   email: Boolean
+  empsize: Boolean
   hierarchyId: Boolean
   id: Boolean
+  industry: Boolean
+  linkedinUrl: Boolean
   name: Boolean
   phone: Boolean
+  revenue: Boolean
+  taxIdentifier: Boolean
   updatedAt: Boolean
+  website: Boolean
+  yearFounded: Boolean
+  zipcode: Boolean
 }
 
 input CustomerCountOrderByAggregateInput {
+  city: SortOrder
   company: SortOrder
+  country: SortOrder
   createdAt: SortOrder
+  description: SortOrder
+  domain: SortOrder
   email: SortOrder
+  empsize: SortOrder
   hierarchyId: SortOrder
   id: SortOrder
+  industry: SortOrder
+  linkedinUrl: SortOrder
   name: SortOrder
   phone: SortOrder
+  revenue: SortOrder
+  taxIdentifier: SortOrder
   updatedAt: SortOrder
+  website: SortOrder
+  yearFounded: SortOrder
+  zipcode: SortOrder
 }
 
 input CustomerCreateInput {
   addresses: AddressCreateNestedManyWithoutCustomerInput
   agreements: AgreementCreateNestedManyWithoutCustomerInput
+  city: String
   company: String!
   contacts: ContactCreateNestedManyWithoutCustomerInput
+  country: String
   createdAt: DateTime
+  description: String
+  domain: String!
   email: String!
+  empsize: String
   hierarchy: HierarchyCreateNestedOneWithoutCustomersInput
+  industry: String
+  linkedinUrl: String!
   name: String!
   phone: String
+  revenue: String
   services: ServiceCreateNestedManyWithoutCustomerInput
+  taxIdentifier: String
   updatedAt: DateTime
+  website: String
+  yearFounded: String
+  zipcode: String
 }
 
 input CustomerCreateManyHierarchyInput {
+  city: String
   company: String!
+  country: String
   createdAt: DateTime
+  description: String
+  domain: String!
   email: String!
+  empsize: String
   id: Int
+  industry: String
+  linkedinUrl: String!
   name: String!
   phone: String
+  revenue: String
+  taxIdentifier: String
   updatedAt: DateTime
+  website: String
+  yearFounded: String
+  zipcode: String
 }
 
 input CustomerCreateManyHierarchyInputEnvelope {
@@ -602,14 +674,26 @@ input CustomerCreateManyHierarchyInputEnvelope {
 }
 
 input CustomerCreateManyInput {
+  city: String
   company: String!
+  country: String
   createdAt: DateTime
+  description: String
+  domain: String!
   email: String!
+  empsize: String
   hierarchyId: Int
   id: Int
+  industry: String
+  linkedinUrl: String!
   name: String!
   phone: String
+  revenue: String
+  taxIdentifier: String
   updatedAt: DateTime
+  website: String
+  yearFounded: String
+  zipcode: String
 }
 
 input CustomerCreateNestedManyWithoutHierarchyInput {
@@ -627,14 +711,26 @@ input CustomerCreateOrConnectWithoutHierarchyInput {
 input CustomerCreateWithoutHierarchyInput {
   addresses: AddressCreateNestedManyWithoutCustomerInput
   agreements: AgreementCreateNestedManyWithoutCustomerInput
+  city: String
   company: String!
   contacts: ContactCreateNestedManyWithoutCustomerInput
+  country: String
   createdAt: DateTime
+  description: String
+  domain: String!
   email: String!
+  empsize: String
+  industry: String
+  linkedinUrl: String!
   name: String!
   phone: String
+  revenue: String
   services: ServiceCreateNestedManyWithoutCustomerInput
+  taxIdentifier: String
   updatedAt: DateTime
+  website: String
+  yearFounded: String
+  zipcode: String
 }
 
 type CustomerGroupBy {
@@ -643,14 +739,26 @@ type CustomerGroupBy {
   _max: CustomerMaxAggregate
   _min: CustomerMinAggregate
   _sum: CustomerSumAggregate
+  city: String
   company: String!
+  country: String
   createdAt: DateTime!
+  description: String
+  domain: String!
   email: String!
+  empsize: String
   hierarchyId: Int
   id: Int!
+  industry: String
+  linkedinUrl: String!
   name: String!
   phone: String
+  revenue: String
+  taxIdentifier: String
   updatedAt: DateTime!
+  website: String
+  yearFounded: String
+  zipcode: String
 }
 
 input CustomerListRelationFilter {
@@ -660,69 +768,141 @@ input CustomerListRelationFilter {
 }
 
 type CustomerMaxAggregate {
+  city: String
   company: String
+  country: String
   createdAt: DateTime
+  description: String
+  domain: String
   email: String
+  empsize: String
   hierarchyId: Int
   id: Int
+  industry: String
+  linkedinUrl: String
   name: String
   phone: String
+  revenue: String
+  taxIdentifier: String
   updatedAt: DateTime
+  website: String
+  yearFounded: String
+  zipcode: String
 }
 
 input CustomerMaxAggregateInput {
+  city: Boolean
   company: Boolean
+  country: Boolean
   createdAt: Boolean
+  description: Boolean
+  domain: Boolean
   email: Boolean
+  empsize: Boolean
   hierarchyId: Boolean
   id: Boolean
+  industry: Boolean
+  linkedinUrl: Boolean
   name: Boolean
   phone: Boolean
+  revenue: Boolean
+  taxIdentifier: Boolean
   updatedAt: Boolean
+  website: Boolean
+  yearFounded: Boolean
+  zipcode: Boolean
 }
 
 input CustomerMaxOrderByAggregateInput {
+  city: SortOrder
   company: SortOrder
+  country: SortOrder
   createdAt: SortOrder
+  description: SortOrder
+  domain: SortOrder
   email: SortOrder
+  empsize: SortOrder
   hierarchyId: SortOrder
   id: SortOrder
+  industry: SortOrder
+  linkedinUrl: SortOrder
   name: SortOrder
   phone: SortOrder
+  revenue: SortOrder
+  taxIdentifier: SortOrder
   updatedAt: SortOrder
+  website: SortOrder
+  yearFounded: SortOrder
+  zipcode: SortOrder
 }
 
 type CustomerMinAggregate {
+  city: String
   company: String
+  country: String
   createdAt: DateTime
+  description: String
+  domain: String
   email: String
+  empsize: String
   hierarchyId: Int
   id: Int
+  industry: String
+  linkedinUrl: String
   name: String
   phone: String
+  revenue: String
+  taxIdentifier: String
   updatedAt: DateTime
+  website: String
+  yearFounded: String
+  zipcode: String
 }
 
 input CustomerMinAggregateInput {
+  city: Boolean
   company: Boolean
+  country: Boolean
   createdAt: Boolean
+  description: Boolean
+  domain: Boolean
   email: Boolean
+  empsize: Boolean
   hierarchyId: Boolean
   id: Boolean
+  industry: Boolean
+  linkedinUrl: Boolean
   name: Boolean
   phone: Boolean
+  revenue: Boolean
+  taxIdentifier: Boolean
   updatedAt: Boolean
+  website: Boolean
+  yearFounded: Boolean
+  zipcode: Boolean
 }
 
 input CustomerMinOrderByAggregateInput {
+  city: SortOrder
   company: SortOrder
+  country: SortOrder
   createdAt: SortOrder
+  description: SortOrder
+  domain: SortOrder
   email: SortOrder
+  empsize: SortOrder
   hierarchyId: SortOrder
   id: SortOrder
+  industry: SortOrder
+  linkedinUrl: SortOrder
   name: SortOrder
   phone: SortOrder
+  revenue: SortOrder
+  taxIdentifier: SortOrder
   updatedAt: SortOrder
+  website: SortOrder
+  yearFounded: SortOrder
+  zipcode: SortOrder
 }
 
 input CustomerOrderByRelationAggregateInput {
@@ -735,30 +915,54 @@ input CustomerOrderByWithAggregationInput {
   _max: CustomerMaxOrderByAggregateInput
   _min: CustomerMinOrderByAggregateInput
   _sum: CustomerSumOrderByAggregateInput
+  city: SortOrderInput
   company: SortOrder
+  country: SortOrderInput
   createdAt: SortOrder
+  description: SortOrderInput
+  domain: SortOrder
   email: SortOrder
+  empsize: SortOrderInput
   hierarchyId: SortOrderInput
   id: SortOrder
+  industry: SortOrderInput
+  linkedinUrl: SortOrder
   name: SortOrder
   phone: SortOrderInput
+  revenue: SortOrderInput
+  taxIdentifier: SortOrderInput
   updatedAt: SortOrder
+  website: SortOrderInput
+  yearFounded: SortOrderInput
+  zipcode: SortOrderInput
 }
 
 input CustomerOrderByWithRelationInput {
   addresses: AddressOrderByRelationAggregateInput
   agreements: AgreementOrderByRelationAggregateInput
+  city: SortOrderInput
   company: SortOrder
   contacts: ContactOrderByRelationAggregateInput
+  country: SortOrderInput
   createdAt: SortOrder
+  description: SortOrderInput
+  domain: SortOrder
   email: SortOrder
+  empsize: SortOrderInput
   hierarchy: HierarchyOrderByWithRelationInput
   hierarchyId: SortOrderInput
   id: SortOrder
+  industry: SortOrderInput
+  linkedinUrl: SortOrder
   name: SortOrder
   phone: SortOrderInput
+  revenue: SortOrderInput
   services: ServiceOrderByRelationAggregateInput
+  taxIdentifier: SortOrderInput
   updatedAt: SortOrder
+  website: SortOrderInput
+  yearFounded: SortOrderInput
+  zipcode: SortOrderInput
 }
 
 input CustomerRelationFilter {
@@ -767,42 +971,78 @@ input CustomerRelationFilter {
 }
 
 enum CustomerScalarFieldEnum {
+  city
   company
+  country
   createdAt
+  description
+  domain
   email
+  empsize
   hierarchyId
   id
+  industry
+  linkedinUrl
   name
   phone
+  revenue
+  taxIdentifier
   updatedAt
+  website
+  yearFounded
+  zipcode
 }
 
 input CustomerScalarWhereInput {
   AND: [CustomerScalarWhereInput!]
   NOT: [CustomerScalarWhereInput!]
   OR: [CustomerScalarWhereInput!]
+  city: StringNullableFilter
   company: StringFilter
+  country: StringNullableFilter
   createdAt: DateTimeFilter
+  description: StringNullableFilter
+  domain: StringFilter
   email: StringFilter
+  empsize: StringNullableFilter
   hierarchyId: IntNullableFilter
   id: IntFilter
+  industry: StringNullableFilter
+  linkedinUrl: StringFilter
   name: StringFilter
   phone: StringNullableFilter
+  revenue: StringNullableFilter
+  taxIdentifier: StringNullableFilter
   updatedAt: DateTimeFilter
+  website: StringNullableFilter
+  yearFounded: StringNullableFilter
+  zipcode: StringNullableFilter
 }
 
 input CustomerScalarWhereWithAggregatesInput {
   AND: [CustomerScalarWhereWithAggregatesInput!]
   NOT: [CustomerScalarWhereWithAggregatesInput!]
   OR: [CustomerScalarWhereWithAggregatesInput!]
+  city: StringNullableWithAggregatesFilter
   company: StringWithAggregatesFilter
+  country: StringNullableWithAggregatesFilter
   createdAt: DateTimeWithAggregatesFilter
+  description: StringNullableWithAggregatesFilter
+  domain: StringWithAggregatesFilter
   email: StringWithAggregatesFilter
+  empsize: StringNullableWithAggregatesFilter
   hierarchyId: IntNullableWithAggregatesFilter
   id: IntWithAggregatesFilter
+  industry: StringNullableWithAggregatesFilter
+  linkedinUrl: StringWithAggregatesFilter
   name: StringWithAggregatesFilter
   phone: StringNullableWithAggregatesFilter
+  revenue: StringNullableWithAggregatesFilter
+  taxIdentifier: StringNullableWithAggregatesFilter
   updatedAt: DateTimeWithAggregatesFilter
+  website: StringNullableWithAggregatesFilter
+  yearFounded: StringNullableWithAggregatesFilter
+  zipcode: StringNullableWithAggregatesFilter
 }
 
 type CustomerSumAggregate {
@@ -823,24 +1063,48 @@ input CustomerSumOrderByAggregateInput {
 input CustomerUpdateInput {
   addresses: AddressUpdateManyWithoutCustomerNestedInput
   agreements: AgreementUpdateManyWithoutCustomerNestedInput
+  city: NullableStringFieldUpdateOperationsInput
   company: StringFieldUpdateOperationsInput
   contacts: ContactUpdateManyWithoutCustomerNestedInput
+  country: NullableStringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
+  description: NullableStringFieldUpdateOperationsInput
+  domain: StringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
+  empsize: NullableStringFieldUpdateOperationsInput
   hierarchy: HierarchyUpdateOneWithoutCustomersNestedInput
+  industry: NullableStringFieldUpdateOperationsInput
+  linkedinUrl: StringFieldUpdateOperationsInput
   name: StringFieldUpdateOperationsInput
   phone: NullableStringFieldUpdateOperationsInput
+  revenue: NullableStringFieldUpdateOperationsInput
   services: ServiceUpdateManyWithoutCustomerNestedInput
+  taxIdentifier: NullableStringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
+  website: NullableStringFieldUpdateOperationsInput
+  yearFounded: NullableStringFieldUpdateOperationsInput
+  zipcode: NullableStringFieldUpdateOperationsInput
 }
 
 input CustomerUpdateManyMutationInput {
+  city: NullableStringFieldUpdateOperationsInput
   company: StringFieldUpdateOperationsInput
+  country: NullableStringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
+  description: NullableStringFieldUpdateOperationsInput
+  domain: StringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
+  empsize: NullableStringFieldUpdateOperationsInput
+  industry: NullableStringFieldUpdateOperationsInput
+  linkedinUrl: StringFieldUpdateOperationsInput
   name: StringFieldUpdateOperationsInput
   phone: NullableStringFieldUpdateOperationsInput
+  revenue: NullableStringFieldUpdateOperationsInput
+  taxIdentifier: NullableStringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
+  website: NullableStringFieldUpdateOperationsInput
+  yearFounded: NullableStringFieldUpdateOperationsInput
+  zipcode: NullableStringFieldUpdateOperationsInput
 }
 
 input CustomerUpdateManyWithWhereWithoutHierarchyInput {
@@ -870,14 +1134,26 @@ input CustomerUpdateWithWhereUniqueWithoutHierarchyInput {
 input CustomerUpdateWithoutHierarchyInput {
   addresses: AddressUpdateManyWithoutCustomerNestedInput
   agreements: AgreementUpdateManyWithoutCustomerNestedInput
+  city: NullableStringFieldUpdateOperationsInput
   company: StringFieldUpdateOperationsInput
   contacts: ContactUpdateManyWithoutCustomerNestedInput
+  country: NullableStringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
+  description: NullableStringFieldUpdateOperationsInput
+  domain: StringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
+  empsize: NullableStringFieldUpdateOperationsInput
+  industry: NullableStringFieldUpdateOperationsInput
+  linkedinUrl: StringFieldUpdateOperationsInput
   name: StringFieldUpdateOperationsInput
   phone: NullableStringFieldUpdateOperationsInput
+  revenue: NullableStringFieldUpdateOperationsInput
   services: ServiceUpdateManyWithoutCustomerNestedInput
+  taxIdentifier: NullableStringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
+  website: NullableStringFieldUpdateOperationsInput
+  yearFounded: NullableStringFieldUpdateOperationsInput
+  zipcode: NullableStringFieldUpdateOperationsInput
 }
 
 input CustomerUpsertWithWhereUniqueWithoutHierarchyInput {
@@ -892,17 +1168,29 @@ input CustomerWhereInput {
   OR: [CustomerWhereInput!]
   addresses: AddressListRelationFilter
   agreements: AgreementListRelationFilter
+  city: StringNullableFilter
   company: StringFilter
   contacts: ContactListRelationFilter
+  country: StringNullableFilter
   createdAt: DateTimeFilter
+  description: StringNullableFilter
+  domain: StringFilter
   email: StringFilter
+  empsize: StringNullableFilter
   hierarchy: HierarchyNullableRelationFilter
   hierarchyId: IntNullableFilter
   id: IntFilter
+  industry: StringNullableFilter
+  linkedinUrl: StringFilter
   name: StringFilter
   phone: StringNullableFilter
+  revenue: StringNullableFilter
   services: ServiceListRelationFilter
+  taxIdentifier: StringNullableFilter
   updatedAt: DateTimeFilter
+  website: StringNullableFilter
+  yearFounded: StringNullableFilter
+  zipcode: StringNullableFilter
 }
 
 input CustomerWhereUniqueInput {
@@ -911,17 +1199,29 @@ input CustomerWhereUniqueInput {
   OR: [CustomerWhereInput!]
   addresses: AddressListRelationFilter
   agreements: AgreementListRelationFilter
+  city: StringNullableFilter
   company: StringFilter
   contacts: ContactListRelationFilter
+  country: StringNullableFilter
   createdAt: DateTimeFilter
+  description: StringNullableFilter
+  domain: StringFilter
   email: String
+  empsize: StringNullableFilter
   hierarchy: HierarchyNullableRelationFilter
   hierarchyId: IntNullableFilter
   id: Int
+  industry: StringNullableFilter
+  linkedinUrl: StringFilter
   name: StringFilter
   phone: StringNullableFilter
+  revenue: StringNullableFilter
   services: ServiceListRelationFilter
+  taxIdentifier: StringNullableFilter
   updatedAt: DateTimeFilter
+  website: StringNullableFilter
+  yearFounded: StringNullableFilter
+  zipcode: StringNullableFilter
 }
 
 """
