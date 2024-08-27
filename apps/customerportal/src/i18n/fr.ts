@@ -36,6 +36,8 @@ const customFrenchMessages: TranslationMessages = {
             sales: 'Ventes',
             catalog: 'Catalogue',
             customers: 'Clients',
+            company: 'Company',
+            workorders: 'WorkOrders'
         },
         events: {
             review: {
@@ -48,6 +50,58 @@ const customFrenchMessages: TranslationMessages = {
     },
     resources: {
         customers: {
+            name: 'Client |||| Clients',
+            fields: {
+                address: 'Rue',
+                birthday: 'Anniversaire',
+                city: 'Ville',
+                stateAbbr: 'Etat',
+                orders: 'Commandes',
+                first_name: 'Prénom',
+                first_seen: 'Première visite',
+                full_name: 'Nom',
+                groups: 'Segments',
+                has_newsletter: 'Abonné à la newsletter',
+                has_ordered: 'A commandé',
+                last_name: 'Nom',
+                last_seen: 'Vu le',
+                last_seen_gte: 'Vu depuis',
+                latest_purchase: 'Dernier achat',
+                name: 'Nom',
+                total_spent: 'Dépenses',
+                zipcode: 'Code postal',
+                password: 'Mot de passe',
+                confirm_password: 'Confirmez le mot de passe',
+            },
+            filters: {
+                last_visited: 'Dernière visite',
+                today: "Aujourd'hui",
+                this_week: 'Cette semaine',
+                last_week: 'La semaine dernière',
+                this_month: 'Ce mois-ci',
+                last_month: 'Le mois dernier',
+                earlier: 'Plus tôt',
+                has_ordered: 'A déjà commandé',
+                has_newsletter: 'Abonné newsletter',
+                group: 'Segment',
+            },
+            fieldGroups: {
+                identity: 'Identité',
+                address: 'Adresse',
+                stats: 'Statistiques',
+                history: 'Historique',
+                password: 'Mot de passe',
+                change_password: 'Changer le mot de passe',
+            },
+            page: {
+                delete: 'Supprimer le client',
+            },
+            errors: {
+                password_mismatch:
+                    'La confirmation du mot de passe est différent du mot de passe.',
+            },
+        },
+        companies: {
             name: 'Client |||| Clients',
             fields: {
                 address: 'Rue',

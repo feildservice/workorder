@@ -37,14 +37,21 @@ generator nestjsDto {
 model Customer {
   id          Int       @id @default(autoincrement())
   name        String    @db.VarChar(150)
+  description String?   @db.VarChar(150)
   domain      String    @db.VarChar(150)
-  industry    String?   @db.VarChar(50)  
+  industry    String?   @db.VarChar(150)  
   yearFounded String?   @db.VarChar(10)
-  country     String?   @db.VarChar(50)  
-  email       String    @unique
-  phone       String?   @db.VarChar(15)
+  country     String?   @db.VarChar(150)
+  city        String?   @db.VarChar(150)
+  zipcode     String?   @db.VarChar(50)
+  email       String    @db.VarChar(150) @unique 
+  phone       String?   @db.VarChar(50)
   company     String    @db.VarChar(150)
+  website     String?   @db.VarChar(150)
+  linkedinUrl String    @db.VarChar(150)
+  taxIdentifier String?    @db.VarChar(10)
   empsize     String?   @db.VarChar(15)
+  revenue     String?   @db.VarChar(10)
   contacts    Contact[]
   addresses   Address[]
   hierarchy   Hierarchy? @relation(fields: [hierarchyId], references: [id])
@@ -59,8 +66,8 @@ model Contact {
   id          Int       @id @default(autoincrement())
   firstName   String    @db.VarChar(150)
   lastName    String    @db.VarChar(150)
-  email       String    @unique
-  phone       String?   @db.VarChar(15)
+  email       String    @unique @db.VarChar(150)
+  phone       String?   @db.VarChar(50)
   customer    Customer  @relation(fields: [customerId], references: [id])
   customerId  Int
   isPrimary   Boolean

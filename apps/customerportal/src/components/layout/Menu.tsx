@@ -23,12 +23,15 @@ import ProductIcon from '@mui/icons-material/Collections';
 // import reviews from '../reviews';
 import SubMenu from './SubMenu';
 
-type MenuName = 'menuCatalog' | 'menuSales' | 'menuCustomers';
+//Menu should be Company Info | WorkOrders | Catalogs
+
+// type MenuName = 'menuCatalog' | 'menuSales' | 'menuCustomers';
+type MenuName = 'menuCatalog' | 'menuWorkOrders' | 'menuCustomers';
 
 const Menu = ({ dense = false }: MenuProps) => {
     const [state, setState] = useState({
         menuCatalog: true,
-        menuSales: true,
+        menuWorkOrders: true,
         menuCustomers: true,
     });
     const translate = useTranslate();
@@ -53,28 +56,54 @@ const Menu = ({ dense = false }: MenuProps) => {
         >
             <DashboardMenuItem />
             <SubMenu
-                handleToggle={() => handleToggle('menuSales')}
-                isOpen={state.menuSales}
-                name="pos.menu.sales"
+                handleToggle={() => handleToggle('menuCustomers')}
+                isOpen={state.menuCustomers}
+                name="pos.menu.customers"
                 icon={<ProductIcon />}
                 dense={dense}
             >
                 <MenuItemLink
-                    to="/orders"
+                    to="/companies"
                     state={{ _scrollToTop: true }}
-                    primaryText={translate(`resources.orders.name`, {
+                    primaryText={translate(`resources.companies.name`, {
                         smart_count: 2,
                     })}
                     leftIcon={<ProductIcon />}
                     dense={dense}
                 />
-                <MenuItemLink
+                {/* <MenuItemLink
                     to="/invoices"
                     state={{ _scrollToTop: true }}
                     primaryText={translate(`resources.invoices.name`, {
                         smart_count: 2,
                     })}
                     leftIcon={<ProductIcon />}
+                    dense={dense}
+                /> */}
+            </SubMenu>
+            <SubMenu
+                handleToggle={() => handleToggle('menuWorkOrders')}
+                isOpen={state.menuWorkOrders}
+                name="pos.menu.workorders"
+                icon={<ProductIcon />}
+                dense={dense}
+            >
+                <MenuItemLink
+                    to="/customers"
+                    state={{ _scrollToTop: true }}
+                    primaryText={translate(`resources.customers.name`, {
+                        smart_count: 2,
+                    })}
+                    leftIcon={<ProductIcon />}
+                    dense={dense}
+                />
+                <MenuItemLink
+                    to="/segments"
+                    state={{ _scrollToTop: true }}
+                    primaryText={translate(`resources.segments.name`, {
+                        smart_count: 2,
+                    })}
+                    leftIcon={<LabelIcon />}
                     dense={dense}
                 />
             </SubMenu>
@@ -103,34 +132,8 @@ const Menu = ({ dense = false }: MenuProps) => {
                     leftIcon={<ProductIcon />}
                     dense={dense}
                 />
-            </SubMenu>
-            <SubMenu
-                handleToggle={() => handleToggle('menuCustomers')}
-                isOpen={state.menuCustomers}
-                name="pos.menu.customers"
-                icon={<ProductIcon />}
-                dense={dense}
-            >
-                <MenuItemLink
-                    to="/customers"
-                    state={{ _scrollToTop: true }}
-                    primaryText={translate(`resources.customers.name`, {
-                        smart_count: 2,
-                    })}
-                    leftIcon={<ProductIcon />}
-                    dense={dense}
-                />
-                <MenuItemLink
-                    to="/segments"
-                    state={{ _scrollToTop: true }}
-                    primaryText={translate(`resources.segments.name`, {
-                        smart_count: 2,
-                    })}
-                    leftIcon={<LabelIcon />}
-                    dense={dense}
-                />
-            </SubMenu>
-            <MenuItemLink
+            </SubMenu>            
+            {/* <MenuItemLink
                 to="/reviews"
                 state={{ _scrollToTop: true }}
                 primaryText={translate(`resources.reviews.name`, {
@@ -138,7 +141,7 @@ const Menu = ({ dense = false }: MenuProps) => {
                 })}
                 leftIcon={<ProductIcon />}
                 dense={dense}
-            />
+            /> */}
         </Box>
     );
 };
