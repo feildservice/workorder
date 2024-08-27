@@ -25,13 +25,14 @@ import {
 } from 'react-admin';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 
-import { ActivityLog } from '../activity/ActivityLog';
+// import { ActivityLog } from '../activity/ActivityLog';
 import { Avatar } from '../contacts/Avatar';
 import { TagsList } from '../contacts/TagsList';
-import { findDealLabel } from '../deals/deal';
+// import { findDealLabel } from '../deals/deal';
 import { Status } from '../misc/Status';
 import { useConfigurationContext } from '../root/ConfigurationContext';
-import { Company, Contact, Deal } from '../types';
+// import { Company, Contact, Deal } from '../types';
+import { Customer, Contact } from '../../graphql/graphql';
 import { CompanyAside } from './CompanyAside';
 import { CompanyAvatar } from './CompanyAvatar';
 
@@ -42,7 +43,7 @@ export const CompanyShow = () => (
 );
 
 const CompanyShowContent = () => {
-    const { record, isPending } = useShowContext<Company>();
+    const { record, isPending } = useShowContext<Customer>();
 
     if (isPending || !record) return null;
 
@@ -63,19 +64,19 @@ const CompanyShowContent = () => {
                                 '& .RaTabbedShowLayout-content': { p: 0 },
                             }}
                         >
-                            <TabbedShowLayout.Tab label="Activity">
+                            {/* <TabbedShowLayout.Tab label="Activity">
                                 <ActivityLog
                                     companyId={record.id}
                                     context="company"
                                 />
-                            </TabbedShowLayout.Tab>
+                            </TabbedShowLayout.Tab> */}
                             <TabbedShowLayout.Tab
                                 label={
-                                    !record.nb_contacts
+                                    !record.contacts
                                         ? 'No Contacts'
-                                        : record.nb_contacts === 1
+                                        : record.contacts.length === 1
                                           ? '1 Contact'
-                                          : `${record.nb_contacts} Contacts`
+                                          : `${record.contacts.length} Contacts`
                                 }
                                 path="contacts"
                             >
@@ -90,7 +91,7 @@ const CompanyShowContent = () => {
                                         spacing={2}
                                         mt={1}
                                     >
-                                        {!!record.nb_contacts && (
+                                        {!!record.contacts && (
                                             <SortButton
                                                 fields={[
                                                     'last_name',
@@ -104,7 +105,7 @@ const CompanyShowContent = () => {
                                     <ContactsIterator />
                                 </ReferenceManyField>
                             </TabbedShowLayout.Tab>
-                            {record.nb_deals ? (
+                            {/* {record.nb_deals ? (
                                 <TabbedShowLayout.Tab
                                     label={
                                         record.nb_deals === 1
@@ -121,7 +122,7 @@ const CompanyShowContent = () => {
                                         <DealsIterator />
                                     </ReferenceManyField>
                                 </TabbedShowLayout.Tab>
-                            ) : null}
+                            ) : null} */}
                         </TabbedShowLayout>
                     </CardContent>
                 </Card>
@@ -152,15 +153,15 @@ const ContactsIterator = () => {
                             <Avatar />
                         </ListItemAvatar>
                         <ListItemText
-                            primary={`${contact.first_name} ${contact.last_name}`}
+                            primary={`${contact.firstName} ${contact.lastName}`}
                             secondary={
                                 <>
-                                    {contact.title}
-                                    {contact.nb_tasks
+                                    {contact.firstName}
+                                    {/* {contact.nb_tasks
                                         ? ` - ${contact.nb_tasks} task${
                                               contact.nb_tasks > 1 ? 's' : ''
                                           }`
-                                        : ''}
+                                        : ''} */}
                                     &nbsp; &nbsp;
                                     <TagsList />
                                 </>
@@ -173,8 +174,8 @@ const ContactsIterator = () => {
                                 component="span"
                             >
                                 last activity{' '}
-                                {formatDistance(contact.last_seen, now)} ago{' '}
-                                <Status status={contact.status} />
+                                {formatDistance(contact.updatedAt, now)} ago{' '}
+                                {/* <Status status={contact.status} /> */}
                             </Typography>
                         </ListItemSecondaryAction>
                     </ListItem>
@@ -185,7 +186,7 @@ const ContactsIterator = () => {
 };
 
 const CreateRelatedContactButton = () => {
-    const company = useRecordContext<Company>();
+    const company = useRecordContext<Customer>();
     return (
         <Button
             component={RouterLink}
@@ -200,51 +201,51 @@ const CreateRelatedContactButton = () => {
     );
 };
 
-const DealsIterator = () => {
-    const { data: deals, error, isPending } = useListContext<Deal>();
-    const { dealStages } = useConfigurationContext();
-    if (isPending || error) return null;
+// const DealsIterator = () => {
+//     const { data: deals, error, isPending } = useListContext<Deal>();
+//     const { dealStages } = useConfigurationContext();
+//     if (isPending || error) return null;
 
-    const now = Date.now();
-    return (
-        <Box>
-            <List dense>
-                {deals.map(deal => (
-                    <ListItem
-                        button
-                        key={deal.id}
-                        component={RouterLink}
-                        to={`/deals/${deal.id}/show`}
-                    >
-                        <ListItemText
-                            primary={deal.name}
-                            secondary={
-                                <>
-                                    {findDealLabel(dealStages, deal.stage)},{' '}
-                                    {deal.amount.toLocaleString('en-US', {
-                                        notation: 'compact',
-                                        style: 'currency',
-                                        currency: 'USD',
-                                        currencyDisplay: 'narrowSymbol',
-                                        minimumSignificantDigits: 3,
-                                    })}
-                                    , {deal.type}
-                                </>
-                            }
-                        />
-                        <ListItemSecondaryAction>
-                            <Typography
-                                variant="body2"
-                                color="textSecondary"
-                                component="span"
-                            >
-                                last activity{' '}
-                                {formatDistance(deal.updated_at, now)} ago{' '}
-                            </Typography>
-                        </ListItemSecondaryAction>
-                    </ListItem>
-                ))}
-            </List>
-        </Box>
-    );
-};
+//     const now = Date.now();
+//     return (
+//         <Box>
+//             <List dense>
+//                 {deals.map(deal => (
+//                     <ListItem
+//                         button
+//                         key={deal.id}
+//                         component={RouterLink}
+//                         to={`/deals/${deal.id}/show`}
+//                     >
+//                         <ListItemText
+//                             primary={deal.name}
+//                             secondary={
+//                                 <>
+//                                     {findDealLabel(dealStages, deal.stage)},{' '}
+//                                     {deal.amount.toLocaleString('en-US', {
+//                                         notation: 'compact',
+//                                         style: 'currency',
+//                                         currency: 'USD',
+//                                         currencyDisplay: 'narrowSymbol',
+//                                         minimumSignificantDigits: 3,
+//                                     })}
+//                                     , {deal.type}
+//                                 </>
+//                             }
+//                         />
+//                         <ListItemSecondaryAction>
+//                             <Typography
+//                                 variant="body2"
+//                                 color="textSecondary"
+//                                 component="span"
+//                             >
+//                                 last activity{' '}
+//                                 {formatDistance(deal.updated_at, now)} ago{' '}
+//                             </Typography>
+//                         </ListItemSecondaryAction>
+//                     </ListItem>
+//                 ))}
+//             </List>
+//         </Box>
+//     );
+// };

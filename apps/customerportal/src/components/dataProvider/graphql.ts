@@ -111,15 +111,16 @@ const customBuildQuery: BuildQueryFactory = introspectionResults => {
         }
         if (resource === 'Customer' && type === GET_LIST) {
             return {
-                query: graphql(/* GraphQL */ `
+                query: gql`
                     query CustomerListQuery($first: Int!) {
                         listCustomers(take: $first) {
-                        name
-                        phone
+                            name
+                            phone
                         }
                     }
-                `),
-                variables: params.data,
+                `,
+                // variables: params.data,
+                variables: { first: 10 },
                 parseResponse: ({ data }: ApolloQueryResult<any>) => {
                     if (data.createCustomer) {
                         return { data: { id: data.createCustomer.id } };
@@ -133,7 +134,9 @@ const customBuildQuery: BuildQueryFactory = introspectionResults => {
     };
 };
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default () => {
+    debugger;
     const dataProvider = buildApolloClient({
         clientOptions: {
             uri: 'http://localhost:3001/graphql',
