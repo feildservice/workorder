@@ -10,6 +10,7 @@ async function main() {
     await prisma.address.deleteMany();
     await prisma.contact.deleteMany();
     await prisma.hierarchy.deleteMany();
+    await prisma.logo.deleteMany();
     await prisma.customer.deleteMany();
 
     console.log('Seeding... companies');

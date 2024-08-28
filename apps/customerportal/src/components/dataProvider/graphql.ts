@@ -119,7 +119,7 @@ const customBuildQuery: BuildQueryFactory = introspectionResults => {
                             description
                             domain
                             industry
-                            yearFounded
+                            founded
                             country
                             city
                             zipcode
@@ -129,9 +129,10 @@ const customBuildQuery: BuildQueryFactory = introspectionResults => {
                             website
                             linkedinUrl
                             taxIdentifier
-                            empsize
-                            revenue
+                            size
+                            revenue                            
                             hierarchyId
+                            status
                             createdAt
                             updatedAt
                         }

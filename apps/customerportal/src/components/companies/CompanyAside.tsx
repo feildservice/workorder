@@ -121,7 +121,7 @@ const ContextInfo = ({ record }: { record: CustomerRecord }) => {
                     Sector: <TextField source="industry" color="textPrimary" />
                 </Typography>
             )}
-            {record.empsize && (
+            {record.size && (
                 <Typography
                     component="span"
                     variant="body2"
@@ -130,7 +130,7 @@ const ContextInfo = ({ record }: { record: CustomerRecord }) => {
                 >
                     Size:{' '}
                     <SelectField
-                        source="empsize"
+                        source="size"
                         color="textPrimary"
                         choices={sizes}
                     />
@@ -163,7 +163,7 @@ const ContextInfo = ({ record }: { record: CustomerRecord }) => {
 
 const AddressInfo = ({ record }: { record: CustomerRecord }) => {
     if (
-        // !record.address &&
+        !record.address &&
         !record.city &&
         !record.zipcode &&
         !record.country
@@ -175,7 +175,7 @@ const AddressInfo = ({ record }: { record: CustomerRecord }) => {
         <Stack>
             <Typography variant="subtitle2">Main Address</Typography>
             <Divider sx={{ mb: 1 }} />
-            {/* <TextField source="address" color="textSecondary" /> */}
+            <TextField source="address" color="textSecondary" />
             <TextField source="city" color="textSecondary" />
             <TextField source="zipcode" color="textSecondary" />
             {/* <TextField source="stateAbbr" color="textSecondary" /> */}

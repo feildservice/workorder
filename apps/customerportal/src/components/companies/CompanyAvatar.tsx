@@ -3,7 +3,7 @@ import { Avatar } from '@mui/material';
 import { useRecordContext } from 'react-admin';
 
 // import { Company } from '../types';
-import {CustomerRecord} from '../types/types';
+import {CustomerRecord, LogoRecord} from '../types/types';
 
 export const CompanyAvatar = (props: {
     record?: CustomerRecord;
@@ -15,7 +15,7 @@ export const CompanyAvatar = (props: {
     if (!record) return null;
     return (
         <Avatar
-            // src={record.logo?.src}
+            src={record.logo?.src}
             alt={record.name}
             sx={{
                 '& img': { objectFit: 'contain' },

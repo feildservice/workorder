@@ -1,6 +1,7 @@
 import { faker } from '@faker-js/faker/locale/en';
-import { Customer, Contact, Address, Prisma } from '@prisma/client'
+import { Customer, Contact, Address, Prisma, CompanyStatus,Gender } from '@prisma/client';
 import { DefaultArgs } from '@prisma/client/runtime/library';
+
 
 const defaultCompanySectors = [
     'Communication Services',
@@ -34,9 +35,10 @@ export const generateCompanies = (): Prisma.CustomerUpsertArgs<DefaultArgs>[] =>
                 description: faker.lorem.paragraph(1).substr(1, 100),
                 domain: website,
                 industry: faker.helpers.arrayElement(defaultCompanySectors),
-                yearFounded: faker.helpers.arrayElement(['1950', '2000', '1985', '2010']),
-                country: faker.helpers.arrayElement(['USA', 'France', 'UK']),
+                founded: faker.helpers.arrayElement(['1950', '2000', '1985', '2010']),
+                address: faker.location.streetAddress(),
                 city: faker.location.city(),
+                country: faker.helpers.arrayElement(['USA', 'France', 'UK']),                
                 zipcode: faker.location.zipCode(),
                 email: companyEmail,
                 phone: faker.phone.number(),
@@ -46,20 +48,21 @@ export const generateCompanies = (): Prisma.CustomerUpsertArgs<DefaultArgs>[] =>
                     .toLowerCase()
                     .replace(regex, '_')}`,
                 taxIdentifier: faker.random.alphaNumeric(10),
-                empsize: faker.helpers.arrayElement(["1", "10", "50+", "250+", "500+"]),
+                size: faker.helpers.arrayElement(["1", "10", "50+", "250+", "500+"]),
                 revenue: faker.helpers.arrayElement(['$1M', '$10M', '$100M', '$1B']),
-
-                // logo: {
-                //     title: lorem.text(1),
-                //     src: `./logos/${id}.png`,
-                // },            
+                logo: {
+                    create : {
+                        title: faker.lorem.text().substring(0, 1),
+                        src: `./logos/${id}.png`         
+                    }
+                },            
                 addresses: {
                     create: [
                         {
                             street: faker.location.streetAddress(),
                             city: faker.location.city(),
                             state: faker.location.state(),
-                            zipCode: faker.location.zipCode(),
+                            zipcode: faker.location.zipCode(),
                             country: faker.location.county(),
                             isPrimary: true
                         }
@@ -68,14 +71,18 @@ export const generateCompanies = (): Prisma.CustomerUpsertArgs<DefaultArgs>[] =>
                 contacts: {
                     create: [
                         {
-                            firstName: faker.person.fullName(),
+                            firstName: faker.person.firstName(),
+                            middleName: faker.person.middleName(),
                             lastName: faker.person.lastName(),
+                            title: faker.person.prefix(),
+                            gender: faker.helpers.arrayElement([Gender.MALE, Gender.FEMALE]),
                             email: faker.internet.email(),
                             phone: faker.phone.number(),
                             isPrimary: true
                         }
                     ]
-                }
+                },
+                status: CompanyStatus.ACTIVE,
             }
         };
     });

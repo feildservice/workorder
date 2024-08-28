@@ -110,7 +110,7 @@ const CompanyContextInputs = () => {
                 }))}
                 helperText={false}
             />
-            <SelectInput source="empsize" choices={sizes} helperText={false} />
+            <SelectInput source="size" choices={sizes} helperText={false} />
             <TextInput source="revenue" helperText={false} />
             <TextInput source="taxIdentifier" helperText={false} />
         </Stack>
@@ -121,7 +121,7 @@ const CompanyAddressInputs = () => {
     return (
         <Stack>
             <Typography variant="h6">Address</Typography>
-            {/* <TextInput source="address" helperText={false} /> */}
+            <TextInput source="address" helperText={false} />
             <TextInput source="city" helperText={false} />
             <TextInput source="zipcode" helperText={false} />
             {/* <TextInput source="stateAbbr" helperText={false} /> */}
