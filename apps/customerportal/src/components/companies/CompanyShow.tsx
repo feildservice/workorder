@@ -32,7 +32,9 @@ import { TagsList } from '../contacts/TagsList';
 import { Status } from '../misc/Status';
 import { useConfigurationContext } from '../root/ConfigurationContext';
 // import { Company, Contact, Deal } from '../types';
-import { Customer, Contact } from '../../graphql/graphql';
+// import { Customer, Contact } from '../../graphql/graphql';
+import {CustomerRecord, ContactRecord} from '../types/types';
+
 import { CompanyAside } from './CompanyAside';
 import { CompanyAvatar } from './CompanyAvatar';
 
@@ -43,7 +45,7 @@ export const CompanyShow = () => (
 );
 
 const CompanyShowContent = () => {
-    const { record, isPending } = useShowContext<Customer>();
+    const { record, isPending } = useShowContext<CustomerRecord>();
 
     if (isPending || !record) return null;
 
@@ -134,7 +136,7 @@ const CompanyShowContent = () => {
 
 const ContactsIterator = () => {
     const location = useLocation();
-    const { data: contacts, error, isPending } = useListContext<Contact>();
+    const { data: contacts, error, isPending } = useListContext<ContactRecord>();
 
     if (isPending || error) return null;
 
@@ -186,7 +188,7 @@ const ContactsIterator = () => {
 };
 
 const CreateRelatedContactButton = () => {
-    const company = useRecordContext<Customer>();
+    const company = useRecordContext<CustomerRecord>();
     return (
         <Button
             component={RouterLink}

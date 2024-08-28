@@ -37,7 +37,7 @@ const customBuildQuery: BuildQueryFactory = introspectionResults => {
     const buildQuery = buildQueryFactory(introspectionResults);
 
     return (type, resource, params) => {
-        debugger;
+        // debugger;
         if (type === DELETE) {
             return {
                 query: gql`mutation remove${resource}($id: ID!) {
@@ -114,16 +114,34 @@ const customBuildQuery: BuildQueryFactory = introspectionResults => {
                 query: gql`
                     query CustomerListQuery($first: Int!) {
                         listCustomers(take: $first) {
+                            id
                             name
+                            description
+                            domain
+                            industry
+                            yearFounded
+                            country
+                            city
+                            zipcode
+                            email
                             phone
+                            company
+                            website
+                            linkedinUrl
+                            taxIdentifier
+                            empsize
+                            revenue
+                            hierarchyId
+                            createdAt
+                            updatedAt
                         }
                     }
                 `,
                 // variables: params.data,
                 variables: { first: 10 },
                 parseResponse: ({ data }: ApolloQueryResult<any>) => {
-                    if (data.createCustomer) {
-                        return { data: { id: data.createCustomer.id } };
+                    if (data.listCustomers) {
+                        return { data: data.listCustomers, total: 10 };
                     }
                     throw new Error(`Could not create Customer`);
                 },
@@ -136,7 +154,7 @@ const customBuildQuery: BuildQueryFactory = introspectionResults => {
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default () => {
-    debugger;
+    // debugger;
     const dataProvider = buildApolloClient({
         clientOptions: {
             uri: 'http://localhost:3001/graphql',

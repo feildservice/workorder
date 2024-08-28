@@ -28,10 +28,10 @@ export const CompanyList = () => {
 const CompanyListLayout = () => {
     const { data, isPending, filterValues } = useListContext();
     const hasFilters = filterValues && Object.keys(filterValues).length > 0;
-
+   
     if (isPending) return null;
     if (!data?.length && !hasFilters) return <CompanyEmpty />;
-
+    debugger;
     return (
         <Stack direction="row" component="div">
             <CompanyListFilter />

@@ -45,7 +45,7 @@ export const CompanyListFilter = () => {
                 ))}
             </FilterList>
 
-            <FilterList
+            {/* <FilterList
                 label="Account manager"
                 icon={<SupervisorAccountIcon />}
             >
@@ -55,7 +55,7 @@ export const CompanyListFilter = () => {
                         sales_id: identity && identity.id,
                     }}
                 />
-            </FilterList>
+            </FilterList> */}
         </Box>
     );
 };

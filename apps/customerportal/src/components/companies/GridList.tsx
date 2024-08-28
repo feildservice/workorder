@@ -3,7 +3,8 @@ import { Box, Paper, Typography } from '@mui/material';
 import { RecordContextProvider, useListContext } from 'react-admin';
 
 import { CompanyCard } from './CompanyCard';
-import { Company } from '../types';
+// import { Company } from '../types';
+import {CustomerRecord} from '../types/types';
 
 const times = (nbChildren: number, fn: (key: number) => any) =>
     Array.from({ length: nbChildren }, (_, key) => fn(key));
@@ -26,7 +27,7 @@ const LoadingGridList = () => (
 );
 
 const LoadedGridList = () => {
-    const { data, error, isPending } = useListContext<Company>();
+    const { data, error, isPending } = useListContext<CustomerRecord>();
 
     if (isPending || error) return null;
 

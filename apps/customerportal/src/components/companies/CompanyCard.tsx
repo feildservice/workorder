@@ -11,14 +11,15 @@ import {
 } from 'react-admin';
 
 import { CompanyAvatar } from './CompanyAvatar';
-import { Customer } from '../../graphql/graphql';
+// import { Customer } from '../../graphql/graphql';
+import {CustomerRecord} from '../types/types';
 import { useConfigurationContext } from '../root/ConfigurationContext';
 
-export const CompanyCard = (props: { record?: Customer }) => {
+export const CompanyCard = (props: { record?: CustomerRecord }) => {
     const { companySectors } = useConfigurationContext();
     const [elevation, setElevation] = useState(1);
     const createPath = useCreatePath();
-    const record = useRecordContext<Customer>(props);
+    const record = useRecordContext<CustomerRecord>(props);
     if (!record) return null;
 
     return (

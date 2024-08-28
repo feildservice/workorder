@@ -16,7 +16,8 @@ import {
 } from 'react-admin';
 import { isLinkedinUrl } from '../misc/isLinkedInUrl';
 import { useConfigurationContext } from '../root/ConfigurationContext';
-import { Company, Sale } from '../types';
+// import { Company, Sale } from '../types';
+import { CustomerRecord } from '../types/types';
 import { sizes } from './sizes';
 import ImageEditorField from '../misc/ImageEditorField';
 
@@ -50,7 +51,7 @@ export const CompanyInputs = () => {
                 <Stack gap={4} flex={1}>
                     <CompanyAddressInputs />
                     <CompanyAdditionalInformationInputs />
-                    <CompanyAccountManagerInput />
+                    {/* <CompanyAccountManagerInput /> */}
                 </Stack>
             </Stack>
         </Stack>
@@ -58,7 +59,7 @@ export const CompanyInputs = () => {
 };
 
 const CompanyDisplayInputs = () => {
-    const record = useRecordContext<Company>();
+    const record = useRecordContext<CustomerRecord>();
     return (
         <Stack gap={2} flex={1} direction="row">
             <ImageEditorField
@@ -87,11 +88,11 @@ const CompanyContactInputs = () => {
             <Typography variant="h6">Contact</Typography>
             <TextInput source="website" helperText={false} validate={isUrl} />
             <TextInput
-                source="linkedin_url"
+                source="linkedinUrl"
                 helperText={false}
                 validate={isLinkedinUrl}
             />
-            <TextInput source="phone_number" helperText={false} />
+            <TextInput source="phone" helperText={false} />
         </Stack>
     );
 };
@@ -102,16 +103,16 @@ const CompanyContextInputs = () => {
         <Stack>
             <Typography variant="h6">Context</Typography>
             <SelectInput
-                source="sector"
+                source="industry"
                 choices={companySectors.map(sector => ({
                     id: sector,
                     name: sector,
                 }))}
                 helperText={false}
             />
-            <SelectInput source="size" choices={sizes} helperText={false} />
+            <SelectInput source="empsize" choices={sizes} helperText={false} />
             <TextInput source="revenue" helperText={false} />
-            <TextInput source="tax_identifier" helperText={false} />
+            <TextInput source="taxIdentifier" helperText={false} />
         </Stack>
     );
 };
@@ -120,10 +121,10 @@ const CompanyAddressInputs = () => {
     return (
         <Stack>
             <Typography variant="h6">Address</Typography>
-            <TextInput source="address" helperText={false} />
+            {/* <TextInput source="address" helperText={false} /> */}
             <TextInput source="city" helperText={false} />
             <TextInput source="zipcode" helperText={false} />
-            <TextInput source="stateAbbr" helperText={false} />
+            {/* <TextInput source="stateAbbr" helperText={false} /> */}
             <TextInput source="country" helperText={false} />
         </Stack>
     );
@@ -134,7 +135,7 @@ const CompanyAdditionalInformationInputs = () => {
         <Stack>
             <Typography variant="h6">Additional information</Typography>
             <TextInput source="description" multiline helperText={false} />
-            <ArrayInput source="context_links" helperText={false}>
+            {/* <ArrayInput source="context_links" helperText={false}>
                 <SimpleFormIterator
                     disableReordering
                     fullWidth
@@ -150,32 +151,32 @@ const CompanyAdditionalInformationInputs = () => {
                         validate={isUrl}
                     />
                 </SimpleFormIterator>
-            </ArrayInput>
+            </ArrayInput> */}
         </Stack>
     );
 };
 
-const CompanyAccountManagerInput = () => {
-    return (
-        <Stack>
-            <Typography variant="h6">Account manager</Typography>
-            <ReferenceInput
-                source="sales_id"
-                reference="sales"
-                filter={{
-                    disabled_neq: true,
-                }}
-            >
-                <SelectInput
-                    label="Account manager"
-                    helperText={false}
-                    optionText={saleOptionRenderer}
-                    validate={required()}
-                />
-            </ReferenceInput>
-        </Stack>
-    );
-};
+// const CompanyAccountManagerInput = () => {
+//     return (
+//         <Stack>
+//             <Typography variant="h6">Account manager</Typography>
+//             <ReferenceInput
+//                 source="sales_id"
+//                 reference="sales"
+//                 filter={{
+//                     disabled_neq: true,
+//                 }}
+//             >
+//                 <SelectInput
+//                     label="Account manager"
+//                     helperText={false}
+//                     optionText={saleOptionRenderer}
+//                     validate={required()}
+//                 />
+//             </ReferenceInput>
+//         </Stack>
+//     );
+// };
 
-const saleOptionRenderer = (choice: Sale) =>
-    `${choice.first_name} ${choice.last_name}`;
+// const saleOptionRenderer = (choice: Sale) =>
+//     `${choice.first_name} ${choice.last_name}`;

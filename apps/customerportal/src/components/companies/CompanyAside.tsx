@@ -13,7 +13,8 @@ import {
     useRecordContext,
 } from 'react-admin';
 
-import { Company } from '../types';
+// import { Customer } from '../../graphql/graphql';
+import {CustomerRecord} from '../types/types';
 import { sizes } from './sizes';
 
 interface CompanyAsideProps {
@@ -21,7 +22,7 @@ interface CompanyAsideProps {
 }
 
 export const CompanyAside = ({ link = 'edit' }: CompanyAsideProps) => {
-    const record = useRecordContext<Company>();
+    const record = useRecordContext<CustomerRecord>();
     if (!record) return null;
 
     return (
@@ -40,13 +41,13 @@ export const CompanyAside = ({ link = 'edit' }: CompanyAsideProps) => {
 
             <ContextInfo record={record} />
 
-            <AdditionalInfo record={record} />
+            {/* <AdditionalInfo record={record} /> */}
         </Stack>
     );
 };
 
-const CompanyInfo = ({ record }: { record: Company }) => {
-    if (!record.website && !record.linkedIn && !record.phone_number) {
+const CompanyInfo = ({ record }: { record: CustomerRecord }) => {
+    if (!record.website && !record.linkedinUrl && !record.phone) {
         return null;
     }
 
@@ -65,7 +66,7 @@ const CompanyInfo = ({ record }: { record: Company }) => {
                     <UrlField source="website" target="_blank" rel="noopener" />
                 </Stack>
             )}
-            {record.linkedin_url && (
+            {record.linkedinUrl && (
                 <Stack
                     direction="row"
                     alignItems="center"
@@ -73,11 +74,11 @@ const CompanyInfo = ({ record }: { record: Company }) => {
                     minHeight={24}
                 >
                     <LinkedInIcon color="disabled" fontSize="small" />
-                    <Tooltip title={record.linkedin_url}>
+                    <Tooltip title={record.linkedinUrl}>
                         <Typography
                             variant="body2"
                             component={Link}
-                            href={record.linkedin_url}
+                            href={record.linkedinUrl}
                             target="_blank"
                             rel="noopener noreferrer"
                         >
@@ -86,7 +87,7 @@ const CompanyInfo = ({ record }: { record: Company }) => {
                     </Tooltip>
                 </Stack>
             )}
-            {record.phone_number && (
+            {record.phone && (
                 <Stack
                     direction="row"
                     alignItems="center"
@@ -94,15 +95,15 @@ const CompanyInfo = ({ record }: { record: Company }) => {
                     minHeight={24}
                 >
                     <PhoneIcon color="disabled" fontSize="small" />
-                    <TextField source="phone_number" color="textSecondary" />
+                    <TextField source="phone" color="textSecondary" />
                 </Stack>
             )}
         </Stack>
     );
 };
 
-const ContextInfo = ({ record }: { record: Company }) => {
-    if (!record.revenue && !record.identifier) {
+const ContextInfo = ({ record }: { record: CustomerRecord }) => {
+    if (!record.revenue && !record.id) {
         return null;
     }
 
@@ -110,17 +111,17 @@ const ContextInfo = ({ record }: { record: Company }) => {
         <Stack>
             <Typography variant="subtitle2">Context</Typography>
             <Divider sx={{ mb: 1 }} />
-            {record.sector && (
+            {record.industry && (
                 <Typography
                     component="span"
                     variant="body2"
                     color="textSecondary"
                     gutterBottom
                 >
-                    Sector: <TextField source="sector" color="textPrimary" />
+                    Sector: <TextField source="industry" color="textPrimary" />
                 </Typography>
             )}
-            {record.size && (
+            {record.empsize && (
                 <Typography
                     component="span"
                     variant="body2"
@@ -129,7 +130,7 @@ const ContextInfo = ({ record }: { record: Company }) => {
                 >
                     Size:{' '}
                     <SelectField
-                        source="size"
+                        source="empsize"
                         color="textPrimary"
                         choices={sizes}
                     />
@@ -145,7 +146,7 @@ const ContextInfo = ({ record }: { record: Company }) => {
                     Revenue: <TextField source="revenue" color="textPrimary" />
                 </Typography>
             )}
-            {record.tax_identifier && (
+            {record.taxIdentifier && (
                 <Typography
                     component="span"
                     variant="body2"
@@ -153,19 +154,19 @@ const ContextInfo = ({ record }: { record: Company }) => {
                     gutterBottom
                 >
                     Tax Identifier:{' '}
-                    <TextField source="tax_identifier" color="textPrimary" />
+                    <TextField source="taxIdentifier" color="textPrimary" />
                 </Typography>
             )}
         </Stack>
     );
 };
 
-const AddressInfo = ({ record }: { record: Company }) => {
+const AddressInfo = ({ record }: { record: CustomerRecord }) => {
     if (
-        !record.address &&
+        // !record.address &&
         !record.city &&
         !record.zipcode &&
-        !record.stateAbbr
+        !record.country
     ) {
         return null;
     }
@@ -174,85 +175,85 @@ const AddressInfo = ({ record }: { record: Company }) => {
         <Stack>
             <Typography variant="subtitle2">Main Address</Typography>
             <Divider sx={{ mb: 1 }} />
-            <TextField source="address" color="textSecondary" />
+            {/* <TextField source="address" color="textSecondary" /> */}
             <TextField source="city" color="textSecondary" />
             <TextField source="zipcode" color="textSecondary" />
-            <TextField source="stateAbbr" color="textSecondary" />
+            {/* <TextField source="stateAbbr" color="textSecondary" /> */}
             <TextField source="country" color="textSecondary" />
         </Stack>
     );
 };
 
-const AdditionalInfo = ({ record }: { record: Company }) => {
-    if (
-        !record.created_at &&
-        !record.sales_id &&
-        !record.description &&
-        !record.context_links
-    ) {
-        return null;
-    }
-    const getBaseURL = (url: string) => {
-        const urlObject = new URL(url);
-        return urlObject.origin;
-    };
+// const AdditionalInfo = ({ record }: { record: CustomerRecord }) => {
+//     if (
+//         !record.name &&
+//         !record.taxIdentifier &&
+//         !record.description &&
+//         !record.linkedinUrl &&
+//     ) {
+//         return null;
+//     }
+//     const getBaseURL = (url: string) => {
+//         const urlObject = new URL(url);
+//         return urlObject.origin;
+//     };
 
-    return (
-        <Stack>
-            <Typography variant="subtitle2">Additional Info</Typography>
-            <Divider sx={{ mb: 1 }} />
-            {record.description && (
-                <Typography variant="body2" color="textSecondary" gutterBottom>
-                    {record.description}
-                </Typography>
-            )}
-            {record.context_links && (
-                <Stack>
-                    {record.context_links.map((link, index) =>
-                        link ? (
-                            <Tooltip title={link}>
-                                <Typography
-                                    key={index}
-                                    variant="body2"
-                                    gutterBottom
-                                    component={Link}
-                                    href={link}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    {getBaseURL(link)}
-                                </Typography>
-                            </Tooltip>
-                        ) : null
-                    )}
-                </Stack>
-            )}
-            {record.sales_id !== null && (
-                <Typography variant="body2" color="textSecondary" gutterBottom>
-                    Followed by{' '}
-                    <ReferenceField
-                        source="sales_id"
-                        reference="sales"
-                        record={record}
-                    />
-                </Typography>
-            )}
-            {record.created_at && (
-                <Typography variant="body2" color="textSecondary" gutterBottom>
-                    Added on{' '}
-                    <DateField
-                        source="created_at"
-                        record={record}
-                        color="textPrimary"
-                        options={{
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric',
-                        }}
-                    />
-                </Typography>
-            )}
-        </Stack>
-    );
-};
+//     return (
+//         <Stack>
+//             <Typography variant="subtitle2">Additional Info</Typography>
+//             <Divider sx={{ mb: 1 }} />
+//             {record.description && (
+//                 <Typography variant="body2" color="textSecondary" gutterBottom>
+//                     {record.description}
+//                 </Typography>
+//             )}
+//             {record.context_links && (
+//                 <Stack>
+//                     {record.context_links.map((link, index) =>
+//                         link ? (
+//                             <Tooltip title={link}>
+//                                 <Typography
+//                                     key={index}
+//                                     variant="body2"
+//                                     gutterBottom
+//                                     component={Link}
+//                                     href={link}
+//                                     target="_blank"
+//                                     rel="noopener noreferrer"
+//                                 >
+//                                     {getBaseURL(link)}
+//                                 </Typography>
+//                             </Tooltip>
+//                         ) : null
+//                     )}
+//                 </Stack>
+//             )}
+//             {record.sales_id !== null && (
+//                 <Typography variant="body2" color="textSecondary" gutterBottom>
+//                     Followed by{' '}
+//                     <ReferenceField
+//                         source="sales_id"
+//                         reference="sales"
+//                         record={record}
+//                     />
+//                 </Typography>
+//             )}
+//             {record.created_at && (
+//                 <Typography variant="body2" color="textSecondary" gutterBottom>
+//                     Added on{' '}
+//                     <DateField
+//                         source="created_at"
+//                         record={record}
+//                         color="textPrimary"
+//                         options={{
+//                             year: 'numeric',
+//                             month: 'long',
+//                             day: 'numeric',
+//                         }}
+//                     />
+//                 </Typography>
+//             )}
+//         </Stack>
+//     );
+// };
 export default CompanyInfo;
