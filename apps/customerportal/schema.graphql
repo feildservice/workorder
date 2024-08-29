@@ -1651,6 +1651,12 @@ input HierarchyWhereUniqueInput {
   updatedAt: DateTimeFilter
 }
 
+input IncludeCustomerInput {
+  addresses: Boolean
+  contacts: Boolean
+  logo: Boolean
+}
+
 input IntFilter {
   equals: Int
   gt: Int
@@ -2066,6 +2072,7 @@ type Query {
   listCustomers(
     cursor: CustomerWhereUniqueInput
     distinct: [CustomerScalarFieldEnum!]
+    include: IncludeCustomerInput
     orderBy: [CustomerOrderByWithRelationInput!]
     relationLoadStrategy: RelationLoadStrategy
     skip: Int

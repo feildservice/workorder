@@ -1727,6 +1727,12 @@ export type HierarchyWhereUniqueInput = {
   updatedAt?: InputMaybe<DateTimeFilter>;
 };
 
+export type IncludeCustomerInput = {
+  addresses?: InputMaybe<Scalars["Boolean"]["input"]>;
+  contacts?: InputMaybe<Scalars["Boolean"]["input"]>;
+  logo?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
 export type IntFilter = {
   equals?: InputMaybe<Scalars["Int"]["input"]>;
   gt?: InputMaybe<Scalars["Int"]["input"]>;
@@ -2170,6 +2176,7 @@ export type QueryGroupByCustomerArgs = {
 export type QueryListCustomersArgs = {
   cursor?: InputMaybe<CustomerWhereUniqueInput>;
   distinct?: InputMaybe<Array<CustomerScalarFieldEnum>>;
+  include?: InputMaybe<IncludeCustomerInput>;
   orderBy?: InputMaybe<Array<CustomerOrderByWithRelationInput>>;
   relationLoadStrategy?: InputMaybe<RelationLoadStrategy>;
   skip?: InputMaybe<Scalars["Int"]["input"]>;

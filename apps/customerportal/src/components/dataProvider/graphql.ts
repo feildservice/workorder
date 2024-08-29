@@ -113,7 +113,7 @@ const customBuildQuery: BuildQueryFactory = introspectionResults => {
             return {
                 query: gql`
                     query CustomerListQuery($first: Int!) {
-                        listCustomers(take: $first) {
+                        listCustomers(take: $first, relationLoadStrategy: join, include: { logo: true, contacts: true}) {
                             id
                             name
                             description
@@ -130,6 +130,10 @@ const customBuildQuery: BuildQueryFactory = introspectionResults => {
                             linkedinUrl
                             taxIdentifier
                             size
+                            logo{
+                                title
+                                src
+                            }
                             revenue                            
                             hierarchyId
                             status
