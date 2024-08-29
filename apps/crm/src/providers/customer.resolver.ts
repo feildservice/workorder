@@ -2,7 +2,7 @@ import {
   Customer,
   FindFirstCustomerArgs,
   FindUniqueCustomerArgs,
-  FindManyCustomerArgs,
+  // FindManyCustomerArgs,
   CustomerGroupBy,
   CustomerGroupByArgs,
   AggregateCustomer,
@@ -14,19 +14,16 @@ import {
   DeleteOneCustomerArgs,
   DeleteManyCustomerArgs,
 } from '../generated/prismagraphql/customer';
+import { FindManyCustomerIncludeArgs } from '../types/types';
 import { AffectedRows } from '../generated/prismagraphql/prisma';
-import {
-  Resolver,
-  Query,
-  Args,
-  Mutation
-} from '@nestjs/graphql';
+import { Resolver, Query, Args, Mutation } from '@nestjs/graphql';
 import { CustomerCrudService } from './customer.crud.service';
+
 // import { CognitoAuthGuard } from "src/shared/guards/cognito-auth/cognito-auth.guard";
 // import { RolesGuard } from "src/shared/guards/roles/roles.guard";
 // import { UseGuards } from "@nestjs/common";
 
-@Resolver((of) => Customer)
+@Resolver(() => Customer)
 export class CustomerResolver {
   constructor(private readonly customerService: CustomerCrudService) {}
 
@@ -41,8 +38,7 @@ export class CustomerResolver {
   }
 
   @Query(() => [Customer], { nullable: false })
-  listCustomers(@Args() args: FindManyCustomerArgs) {
-    console.log('args', args);
+  listCustomers(@Args() args: FindManyCustomerIncludeArgs) {
     return this.customerService.findMany(args);
   }
 

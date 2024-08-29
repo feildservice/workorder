@@ -19,7 +19,7 @@ export class BaseCrudService<
   constructor(public prisma: PrismaService) {}
 
   async findFirst(args: FindFirstArg): Promise<T> {
-      return await this.prisma[this.getModelName()].findFirst(args);    
+    return await this.prisma[this.getModelName()].findFirst(args);
   }
 
   findUnique(args: FindUniqueArg): Promise<T> {
@@ -53,8 +53,6 @@ export class BaseCrudService<
   updateMany(args: UpdatedManyArg): Promise<T[]> {
     return this.prisma[this.getModelName()].updateMany(args);
   }
-
-  
 
   delete(args: DeleteArg): Promise<T> {
     return this.prisma[this.getModelName()].delete(args);

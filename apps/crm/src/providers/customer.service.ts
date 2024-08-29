@@ -30,7 +30,7 @@ export class CustomerService {
       orderBy,
     });
   }
-  
+
   async createCustomer(data: Prisma.CustomerCreateInput): Promise<Customer> {
     return this.prisma.customer.create({
       data,
@@ -48,7 +48,9 @@ export class CustomerService {
     });
   }
 
-  async deleteCustomer(where: Prisma.CustomerWhereUniqueInput): Promise<Customer> {
+  async deleteCustomer(
+    where: Prisma.CustomerWhereUniqueInput,
+  ): Promise<Customer> {
     return this.prisma.customer.delete({
       where,
     });
