@@ -1,5 +1,4 @@
 /* eslint-disable */
-import { TypedDocumentNode as DocumentNode } from "@graphql-typed-document-node/core";
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = {
@@ -2155,6 +2154,7 @@ export type QueryFindFirstCustomerArgs = {
 };
 
 export type QueryFindUniqueCustomerArgs = {
+  include?: InputMaybe<IncludeCustomerInput>;
   relationLoadStrategy?: InputMaybe<RelationLoadStrategy>;
   where: CustomerWhereUniqueInput;
 };
@@ -2561,69 +2561,3 @@ export type StringWithAggregatesFilter = {
   notIn?: InputMaybe<Array<Scalars["String"]["input"]>>;
   startsWith?: InputMaybe<Scalars["String"]["input"]>;
 };
-
-export type CustomerListQueryQueryVariables = Exact<{
-  first: Scalars["Int"]["input"];
-}>;
-
-export type CustomerListQueryQuery = {
-  __typename?: "Query";
-  listCustomers: Array<{
-    __typename?: "Customer";
-    name: string;
-    phone?: string | null;
-  }>;
-};
-
-export const CustomerListQueryDocument = {
-  kind: "Document",
-  definitions: [
-    {
-      kind: "OperationDefinition",
-      operation: "query",
-      name: { kind: "Name", value: "CustomerListQuery" },
-      variableDefinitions: [
-        {
-          kind: "VariableDefinition",
-          variable: {
-            kind: "Variable",
-            name: { kind: "Name", value: "first" },
-          },
-          type: {
-            kind: "NonNullType",
-            type: { kind: "NamedType", name: { kind: "Name", value: "Int" } },
-          },
-        },
-      ],
-      selectionSet: {
-        kind: "SelectionSet",
-        selections: [
-          {
-            kind: "Field",
-            name: { kind: "Name", value: "listCustomers" },
-            arguments: [
-              {
-                kind: "Argument",
-                name: { kind: "Name", value: "take" },
-                value: {
-                  kind: "Variable",
-                  name: { kind: "Name", value: "first" },
-                },
-              },
-            ],
-            selectionSet: {
-              kind: "SelectionSet",
-              selections: [
-                { kind: "Field", name: { kind: "Name", value: "name" } },
-                { kind: "Field", name: { kind: "Name", value: "phone" } },
-              ],
-            },
-          },
-        ],
-      },
-    },
-  ],
-} as unknown as DocumentNode<
-  CustomerListQueryQuery,
-  CustomerListQueryQueryVariables
->;

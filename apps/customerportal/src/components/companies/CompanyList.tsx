@@ -31,12 +31,12 @@ const CompanyListLayout = () => {
    
     if (isPending) return null;
     if (!data?.length && !hasFilters) return <CompanyEmpty />;
-    debugger;
+    
     return (
         <Stack direction="row" component="div">
             <CompanyListFilter />
             <Stack sx={{ width: '100%' }}>
-                <Title title={'Companies'} />
+                <Title title={'Customers'} />
                 <ListToolbar actions={<CompanyListActions />} />
                 <ImageList />
                 <Pagination rowsPerPageOptions={[10, 25, 50, 100]} />

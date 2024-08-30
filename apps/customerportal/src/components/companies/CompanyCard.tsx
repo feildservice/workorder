@@ -25,7 +25,7 @@ export const CompanyCard = (props: { record?: CustomerRecord }) => {
     return (
         <Link
             to={createPath({
-                resource: 'companies',
+                resource: 'customers',
                 id: record.id,
                 type: 'show',
             })}

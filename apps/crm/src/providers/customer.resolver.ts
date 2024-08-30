@@ -1,7 +1,7 @@
 import {
   Customer,
   FindFirstCustomerArgs,
-  FindUniqueCustomerArgs,
+  //FindUniqueCustomerArgs,
   // FindManyCustomerArgs,
   CustomerGroupBy,
   CustomerGroupByArgs,
@@ -14,7 +14,10 @@ import {
   DeleteOneCustomerArgs,
   DeleteManyCustomerArgs,
 } from '../generated/prismagraphql/customer';
-import { FindManyCustomerIncludeArgs } from '../types/types';
+import { 
+  FindManyCustomerIncludeArgs,
+  FindUniqueCustomerIncludeArgs
+ } from '../types/types';
 import { AffectedRows } from '../generated/prismagraphql/prisma';
 import { Resolver, Query, Args, Mutation } from '@nestjs/graphql';
 import { CustomerCrudService } from './customer.crud.service';
@@ -33,7 +36,7 @@ export class CustomerResolver {
   }
 
   @Query(() => Customer, { nullable: false })
-  findUniqueCustomer(@Args() args: FindUniqueCustomerArgs) {
+  findUniqueCustomer(@Args() args: FindUniqueCustomerIncludeArgs) {
     return this.customerService.findUnique(args);
   }
 

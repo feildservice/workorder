@@ -2053,6 +2053,7 @@ type Query {
     where: CustomerWhereInput
   ): Customer!
   findUniqueCustomer(
+    include: IncludeCustomerInput
     relationLoadStrategy: RelationLoadStrategy
     where: CustomerWhereUniqueInput!
   ): Customer!

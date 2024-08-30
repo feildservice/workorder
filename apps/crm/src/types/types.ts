@@ -2,7 +2,10 @@ import { Field } from '@nestjs/graphql';
 import { ArgsType } from '@nestjs/graphql';
 import { Type } from 'class-transformer';
 import { InputType } from '@nestjs/graphql';
-import { FindManyCustomerArgs } from '../generated/prismagraphql/customer';
+import { 
+  FindManyCustomerArgs,
+  FindUniqueCustomerArgs
+ } from '../generated/prismagraphql/customer';
 
 @InputType()
 export class IncludeCustomerInput {
@@ -18,6 +21,13 @@ export class IncludeCustomerInput {
 
 @ArgsType()
 export class FindManyCustomerIncludeArgs extends FindManyCustomerArgs {
+  @Field(() => IncludeCustomerInput, { nullable: true })
+  @Type(() => IncludeCustomerInput)
+  include?: IncludeCustomerInput;
+}
+
+@ArgsType()
+export class FindUniqueCustomerIncludeArgs extends FindUniqueCustomerArgs {
   @Field(() => IncludeCustomerInput, { nullable: true })
   @Type(() => IncludeCustomerInput)
   include?: IncludeCustomerInput;

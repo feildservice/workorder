@@ -72,7 +72,7 @@ const CompanyShowContent = () => {
                                     context="company"
                                 />
                             </TabbedShowLayout.Tab> */}
-                            <TabbedShowLayout.Tab
+                            {/* <TabbedShowLayout.Tab
                                 label={
                                     !record.contacts
                                         ? 'No Contacts'
@@ -106,7 +106,7 @@ const CompanyShowContent = () => {
                                     </Stack>
                                     <ContactsIterator />
                                 </ReferenceManyField>
-                            </TabbedShowLayout.Tab>
+                            </TabbedShowLayout.Tab> */}
                             {/* {record.nb_deals ? (
                                 <TabbedShowLayout.Tab
                                     label={
