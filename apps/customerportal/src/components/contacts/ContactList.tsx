@@ -1,7 +1,8 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { Card, LinearProgress, Stack } from '@mui/material';
-import jsonExport from 'jsonexport/dist';
+// import jsonExport from 'jsonexport/dist';
 import type { Exporter } from 'react-admin';
+
 import {
     BulkActionsToolbar,
     BulkDeleteButton,
@@ -18,7 +19,8 @@ import {
     useListContext,
 } from 'react-admin';
 import { hasOtherFiltersThanDefault } from '../misc/hasOtherFiltersThanDefault';
-import { Company, Contact, Sale, Tag } from '../types';
+// import { Company, Contact, Sale, Tag } from '../types';
+import { Customer, Contact } from '@/graphql/graphql';
 import { ContactEmpty } from './ContactEmpty';
 import { ContactImportButton } from './ContactImportButton';
 import { ContactListContent } from './ContactListContent';
@@ -76,7 +78,7 @@ const ContactListLayout = () => {
 
 const ContactListActions = () => (
     <TopToolbar>
-        <SortButton fields={['last_name', 'first_name', 'last_seen']} />
+        <SortButton fields={['lastName', 'firstName', 'middleName']} />
         <ContactImportButton />
         <ExportButton />
         <CreateButton
@@ -88,23 +90,25 @@ const ContactListActions = () => (
 );
 
 const exporter: Exporter<Contact> = async (records, fetchRelatedRecords) => {
-    const companies = await fetchRelatedRecords<Company>(
-        records,
-        'company_id',
-        'companies'
-    );
-    const sales = await fetchRelatedRecords<Sale>(records, 'sales_id', 'sales');
-    const tags = await fetchRelatedRecords<Tag>(records, 'tags', 'tags');
+    // const companies = await fetchRelatedRecords<Customer>(
+    //     records,
+    //     'companyId',
+    //     'companies'
+    // );
+    // const sales = await fetchRelatedRecords<Sale>(records, 'sales_id', 'sales');
+    // const tags = await fetchRelatedRecords<Tag>(records, 'tags', 'tags');
 
     const contacts = records.map(contact => ({
-        ...contact,
-        company: companies[contact.company_id].name,
-        sales: `${sales[contact.sales_id].first_name} ${
-            sales[contact.sales_id].last_name
-        }`,
-        tags: contact.tags.map(tagId => tags[tagId].name).join(', '),
+        ...contact
+        // ,
+        // company: companies[contact.company_id].name,
+        // sales: `${sales[contact.sales_id].first_name} ${
+        //     sales[contact.sales_id].last_name
+        // }`,
+        // tags: contact.tags.map(tagId => tags[tagId].name).join(', '),
     }));
-    return jsonExport(contacts, {}, (_err: any, csv: string) => {
-        downloadCSV(csv, 'contacts');
-    });
+    
+    // return jsonExport(contacts, {}, (_err: any, csv: string) => {
+    //     downloadCSV(csv, 'contacts');
+    // });
 };

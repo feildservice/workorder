@@ -10,8 +10,8 @@ import { Box, Card, CardContent, Typography } from '@mui/material';
 
 import { Avatar } from './Avatar';
 import { ContactAside } from './ContactAside';
-import { NotesIterator } from '../notes';
-import { Contact } from '../types';
+// import { NotesIterator } from '../notes';
+import { Contact } from '@/graphql/graphql';
 import { CompanyAvatar } from '../companies/CompanyAvatar';
 
 export const ContactShow = () => (
@@ -33,12 +33,12 @@ const ContactShowContent = () => {
                             <Avatar />
                             <Box ml={2} flex="1">
                                 <Typography variant="h5">
-                                    {record.first_name} {record.last_name}
+                                    {record.firstName} {record.lastName}
                                 </Typography>
                                 <Typography variant="body2" component="div">
                                     {record.title} at{' '}
                                     <ReferenceField
-                                        source="company_id"
+                                        source="companyId"
                                         reference="companies"
                                         link="show"
                                     >
@@ -48,7 +48,7 @@ const ContactShowContent = () => {
                             </Box>
                             <Box>
                                 <ReferenceField
-                                    source="company_id"
+                                    source="companyId"
                                     reference="companies"
                                     link="show"
                                 >
@@ -56,13 +56,13 @@ const ContactShowContent = () => {
                                 </ReferenceField>
                             </Box>
                         </Box>
-                        <ReferenceManyField
+                        {/* <ReferenceManyField
                             target="contact_id"
                             reference="contactNotes"
                             sort={{ field: 'date', order: 'DESC' }}
                         >
                             <NotesIterator showStatus reference="contacts" />
-                        </ReferenceManyField>
+                        </ReferenceManyField> */}
                     </CardContent>
                 </Card>
             </Box>

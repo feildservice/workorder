@@ -72,7 +72,7 @@ const CompanyShowContent = () => {
                                     context="company"
                                 />
                             </TabbedShowLayout.Tab> */}
-                            {/* <TabbedShowLayout.Tab
+                            <TabbedShowLayout.Tab
                                 label={
                                     !record.contacts
                                         ? 'No Contacts'
@@ -84,8 +84,8 @@ const CompanyShowContent = () => {
                             >
                                 <ReferenceManyField
                                     reference="contacts"
-                                    target="company_id"
-                                    sort={{ field: 'last_name', order: 'ASC' }}
+                                    target="customerId"
+                                    sort={{ field: 'lastname', order: 'ASC' }}
                                 >
                                     <Stack
                                         direction="row"
@@ -96,9 +96,9 @@ const CompanyShowContent = () => {
                                         {!!record.contacts && (
                                             <SortButton
                                                 fields={[
-                                                    'last_name',
-                                                    'first_name',
-                                                    'last_seen',
+                                                    'lastname',
+                                                    'firstname',
+                                                    'email',
                                                 ]}
                                             />
                                         )}
@@ -106,7 +106,7 @@ const CompanyShowContent = () => {
                                     </Stack>
                                     <ContactsIterator />
                                 </ReferenceManyField>
-                            </TabbedShowLayout.Tab> */}
+                            </TabbedShowLayout.Tab>
                             {/* {record.nb_deals ? (
                                 <TabbedShowLayout.Tab
                                     label={

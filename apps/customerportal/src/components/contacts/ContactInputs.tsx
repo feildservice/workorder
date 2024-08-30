@@ -20,7 +20,7 @@ import {
 } from 'react-admin';
 import { isLinkedinUrl } from '../misc/isLinkedInUrl';
 import { useConfigurationContext } from '../root/ConfigurationContext';
-import { Sale } from '../types';
+// import { Sale } from '../types';
 import { Avatar } from './Avatar';
 
 export const ContactInputs = () => {
@@ -64,12 +64,12 @@ const ContactIdentityInputs = () => {
                 defaultValue={contactGender[0].value}
             />
             <TextInput
-                source="first_name"
+                source="firstName"
                 validate={required()}
                 helperText={false}
             />
             <TextInput
-                source="last_name"
+                source="lastName"
                 validate={required()}
                 helperText={false}
             />
@@ -106,7 +106,7 @@ const ContactPositionInputs = () => {
         <Stack>
             <Typography variant="h6">Position</Typography>
             <TextInput source="title" helperText={false} />
-            <ReferenceInput source="company_id" reference="companies">
+            <ReferenceInput source="customerId" reference="customers">
                 <AutocompleteInput
                     optionText="name"
                     validate={required()}
@@ -125,20 +125,20 @@ const ContactPersonalInformationInputs = () => {
             <TextInput source="email" helperText={false} validate={email()} />
             <Stack gap={1} flexDirection="row">
                 <TextInput
-                    source="phone_number1.number"
-                    label="Phone number 1"
+                    source="phone"
+                    label="Phone number"
                     helperText={false}
                 />
-                <SelectInput
+                {/* <SelectInput
                     source="phone_number1.type"
                     label="Type"
                     helperText={false}
                     optionText={choice => choice.id}
                     choices={[{ id: 'Work' }, { id: 'Home' }, { id: 'Other' }]}
                     defaultValue={'Work'}
-                />
+                /> */}
             </Stack>
-            <Stack gap={1} flexDirection="row">
+            {/* <Stack gap={1} flexDirection="row">
                 <TextInput
                     source="phone_number2.number"
                     label="Phone number 2"
@@ -158,7 +158,7 @@ const ContactPersonalInformationInputs = () => {
                 label="Linkedin URL"
                 helperText={false}
                 validate={isLinkedinUrl}
-            />
+            /> */}
         </Stack>
     );
 };
@@ -174,7 +174,7 @@ const ContactMiscInputs = () => {
                 helperText={false}
             />
             <BooleanInput source="has_newsletter" helperText={false} />
-            <ReferenceInput
+            {/* <ReferenceInput
                 reference="sales"
                 source="sales_id"
                 sort={{ field: 'last_name', order: 'ASC' }}
@@ -188,10 +188,10 @@ const ContactMiscInputs = () => {
                     optionText={saleOptionRenderer}
                     validate={required()}
                 />
-            </ReferenceInput>
+            </ReferenceInput> */}
         </Stack>
     );
 };
 
-const saleOptionRenderer = (choice: Sale) =>
-    `${choice.first_name} ${choice.last_name}`;
+// const saleOptionRenderer = (choice: Sale) =>
+//     `${choice.first_name} ${choice.last_name}`;

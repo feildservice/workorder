@@ -331,6 +331,83 @@ input AgreementWhereUniqueInput {
   updatedAt: DateTimeFilter
 }
 
+type Avatar {
+  contact: Contact!
+  contactId: Int!
+  id: ID!
+  src: String!
+  title: String!
+}
+
+input AvatarCreateNestedOneWithoutContactInput {
+  connect: AvatarWhereUniqueInput
+  connectOrCreate: AvatarCreateOrConnectWithoutContactInput
+  create: AvatarCreateWithoutContactInput
+}
+
+input AvatarCreateOrConnectWithoutContactInput {
+  create: AvatarCreateWithoutContactInput!
+  where: AvatarWhereUniqueInput!
+}
+
+input AvatarCreateWithoutContactInput {
+  src: String!
+  title: String!
+}
+
+input AvatarNullableRelationFilter {
+  is: AvatarWhereInput
+  isNot: AvatarWhereInput
+}
+
+input AvatarUpdateOneWithoutContactNestedInput {
+  connect: AvatarWhereUniqueInput
+  connectOrCreate: AvatarCreateOrConnectWithoutContactInput
+  create: AvatarCreateWithoutContactInput
+  delete: AvatarWhereInput
+  disconnect: AvatarWhereInput
+  update: AvatarUpdateToOneWithWhereWithoutContactInput
+  upsert: AvatarUpsertWithoutContactInput
+}
+
+input AvatarUpdateToOneWithWhereWithoutContactInput {
+  data: AvatarUpdateWithoutContactInput!
+  where: AvatarWhereInput
+}
+
+input AvatarUpdateWithoutContactInput {
+  src: StringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input AvatarUpsertWithoutContactInput {
+  create: AvatarCreateWithoutContactInput!
+  update: AvatarUpdateWithoutContactInput!
+  where: AvatarWhereInput
+}
+
+input AvatarWhereInput {
+  AND: [AvatarWhereInput!]
+  NOT: [AvatarWhereInput!]
+  OR: [AvatarWhereInput!]
+  contact: ContactRelationFilter
+  contactId: IntFilter
+  id: IntFilter
+  src: StringFilter
+  title: StringFilter
+}
+
+input AvatarWhereUniqueInput {
+  AND: [AvatarWhereInput!]
+  NOT: [AvatarWhereInput!]
+  OR: [AvatarWhereInput!]
+  contact: ContactRelationFilter
+  contactId: Int
+  id: Int
+  src: StringFilter
+  title: StringFilter
+}
+
 input BoolFieldUpdateOperationsInput {
   set: Boolean
 }
@@ -349,9 +426,11 @@ enum CompanyStatus {
 }
 
 type Contact {
+  avatar: Avatar
   createdAt: DateTime!
   customer: Customer!
   customerId: Int!
+  designation: String
   email: String!
   firstName: String!
   gender: Gender!
@@ -366,6 +445,7 @@ type Contact {
 
 input ContactCreateManyCustomerInput {
   createdAt: DateTime
+  designation: String
   email: String!
   firstName: String!
   gender: Gender
@@ -396,7 +476,9 @@ input ContactCreateOrConnectWithoutCustomerInput {
 }
 
 input ContactCreateWithoutCustomerInput {
+  avatar: AvatarCreateNestedOneWithoutContactInput
   createdAt: DateTime
+  designation: String
   email: String!
   firstName: String!
   gender: Gender
@@ -418,12 +500,18 @@ input ContactOrderByRelationAggregateInput {
   _count: SortOrder
 }
 
+input ContactRelationFilter {
+  is: ContactWhereInput
+  isNot: ContactWhereInput
+}
+
 input ContactScalarWhereInput {
   AND: [ContactScalarWhereInput!]
   NOT: [ContactScalarWhereInput!]
   OR: [ContactScalarWhereInput!]
   createdAt: DateTimeFilter
   customerId: IntFilter
+  designation: StringNullableFilter
   email: StringFilter
   firstName: StringFilter
   gender: EnumGenderFilter
@@ -438,6 +526,7 @@ input ContactScalarWhereInput {
 
 input ContactUpdateManyMutationInput {
   createdAt: DateTimeFieldUpdateOperationsInput
+  designation: NullableStringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
   firstName: StringFieldUpdateOperationsInput
   gender: EnumGenderFieldUpdateOperationsInput
@@ -474,7 +563,9 @@ input ContactUpdateWithWhereUniqueWithoutCustomerInput {
 }
 
 input ContactUpdateWithoutCustomerInput {
+  avatar: AvatarUpdateOneWithoutContactNestedInput
   createdAt: DateTimeFieldUpdateOperationsInput
+  designation: NullableStringFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
   firstName: StringFieldUpdateOperationsInput
   gender: EnumGenderFieldUpdateOperationsInput
@@ -496,9 +587,11 @@ input ContactWhereInput {
   AND: [ContactWhereInput!]
   NOT: [ContactWhereInput!]
   OR: [ContactWhereInput!]
+  avatar: AvatarNullableRelationFilter
   createdAt: DateTimeFilter
   customer: CustomerRelationFilter
   customerId: IntFilter
+  designation: StringNullableFilter
   email: StringFilter
   firstName: StringFilter
   gender: EnumGenderFilter
@@ -515,9 +608,11 @@ input ContactWhereUniqueInput {
   AND: [ContactWhereInput!]
   NOT: [ContactWhereInput!]
   OR: [ContactWhereInput!]
+  avatar: AvatarNullableRelationFilter
   createdAt: DateTimeFilter
   customer: CustomerRelationFilter
   customerId: IntFilter
+  designation: StringNullableFilter
   email: String
   firstName: StringFilter
   gender: EnumGenderFilter

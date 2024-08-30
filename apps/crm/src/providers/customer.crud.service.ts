@@ -8,20 +8,23 @@ import {
   DeleteOneCustomerArgs,
   FindFirstCustomerArgs,
   // FindManyCustomerArgs,
-  FindUniqueCustomerArgs,
+  // FindUniqueCustomerArgs,
   UpdateManyCustomerArgs,
   UpdateOneCustomerArgs,
   Customer,
   CustomerAggregateArgs,
   CustomerGroupByArgs,
 } from '../generated/prismagraphql/customer';
-import { FindManyCustomerIncludeArgs } from '../types/types';
+import { 
+  FindManyCustomerIncludeArgs,
+  FindUniqueCustomerIncludeArgs
+ } from '../types/types';
 
 @Injectable()
 export class CustomerCrudService extends BaseCrudService<
   Customer,
   FindFirstCustomerArgs,
-  FindUniqueCustomerArgs,
+  FindUniqueCustomerIncludeArgs,
   FindManyCustomerIncludeArgs,
   CustomerGroupByArgs,
   CustomerAggregateArgs,

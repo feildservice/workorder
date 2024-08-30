@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client';
-import { generateCompanies } from './generator/companies';
+import { generateCompanies, generateContacts } from './generator/companies';
+import { ar } from '@faker-js/faker';
 
 const prisma = new PrismaClient();
 
@@ -15,62 +16,30 @@ async function main() {
 
   console.log('Seeding... companies');
 
-  const companiesToCreate = generateCompanies();
+  const companiesToCreate = generateCompanies(55);
+  let arrCompanyIds : number[] = new Array();
 
   for (let i = 0; i < companiesToCreate.length; i++) {
     // console.log(companiesToCreate[i]);
     // console.log(companiesToCreate[i].create.addresses.create[0]);
     // console.log(companiesToCreate[i].create.contacts.create[0]);
-    await prisma.customer.upsert(companiesToCreate[i]);
-  }
+    let company = await prisma.customer.upsert(companiesToCreate[i]);
+    arrCompanyIds.push(company.id);
+  } 
 
-  // const customer1 = await prisma.customer.upsert({
-  //     where: { email: 'one@acme.com' },
-  //     update: {},
-  //     create: {
-  //         email: 'one@acme.com',
-  //         name: 'Alice',
-  //         phone: '1234567890',
-  //         company: 'Acme Enterprises',
-  //         yearFounded: '2000',
-  //         country: 'USA',
-  //         domain: 'acme.com',
-  //         industry: 'Tech',
-  //         empsize: '1000',
-  //         addresses: {
-  //             create: [
-  //                 {
-  //                     street: '1st cross',
-  //                     city: 'Los Angeles',
-  //                     state: 'LA',
-  //                     zipCode: '60005',
-  //                     country: 'USA',
-  //                     isPrimary: true
-  //                 },
-  //                 {
-  //                     street: '2st cross',
-  //                     city: 'Los Angeles',
-  //                     state: 'LA',
-  //                     zipCode: '60004',
-  //                     country: 'USA',
-  //                     isPrimary: false
-  //                 }
-  //             ]
-  //         },
-  //         contacts: {
-  //             create:[
-  //                 {
-  //                     firstName: 'Manager',
-  //                     lastName: 'MD',
-  //                     email: 'mgr@acme.com',
-  //                     phone: '1231313123',
-  //                     isPrimary: true
-  //                 }
-  //             ]
-  //         }
-  //     }
-  // });
-  //console.log({ user1, user2 });
+  for(let i=0; i<arrCompanyIds.length; i++){
+    // console.log(arrCompanyIds);
+    let contactsForCompany = generateContacts(arrCompanyIds[i]);
+    // console.log(contactsForCompany.length);
+    for (let j = 0; j < contactsForCompany.length; j++) {
+      // try{
+        // console.log(contactsForCompany[j]);
+        await prisma.contact.upsert(contactsForCompany[j]);
+      // }catch(err){
+
+      // }
+    }
+  }
 }
 
 main()

@@ -21,9 +21,9 @@ const sizes = [1, 10, 50, 250, 500];
 
 const regex = /\W+/;
 
-export const generateCompanies = (): Prisma.CustomerUpsertArgs<DefaultArgs>[] => {
+export const generateCompanies = (fakeCompanies:number): Prisma.CustomerUpsertArgs<DefaultArgs>[] => {
     // export const generateCompanies = (): any[] => {
-    return Array.from(Array(55).keys()).map(id => {
+    return Array.from(Array(fakeCompanies).keys()).map(id => {
         const name = faker.company.name();
         const website = faker.internet.url();
         const companyEmail = faker.internet.email();
@@ -68,22 +68,46 @@ export const generateCompanies = (): Prisma.CustomerUpsertArgs<DefaultArgs>[] =>
                         }
                     ]
                 },
-                contacts: {
-                    create: [
-                        {
-                            firstName: faker.person.firstName(),
-                            middleName: faker.person.middleName(),
-                            lastName: faker.person.lastName(),
-                            title: faker.person.prefix(),
-                            gender: faker.helpers.arrayElement([Gender.MALE, Gender.FEMALE]),
-                            email: faker.internet.email(),
-                            phone: faker.phone.number(),
-                            isPrimary: true
-                        }
-                    ]
-                },
+                // contacts: {
+                //     create: [
+                //         {
+                //             firstName: faker.person.firstName(),
+                //             middleName: faker.person.middleName(),
+                //             lastName: faker.person.lastName(),
+                //             title: faker.person.prefix(),
+                //             gender: faker.helpers.arrayElement([Gender.MALE, Gender.FEMALE]),
+                //             email: faker.internet.email(),
+                //             phone: faker.phone.number(),
+                //             isPrimary: true
+                //         }
+                //     ]
+                // },
                 status: CompanyStatus.ACTIVE,
             }
+        };
+    });
+};
+
+export const generateContacts = (companyId:number): Prisma.ContactUpsertArgs<DefaultArgs>[] => {
+    return Array.from(Array(10).keys()).map(id => {
+        const contactEmail = faker.internet.email();
+        return {
+            where: {
+                email: contactEmail
+            },
+            update: {},
+            create: {   
+                customerId: companyId,
+                firstName: faker.person.firstName(),
+                middleName: faker.person.middleName(),
+                lastName: faker.person.lastName(),
+                title: faker.person.prefix(),
+                designation: faker.person.jobDescriptor(),
+                gender: faker.helpers.arrayElement([Gender.MALE, Gender.FEMALE]),
+                email: contactEmail,
+                phone: faker.phone.number(),
+                isPrimary: true                        
+            }            
         };
     });
 };

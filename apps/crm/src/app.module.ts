@@ -23,7 +23,9 @@ import { join } from 'path';
     providers.CustomerService, 
     providers.PrismaService,
     providers.CustomerResolver,
-    providers.CustomerCrudService
+    providers.CustomerCrudService,
+    providers.ContactResolver,
+    providers.ContactCrudService
   ],
 })
 export class AppModule {}

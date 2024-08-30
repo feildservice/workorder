@@ -13,6 +13,7 @@ import { Layout, Login } from './layout';
 import englishMessages from '../i18n/en';
 import dataProviderFactory from './dataProvider';
 import companies  from './companies';
+import contacts  from './contacts';
 
 const i18nProvider = polyglotI18nProvider(
     (locale: string) => {
@@ -53,6 +54,7 @@ const App = () => {
             defaultTheme="light"
         >
             <Resource name="customers" {...companies} />
+            <Resource name="Contacts" {...contacts} />
             {/* <CustomRoutes>
                 <Route path="/segments" element={<Segments />} />
             </CustomRoutes>

@@ -1,7 +1,8 @@
 import { Avatar as MuiAvatar } from '@mui/material';
 import { useRecordContext } from 'react-admin';
 
-import { Contact } from '../types';
+// import { Contact } from '../types';
+import { Contact, Avatar as AvatarRecord } from '@/graphql/graphql';
 
 export const Avatar = (props: {
     record?: Contact;
@@ -11,7 +12,7 @@ export const Avatar = (props: {
     const record = useRecordContext<Contact>(props);
     // If we come from company page, the record is defined (to pass the company as a prop),
     // but neither of those fields are and this lead to an error when creating contact.
-    if (!record?.avatar && !record?.first_name && !record?.last_name) {
+    if (!record?.avatar && !record?.firstName && !record?.lastName) {
         return null;
     }
 
@@ -24,8 +25,8 @@ export const Avatar = (props: {
                 fontSize: props.height ? '0.6rem' : undefined,
             }}
         >
-            {record.first_name?.charAt(0)}
-            {record.last_name?.charAt(0)}
+            {record.firstName?.charAt(0)}
+            {record.lastName?.charAt(0)}
         </MuiAvatar>
     );
 };

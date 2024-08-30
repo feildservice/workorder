@@ -3,7 +3,7 @@ import { CreateBase, Form, Toolbar, useGetIdentity } from 'react-admin';
 import { Card, CardContent, Box } from '@mui/material';
 
 import { ContactInputs } from './ContactInputs';
-import { Contact } from '../types';
+import { Contact } from '@/graphql/graphql';
 
 export const ContactCreate = () => {
     const { identity } = useGetIdentity();

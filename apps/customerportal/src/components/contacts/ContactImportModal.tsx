@@ -19,9 +19,10 @@ import { usePapaParse } from '../misc/usePapaParse';
 import { ContactImportSchema, useContactImport } from './useContactImport';
 
 import { MouseEvent, useEffect, useState } from 'react';
-import * as sampleCsv from './contacts_export.csv?raw';
+// import * as sampleCsv from './contacts_export.csv?raw';
 
-const SAMPLE_URL = `data:text/csv;name=crm_contacts_sample.csv;charset=utf-8,${encodeURIComponent(sampleCsv.default)}`;
+// const SAMPLE_URL = `data:text/csv;name=crm_contacts_sample.csv;charset=utf-8,${encodeURIComponent(sampleCsv.default)}`;
+const SAMPLE_URL = `data:text/csv;name=crm_contacts_sample.csv;charset=utf-8,`;
 
 type ContactImportModalProps = {
     open: boolean;

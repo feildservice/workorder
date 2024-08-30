@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useContext } from 'react';
 import {
     defaultCompanySectors,
-    // defaultContactGender,
+    defaultContactGender,
     // defaultDealCategories,
     // defaultDealPipelineStatuses,
     // defaultDealStages,
@@ -10,7 +10,7 @@ import {
     // defaultTaskTypes,
     defaultTitle,
 } from './defaultConfiguration';
-// import { ContactGender, DealStage, NoteStatus } from '../types';
+import { ContactGender } from '../types/types';
 
 // Define types for the context value
 export interface ConfigurationContextValue {
@@ -22,7 +22,7 @@ export interface ConfigurationContextValue {
     // taskTypes: string[];
     title: string;
     logo: string;
-    // contactGender: ContactGender[];
+    contactGender: ContactGender[];
 }
 
 export interface ConfigurationProviderProps extends ConfigurationContextValue {
@@ -39,7 +39,7 @@ export const ConfigurationContext = createContext<ConfigurationContextValue>({
     // taskTypes: defaultTaskTypes,
     title: defaultTitle,
     logo: defaultLogo,
-    // contactGender: defaultContactGender,
+    contactGender: defaultContactGender,
 });
 
 export const ConfigurationProvider = ({
@@ -52,7 +52,7 @@ export const ConfigurationProvider = ({
     // noteStatuses,
     // taskTypes,
     title,
-    // contactGender,
+    contactGender,
 }: ConfigurationProviderProps) => (
     <ConfigurationContext.Provider
         value={{
@@ -64,7 +64,7 @@ export const ConfigurationProvider = ({
             // noteStatuses,
             title,
             // taskTypes,
-            // contactGender,
+            contactGender,
         }}
     >
         {children}

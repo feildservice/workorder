@@ -3,7 +3,7 @@ import { ContactShow } from './ContactShow';
 import { ContactList } from './ContactList';
 import { ContactEdit } from './ContactEdit';
 import { ContactCreate } from './ContactCreate';
-import { Contact } from '../types';
+import { Contact } from '@/graphql/graphql';
 
 export default {
     list: ContactList,
@@ -11,5 +11,5 @@ export default {
     edit: ContactEdit,
     create: ContactCreate,
     recordRepresentation: (record: Contact) =>
-        record?.first_name + ' ' + record?.last_name,
+        record?.firstName + ' ' + record?.lastName,
 };

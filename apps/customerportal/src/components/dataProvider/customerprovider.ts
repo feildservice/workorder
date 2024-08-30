@@ -81,6 +81,13 @@ export const customerQueries = (type: string, params: any) => {
                             title
                             src
                         }
+                        contacts {
+                            customerId
+                            firstName
+                            lastName
+                            phone
+                            email
+                        }
                         revenue                            
                         hierarchyId
                         status
@@ -132,6 +139,13 @@ export const customerQueries = (type: string, params: any) => {
                         logo{
                             title
                             src
+                        }
+                        contacts {
+                            customerId
+                            firstName
+                            lastName
+                            phone
+                            email
                         }
                         revenue                            
                         hierarchyId

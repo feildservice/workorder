@@ -10,7 +10,7 @@ import { Card, CardContent, Box } from '@mui/material';
 
 import { ContactInputs } from './ContactInputs';
 import { ContactAside } from './ContactAside';
-import { Contact } from '../types';
+import { Contact } from '@/graphql/graphql';
 
 export const ContactEdit = () => (
     <EditBase redirect="show">

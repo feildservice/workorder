@@ -16,13 +16,14 @@ import {
     UrlField,
     useRecordContext,
 } from 'react-admin';
-import { AddTask } from '../tasks/AddTask';
-import { TasksIterator } from '../tasks/TasksIterator';
-import { TagsListEdit } from './TagsListEdit';
+// import { AddTask } from '../tasks/AddTask';
+// import { TasksIterator } from '../tasks/TasksIterator';
+// import { TagsListEdit } from './TagsListEdit';
 
 import { useLocation } from 'react-router';
 import { useConfigurationContext } from '../root/ConfigurationContext';
-import { Contact, Sale } from '../types';
+// import { Contact, Sale } from '../types';
+import { Contact } from '@/graphql/graphql';
 
 export const ContactAside = ({ link = 'edit' }: { link?: 'edit' | 'show' }) => {
     const location = useLocation();
@@ -51,13 +52,13 @@ export const ContactAside = ({ link = 'edit' }: { link?: 'edit' | 'show' }) => {
                     <EmailField source="email" />
                 </Stack>
             )}
-            {record.has_newsletter && (
+            {/* {record.has_newsletter && (
                 <Typography variant="body2" color="textSecondary" pl={3.5}>
                     Subscribed to newsletter
                 </Typography>
-            )}
+            )} */}
 
-            {record.linkedin_url && (
+            {/* {record.linkedin_url && (
                 <Stack
                     direction="row"
                     alignItems="center"
@@ -72,22 +73,22 @@ export const ContactAside = ({ link = 'edit' }: { link?: 'edit' | 'show' }) => {
                         rel="noopener"
                     />
                 </Stack>
-            )}
-            {record.phone_number1?.number && (
+            )} */}
+            {record.phone && (
                 <Stack direction="row" alignItems="center" gap={1}>
                     <PhoneIcon color="disabled" fontSize="small" />
                     <Box>
-                        <TextField source="phone_number1.number" />{' '}
-                        {record.phone_number1.type !== 'Other' && (
+                        <TextField source="phone" />{' '}
+                        {record.phone !== 'Other' && (
                             <TextField
-                                source="phone_number1.type"
+                                source="phone"
                                 color="textSecondary"
                             />
                         )}
                     </Box>
                 </Stack>
             )}
-            {record.phone_number2?.number && (
+            {/* {record.phone_number2?.number && (
                 <Stack
                     direction="row"
                     alignItems="center"
@@ -105,7 +106,7 @@ export const ContactAside = ({ link = 'edit' }: { link?: 'edit' | 'show' }) => {
                         )}
                     </Box>
                 </Stack>
-            )}
+            )} */}
             <SelectField
                 source="gender"
                 choices={contactGender}
@@ -126,7 +127,7 @@ export const ContactAside = ({ link = 'edit' }: { link?: 'edit' | 'show' }) => {
                 )}
                 optionValue="value"
             />
-            <Typography variant="subtitle2" mt={2}>
+            {/* <Typography variant="subtitle2" mt={2}>
                 Background info
             </Typography>
             <Divider />
@@ -175,8 +176,8 @@ export const ContactAside = ({ link = 'edit' }: { link?: 'edit' | 'show' }) => {
                         }
                     />
                 </ReferenceField>
-            </Box>
-            <Box mb={3}>
+            </Box> */}
+            {/* <Box mb={3}>
                 <Typography variant="subtitle2">Tags</Typography>
                 <Divider />
                 <TagsListEdit />
@@ -192,7 +193,7 @@ export const ContactAside = ({ link = 'edit' }: { link?: 'edit' | 'show' }) => {
                     <TasksIterator />
                 </ReferenceManyField>
                 <AddTask />
-            </Box>
+            </Box> */}
             <DeleteButton redirect={location.state?.from || undefined} />
         </Box>
     );
