@@ -1,7 +1,7 @@
 import { ApolloQueryResult, gql } from '@apollo/client';
 import { BuildQueryFactory } from 'ra-data-graphql';
 import { CREATE, DataProvider, DELETE, GET_LIST, GET_MANY, GET_ONE } from 'react-admin';
-
+import {CompanyFragment, ContactFragment, LogoFragment, AvatarFragment,AddressFragment} from './queryfragments'
 // TODO: Create and Update Queries for the customer.
 
 export const customerQueries = (type: string, params: any) => {
@@ -63,40 +63,14 @@ export const customerQueries = (type: string, params: any) => {
             query: gql`
                 query CustomerListQuery($first: Int!) {
                     listCustomers(take: $first, relationLoadStrategy: join, include: { logo: true, contacts: true}) {
-                        id
-                        name
-                        description
-                        domain
-                        industry
-                        founded
-                        country
-                        city
-                        zipcode
-                        email
-                        phone
-                        company
-                        website
-                        linkedinUrl
-                        taxIdentifier
-                        size
-                        logo{
-                            title
-                            src
-                        }
-                        contacts {
-                            customerId
-                            firstName
-                            lastName
-                            phone
-                            email
-                        }
-                        revenue                            
-                        hierarchyId
-                        status
-                        createdAt
-                        updatedAt
+                        ...CompanyFragment
                     }
                 }
+                ${CompanyFragment}
+                ${ContactFragment}
+                ${LogoFragment}
+                ${AvatarFragment}
+                ${AddressFragment}
             `,
             // TODO: Sol change for the pagination
             // variables: params.data,
@@ -123,40 +97,14 @@ export const customerQueries = (type: string, params: any) => {
                         include: { logo: true, contacts: true}
                     ) 
                     {
-                        id
-                        name
-                        description
-                        domain
-                        industry
-                        founded
-                        country
-                        city
-                        zipcode
-                        email
-                        phone
-                        company
-                        website
-                        linkedinUrl
-                        taxIdentifier
-                        size
-                        logo{
-                            title
-                            src
-                        }
-                        contacts {
-                            customerId
-                            firstName
-                            lastName
-                            phone
-                            email
-                        }
-                        revenue                            
-                        hierarchyId
-                        status
-                        createdAt
-                        updatedAt
+                        ...CompanyFragment
                     }
                 }
+                ${CompanyFragment}
+                ${ContactFragment}
+                ${LogoFragment}
+                ${AvatarFragment}
+                ${AddressFragment}
             `,
             variables: {id: Number(params.id)},
             parseResponse: ({ data }: ApolloQueryResult<any>) => {

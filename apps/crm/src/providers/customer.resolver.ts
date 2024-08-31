@@ -14,10 +14,10 @@ import {
   DeleteOneCustomerArgs,
   DeleteManyCustomerArgs,
 } from '../generated/prismagraphql/customer';
-import { 
+import {
   FindManyCustomerIncludeArgs,
-  FindUniqueCustomerIncludeArgs
- } from '../types/types';
+  FindUniqueCustomerIncludeArgs,
+} from '../types/types';
 import { AffectedRows } from '../generated/prismagraphql/prisma';
 import { Resolver, Query, Args, Mutation } from '@nestjs/graphql';
 import { CustomerCrudService } from './customer.crud.service';

@@ -1,6 +1,7 @@
 import { ApolloQueryResult, gql } from '@apollo/client';
 import { BuildQueryFactory } from 'ra-data-graphql';
-import { CREATE, DataProvider, DELETE, GET_LIST, GET_MANY, GET_ONE } from 'react-admin';
+import { CREATE, DataProvider, DELETE, GET_LIST, GET_MANY, GET_ONE, GET_MANY_REFERENCE } from 'react-admin';
+import { ContactFragment,AvatarFragment } from './queryfragments';
 
 // TODO: Create and Update Queries for the contact.
 
@@ -58,6 +59,41 @@ export const contactQueries = (type: string, params: any) => {
             },
         };
     }
+
+    if (type === GET_MANY_REFERENCE) {
+        return {
+            query: gql`
+                query GetContactListOfCustomerQuery($customerId: Int!) {
+                    listContacts(
+                        where: {
+                            customerId:{
+                                equals : $customerId
+                            }
+                        },
+                        take:25,
+                        relationLoadStrategy: join,
+                        include : {
+                            avatar: true
+                        }
+                    ){
+                        ...ContactFragment
+                    }
+                }
+                {ContactFragment}
+                {AvatarFragment}
+            `,
+            variables: {customerId:Number(params.id) },
+            parseResponse: ({ data }: ApolloQueryResult<any>) => {
+                if (data.listContacts) {
+                    return { data: data.listContacts };
+                }
+
+                throw new Error(`Could not create Customer`);
+            },
+        };
+    }
+
+
     debugger;
     if (type === GET_LIST) {
         return {
@@ -105,63 +141,6 @@ export const contactQueries = (type: string, params: any) => {
             },
         };
     }
-
-    if (type === GET_ONE) {
-        debugger;
-        return {
-            query: gql`
-                query CustomerFindQuery($id: Int!) {
-                    findUniqueCustomer(
-                        where: {
-                            id: $id
-                        }, 
-                        relationLoadStrategy: join, 
-                        include: { logo: true, contacts: true}
-                    ) 
-                    {
-                        id
-                        name
-                        description
-                        domain
-                        industry
-                        founded
-                        country
-                        city
-                        zipcode
-                        email
-                        phone
-                        company
-                        website
-                        linkedinUrl
-                        taxIdentifier
-                        size
-                        logo{
-                            title
-                            src
-                        }
-                        contacts {
-                            customerId
-                            firstName
-                            lastName
-                            phone
-                            email
-                        }
-                        revenue                            
-                        hierarchyId
-                        status
-                        createdAt
-                        updatedAt
-                    }
-                }
-            `,
-            variables: {id: Number(params.id)},
-            parseResponse: ({ data }: ApolloQueryResult<any>) => {
-                if (data.findUniqueCustomer) {
-                    return {data: data.findUniqueCustomer};
-                }
-                throw new Error(`Could not fetch the Customer`);
-            },
-        };
-    }
-    throw new Error(`Customer Query Not Found`);
+    
+    throw new Error(`Contact Query Not Found`);
 }

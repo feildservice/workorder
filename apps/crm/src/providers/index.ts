@@ -1,4 +1,4 @@
-export * from './customer.service'; 
+export * from './customer.service';
 export * from './prisma.service';
 export * from './customer.resolver';
 export * from './customer.crud.service';

@@ -16,7 +16,7 @@ import {
 } from '../generated/prismagraphql/contact';
 import {
   FindManyContactIncludeArgs,
-  FindUniqueContactIncludeArgs
+  FindUniqueContactIncludeArgs,
 } from '../types/types';
 import { AffectedRows } from '../generated/prismagraphql/prisma';
 import { Resolver, Query, Args, Mutation } from '@nestjs/graphql';
@@ -28,7 +28,7 @@ import { ContactCrudService } from './contact.crud.service';
 
 @Resolver(() => Contact)
 export class ContactResolver {
-  constructor(private readonly contactService: ContactCrudService) { }
+  constructor(private readonly contactService: ContactCrudService) {}
 
   @Query(() => Contact, { nullable: false })
   findFirstContact(@Args() args: FindFirstContactArgs) {

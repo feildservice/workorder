@@ -65,7 +65,7 @@ const customBuildQuery: BuildQueryFactory = introspectionResults => {
             return customerQueries(type, params)
         }
         if (resource === 'Contact') {
-            return customerQueries(type, params)
+            return contactQueries(type, params)
         }
 
         return buildQuery(type, resource, params);

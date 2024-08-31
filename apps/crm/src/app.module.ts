@@ -16,16 +16,14 @@ import { join } from 'path';
       // context: ({ req }) => ({ request: req }),
     }),
   ],
-  controllers: [
-    controllers.CustomerController
-  ],
+  controllers: [controllers.CustomerController],
   providers: [
-    providers.CustomerService, 
+    providers.CustomerService,
     providers.PrismaService,
     providers.CustomerResolver,
     providers.CustomerCrudService,
     providers.ContactResolver,
-    providers.ContactCrudService
+    providers.ContactCrudService,
   ],
 })
 export class AppModule {}

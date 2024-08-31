@@ -15,10 +15,10 @@ import {
   CustomerAggregateArgs,
   CustomerGroupByArgs,
 } from '../generated/prismagraphql/customer';
-import { 
+import {
   FindManyCustomerIncludeArgs,
-  FindUniqueCustomerIncludeArgs
- } from '../types/types';
+  FindUniqueCustomerIncludeArgs,
+} from '../types/types';
 
 @Injectable()
 export class CustomerCrudService extends BaseCrudService<
