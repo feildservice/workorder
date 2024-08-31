@@ -85,7 +85,7 @@ const CompanyShowContent = () => {
                                 <ReferenceManyField
                                     reference="contacts"
                                     target="customerId"
-                                    sort={{ field: 'lastname', order: 'ASC' }}
+                                    sort={{ field: 'lastName', order: 'ASC' }}
                                 >
                                     <Stack
                                         direction="row"
@@ -96,8 +96,8 @@ const CompanyShowContent = () => {
                                         {!!record.contacts && (
                                             <SortButton
                                                 fields={[
-                                                    'lastname',
-                                                    'firstname',
+                                                    'lastName',
+                                                    'firstName',
                                                     'email',
                                                 ]}
                                             />

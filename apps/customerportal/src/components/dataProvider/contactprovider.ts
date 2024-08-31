@@ -2,9 +2,9 @@ import { ApolloQueryResult, gql } from '@apollo/client';
 import { BuildQueryFactory } from 'ra-data-graphql';
 import { CREATE, DataProvider, DELETE, GET_LIST, GET_MANY, GET_ONE } from 'react-admin';
 
-// TODO: Create and Update Queries for the customer.
+// TODO: Create and Update Queries for the contact.
 
-export const customerQueries = (type: string, params: any) => {
+export const contactQueries = (type: string, params: any) => {
     if (type === CREATE) {
         return {
             query: gql`
@@ -58,47 +58,43 @@ export const customerQueries = (type: string, params: any) => {
             },
         };
     }
+    debugger;
     if (type === GET_LIST) {
         return {
             query: gql`
-                query CustomerListQuery($first: Int!) {
-                    listCustomers(take: $first, relationLoadStrategy: join, include: { logo: true, contacts: true}) {
+                query ContactListQuery($first: Int!) {
+                    listContacts(
+                        where: {
+                            customerId:{
+                                equals : 379
+                            }
+                        },
+                        take:25,
+                        relationLoadStrategy: join,
+                        include : {
+                            avatar: true
+                        }
+                    ){
                         id
-                        name
-                        description
-                        domain
-                        industry
-                        founded
-                        country
-                        city
-                        zipcode
+                        firstName
+                        middleName
+                        lastName
+                        title
+                        gender
                         email
                         phone
-                        company
-                        website
-                        linkedinUrl
-                        taxIdentifier
-                        size
-                        logo{
-                            title
+                        designation
+                        customerId
+                        isPrimary
+                        avatar {
                             src
+                        title
                         }
-                        contacts {
-                            customerId
-                            firstName
-                            lastName
-                            phone
-                            email
-                        }
-                        revenue                            
-                        hierarchyId
-                        status
                         createdAt
-                        updatedAt
+                        updatedAt    
                     }
                 }
             `,
-            // TODO: Sol change for the pagination
             // variables: params.data,
             variables: { first: 10 },
             parseResponse: ({ data }: ApolloQueryResult<any>) => {

@@ -1,4 +1,4 @@
-import { ApolloQueryResult,gql } from '@apollo/client';
+import { ApolloQueryResult, gql } from '@apollo/client';
 import buildApolloClient, {
     buildQuery as buildQueryFactory,
 } from 'ra-data-graphql-simple';
@@ -7,12 +7,16 @@ import { CREATE, DataProvider, DELETE, GET_LIST, GET_MANY, GET_ONE } from 'react
 // import gql from 'graphql-tag';
 import { IntrospectionType } from 'graphql';
 import { graphql } from '../../graphql/gql'; // Import the useQuery function
-import {customerQueries} from './customerprovider'
+import { customerQueries } from './customerprovider'
+import { contactQueries } from './contactprovider'
 
 const getGqlResource = (resource: string) => {
     switch (resource) {
         case 'customers':
             return 'Customer';
+
+        case 'contacts':
+            return 'Contact';
 
         // case 'categories':
         //     return 'Category';
@@ -58,7 +62,10 @@ const customBuildQuery: BuildQueryFactory = introspectionResults => {
         }
 
         if (resource === 'Customer') {
-            return customerQueries(type,params)
+            return customerQueries(type, params)
+        }
+        if (resource === 'Contact') {
+            return customerQueries(type, params)
         }
 
         return buildQuery(type, resource, params);

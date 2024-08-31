@@ -1,0 +1,34 @@
+query {
+  listContacts(
+    where: {
+      customerId:{
+        equals : 379
+      }
+    },
+    take:25,
+    relationLoadStrategy: join,
+    include : {
+      avatar: true
+    }
+  ){
+    id
+    firstName
+    middleName
+    lastName
+    title
+    gender
+    email
+    phone
+    designation
+    customerId
+    isPrimary
+    avatar {
+    	src
+      title
+  	}
+    createdAt
+    updatedAt    
+  }
+}
+
+
