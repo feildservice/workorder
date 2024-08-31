@@ -4,6 +4,7 @@ import englishMessages from 'ra-language-english';
 const customEnglishMessages: TranslationMessages = {
     ...englishMessages,
     pos: {
+        inbox: 'Inbox',
         search: 'Search',
         configuration: 'Configuration',
         language: 'Language',
@@ -37,7 +38,7 @@ const customEnglishMessages: TranslationMessages = {
             catalog: 'Catalog',
             customers: 'Customers',
             company: 'Company',
-            workorders: 'WorkOrders'
+            services: 'Services'
         },
         events: {
             review: {
@@ -180,7 +181,7 @@ const customEnglishMessages: TranslationMessages = {
             },
         },
         products: {
-            name: 'Poster |||| Posters',
+            name: 'Product |||| Products',
             fields: {
                 category_id: 'Category',
                 height_gte: 'Min height',

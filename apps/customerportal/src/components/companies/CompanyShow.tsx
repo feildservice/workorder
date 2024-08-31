@@ -176,7 +176,7 @@ const ContactsIterator = () => {
                                 component="span"
                             >
                                 last activity{' '}
-                                {formatDistance(contact.updatedAt, now)} ago{' '}
+                                {/* {formatDistance(contact.updatedAt, now)} ago{' '} */}
                                 {/* <Status status={contact.status} /> */}
                             </Typography>
                         </ListItemSecondaryAction>

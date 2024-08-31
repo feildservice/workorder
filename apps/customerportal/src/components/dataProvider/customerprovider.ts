@@ -85,7 +85,6 @@ export const customerQueries = (type: string, params: any) => {
     }
 
     if (type === GET_ONE) {
-        debugger;
         return {
             query: gql`
                 query CustomerFindQuery($id: Int!) {

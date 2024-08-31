@@ -14,6 +14,10 @@ import {
 } from 'react-admin';
 
 import ProductIcon from '@mui/icons-material/Collections';
+import CategoryIcon from '@mui/icons-material/Category';
+import BusinessIcon from '@mui/icons-material/Business';
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import AllInboxIcon from '@mui/icons-material/AllInbox';
 
 // import visitors from '../visitors';
 // import orders from '../orders';
@@ -26,7 +30,7 @@ import SubMenu from './SubMenu';
 //Menu should be Company Info | WorkOrders | Catalogs
 
 // type MenuName = 'menuCatalog' | 'menuSales' | 'menuCustomers';
-type MenuName = 'menuCatalog' | 'menuWorkOrders' | 'menuCustomers';
+type MenuName = 'menuCatalog' | 'menuServices' | 'menuCustomers';
 
 const Menu = ({ dense = false }: MenuProps) => {
     const [state, setState] = useState({
@@ -55,6 +59,7 @@ const Menu = ({ dense = false }: MenuProps) => {
             }}
         >
             <DashboardMenuItem />
+            <DashboardMenuItem leftIcon={<AllInboxIcon/>} primaryText = {translate('pos.inbox')} />
             <SubMenu
                 handleToggle={() => handleToggle('menuCustomers')}
                 isOpen={state.menuCustomers}
@@ -63,12 +68,12 @@ const Menu = ({ dense = false }: MenuProps) => {
                 dense={dense}
             >
                 <MenuItemLink
-                    to="/companies"
+                    to="/customers"
                     state={{ _scrollToTop: true }}
                     primaryText={translate(`resources.companies.name`, {
                         smart_count: 2,
                     })}
-                    leftIcon={<ProductIcon />}
+                    leftIcon={<BusinessIcon />}
                     dense={dense}
                 />
                 {/* <MenuItemLink
@@ -82,9 +87,9 @@ const Menu = ({ dense = false }: MenuProps) => {
                 /> */}
             </SubMenu>
             <SubMenu
-                handleToggle={() => handleToggle('menuWorkOrders')}
+                handleToggle={() => handleToggle('menuServices')}
                 isOpen={state.menuWorkOrders}
-                name="pos.menu.workorders"
+                name="pos.menu.services"
                 icon={<ProductIcon />}
                 dense={dense}
             >
@@ -115,6 +120,15 @@ const Menu = ({ dense = false }: MenuProps) => {
                 dense={dense}
             >
                 <MenuItemLink
+                    to="/categories"
+                    state={{ _scrollToTop: true }}
+                    primaryText={translate(`resources.categories.name`, {
+                        smart_count: 2,
+                    })}
+                    leftIcon={<CategoryIcon />}
+                    dense={dense}
+                />
+                <MenuItemLink
                     to="/products"
                     state={{ _scrollToTop: true }}
                     primaryText={translate(`resources.products.name`, {
@@ -122,16 +136,7 @@ const Menu = ({ dense = false }: MenuProps) => {
                     })}
                     leftIcon={<ProductIcon />}
                     dense={dense}
-                />
-                <MenuItemLink
-                    to="/categories"
-                    state={{ _scrollToTop: true }}
-                    primaryText={translate(`resources.categories.name`, {
-                        smart_count: 2,
-                    })}
-                    leftIcon={<ProductIcon />}
-                    dense={dense}
-                />
+                />              
             </SubMenu>            
             {/* <MenuItemLink
                 to="/reviews"

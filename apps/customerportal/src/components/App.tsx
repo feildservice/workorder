@@ -54,7 +54,7 @@ const App = () => {
             defaultTheme="light"
         >
             <Resource name="customers" {...companies} />
-            <Resource name="Contacts" {...contacts} />
+            <Resource name="contacts" {...contacts} />
             {/* <CustomRoutes>
                 <Route path="/segments" element={<Segments />} />
             </CustomRoutes>

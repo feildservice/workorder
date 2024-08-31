@@ -202,7 +202,7 @@ const customFrenchMessages: TranslationMessages = {
             },
         },
         products: {
-            name: 'Poster |||| Posters',
+            name: 'Product |||| Products',
             fields: {
                 category_id: 'Catégorie',
                 height_gte: 'Hauteur mini',
