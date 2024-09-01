@@ -1,8 +1,8 @@
 /**
- * README for Customer Relation Management RESTful APIs
+ * README for Control Management RESTful APIs
  *
  * This document provides an overview and usage instructions for the RESTful APIs
- * implemented for the Customer Relation Management system.
+ * implemented for the Control Management system.
  *
  * The APIs allow clients to perform various operations related to managing customer
  * information, such as creating, updating, retrieving, and deleting customer records.
