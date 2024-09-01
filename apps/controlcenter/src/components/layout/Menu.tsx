@@ -18,6 +18,9 @@ import CategoryIcon from '@mui/icons-material/Category';
 import BusinessIcon from '@mui/icons-material/Business';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import AllInboxIcon from '@mui/icons-material/AllInbox';
+import MiscellaneousServicesIcon from '@mui/icons-material/MiscellaneousServices';
+import BadgeIcon from '@mui/icons-material/Badge';
+import EngineeringIcon from '@mui/icons-material/Engineering';
 
 // import visitors from '../visitors';
 // import orders from '../orders';
@@ -61,6 +64,32 @@ const Menu = ({ dense = false }: MenuProps) => {
             <DashboardMenuItem />
             <DashboardMenuItem leftIcon={<AllInboxIcon/>} primaryText = {translate('pos.inbox')} />
             <SubMenu
+                handleToggle={() => handleToggle('menuServices')}
+                isOpen={state.menuWorkOrders}
+                name="pos.menu.services"
+                icon={<ProductIcon />}
+                dense={dense}
+            >
+                <MenuItemLink
+                    to="/requests"
+                    state={{ _scrollToTop: true }}
+                    primaryText={translate(`resources.requests.name`, {
+                        smart_count: 2,
+                    })}
+                    leftIcon={<MiscellaneousServicesIcon />}
+                    dense={dense}
+                />
+                <MenuItemLink
+                    to="/workorders"
+                    state={{ _scrollToTop: true }}
+                    primaryText={translate(`resources.workorders.name`, {
+                        smart_count: 2,
+                    })}
+                    leftIcon={<BadgeIcon />}
+                    dense={dense}
+                />
+            </SubMenu>
+            <SubMenu
                 handleToggle={() => handleToggle('menuCustomers')}
                 isOpen={state.menuCustomers}
                 name="pos.menu.customers"
@@ -76,39 +105,13 @@ const Menu = ({ dense = false }: MenuProps) => {
                     leftIcon={<BusinessIcon />}
                     dense={dense}
                 />
-                {/* <MenuItemLink
-                    to="/invoices"
-                    state={{ _scrollToTop: true }}
-                    primaryText={translate(`resources.invoices.name`, {
-                        smart_count: 2,
-                    })}
-                    leftIcon={<ProductIcon />}
-                    dense={dense}
-                /> */}
-            </SubMenu>
-            <SubMenu
-                handleToggle={() => handleToggle('menuServices')}
-                isOpen={state.menuWorkOrders}
-                name="pos.menu.services"
-                icon={<ProductIcon />}
-                dense={dense}
-            >
                 <MenuItemLink
-                    to="/customers"
+                    to="/agents"
                     state={{ _scrollToTop: true }}
-                    primaryText={translate(`resources.customers.name`, {
+                    primaryText={translate(`resources.agents.name`, {
                         smart_count: 2,
                     })}
-                    leftIcon={<ProductIcon />}
-                    dense={dense}
-                />
-                <MenuItemLink
-                    to="/segments"
-                    state={{ _scrollToTop: true }}
-                    primaryText={translate(`resources.segments.name`, {
-                        smart_count: 2,
-                    })}
-                    leftIcon={<LabelIcon />}
+                    leftIcon={<SupportAgentIcon />}
                     dense={dense}
                 />
             </SubMenu>
@@ -135,6 +138,15 @@ const Menu = ({ dense = false }: MenuProps) => {
                         smart_count: 2,
                     })}
                     leftIcon={<ProductIcon />}
+                    dense={dense}
+                />
+                <MenuItemLink
+                    to="/services"
+                    state={{ _scrollToTop: true }}
+                    primaryText={translate(`resources.services.name`, {
+                        smart_count: 2,
+                    })}
+                    leftIcon={<EngineeringIcon />}
                     dense={dense}
                 />              
             </SubMenu>            

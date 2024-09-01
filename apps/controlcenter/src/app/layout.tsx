@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Customer Portal - Field Service Management",
-  description: "Customer Portal for Field Service Management",
+  title: "Control Center - Field Service Management",
+  description: "Control Center for Field Service Management",
 };
 
 export default function RootLayout({
