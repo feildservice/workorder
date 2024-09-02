@@ -7,6 +7,7 @@ export class BaseCrudService<
   FindFirstArg,
   FindUniqueArg,
   FindManyArg,
+  // FindManyPaginationArg,
   GroupByArg,
   AggregateArg,
   CreateArg,
@@ -29,6 +30,14 @@ export class BaseCrudService<
   findMany(args: FindManyArg): Promise<T[]> {
     return this.prisma[this.getModelName()].findMany(args);
   }
+
+  // TODO: Sol add the pagination around any record 
+  // findManyPagination(args: FindManyPaginationArg): Promise<T[]> {
+
+
+
+  //   return this.prisma[this.getModelName()].findMany(args);
+  // }
 
   groupBy(args: GroupByArg) {
     return this.prisma[this.getModelName()].groupBy(args);

@@ -21,6 +21,7 @@ import AllInboxIcon from '@mui/icons-material/AllInbox';
 import MiscellaneousServicesIcon from '@mui/icons-material/MiscellaneousServices';
 import BadgeIcon from '@mui/icons-material/Badge';
 import EngineeringIcon from '@mui/icons-material/Engineering';
+import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
 
 // import visitors from '../visitors';
 // import orders from '../orders';
@@ -114,6 +115,15 @@ const Menu = ({ dense = false }: MenuProps) => {
                     leftIcon={<SupportAgentIcon />}
                     dense={dense}
                 />
+                <MenuItemLink
+                    to="/technicians"
+                    state={{ _scrollToTop: true }}
+                    primaryText={translate(`resources.technicians.name`, {
+                        smart_count: 2,
+                    })}
+                    leftIcon={<EngineeringIcon />}
+                    dense={dense}
+                />
             </SubMenu>
             <SubMenu
                 handleToggle={() => handleToggle('menuCatalog')}
@@ -146,7 +156,7 @@ const Menu = ({ dense = false }: MenuProps) => {
                     primaryText={translate(`resources.services.name`, {
                         smart_count: 2,
                     })}
-                    leftIcon={<EngineeringIcon />}
+                    leftIcon={<HomeRepairServiceIcon />}
                     dense={dense}
                 />              
             </SubMenu>            

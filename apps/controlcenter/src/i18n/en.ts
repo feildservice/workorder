@@ -179,6 +179,49 @@ const customEnglishMessages: TranslationMessages = {
                     'The password confirmation is not the same as the password.',
             },
         },
+        technicians: {
+            name: 'Technician |||| Technicians',
+            fields: {
+                orders: 'Orders',
+                first_seen: 'First seen',
+                full_name: 'Name',
+                groups: 'Segments',
+                last_seen: 'Last seen',
+                last_seen_gte: 'Visited Since',
+                name: 'Name',
+                total_spent: 'Total spent',
+                password: 'Password',
+                confirm_password: 'Confirm password',
+                stateAbbr: 'State',
+            },
+            filters: {
+                last_visited: 'Last visited',
+                today: 'Today',
+                this_week: 'This week',
+                last_week: 'Last week',
+                this_month: 'This month',
+                last_month: 'Last month',
+                earlier: 'Earlier',
+                has_ordered: 'Has ordered',
+                has_newsletter: 'Has newsletter',
+                group: 'Segment',
+            },
+            fieldGroups: {
+                identity: 'Identity',
+                address: 'Address',
+                stats: 'Stats',
+                history: 'History',
+                password: 'Password',
+                change_password: 'Change Password',
+            },
+            page: {
+                delete: 'Delete Customer',
+            },
+            errors: {
+                password_mismatch:
+                    'The password confirmation is not the same as the password.',
+            },
+        },
         services: {
             name: 'Service |||| Services',
             fields: {
