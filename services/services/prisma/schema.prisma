@@ -36,3 +36,9 @@ model Catalogs {
     name        String
     description String    
 }
+
+model Services {
+    id          String     @id @default(auto()) @map("_id")  @db.ObjectId
+    name        String
+    
+}

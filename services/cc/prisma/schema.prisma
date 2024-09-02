@@ -48,6 +48,15 @@ enum Gender {
   NOTMENTIONED
 }
 
+enum UserRole {
+  ADMIN
+  FIELD_TECHNICIAN
+  CUSTOMER_AGENT
+  SERVICE_MANAGER
+  SERVICE_DISPATCHER
+  CUSTOMER
+}
+
 model Customer {
   id          Int       @id @default(autoincrement())
   name        String    @db.VarChar(150)
@@ -154,6 +163,7 @@ model Agreement {
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 }
+
 model Logo {
   id          Int       @id @default(autoincrement())
   title       String    @db.VarChar(150)
@@ -170,6 +180,11 @@ model Avatar {
   contactId   Int       @unique
 }
 
+enum AgentType {
+  CUSTOMER_AGENT
+  FIELD_TECHNICIAN
+}
+
 model Agent {
   id          Int       @id @default(autoincrement())
   firstName   String    @db.VarChar(150)
@@ -180,6 +195,49 @@ model Agent {
   email       String    @unique @db.VarChar(150)
   phone       String?   @db.VarChar(50)
   designation String?   @db.VarChar(100)
+  agentType             AgentType
+  calendars             WorkCalendar[]
+  serviceTerritories    AgentTerritory[]
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
+}
+
+model WorkCalendar {
+  id           Int       @id @default(autoincrement())
+  year         Int
+  month        Int
+  day          Int
+  startTime    DateTime
+  endTime      DateTime
+  available    Boolean
+  agent        Agent @relation(fields: [agentId], references: [id])
+  agentId      Int
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt   
+}
+
+model ServiceTerritory {
+  id              Int          @id @default(autoincrement())
+  name            String       @db.VarChar(150)
+  Locality        String       @db.VarChar(150) 
+  City            String       @db.VarChar(150)
+  Country         String       @db.VarChar(150)
+  subTerritories  SubTerritory[]    
+}
+
+model SubTerritory {
+  id                Int          @id @default(autoincrement())
+  name              String       @db.VarChar(150)
+  Locality          String       @db.VarChar(150) 
+  parentTerritory   ServiceTerritory @relation(fields: [parentTerritoryId], references: [id])
+  parentTerritoryId Int
+  agents            AgentTerritory[]
+}
+
+model AgentTerritory {
+  id                  Int   @id @default(autoincrement())
+  agent               Agent @relation(fields: [agentId], references: [id])
+  agentId             Int
+  subTerritory        SubTerritory @relation(fields: [subTerritortId], references: [id])
+  subTerritortId  Int
 }
