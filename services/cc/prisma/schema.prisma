@@ -219,9 +219,11 @@ model WorkCalendar {
 model ServiceTerritory {
   id              Int          @id @default(autoincrement())
   name            String       @db.VarChar(150)
-  Locality        String       @db.VarChar(150) 
-  City            String       @db.VarChar(150)
-  Country         String       @db.VarChar(150)
+  locality        String       @db.VarChar(150) 
+  city            String       @db.VarChar(150)
+  state           String       @db.VarChar(150)
+  country         String       @db.VarChar(150)
+  isocode         String       @db.VarChar(50)
   latitude        Float
   longitude       Float
   subTerritories  SubTerritory[]    
@@ -230,7 +232,7 @@ model ServiceTerritory {
 model SubTerritory {
   id                Int          @id @default(autoincrement())
   name              String       @db.VarChar(150)
-  Locality          String       @db.VarChar(150) 
+  locality          String       @db.VarChar(150) 
   latitude          Float
   longitude         Float
   parentTerritory   ServiceTerritory @relation(fields: [parentTerritoryId], references: [id])
