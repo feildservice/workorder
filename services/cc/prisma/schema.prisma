@@ -244,6 +244,6 @@ model AgentTerritory {
   id                  Int   @id @default(autoincrement())
   agent               Agent @relation(fields: [agentId], references: [id])
   agentId             Int
-  subTerritory        SubTerritory @relation(fields: [subTerritortId], references: [id])
-  subTerritortId  Int
+  subTerritory        SubTerritory @relation(fields: [subTerritoryId], references: [id])
+  subTerritoryId  Int
 }

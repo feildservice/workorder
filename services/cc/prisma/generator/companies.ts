@@ -78,7 +78,7 @@ export const generateCompanies = (
 export const generateContacts = (
   companyId: number,
 ): Prisma.ContactUpsertArgs<DefaultArgs>[] => {
-  return Array.from(Array(10).keys()).map((id) => {
+  return Array.from(Array(10).keys()).map(() => {
     const contactEmail = faker.internet.email();
     return {
       where: {

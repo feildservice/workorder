@@ -1,9 +1,15 @@
-import { PrismaClient, ServiceTerritory } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 import { generateCompanies, generateContacts } from './generator/companies';
 import {
   generateTerritories,
   generateSubTerritories,
 } from './generator/territories';
+
+import {
+  generateAgents,
+  generateWorkCalendar,
+  generateAgentTerritories,
+} from './generator/agentstechnicians';
 
 const prisma = new PrismaClient();
 
@@ -19,6 +25,10 @@ async function main() {
 
   await prisma.subTerritory.deleteMany();
   await prisma.serviceTerritory.deleteMany();
+
+  await prisma.workCalendar.deleteMany();
+  await prisma.agentTerritory.deleteMany();
+  await prisma.agent.deleteMany();
 
   console.log('Seeding... companies');
 
@@ -45,6 +55,25 @@ async function main() {
     );
     await prisma.subTerritory.createMany(
       generateSubTerritories(serviceTerritory),
+    );
+  }
+
+  const subTerritoriesIds = await prisma.subTerritory.findMany({
+    select: {
+      id: true,
+    },
+  });
+
+  const agentsToCreate = generateAgents(100);
+
+  for (let i = 0; i < agentsToCreate.length; i++) {
+    const agentCreated = await prisma.agent.upsert(agentsToCreate[i]);
+    await prisma.workCalendar.createMany(generateWorkCalendar(agentCreated.id));
+    await prisma.agentTerritory.createMany(
+      generateAgentTerritories(
+        agentCreated.id,
+        subTerritoriesIds.map((subTerritory) => subTerritory.id),
+      ),
     );
   }
 }
