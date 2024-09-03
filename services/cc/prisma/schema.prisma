@@ -222,6 +222,8 @@ model ServiceTerritory {
   Locality        String       @db.VarChar(150) 
   City            String       @db.VarChar(150)
   Country         String       @db.VarChar(150)
+  latitude        Float
+  longitude       Float
   subTerritories  SubTerritory[]    
 }
 
@@ -229,6 +231,8 @@ model SubTerritory {
   id                Int          @id @default(autoincrement())
   name              String       @db.VarChar(150)
   Locality          String       @db.VarChar(150) 
+  latitude          Float
+  longitude         Float
   parentTerritory   ServiceTerritory @relation(fields: [parentTerritoryId], references: [id])
   parentTerritoryId Int
   agents            AgentTerritory[]
