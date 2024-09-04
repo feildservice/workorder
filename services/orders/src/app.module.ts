@@ -7,9 +7,11 @@ import * as providers from './providers';
   imports: [
     LoggerModule.forRoot()
   ],
-  controllers: [controllers.WorkOrderController],
+  controllers: [
+    // controllers.WorkOrderController
+  ],
   providers: [
-    providers.WorkOrderService,
+    // providers.WorkOrderService,
     providers.PrismaService
   ],
 })

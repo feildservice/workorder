@@ -1,4 +1,4 @@
-import { Logger as NestLogger } from '@nestjs/common';
+import { Logger as NestLogger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import type { NestExpressApplication } from '@nestjs/platform-express';
 import { Logger, LoggerErrorInterceptor } from 'nestjs-pino';
@@ -14,6 +14,7 @@ async function bootstrap(): Promise<string> {
   });
 
   app.useLogger(app.get(Logger));
+  app.useGlobalPipes(new ValidationPipe({transform: true}));
   app.useGlobalInterceptors(new LoggerErrorInterceptor());
 
   if (isProduction) {
@@ -24,6 +25,7 @@ async function bootstrap(): Promise<string> {
   middleware(app);
 
   app.enableShutdownHooks();
+  app.enableCors();
   await app.listen(process.env.PORT || 3000);
 
   return app.getUrl();
