@@ -14,13 +14,69 @@ generator client {
   // output   = "./prisma-client"
 }
 
+enum InvoiceStatus {
+  PENDING
+  PAID
+  CANCELLED
+}
+
+enum RequestStatus {
+  PENDING
+  ACCEPTED
+  WORKORDER_CREATED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+model ServiceRequest {
+  id          String    @id @default(auto()) @map("_id")  @db.ObjectId
+  title       String
+  description String
+  status      RequestStatus @default(PENDING)
+  location    Location? @relation(fields: [locationId], references: [id])
+  locationId  String?   @db.ObjectId  @unique
+  serviceType ServiceType @relation(fields: [serviceTypeId], references: [id])
+  serviceTypeId String  @db.ObjectId  
+  invoices    Invoice[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime? @updatedAt
+}
+
+model ServiceType {
+  id          String    @id @default(auto()) @map("_id")  @db.ObjectId
+  name        String
+  description String?
+  workflow    Workflow[]
+  requests    ServiceRequest[] 
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime? @updatedAt
+}
+
+model Invoice {
+  id          String      @id @default(auto()) @map("_id")  @db.ObjectId
+  amount      Float
+  status      InvoiceStatus @default(PENDING)
+  request     ServiceRequest? @relation(fields: [requestId], references: [id])
+  requestId   String?   @db.ObjectId 
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime?   @updatedAt
+}
+
+model Workflow {
+  id            String    @id @default(auto()) @map("_id")  @db.ObjectId
+  serviceType   ServiceType @relation(fields: [serviceTypeId], references: [id])
+  serviceTypeId String    @db.ObjectId
+  steps         String[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime? @updatedAt
+}
 model WorkOrder {
   id          String    @id @default(auto()) @map("_id")  @db.ObjectId
   title       String
   description String
   status      String?
-  location    Location? @relation(fields: [locationId], references: [id], onDelete: Cascade)
-  locationId  String?   @db.ObjectId
+  
   createdAt   DateTime @default(now())
   updatedAt   DateTime? @updatedAt
 }
@@ -33,7 +89,7 @@ model Location {
   zipCode   String
   latitude  Float
   longitude Float
-  workOrder WorkOrder[]
+  ServiceRequest ServiceRequest?  
 }
 
 //Territory and Scheduling
