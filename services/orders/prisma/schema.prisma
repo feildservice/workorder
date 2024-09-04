@@ -1,17 +1,38 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 datasource db {
-  provider = "mongodb"
+  provider = "postgresql" // or your preferred database provider
   url      = env("DATABASE_URL")
 }
 
+generator nestgraphql {
+  provider = "node node_modules/prisma-nestjs-graphql"
+  output   = "../src/generated/prismagraphql"
+  reExport = Directories
+}
+
 generator client {
-  provider = "prisma-client-js"
-  // output   = "./prisma-client"
+  provider        = "prisma-client-js"
+  previewFeatures = ["relationJoins"]
+}
+
+generator nestjsDto {
+  provider                        = "prisma-generator-nestjs-dto"
+  output                          = "../src/generated/nestjs-dto"
+  outputToNestJsResourceStructure = "false"
+  flatResourceStructure           = "false"
+  exportRelationModifierClasses   = "true"
+  reExport                        = "false"
+  createDtoPrefix                 = "Create"
+  updateDtoPrefix                 = "Update"
+  dtoSuffix                       = "Dto"
+  entityPrefix                    = ""
+  entitySuffix                    = ""
+  classValidation                 = "true"
+  fileNamingStyle                 = "camel"
+  noDependencies                  = "false"
+  outputType                      = "class"
+  definiteAssignmentAssertion     = "true"
+  prettier                        = "false"
+  forceIdOnConnect                = "false"
 }
 
 enum InvoiceStatus {
@@ -29,67 +50,87 @@ enum RequestStatus {
   CANCELLED
 }
 
+enum Priority {
+  NORMAL
+  EXPRESS
+  URGENT
+}
+
+enum RequestType {
+  INCIDENT
+  AUTOMATED
+}
+
 model ServiceRequest {
-  id          String    @id @default(auto()) @map("_id")  @db.ObjectId
-  title       String
-  description String
-  status      RequestStatus @default(PENDING)
-  location    Location? @relation(fields: [locationId], references: [id])
-  locationId  String?   @db.ObjectId  @unique
-  serviceType ServiceType @relation(fields: [serviceTypeId], references: [id])
-  serviceTypeId String  @db.ObjectId  
-  invoices    Invoice[]
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime? @updatedAt
+  id              Int                  @id @default(autoincrement())
+  title           String               @db.VarChar(150)
+  description     String?              @db.VarChar(500)
+  status          RequestStatus        @default(PENDING)
+  servicelocation Location?            @relation(fields: [locationId], references: [id])
+  locationId      Int?                 @unique
+  requestType     RequestType
+  serviceTypes    ServiceRequestType[]
+  invoices        Invoice[]
+  createdAt       DateTime             @default(now())
+  updatedAt       DateTime?            @updatedAt
+}
+
+model ServiceRequestType {
+  id               Int            @id @default(autoincrement())
+  priority         Priority
+  serviceRequest   ServiceRequest @relation(fields: [serviceRequestId], references: [id])
+  serviceRequestId Int
+  serviceType      ServiceType    @relation(fields: [serviceTypeId], references: [id])
+  serviceTypeId    Int
 }
 
 model ServiceType {
-  id          String    @id @default(auto()) @map("_id")  @db.ObjectId
-  name        String
-  description String?
+  id          Int                  @id @default(autoincrement())
+  name        String               @db.VarChar(150)
+  description String?              @db.VarChar(500)
   workflow    Workflow[]
-  requests    ServiceRequest[] 
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime? @updatedAt
+  requests    ServiceRequestType[]
+  createdAt   DateTime             @default(now())
+  updatedAt   DateTime?            @updatedAt
 }
 
 model Invoice {
-  id          String      @id @default(auto()) @map("_id")  @db.ObjectId
-  amount      Float
-  status      InvoiceStatus @default(PENDING)
-  request     ServiceRequest? @relation(fields: [requestId], references: [id])
-  requestId   String?   @db.ObjectId 
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime?   @updatedAt
+  id        Int             @id @default(autoincrement())
+  amount    Float
+  tax       Float
+  currency  String?         @db.VarChar(10)
+  status    InvoiceStatus   @default(PENDING)
+  request   ServiceRequest? @relation(fields: [requestId], references: [id])
+  requestId Int
+  createdAt DateTime        @default(now())
+  updatedAt DateTime?       @updatedAt
+}
+
+model CurrencyCode {
+  id          Int    @id @default(autoincrement())
+  code        String @db.VarChar(10)
+  description String @db.VarChar(50)
 }
 
 model Workflow {
-  id            String    @id @default(auto()) @map("_id")  @db.ObjectId
+  id            Int         @id @default(autoincrement())
   serviceType   ServiceType @relation(fields: [serviceTypeId], references: [id])
-  serviceTypeId String    @db.ObjectId
+  serviceTypeId Int
   steps         String[]
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime? @updatedAt
-}
-model WorkOrder {
-  id          String    @id @default(auto()) @map("_id")  @db.ObjectId
-  title       String
-  description String
-  status      String?
-  
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime? @updatedAt
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime?   @updatedAt
 }
 
 model Location {
-  id        String   @id @default(auto()) @map("_id")  @db.ObjectId
-  address   String
-  city      String
-  state     String
-  zipCode   String
-  latitude  Float
-  longitude Float
-  ServiceRequest ServiceRequest?  
+  id             Int             @id @default(autoincrement())
+  address        String          @db.VarChar(250)
+  city           String          @db.VarChar(150)
+  state          String          @db.VarChar(100)
+  zipCode        String          @db.VarChar(20)
+  landmark       String?         @db.VarChar(10)
+  latitude       Float
+  longitude      Float
+  ServiceRequest ServiceRequest?
 }
 
 //Territory and Scheduling
