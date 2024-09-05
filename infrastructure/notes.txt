@@ -7,3 +7,7 @@ export NODE_TLS_REJECT_UNAUTHORIZED=0
 https://the-guild.dev/graphql/codegen/docs/guides/react-vue
 developer tools for graphql
 https://wundergraph.com/blog/10_graphql_tools_to_increase_developer_productivity
+
+
+https://componentator.com/
+https://www.totaljs.com/online/
