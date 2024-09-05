@@ -28,8 +28,16 @@ services:
       - POSTGRES_PASSWORD=Yarn@2021
       - POSTGRES_USER=fielduser
       - POSTGRES_DB=crm_db  
-
+  nodered:
+    image: nodered/node-red:latest
+    ports:
+      - 1880:1880
+    volumes:
+      - "nodered_data:/data"
+    environment:
+      - TZ=Asia/Kolkata    
 volumes:
   mongo1_data:
   mongo1_config:
   postgres_data:
+  nodered_data:
