@@ -11,3 +11,12 @@ https://wundergraph.com/blog/10_graphql_tools_to_increase_developer_productivity
 
 https://componentator.com/
 https://www.totaljs.com/online/
+
+cc:
+DATABASE_URL="postgresql://fielduser:Yarn@2021@localhost/crm_db?connect_timeout=10&application_name=cc"
+
+orders:
+DATABASE_URL="postgresql://fielduser:Yarn@2021@localhost/orders_db?connect_timeout=10&application_name=orders"
+
+services:
+DATABASE_URL="mongodb://localhost:27017/services?authSource=admin&directConnection=true"
