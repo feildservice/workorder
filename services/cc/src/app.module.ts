@@ -18,6 +18,12 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
   ],
   controllers: [controllers.CustomerController],
   providers: [
+    providers.OrganizationResolver,
+    providers.OrganizationCrudService,
+    providers.AgentTerritoryCrudService,
+    providers.AgentTerritoryResolver,
+    providers.ServiceTerritoryCrudService,
+    providers.ServiceTerritoryResolver,
     providers.CustomerService,
     providers.PrismaService,
     providers.CustomerResolver,
