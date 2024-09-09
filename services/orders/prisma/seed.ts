@@ -11,10 +11,6 @@ import {
   generateAgentTerritories,
 } from './generator/agentstechnicians';
 
-import {
-  generatOrganizations
-} from './generator/organizations';
-
 const prisma = new PrismaClient();
 
 async function main() {
@@ -34,19 +30,9 @@ async function main() {
   await prisma.agentTerritory.deleteMany();
   await prisma.agent.deleteMany();
 
-  await prisma.organization.deleteMany();
-
   console.log('Seeding... companies');
 
-  const organizations = generatOrganizations(2);
-  const arrOrganizationIds: number[] = [];
-
-  for (let i = 0; i < organizations.length; i++) {
-    const organizationCreated = await prisma.organization.upsert(organizations[i]);
-    arrOrganizationIds.push(organizationCreated.id);
-  }
-
-  const companiesToCreate = generateCompanies(55, arrOrganizationIds);
+  const companiesToCreate = generateCompanies(55);
   const arrCompanyIds: number[] = [];
 
   for (let i = 0; i < companiesToCreate.length; i++) {

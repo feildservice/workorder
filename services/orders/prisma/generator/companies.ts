@@ -22,7 +22,6 @@ const regex = /\W+/;
 
 export const generateCompanies = (
   fakeCompanies: number,
-  arrOrganizationIds: number[]
 ): Prisma.CustomerUpsertArgs<DefaultArgs>[] => {
   // export const generateCompanies = (): any[] => {
   return Array.from(Array(fakeCompanies).keys()).map((id) => {
@@ -71,7 +70,6 @@ export const generateCompanies = (
           ],
         },
         status: CompanyStatus.ACTIVE,
-        organizationId: faker.helpers.arrayElement(arrOrganizationIds),
       },
     };
   });

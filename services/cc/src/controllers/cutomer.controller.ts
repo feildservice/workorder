@@ -45,17 +45,17 @@ import { Address } from 'src/generated/nestjs-dto/address.entity';
       });
     }
   
-    @Post('customer')
-    async createCustomer(
-      @Body() customerData: CreateCustomerDto,
-    ): Promise<CustomerModel> {
-      return this.customerService.createCustomer(
-        customerData as CustomerModel
-      );
-    }
+    // @Post('customer')
+    // async createCustomer(
+    //   @Body() customerData: CreateCustomerDto,
+    // ): Promise<CustomerModel> {
+    //   return this.customerService.createCustomer(
+    //     customerData as CustomerModel
+    //   );
+    // }
     
-    @Delete('customer/:id')
-    async deleteCustomer(@Param('id') id: number): Promise<CustomerModel> {
-      return this.customerService.deleteCustomer({ id: id });
-    }
+    // @Delete('customer/:id')
+    // async deleteCustomer(@Param('id') id: number): Promise<CustomerModel> {
+    //   return this.customerService.deleteCustomer({ id: id });
+    // }
   }

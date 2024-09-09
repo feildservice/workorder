@@ -989,6 +989,8 @@ type Customer {
   linkedinUrl: String!
   logo: Logo
   name: String!
+  organization: Organization!
+  organizationId: Int!
   phone: String
   revenue: String
   services: [Service!]
@@ -1003,16 +1005,19 @@ type Customer {
 type CustomerAvgAggregate {
   hierarchyId: Float
   id: Float
+  organizationId: Float
 }
 
 input CustomerAvgAggregateInput {
   hierarchyId: Boolean
   id: Boolean
+  organizationId: Boolean
 }
 
 input CustomerAvgOrderByAggregateInput {
   hierarchyId: SortOrder
   id: SortOrder
+  organizationId: SortOrder
 }
 
 type CustomerCount {
@@ -1038,6 +1043,7 @@ type CustomerCountAggregate {
   industry: Int!
   linkedinUrl: Int!
   name: Int!
+  organizationId: Int!
   phone: Int!
   revenue: Int!
   size: Int!
@@ -1064,6 +1070,7 @@ input CustomerCountAggregateInput {
   industry: Boolean
   linkedinUrl: Boolean
   name: Boolean
+  organizationId: Boolean
   phone: Boolean
   revenue: Boolean
   size: Boolean
@@ -1089,6 +1096,7 @@ input CustomerCountOrderByAggregateInput {
   industry: SortOrder
   linkedinUrl: SortOrder
   name: SortOrder
+  organizationId: SortOrder
   phone: SortOrder
   revenue: SortOrder
   size: SortOrder
@@ -1117,6 +1125,7 @@ input CustomerCreateInput {
   linkedinUrl: String!
   logo: LogoCreateNestedOneWithoutCustomerInput
   name: String!
+  organization: OrganizationCreateNestedOneWithoutCustomersInput!
   phone: String
   revenue: String
   services: ServiceCreateNestedManyWithoutCustomerInput
@@ -1142,6 +1151,7 @@ input CustomerCreateManyHierarchyInput {
   industry: String
   linkedinUrl: String!
   name: String!
+  organizationId: Int!
   phone: String
   revenue: String
   size: String
@@ -1172,6 +1182,7 @@ input CustomerCreateManyInput {
   industry: String
   linkedinUrl: String!
   name: String!
+  organizationId: Int!
   phone: String
   revenue: String
   size: String
@@ -1222,6 +1233,7 @@ input CustomerCreateWithoutContactsInput {
   linkedinUrl: String!
   logo: LogoCreateNestedOneWithoutCustomerInput
   name: String!
+  organization: OrganizationCreateNestedOneWithoutCustomersInput!
   phone: String
   revenue: String
   services: ServiceCreateNestedManyWithoutCustomerInput
@@ -1250,6 +1262,7 @@ input CustomerCreateWithoutHierarchyInput {
   linkedinUrl: String!
   logo: LogoCreateNestedOneWithoutCustomerInput
   name: String!
+  organization: OrganizationCreateNestedOneWithoutCustomersInput!
   phone: String
   revenue: String
   services: ServiceCreateNestedManyWithoutCustomerInput
@@ -1281,6 +1294,7 @@ type CustomerGroupBy {
   industry: String
   linkedinUrl: String!
   name: String!
+  organizationId: Int!
   phone: String
   revenue: String
   size: String
@@ -1312,6 +1326,7 @@ type CustomerMaxAggregate {
   industry: String
   linkedinUrl: String
   name: String
+  organizationId: Int
   phone: String
   revenue: String
   size: String
@@ -1337,6 +1352,7 @@ input CustomerMaxAggregateInput {
   industry: Boolean
   linkedinUrl: Boolean
   name: Boolean
+  organizationId: Boolean
   phone: Boolean
   revenue: Boolean
   size: Boolean
@@ -1362,6 +1378,7 @@ input CustomerMaxOrderByAggregateInput {
   industry: SortOrder
   linkedinUrl: SortOrder
   name: SortOrder
+  organizationId: SortOrder
   phone: SortOrder
   revenue: SortOrder
   size: SortOrder
@@ -1387,6 +1404,7 @@ type CustomerMinAggregate {
   industry: String
   linkedinUrl: String
   name: String
+  organizationId: Int
   phone: String
   revenue: String
   size: String
@@ -1412,6 +1430,7 @@ input CustomerMinAggregateInput {
   industry: Boolean
   linkedinUrl: Boolean
   name: Boolean
+  organizationId: Boolean
   phone: Boolean
   revenue: Boolean
   size: Boolean
@@ -1437,6 +1456,7 @@ input CustomerMinOrderByAggregateInput {
   industry: SortOrder
   linkedinUrl: SortOrder
   name: SortOrder
+  organizationId: SortOrder
   phone: SortOrder
   revenue: SortOrder
   size: SortOrder
@@ -1471,6 +1491,7 @@ input CustomerOrderByWithAggregationInput {
   industry: SortOrderInput
   linkedinUrl: SortOrder
   name: SortOrder
+  organizationId: SortOrder
   phone: SortOrderInput
   revenue: SortOrderInput
   size: SortOrderInput
@@ -1501,6 +1522,8 @@ input CustomerOrderByWithRelationInput {
   linkedinUrl: SortOrder
   logo: LogoOrderByWithRelationInput
   name: SortOrder
+  organization: OrganizationOrderByWithRelationInput
+  organizationId: SortOrder
   phone: SortOrderInput
   revenue: SortOrderInput
   services: ServiceOrderByRelationAggregateInput
@@ -1532,6 +1555,7 @@ enum CustomerScalarFieldEnum {
   industry
   linkedinUrl
   name
+  organizationId
   phone
   revenue
   size
@@ -1560,6 +1584,7 @@ input CustomerScalarWhereInput {
   industry: StringNullableFilter
   linkedinUrl: StringFilter
   name: StringFilter
+  organizationId: IntFilter
   phone: StringNullableFilter
   revenue: StringNullableFilter
   size: StringNullableFilter
@@ -1588,6 +1613,7 @@ input CustomerScalarWhereWithAggregatesInput {
   industry: StringNullableWithAggregatesFilter
   linkedinUrl: StringWithAggregatesFilter
   name: StringWithAggregatesFilter
+  organizationId: IntWithAggregatesFilter
   phone: StringNullableWithAggregatesFilter
   revenue: StringNullableWithAggregatesFilter
   size: StringNullableWithAggregatesFilter
@@ -1601,16 +1627,19 @@ input CustomerScalarWhereWithAggregatesInput {
 type CustomerSumAggregate {
   hierarchyId: Int
   id: Int
+  organizationId: Int
 }
 
 input CustomerSumAggregateInput {
   hierarchyId: Boolean
   id: Boolean
+  organizationId: Boolean
 }
 
 input CustomerSumOrderByAggregateInput {
   hierarchyId: SortOrder
   id: SortOrder
+  organizationId: SortOrder
 }
 
 input CustomerUpdateInput {
@@ -1631,6 +1660,7 @@ input CustomerUpdateInput {
   linkedinUrl: StringFieldUpdateOperationsInput
   logo: LogoUpdateOneWithoutCustomerNestedInput
   name: StringFieldUpdateOperationsInput
+  organization: OrganizationUpdateOneRequiredWithoutCustomersNestedInput
   phone: NullableStringFieldUpdateOperationsInput
   revenue: NullableStringFieldUpdateOperationsInput
   services: ServiceUpdateManyWithoutCustomerNestedInput
@@ -1719,6 +1749,7 @@ input CustomerUpdateWithoutContactsInput {
   linkedinUrl: StringFieldUpdateOperationsInput
   logo: LogoUpdateOneWithoutCustomerNestedInput
   name: StringFieldUpdateOperationsInput
+  organization: OrganizationUpdateOneRequiredWithoutCustomersNestedInput
   phone: NullableStringFieldUpdateOperationsInput
   revenue: NullableStringFieldUpdateOperationsInput
   services: ServiceUpdateManyWithoutCustomerNestedInput
@@ -1747,6 +1778,7 @@ input CustomerUpdateWithoutHierarchyInput {
   linkedinUrl: StringFieldUpdateOperationsInput
   logo: LogoUpdateOneWithoutCustomerNestedInput
   name: StringFieldUpdateOperationsInput
+  organization: OrganizationUpdateOneRequiredWithoutCustomersNestedInput
   phone: NullableStringFieldUpdateOperationsInput
   revenue: NullableStringFieldUpdateOperationsInput
   services: ServiceUpdateManyWithoutCustomerNestedInput
@@ -1793,6 +1825,8 @@ input CustomerWhereInput {
   linkedinUrl: StringFilter
   logo: LogoNullableRelationFilter
   name: StringFilter
+  organization: OrganizationRelationFilter
+  organizationId: IntFilter
   phone: StringNullableFilter
   revenue: StringNullableFilter
   services: ServiceListRelationFilter
@@ -1827,6 +1861,8 @@ input CustomerWhereUniqueInput {
   linkedinUrl: StringFilter
   logo: LogoNullableRelationFilter
   name: StringFilter
+  organization: OrganizationRelationFilter
+  organizationId: IntFilter
   phone: StringNullableFilter
   revenue: StringNullableFilter
   services: ServiceListRelationFilter
@@ -1912,6 +1948,17 @@ input EnumGenderWithAggregatesFilter {
   in: [Gender!]
   not: NestedEnumGenderWithAggregatesFilter
   notIn: [Gender!]
+}
+
+input EnumOranizationStatusFieldUpdateOperationsInput {
+  set: OranizationStatus
+}
+
+input EnumOranizationStatusFilter {
+  equals: OranizationStatus
+  in: [OranizationStatus!]
+  not: NestedEnumOranizationStatusFilter
+  notIn: [OranizationStatus!]
 }
 
 input FloatNullableFilter {
@@ -2453,6 +2500,13 @@ input NestedEnumGenderWithAggregatesFilter {
   notIn: [Gender!]
 }
 
+input NestedEnumOranizationStatusFilter {
+  equals: OranizationStatus
+  in: [OranizationStatus!]
+  not: NestedEnumOranizationStatusFilter
+  notIn: [OranizationStatus!]
+}
+
 input NestedFloatFilter {
   equals: Float
   gt: Float
@@ -2606,6 +2660,273 @@ input NullableStringFieldUpdateOperationsInput {
 enum NullsOrder {
   first
   last
+}
+
+enum OranizationStatus {
+  ACTIVE
+  HOLD
+  INACTIVE
+  NEW
+  ONBOARDING
+}
+
+type Organization {
+  _count: OrganizationCount!
+  address: String
+  city: String
+  company: String!
+  country: String
+  createdAt: DateTime!
+  customers: [Customer!]
+  description: String
+  domain: String!
+  email: String!
+  id: ID!
+  linkedinUrl: String!
+  logo: OrganizationLogo
+  name: String!
+  phone: String
+  status: OranizationStatus!
+  taxIdentifier: String
+  updatedAt: DateTime!
+  website: String
+  zipcode: String
+}
+
+type OrganizationCount {
+  customers: Int!
+}
+
+input OrganizationCreateNestedOneWithoutCustomersInput {
+  connect: OrganizationWhereUniqueInput
+  connectOrCreate: OrganizationCreateOrConnectWithoutCustomersInput
+  create: OrganizationCreateWithoutCustomersInput
+}
+
+input OrganizationCreateOrConnectWithoutCustomersInput {
+  create: OrganizationCreateWithoutCustomersInput!
+  where: OrganizationWhereUniqueInput!
+}
+
+input OrganizationCreateWithoutCustomersInput {
+  address: String
+  city: String
+  company: String!
+  country: String
+  createdAt: DateTime
+  description: String
+  domain: String!
+  email: String!
+  linkedinUrl: String!
+  logo: OrganizationLogoCreateNestedOneWithoutOrganizationInput
+  name: String!
+  phone: String
+  status: OranizationStatus
+  taxIdentifier: String
+  updatedAt: DateTime
+  website: String
+  zipcode: String
+}
+
+type OrganizationLogo {
+  id: ID!
+  organization: Organization!
+  organizationId: Int!
+  src: String!
+  title: String!
+}
+
+input OrganizationLogoCreateNestedOneWithoutOrganizationInput {
+  connect: OrganizationLogoWhereUniqueInput
+  connectOrCreate: OrganizationLogoCreateOrConnectWithoutOrganizationInput
+  create: OrganizationLogoCreateWithoutOrganizationInput
+}
+
+input OrganizationLogoCreateOrConnectWithoutOrganizationInput {
+  create: OrganizationLogoCreateWithoutOrganizationInput!
+  where: OrganizationLogoWhereUniqueInput!
+}
+
+input OrganizationLogoCreateWithoutOrganizationInput {
+  src: String!
+  title: String!
+}
+
+input OrganizationLogoNullableRelationFilter {
+  is: OrganizationLogoWhereInput
+  isNot: OrganizationLogoWhereInput
+}
+
+input OrganizationLogoOrderByWithRelationInput {
+  id: SortOrder
+  organization: OrganizationOrderByWithRelationInput
+  organizationId: SortOrder
+  src: SortOrder
+  title: SortOrder
+}
+
+input OrganizationLogoUpdateOneWithoutOrganizationNestedInput {
+  connect: OrganizationLogoWhereUniqueInput
+  connectOrCreate: OrganizationLogoCreateOrConnectWithoutOrganizationInput
+  create: OrganizationLogoCreateWithoutOrganizationInput
+  delete: OrganizationLogoWhereInput
+  disconnect: OrganizationLogoWhereInput
+  update: OrganizationLogoUpdateToOneWithWhereWithoutOrganizationInput
+  upsert: OrganizationLogoUpsertWithoutOrganizationInput
+}
+
+input OrganizationLogoUpdateToOneWithWhereWithoutOrganizationInput {
+  data: OrganizationLogoUpdateWithoutOrganizationInput!
+  where: OrganizationLogoWhereInput
+}
+
+input OrganizationLogoUpdateWithoutOrganizationInput {
+  src: StringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+}
+
+input OrganizationLogoUpsertWithoutOrganizationInput {
+  create: OrganizationLogoCreateWithoutOrganizationInput!
+  update: OrganizationLogoUpdateWithoutOrganizationInput!
+  where: OrganizationLogoWhereInput
+}
+
+input OrganizationLogoWhereInput {
+  AND: [OrganizationLogoWhereInput!]
+  NOT: [OrganizationLogoWhereInput!]
+  OR: [OrganizationLogoWhereInput!]
+  id: IntFilter
+  organization: OrganizationRelationFilter
+  organizationId: IntFilter
+  src: StringFilter
+  title: StringFilter
+}
+
+input OrganizationLogoWhereUniqueInput {
+  AND: [OrganizationLogoWhereInput!]
+  NOT: [OrganizationLogoWhereInput!]
+  OR: [OrganizationLogoWhereInput!]
+  id: Int
+  organization: OrganizationRelationFilter
+  organizationId: Int
+  src: StringFilter
+  title: StringFilter
+}
+
+input OrganizationOrderByWithRelationInput {
+  address: SortOrderInput
+  city: SortOrderInput
+  company: SortOrder
+  country: SortOrderInput
+  createdAt: SortOrder
+  customers: CustomerOrderByRelationAggregateInput
+  description: SortOrderInput
+  domain: SortOrder
+  email: SortOrder
+  id: SortOrder
+  linkedinUrl: SortOrder
+  logo: OrganizationLogoOrderByWithRelationInput
+  name: SortOrder
+  phone: SortOrderInput
+  status: SortOrder
+  taxIdentifier: SortOrderInput
+  updatedAt: SortOrder
+  website: SortOrderInput
+  zipcode: SortOrderInput
+}
+
+input OrganizationRelationFilter {
+  is: OrganizationWhereInput
+  isNot: OrganizationWhereInput
+}
+
+input OrganizationUpdateOneRequiredWithoutCustomersNestedInput {
+  connect: OrganizationWhereUniqueInput
+  connectOrCreate: OrganizationCreateOrConnectWithoutCustomersInput
+  create: OrganizationCreateWithoutCustomersInput
+  update: OrganizationUpdateToOneWithWhereWithoutCustomersInput
+  upsert: OrganizationUpsertWithoutCustomersInput
+}
+
+input OrganizationUpdateToOneWithWhereWithoutCustomersInput {
+  data: OrganizationUpdateWithoutCustomersInput!
+  where: OrganizationWhereInput
+}
+
+input OrganizationUpdateWithoutCustomersInput {
+  address: NullableStringFieldUpdateOperationsInput
+  city: NullableStringFieldUpdateOperationsInput
+  company: StringFieldUpdateOperationsInput
+  country: NullableStringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  description: NullableStringFieldUpdateOperationsInput
+  domain: StringFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  linkedinUrl: StringFieldUpdateOperationsInput
+  logo: OrganizationLogoUpdateOneWithoutOrganizationNestedInput
+  name: StringFieldUpdateOperationsInput
+  phone: NullableStringFieldUpdateOperationsInput
+  status: EnumOranizationStatusFieldUpdateOperationsInput
+  taxIdentifier: NullableStringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  website: NullableStringFieldUpdateOperationsInput
+  zipcode: NullableStringFieldUpdateOperationsInput
+}
+
+input OrganizationUpsertWithoutCustomersInput {
+  create: OrganizationCreateWithoutCustomersInput!
+  update: OrganizationUpdateWithoutCustomersInput!
+  where: OrganizationWhereInput
+}
+
+input OrganizationWhereInput {
+  AND: [OrganizationWhereInput!]
+  NOT: [OrganizationWhereInput!]
+  OR: [OrganizationWhereInput!]
+  address: StringNullableFilter
+  city: StringNullableFilter
+  company: StringFilter
+  country: StringNullableFilter
+  createdAt: DateTimeFilter
+  customers: CustomerListRelationFilter
+  description: StringNullableFilter
+  domain: StringFilter
+  email: StringFilter
+  id: IntFilter
+  linkedinUrl: StringFilter
+  logo: OrganizationLogoNullableRelationFilter
+  name: StringFilter
+  phone: StringNullableFilter
+  status: EnumOranizationStatusFilter
+  taxIdentifier: StringNullableFilter
+  updatedAt: DateTimeFilter
+  website: StringNullableFilter
+  zipcode: StringNullableFilter
+}
+
+input OrganizationWhereUniqueInput {
+  AND: [OrganizationWhereInput!]
+  NOT: [OrganizationWhereInput!]
+  OR: [OrganizationWhereInput!]
+  address: StringNullableFilter
+  city: StringNullableFilter
+  company: StringFilter
+  country: StringNullableFilter
+  createdAt: DateTimeFilter
+  customers: CustomerListRelationFilter
+  description: StringNullableFilter
+  domain: StringFilter
+  email: String
+  id: Int
+  linkedinUrl: StringFilter
+  logo: OrganizationLogoNullableRelationFilter
+  name: StringFilter
+  phone: StringNullableFilter
+  status: EnumOranizationStatusFilter
+  taxIdentifier: StringNullableFilter
+  updatedAt: DateTimeFilter
+  website: StringNullableFilter
+  zipcode: StringNullableFilter
 }
 
 type Query {

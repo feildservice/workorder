@@ -14,29 +14,35 @@ generator client {
 }
 
 model Product {
-    id          String    @id @default(auto()) @map("_id")  @db.ObjectId
-    name        String
-    description String
-    price       Float
-    image       String
-    category    Category? @relation(fields: [categoryId], references: [id])
-    categoryId  String? @db.ObjectId
+  id             String          @id @default(auto()) @map("_id") @db.ObjectId
+  name           String
+  description    String
+  price          Float
+  image          String
+  technicalspecs TechnicalSpec[]
+  category       Category?       @relation(fields: [categoryId], references: [id])
+  categoryId     String?         @db.ObjectId
+}
+
+type TechnicalSpec {
+  key   String
+  value String
 }
 
 model Category {
-    id          String     @id @default(auto()) @map("_id")  @db.ObjectId
-    name        String
-    description String
-    products    Product[]
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  description String
+  products    Product[]
 }
 
 model Catalogs {
-    id          String     @id @default(auto()) @map("_id")  @db.ObjectId
-    name        String
-    description String    
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  description String
 }
 
 model Services {
-    id          String     @id @default(auto()) @map("_id")  @db.ObjectId
-    name        String
+  id   String @id @default(auto()) @map("_id") @db.ObjectId
+  name String
 }

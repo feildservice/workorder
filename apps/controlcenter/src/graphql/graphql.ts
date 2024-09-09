@@ -1052,6 +1052,8 @@ export type Customer = {
   linkedinUrl: Scalars["String"]["output"];
   logo?: Maybe<Logo>;
   name: Scalars["String"]["output"];
+  organization: Organization;
+  organizationId: Scalars["Int"]["output"];
   phone?: Maybe<Scalars["String"]["output"]>;
   revenue?: Maybe<Scalars["String"]["output"]>;
   services?: Maybe<Array<Service>>;
@@ -1067,16 +1069,19 @@ export type CustomerAvgAggregate = {
   __typename?: "CustomerAvgAggregate";
   hierarchyId?: Maybe<Scalars["Float"]["output"]>;
   id?: Maybe<Scalars["Float"]["output"]>;
+  organizationId?: Maybe<Scalars["Float"]["output"]>;
 };
 
 export type CustomerAvgAggregateInput = {
   hierarchyId?: InputMaybe<Scalars["Boolean"]["input"]>;
   id?: InputMaybe<Scalars["Boolean"]["input"]>;
+  organizationId?: InputMaybe<Scalars["Boolean"]["input"]>;
 };
 
 export type CustomerAvgOrderByAggregateInput = {
   hierarchyId?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
+  organizationId?: InputMaybe<SortOrder>;
 };
 
 export type CustomerCount = {
@@ -1104,6 +1109,7 @@ export type CustomerCountAggregate = {
   industry: Scalars["Int"]["output"];
   linkedinUrl: Scalars["Int"]["output"];
   name: Scalars["Int"]["output"];
+  organizationId: Scalars["Int"]["output"];
   phone: Scalars["Int"]["output"];
   revenue: Scalars["Int"]["output"];
   size: Scalars["Int"]["output"];
@@ -1130,6 +1136,7 @@ export type CustomerCountAggregateInput = {
   industry?: InputMaybe<Scalars["Boolean"]["input"]>;
   linkedinUrl?: InputMaybe<Scalars["Boolean"]["input"]>;
   name?: InputMaybe<Scalars["Boolean"]["input"]>;
+  organizationId?: InputMaybe<Scalars["Boolean"]["input"]>;
   phone?: InputMaybe<Scalars["Boolean"]["input"]>;
   revenue?: InputMaybe<Scalars["Boolean"]["input"]>;
   size?: InputMaybe<Scalars["Boolean"]["input"]>;
@@ -1155,6 +1162,7 @@ export type CustomerCountOrderByAggregateInput = {
   industry?: InputMaybe<SortOrder>;
   linkedinUrl?: InputMaybe<SortOrder>;
   name?: InputMaybe<SortOrder>;
+  organizationId?: InputMaybe<SortOrder>;
   phone?: InputMaybe<SortOrder>;
   revenue?: InputMaybe<SortOrder>;
   size?: InputMaybe<SortOrder>;
@@ -1183,6 +1191,7 @@ export type CustomerCreateInput = {
   linkedinUrl: Scalars["String"]["input"];
   logo?: InputMaybe<LogoCreateNestedOneWithoutCustomerInput>;
   name: Scalars["String"]["input"];
+  organization: OrganizationCreateNestedOneWithoutCustomersInput;
   phone?: InputMaybe<Scalars["String"]["input"]>;
   revenue?: InputMaybe<Scalars["String"]["input"]>;
   services?: InputMaybe<ServiceCreateNestedManyWithoutCustomerInput>;
@@ -1208,6 +1217,7 @@ export type CustomerCreateManyHierarchyInput = {
   industry?: InputMaybe<Scalars["String"]["input"]>;
   linkedinUrl: Scalars["String"]["input"];
   name: Scalars["String"]["input"];
+  organizationId: Scalars["Int"]["input"];
   phone?: InputMaybe<Scalars["String"]["input"]>;
   revenue?: InputMaybe<Scalars["String"]["input"]>;
   size?: InputMaybe<Scalars["String"]["input"]>;
@@ -1238,6 +1248,7 @@ export type CustomerCreateManyInput = {
   industry?: InputMaybe<Scalars["String"]["input"]>;
   linkedinUrl: Scalars["String"]["input"];
   name: Scalars["String"]["input"];
+  organizationId: Scalars["Int"]["input"];
   phone?: InputMaybe<Scalars["String"]["input"]>;
   revenue?: InputMaybe<Scalars["String"]["input"]>;
   size?: InputMaybe<Scalars["String"]["input"]>;
@@ -1290,6 +1301,7 @@ export type CustomerCreateWithoutContactsInput = {
   linkedinUrl: Scalars["String"]["input"];
   logo?: InputMaybe<LogoCreateNestedOneWithoutCustomerInput>;
   name: Scalars["String"]["input"];
+  organization: OrganizationCreateNestedOneWithoutCustomersInput;
   phone?: InputMaybe<Scalars["String"]["input"]>;
   revenue?: InputMaybe<Scalars["String"]["input"]>;
   services?: InputMaybe<ServiceCreateNestedManyWithoutCustomerInput>;
@@ -1318,6 +1330,7 @@ export type CustomerCreateWithoutHierarchyInput = {
   linkedinUrl: Scalars["String"]["input"];
   logo?: InputMaybe<LogoCreateNestedOneWithoutCustomerInput>;
   name: Scalars["String"]["input"];
+  organization: OrganizationCreateNestedOneWithoutCustomersInput;
   phone?: InputMaybe<Scalars["String"]["input"]>;
   revenue?: InputMaybe<Scalars["String"]["input"]>;
   services?: InputMaybe<ServiceCreateNestedManyWithoutCustomerInput>;
@@ -1350,6 +1363,7 @@ export type CustomerGroupBy = {
   industry?: Maybe<Scalars["String"]["output"]>;
   linkedinUrl: Scalars["String"]["output"];
   name: Scalars["String"]["output"];
+  organizationId: Scalars["Int"]["output"];
   phone?: Maybe<Scalars["String"]["output"]>;
   revenue?: Maybe<Scalars["String"]["output"]>;
   size?: Maybe<Scalars["String"]["output"]>;
@@ -1382,6 +1396,7 @@ export type CustomerMaxAggregate = {
   industry?: Maybe<Scalars["String"]["output"]>;
   linkedinUrl?: Maybe<Scalars["String"]["output"]>;
   name?: Maybe<Scalars["String"]["output"]>;
+  organizationId?: Maybe<Scalars["Int"]["output"]>;
   phone?: Maybe<Scalars["String"]["output"]>;
   revenue?: Maybe<Scalars["String"]["output"]>;
   size?: Maybe<Scalars["String"]["output"]>;
@@ -1407,6 +1422,7 @@ export type CustomerMaxAggregateInput = {
   industry?: InputMaybe<Scalars["Boolean"]["input"]>;
   linkedinUrl?: InputMaybe<Scalars["Boolean"]["input"]>;
   name?: InputMaybe<Scalars["Boolean"]["input"]>;
+  organizationId?: InputMaybe<Scalars["Boolean"]["input"]>;
   phone?: InputMaybe<Scalars["Boolean"]["input"]>;
   revenue?: InputMaybe<Scalars["Boolean"]["input"]>;
   size?: InputMaybe<Scalars["Boolean"]["input"]>;
@@ -1432,6 +1448,7 @@ export type CustomerMaxOrderByAggregateInput = {
   industry?: InputMaybe<SortOrder>;
   linkedinUrl?: InputMaybe<SortOrder>;
   name?: InputMaybe<SortOrder>;
+  organizationId?: InputMaybe<SortOrder>;
   phone?: InputMaybe<SortOrder>;
   revenue?: InputMaybe<SortOrder>;
   size?: InputMaybe<SortOrder>;
@@ -1458,6 +1475,7 @@ export type CustomerMinAggregate = {
   industry?: Maybe<Scalars["String"]["output"]>;
   linkedinUrl?: Maybe<Scalars["String"]["output"]>;
   name?: Maybe<Scalars["String"]["output"]>;
+  organizationId?: Maybe<Scalars["Int"]["output"]>;
   phone?: Maybe<Scalars["String"]["output"]>;
   revenue?: Maybe<Scalars["String"]["output"]>;
   size?: Maybe<Scalars["String"]["output"]>;
@@ -1483,6 +1501,7 @@ export type CustomerMinAggregateInput = {
   industry?: InputMaybe<Scalars["Boolean"]["input"]>;
   linkedinUrl?: InputMaybe<Scalars["Boolean"]["input"]>;
   name?: InputMaybe<Scalars["Boolean"]["input"]>;
+  organizationId?: InputMaybe<Scalars["Boolean"]["input"]>;
   phone?: InputMaybe<Scalars["Boolean"]["input"]>;
   revenue?: InputMaybe<Scalars["Boolean"]["input"]>;
   size?: InputMaybe<Scalars["Boolean"]["input"]>;
@@ -1508,6 +1527,7 @@ export type CustomerMinOrderByAggregateInput = {
   industry?: InputMaybe<SortOrder>;
   linkedinUrl?: InputMaybe<SortOrder>;
   name?: InputMaybe<SortOrder>;
+  organizationId?: InputMaybe<SortOrder>;
   phone?: InputMaybe<SortOrder>;
   revenue?: InputMaybe<SortOrder>;
   size?: InputMaybe<SortOrder>;
@@ -1542,6 +1562,7 @@ export type CustomerOrderByWithAggregationInput = {
   industry?: InputMaybe<SortOrderInput>;
   linkedinUrl?: InputMaybe<SortOrder>;
   name?: InputMaybe<SortOrder>;
+  organizationId?: InputMaybe<SortOrder>;
   phone?: InputMaybe<SortOrderInput>;
   revenue?: InputMaybe<SortOrderInput>;
   size?: InputMaybe<SortOrderInput>;
@@ -1572,6 +1593,8 @@ export type CustomerOrderByWithRelationInput = {
   linkedinUrl?: InputMaybe<SortOrder>;
   logo?: InputMaybe<LogoOrderByWithRelationInput>;
   name?: InputMaybe<SortOrder>;
+  organization?: InputMaybe<OrganizationOrderByWithRelationInput>;
+  organizationId?: InputMaybe<SortOrder>;
   phone?: InputMaybe<SortOrderInput>;
   revenue?: InputMaybe<SortOrderInput>;
   services?: InputMaybe<ServiceOrderByRelationAggregateInput>;
@@ -1603,6 +1626,7 @@ export enum CustomerScalarFieldEnum {
   Industry = "industry",
   LinkedinUrl = "linkedinUrl",
   Name = "name",
+  OrganizationId = "organizationId",
   Phone = "phone",
   Revenue = "revenue",
   Size = "size",
@@ -1631,6 +1655,7 @@ export type CustomerScalarWhereInput = {
   industry?: InputMaybe<StringNullableFilter>;
   linkedinUrl?: InputMaybe<StringFilter>;
   name?: InputMaybe<StringFilter>;
+  organizationId?: InputMaybe<IntFilter>;
   phone?: InputMaybe<StringNullableFilter>;
   revenue?: InputMaybe<StringNullableFilter>;
   size?: InputMaybe<StringNullableFilter>;
@@ -1659,6 +1684,7 @@ export type CustomerScalarWhereWithAggregatesInput = {
   industry?: InputMaybe<StringNullableWithAggregatesFilter>;
   linkedinUrl?: InputMaybe<StringWithAggregatesFilter>;
   name?: InputMaybe<StringWithAggregatesFilter>;
+  organizationId?: InputMaybe<IntWithAggregatesFilter>;
   phone?: InputMaybe<StringNullableWithAggregatesFilter>;
   revenue?: InputMaybe<StringNullableWithAggregatesFilter>;
   size?: InputMaybe<StringNullableWithAggregatesFilter>;
@@ -1673,16 +1699,19 @@ export type CustomerSumAggregate = {
   __typename?: "CustomerSumAggregate";
   hierarchyId?: Maybe<Scalars["Int"]["output"]>;
   id?: Maybe<Scalars["Int"]["output"]>;
+  organizationId?: Maybe<Scalars["Int"]["output"]>;
 };
 
 export type CustomerSumAggregateInput = {
   hierarchyId?: InputMaybe<Scalars["Boolean"]["input"]>;
   id?: InputMaybe<Scalars["Boolean"]["input"]>;
+  organizationId?: InputMaybe<Scalars["Boolean"]["input"]>;
 };
 
 export type CustomerSumOrderByAggregateInput = {
   hierarchyId?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
+  organizationId?: InputMaybe<SortOrder>;
 };
 
 export type CustomerUpdateInput = {
@@ -1703,6 +1732,7 @@ export type CustomerUpdateInput = {
   linkedinUrl?: InputMaybe<StringFieldUpdateOperationsInput>;
   logo?: InputMaybe<LogoUpdateOneWithoutCustomerNestedInput>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  organization?: InputMaybe<OrganizationUpdateOneRequiredWithoutCustomersNestedInput>;
   phone?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   revenue?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   services?: InputMaybe<ServiceUpdateManyWithoutCustomerNestedInput>;
@@ -1799,6 +1829,7 @@ export type CustomerUpdateWithoutContactsInput = {
   linkedinUrl?: InputMaybe<StringFieldUpdateOperationsInput>;
   logo?: InputMaybe<LogoUpdateOneWithoutCustomerNestedInput>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  organization?: InputMaybe<OrganizationUpdateOneRequiredWithoutCustomersNestedInput>;
   phone?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   revenue?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   services?: InputMaybe<ServiceUpdateManyWithoutCustomerNestedInput>;
@@ -1827,6 +1858,7 @@ export type CustomerUpdateWithoutHierarchyInput = {
   linkedinUrl?: InputMaybe<StringFieldUpdateOperationsInput>;
   logo?: InputMaybe<LogoUpdateOneWithoutCustomerNestedInput>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  organization?: InputMaybe<OrganizationUpdateOneRequiredWithoutCustomersNestedInput>;
   phone?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   revenue?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   services?: InputMaybe<ServiceUpdateManyWithoutCustomerNestedInput>;
@@ -1873,6 +1905,8 @@ export type CustomerWhereInput = {
   linkedinUrl?: InputMaybe<StringFilter>;
   logo?: InputMaybe<LogoNullableRelationFilter>;
   name?: InputMaybe<StringFilter>;
+  organization?: InputMaybe<OrganizationRelationFilter>;
+  organizationId?: InputMaybe<IntFilter>;
   phone?: InputMaybe<StringNullableFilter>;
   revenue?: InputMaybe<StringNullableFilter>;
   services?: InputMaybe<ServiceListRelationFilter>;
@@ -1907,6 +1941,8 @@ export type CustomerWhereUniqueInput = {
   linkedinUrl?: InputMaybe<StringFilter>;
   logo?: InputMaybe<LogoNullableRelationFilter>;
   name?: InputMaybe<StringFilter>;
+  organization?: InputMaybe<OrganizationRelationFilter>;
+  organizationId?: InputMaybe<IntFilter>;
   phone?: InputMaybe<StringNullableFilter>;
   revenue?: InputMaybe<StringNullableFilter>;
   services?: InputMaybe<ServiceListRelationFilter>;
@@ -1987,6 +2023,17 @@ export type EnumGenderWithAggregatesFilter = {
   in?: InputMaybe<Array<Gender>>;
   not?: InputMaybe<NestedEnumGenderWithAggregatesFilter>;
   notIn?: InputMaybe<Array<Gender>>;
+};
+
+export type EnumOranizationStatusFieldUpdateOperationsInput = {
+  set?: InputMaybe<OranizationStatus>;
+};
+
+export type EnumOranizationStatusFilter = {
+  equals?: InputMaybe<OranizationStatus>;
+  in?: InputMaybe<Array<OranizationStatus>>;
+  not?: InputMaybe<NestedEnumOranizationStatusFilter>;
+  notIn?: InputMaybe<Array<OranizationStatus>>;
 };
 
 export type FloatNullableFilter = {
@@ -2566,6 +2613,13 @@ export type NestedEnumGenderWithAggregatesFilter = {
   notIn?: InputMaybe<Array<Gender>>;
 };
 
+export type NestedEnumOranizationStatusFilter = {
+  equals?: InputMaybe<OranizationStatus>;
+  in?: InputMaybe<Array<OranizationStatus>>;
+  not?: InputMaybe<NestedEnumOranizationStatusFilter>;
+  notIn?: InputMaybe<Array<OranizationStatus>>;
+};
+
 export type NestedFloatFilter = {
   equals?: InputMaybe<Scalars["Float"]["input"]>;
   gt?: InputMaybe<Scalars["Float"]["input"]>;
@@ -2720,6 +2774,276 @@ export enum NullsOrder {
   First = "first",
   Last = "last",
 }
+
+export enum OranizationStatus {
+  Active = "ACTIVE",
+  Hold = "HOLD",
+  Inactive = "INACTIVE",
+  New = "NEW",
+  Onboarding = "ONBOARDING",
+}
+
+export type Organization = {
+  __typename?: "Organization";
+  _count: OrganizationCount;
+  address?: Maybe<Scalars["String"]["output"]>;
+  city?: Maybe<Scalars["String"]["output"]>;
+  company: Scalars["String"]["output"];
+  country?: Maybe<Scalars["String"]["output"]>;
+  createdAt: Scalars["DateTime"]["output"];
+  customers?: Maybe<Array<Customer>>;
+  description?: Maybe<Scalars["String"]["output"]>;
+  domain: Scalars["String"]["output"];
+  email: Scalars["String"]["output"];
+  id: Scalars["ID"]["output"];
+  linkedinUrl: Scalars["String"]["output"];
+  logo?: Maybe<OrganizationLogo>;
+  name: Scalars["String"]["output"];
+  phone?: Maybe<Scalars["String"]["output"]>;
+  status: OranizationStatus;
+  taxIdentifier?: Maybe<Scalars["String"]["output"]>;
+  updatedAt: Scalars["DateTime"]["output"];
+  website?: Maybe<Scalars["String"]["output"]>;
+  zipcode?: Maybe<Scalars["String"]["output"]>;
+};
+
+export type OrganizationCount = {
+  __typename?: "OrganizationCount";
+  customers: Scalars["Int"]["output"];
+};
+
+export type OrganizationCreateNestedOneWithoutCustomersInput = {
+  connect?: InputMaybe<OrganizationWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<OrganizationCreateOrConnectWithoutCustomersInput>;
+  create?: InputMaybe<OrganizationCreateWithoutCustomersInput>;
+};
+
+export type OrganizationCreateOrConnectWithoutCustomersInput = {
+  create: OrganizationCreateWithoutCustomersInput;
+  where: OrganizationWhereUniqueInput;
+};
+
+export type OrganizationCreateWithoutCustomersInput = {
+  address?: InputMaybe<Scalars["String"]["input"]>;
+  city?: InputMaybe<Scalars["String"]["input"]>;
+  company: Scalars["String"]["input"];
+  country?: InputMaybe<Scalars["String"]["input"]>;
+  createdAt?: InputMaybe<Scalars["DateTime"]["input"]>;
+  description?: InputMaybe<Scalars["String"]["input"]>;
+  domain: Scalars["String"]["input"];
+  email: Scalars["String"]["input"];
+  linkedinUrl: Scalars["String"]["input"];
+  logo?: InputMaybe<OrganizationLogoCreateNestedOneWithoutOrganizationInput>;
+  name: Scalars["String"]["input"];
+  phone?: InputMaybe<Scalars["String"]["input"]>;
+  status?: InputMaybe<OranizationStatus>;
+  taxIdentifier?: InputMaybe<Scalars["String"]["input"]>;
+  updatedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
+  website?: InputMaybe<Scalars["String"]["input"]>;
+  zipcode?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+export type OrganizationLogo = {
+  __typename?: "OrganizationLogo";
+  id: Scalars["ID"]["output"];
+  organization: Organization;
+  organizationId: Scalars["Int"]["output"];
+  src: Scalars["String"]["output"];
+  title: Scalars["String"]["output"];
+};
+
+export type OrganizationLogoCreateNestedOneWithoutOrganizationInput = {
+  connect?: InputMaybe<OrganizationLogoWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<OrganizationLogoCreateOrConnectWithoutOrganizationInput>;
+  create?: InputMaybe<OrganizationLogoCreateWithoutOrganizationInput>;
+};
+
+export type OrganizationLogoCreateOrConnectWithoutOrganizationInput = {
+  create: OrganizationLogoCreateWithoutOrganizationInput;
+  where: OrganizationLogoWhereUniqueInput;
+};
+
+export type OrganizationLogoCreateWithoutOrganizationInput = {
+  src: Scalars["String"]["input"];
+  title: Scalars["String"]["input"];
+};
+
+export type OrganizationLogoNullableRelationFilter = {
+  is?: InputMaybe<OrganizationLogoWhereInput>;
+  isNot?: InputMaybe<OrganizationLogoWhereInput>;
+};
+
+export type OrganizationLogoOrderByWithRelationInput = {
+  id?: InputMaybe<SortOrder>;
+  organization?: InputMaybe<OrganizationOrderByWithRelationInput>;
+  organizationId?: InputMaybe<SortOrder>;
+  src?: InputMaybe<SortOrder>;
+  title?: InputMaybe<SortOrder>;
+};
+
+export type OrganizationLogoUpdateOneWithoutOrganizationNestedInput = {
+  connect?: InputMaybe<OrganizationLogoWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<OrganizationLogoCreateOrConnectWithoutOrganizationInput>;
+  create?: InputMaybe<OrganizationLogoCreateWithoutOrganizationInput>;
+  delete?: InputMaybe<OrganizationLogoWhereInput>;
+  disconnect?: InputMaybe<OrganizationLogoWhereInput>;
+  update?: InputMaybe<OrganizationLogoUpdateToOneWithWhereWithoutOrganizationInput>;
+  upsert?: InputMaybe<OrganizationLogoUpsertWithoutOrganizationInput>;
+};
+
+export type OrganizationLogoUpdateToOneWithWhereWithoutOrganizationInput = {
+  data: OrganizationLogoUpdateWithoutOrganizationInput;
+  where?: InputMaybe<OrganizationLogoWhereInput>;
+};
+
+export type OrganizationLogoUpdateWithoutOrganizationInput = {
+  src?: InputMaybe<StringFieldUpdateOperationsInput>;
+  title?: InputMaybe<StringFieldUpdateOperationsInput>;
+};
+
+export type OrganizationLogoUpsertWithoutOrganizationInput = {
+  create: OrganizationLogoCreateWithoutOrganizationInput;
+  update: OrganizationLogoUpdateWithoutOrganizationInput;
+  where?: InputMaybe<OrganizationLogoWhereInput>;
+};
+
+export type OrganizationLogoWhereInput = {
+  AND?: InputMaybe<Array<OrganizationLogoWhereInput>>;
+  NOT?: InputMaybe<Array<OrganizationLogoWhereInput>>;
+  OR?: InputMaybe<Array<OrganizationLogoWhereInput>>;
+  id?: InputMaybe<IntFilter>;
+  organization?: InputMaybe<OrganizationRelationFilter>;
+  organizationId?: InputMaybe<IntFilter>;
+  src?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+};
+
+export type OrganizationLogoWhereUniqueInput = {
+  AND?: InputMaybe<Array<OrganizationLogoWhereInput>>;
+  NOT?: InputMaybe<Array<OrganizationLogoWhereInput>>;
+  OR?: InputMaybe<Array<OrganizationLogoWhereInput>>;
+  id?: InputMaybe<Scalars["Int"]["input"]>;
+  organization?: InputMaybe<OrganizationRelationFilter>;
+  organizationId?: InputMaybe<Scalars["Int"]["input"]>;
+  src?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+};
+
+export type OrganizationOrderByWithRelationInput = {
+  address?: InputMaybe<SortOrderInput>;
+  city?: InputMaybe<SortOrderInput>;
+  company?: InputMaybe<SortOrder>;
+  country?: InputMaybe<SortOrderInput>;
+  createdAt?: InputMaybe<SortOrder>;
+  customers?: InputMaybe<CustomerOrderByRelationAggregateInput>;
+  description?: InputMaybe<SortOrderInput>;
+  domain?: InputMaybe<SortOrder>;
+  email?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  linkedinUrl?: InputMaybe<SortOrder>;
+  logo?: InputMaybe<OrganizationLogoOrderByWithRelationInput>;
+  name?: InputMaybe<SortOrder>;
+  phone?: InputMaybe<SortOrderInput>;
+  status?: InputMaybe<SortOrder>;
+  taxIdentifier?: InputMaybe<SortOrderInput>;
+  updatedAt?: InputMaybe<SortOrder>;
+  website?: InputMaybe<SortOrderInput>;
+  zipcode?: InputMaybe<SortOrderInput>;
+};
+
+export type OrganizationRelationFilter = {
+  is?: InputMaybe<OrganizationWhereInput>;
+  isNot?: InputMaybe<OrganizationWhereInput>;
+};
+
+export type OrganizationUpdateOneRequiredWithoutCustomersNestedInput = {
+  connect?: InputMaybe<OrganizationWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<OrganizationCreateOrConnectWithoutCustomersInput>;
+  create?: InputMaybe<OrganizationCreateWithoutCustomersInput>;
+  update?: InputMaybe<OrganizationUpdateToOneWithWhereWithoutCustomersInput>;
+  upsert?: InputMaybe<OrganizationUpsertWithoutCustomersInput>;
+};
+
+export type OrganizationUpdateToOneWithWhereWithoutCustomersInput = {
+  data: OrganizationUpdateWithoutCustomersInput;
+  where?: InputMaybe<OrganizationWhereInput>;
+};
+
+export type OrganizationUpdateWithoutCustomersInput = {
+  address?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  city?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  company?: InputMaybe<StringFieldUpdateOperationsInput>;
+  country?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  description?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  domain?: InputMaybe<StringFieldUpdateOperationsInput>;
+  email?: InputMaybe<StringFieldUpdateOperationsInput>;
+  linkedinUrl?: InputMaybe<StringFieldUpdateOperationsInput>;
+  logo?: InputMaybe<OrganizationLogoUpdateOneWithoutOrganizationNestedInput>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  phone?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  status?: InputMaybe<EnumOranizationStatusFieldUpdateOperationsInput>;
+  taxIdentifier?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  website?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  zipcode?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+};
+
+export type OrganizationUpsertWithoutCustomersInput = {
+  create: OrganizationCreateWithoutCustomersInput;
+  update: OrganizationUpdateWithoutCustomersInput;
+  where?: InputMaybe<OrganizationWhereInput>;
+};
+
+export type OrganizationWhereInput = {
+  AND?: InputMaybe<Array<OrganizationWhereInput>>;
+  NOT?: InputMaybe<Array<OrganizationWhereInput>>;
+  OR?: InputMaybe<Array<OrganizationWhereInput>>;
+  address?: InputMaybe<StringNullableFilter>;
+  city?: InputMaybe<StringNullableFilter>;
+  company?: InputMaybe<StringFilter>;
+  country?: InputMaybe<StringNullableFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  customers?: InputMaybe<CustomerListRelationFilter>;
+  description?: InputMaybe<StringNullableFilter>;
+  domain?: InputMaybe<StringFilter>;
+  email?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IntFilter>;
+  linkedinUrl?: InputMaybe<StringFilter>;
+  logo?: InputMaybe<OrganizationLogoNullableRelationFilter>;
+  name?: InputMaybe<StringFilter>;
+  phone?: InputMaybe<StringNullableFilter>;
+  status?: InputMaybe<EnumOranizationStatusFilter>;
+  taxIdentifier?: InputMaybe<StringNullableFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
+  website?: InputMaybe<StringNullableFilter>;
+  zipcode?: InputMaybe<StringNullableFilter>;
+};
+
+export type OrganizationWhereUniqueInput = {
+  AND?: InputMaybe<Array<OrganizationWhereInput>>;
+  NOT?: InputMaybe<Array<OrganizationWhereInput>>;
+  OR?: InputMaybe<Array<OrganizationWhereInput>>;
+  address?: InputMaybe<StringNullableFilter>;
+  city?: InputMaybe<StringNullableFilter>;
+  company?: InputMaybe<StringFilter>;
+  country?: InputMaybe<StringNullableFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  customers?: InputMaybe<CustomerListRelationFilter>;
+  description?: InputMaybe<StringNullableFilter>;
+  domain?: InputMaybe<StringFilter>;
+  email?: InputMaybe<Scalars["String"]["input"]>;
+  id?: InputMaybe<Scalars["Int"]["input"]>;
+  linkedinUrl?: InputMaybe<StringFilter>;
+  logo?: InputMaybe<OrganizationLogoNullableRelationFilter>;
+  name?: InputMaybe<StringFilter>;
+  phone?: InputMaybe<StringNullableFilter>;
+  status?: InputMaybe<EnumOranizationStatusFilter>;
+  taxIdentifier?: InputMaybe<StringNullableFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
+  website?: InputMaybe<StringNullableFilter>;
+  zipcode?: InputMaybe<StringNullableFilter>;
+};
 
 export type Query = {
   __typename?: "Query";
