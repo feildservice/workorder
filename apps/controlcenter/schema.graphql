@@ -189,6 +189,437 @@ type AffectedRows {
   count: Int!
 }
 
+type Agent {
+  _count: AgentCount!
+  agentType: AgentType!
+  calendars: [WorkCalendar!]
+  createdAt: DateTime!
+  designation: String
+  email: String!
+  firstName: String!
+  gender: Gender!
+  id: ID!
+  lastName: String!
+  middleName: String
+  phone: String
+  serviceTerritories: [AgentTerritory!]
+  title: String!
+  updatedAt: DateTime!
+}
+
+type AgentCount {
+  calendars: Int!
+  serviceTerritories: Int!
+}
+
+input AgentCreateNestedOneWithoutServiceTerritoriesInput {
+  connect: AgentWhereUniqueInput
+  connectOrCreate: AgentCreateOrConnectWithoutServiceTerritoriesInput
+  create: AgentCreateWithoutServiceTerritoriesInput
+}
+
+input AgentCreateOrConnectWithoutServiceTerritoriesInput {
+  create: AgentCreateWithoutServiceTerritoriesInput!
+  where: AgentWhereUniqueInput!
+}
+
+input AgentCreateWithoutServiceTerritoriesInput {
+  agentType: AgentType!
+  calendars: WorkCalendarCreateNestedManyWithoutAgentInput
+  createdAt: DateTime
+  designation: String
+  email: String!
+  firstName: String!
+  gender: Gender
+  lastName: String!
+  middleName: String
+  phone: String
+  title: String!
+  updatedAt: DateTime
+}
+
+input AgentOrderByWithRelationInput {
+  agentType: SortOrder
+  calendars: WorkCalendarOrderByRelationAggregateInput
+  createdAt: SortOrder
+  designation: SortOrderInput
+  email: SortOrder
+  firstName: SortOrder
+  gender: SortOrder
+  id: SortOrder
+  lastName: SortOrder
+  middleName: SortOrderInput
+  phone: SortOrderInput
+  serviceTerritories: AgentTerritoryOrderByRelationAggregateInput
+  title: SortOrder
+  updatedAt: SortOrder
+}
+
+input AgentRelationFilter {
+  is: AgentWhereInput
+  isNot: AgentWhereInput
+}
+
+type AgentTerritory {
+  agent: Agent!
+  agentId: Int!
+  id: ID!
+  subTerritory: SubTerritory!
+  subTerritoryId: Int!
+}
+
+type AgentTerritoryAvgAggregate {
+  agentId: Float
+  id: Float
+  subTerritoryId: Float
+}
+
+input AgentTerritoryAvgAggregateInput {
+  agentId: Boolean
+  id: Boolean
+  subTerritoryId: Boolean
+}
+
+input AgentTerritoryAvgOrderByAggregateInput {
+  agentId: SortOrder
+  id: SortOrder
+  subTerritoryId: SortOrder
+}
+
+type AgentTerritoryCountAggregate {
+  _all: Int!
+  agentId: Int!
+  id: Int!
+  subTerritoryId: Int!
+}
+
+input AgentTerritoryCountAggregateInput {
+  _all: Boolean
+  agentId: Boolean
+  id: Boolean
+  subTerritoryId: Boolean
+}
+
+input AgentTerritoryCountOrderByAggregateInput {
+  agentId: SortOrder
+  id: SortOrder
+  subTerritoryId: SortOrder
+}
+
+input AgentTerritoryCreateInput {
+  agent: AgentCreateNestedOneWithoutServiceTerritoriesInput!
+  subTerritory: SubTerritoryCreateNestedOneWithoutAgentsInput!
+}
+
+input AgentTerritoryCreateManyInput {
+  agentId: Int!
+  id: Int
+  subTerritoryId: Int!
+}
+
+input AgentTerritoryCreateManySubTerritoryInput {
+  agentId: Int!
+  id: Int
+}
+
+input AgentTerritoryCreateManySubTerritoryInputEnvelope {
+  data: [AgentTerritoryCreateManySubTerritoryInput!]!
+  skipDuplicates: Boolean
+}
+
+input AgentTerritoryCreateNestedManyWithoutSubTerritoryInput {
+  connect: [AgentTerritoryWhereUniqueInput!]
+  connectOrCreate: [AgentTerritoryCreateOrConnectWithoutSubTerritoryInput!]
+  create: [AgentTerritoryCreateWithoutSubTerritoryInput!]
+  createMany: AgentTerritoryCreateManySubTerritoryInputEnvelope
+}
+
+input AgentTerritoryCreateOrConnectWithoutSubTerritoryInput {
+  create: AgentTerritoryCreateWithoutSubTerritoryInput!
+  where: AgentTerritoryWhereUniqueInput!
+}
+
+input AgentTerritoryCreateWithoutSubTerritoryInput {
+  agent: AgentCreateNestedOneWithoutServiceTerritoriesInput!
+}
+
+type AgentTerritoryGroupBy {
+  _avg: AgentTerritoryAvgAggregate
+  _count: AgentTerritoryCountAggregate
+  _max: AgentTerritoryMaxAggregate
+  _min: AgentTerritoryMinAggregate
+  _sum: AgentTerritorySumAggregate
+  agentId: Int!
+  id: Int!
+  subTerritoryId: Int!
+}
+
+input AgentTerritoryListRelationFilter {
+  every: AgentTerritoryWhereInput
+  none: AgentTerritoryWhereInput
+  some: AgentTerritoryWhereInput
+}
+
+type AgentTerritoryMaxAggregate {
+  agentId: Int
+  id: Int
+  subTerritoryId: Int
+}
+
+input AgentTerritoryMaxAggregateInput {
+  agentId: Boolean
+  id: Boolean
+  subTerritoryId: Boolean
+}
+
+input AgentTerritoryMaxOrderByAggregateInput {
+  agentId: SortOrder
+  id: SortOrder
+  subTerritoryId: SortOrder
+}
+
+type AgentTerritoryMinAggregate {
+  agentId: Int
+  id: Int
+  subTerritoryId: Int
+}
+
+input AgentTerritoryMinAggregateInput {
+  agentId: Boolean
+  id: Boolean
+  subTerritoryId: Boolean
+}
+
+input AgentTerritoryMinOrderByAggregateInput {
+  agentId: SortOrder
+  id: SortOrder
+  subTerritoryId: SortOrder
+}
+
+input AgentTerritoryOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input AgentTerritoryOrderByWithAggregationInput {
+  _avg: AgentTerritoryAvgOrderByAggregateInput
+  _count: AgentTerritoryCountOrderByAggregateInput
+  _max: AgentTerritoryMaxOrderByAggregateInput
+  _min: AgentTerritoryMinOrderByAggregateInput
+  _sum: AgentTerritorySumOrderByAggregateInput
+  agentId: SortOrder
+  id: SortOrder
+  subTerritoryId: SortOrder
+}
+
+input AgentTerritoryOrderByWithRelationInput {
+  agent: AgentOrderByWithRelationInput
+  agentId: SortOrder
+  id: SortOrder
+  subTerritory: SubTerritoryOrderByWithRelationInput
+  subTerritoryId: SortOrder
+}
+
+enum AgentTerritoryScalarFieldEnum {
+  agentId
+  id
+  subTerritoryId
+}
+
+input AgentTerritoryScalarWhereInput {
+  AND: [AgentTerritoryScalarWhereInput!]
+  NOT: [AgentTerritoryScalarWhereInput!]
+  OR: [AgentTerritoryScalarWhereInput!]
+  agentId: IntFilter
+  id: IntFilter
+  subTerritoryId: IntFilter
+}
+
+input AgentTerritoryScalarWhereWithAggregatesInput {
+  AND: [AgentTerritoryScalarWhereWithAggregatesInput!]
+  NOT: [AgentTerritoryScalarWhereWithAggregatesInput!]
+  OR: [AgentTerritoryScalarWhereWithAggregatesInput!]
+  agentId: IntWithAggregatesFilter
+  id: IntWithAggregatesFilter
+  subTerritoryId: IntWithAggregatesFilter
+}
+
+type AgentTerritorySumAggregate {
+  agentId: Int
+  id: Int
+  subTerritoryId: Int
+}
+
+input AgentTerritorySumAggregateInput {
+  agentId: Boolean
+  id: Boolean
+  subTerritoryId: Boolean
+}
+
+input AgentTerritorySumOrderByAggregateInput {
+  agentId: SortOrder
+  id: SortOrder
+  subTerritoryId: SortOrder
+}
+
+input AgentTerritoryUncheckedUpdateManyInput {
+  agentId: IntFieldUpdateOperationsInput
+  id: IntFieldUpdateOperationsInput
+  subTerritoryId: IntFieldUpdateOperationsInput
+}
+
+input AgentTerritoryUncheckedUpdateManyWithoutSubTerritoryInput {
+  agentId: IntFieldUpdateOperationsInput
+  id: IntFieldUpdateOperationsInput
+}
+
+input AgentTerritoryUpdateInput {
+  agent: AgentUpdateOneRequiredWithoutServiceTerritoriesNestedInput
+  subTerritory: SubTerritoryUpdateOneRequiredWithoutAgentsNestedInput
+}
+
+input AgentTerritoryUpdateManyWithWhereWithoutSubTerritoryInput {
+  data: AgentTerritoryUncheckedUpdateManyWithoutSubTerritoryInput!
+  where: AgentTerritoryScalarWhereInput!
+}
+
+input AgentTerritoryUpdateManyWithoutSubTerritoryNestedInput {
+  connect: [AgentTerritoryWhereUniqueInput!]
+  connectOrCreate: [AgentTerritoryCreateOrConnectWithoutSubTerritoryInput!]
+  create: [AgentTerritoryCreateWithoutSubTerritoryInput!]
+  createMany: AgentTerritoryCreateManySubTerritoryInputEnvelope
+  delete: [AgentTerritoryWhereUniqueInput!]
+  deleteMany: [AgentTerritoryScalarWhereInput!]
+  disconnect: [AgentTerritoryWhereUniqueInput!]
+  set: [AgentTerritoryWhereUniqueInput!]
+  update: [AgentTerritoryUpdateWithWhereUniqueWithoutSubTerritoryInput!]
+  updateMany: [AgentTerritoryUpdateManyWithWhereWithoutSubTerritoryInput!]
+  upsert: [AgentTerritoryUpsertWithWhereUniqueWithoutSubTerritoryInput!]
+}
+
+input AgentTerritoryUpdateWithWhereUniqueWithoutSubTerritoryInput {
+  data: AgentTerritoryUpdateWithoutSubTerritoryInput!
+  where: AgentTerritoryWhereUniqueInput!
+}
+
+input AgentTerritoryUpdateWithoutSubTerritoryInput {
+  agent: AgentUpdateOneRequiredWithoutServiceTerritoriesNestedInput
+}
+
+input AgentTerritoryUpsertWithWhereUniqueWithoutSubTerritoryInput {
+  create: AgentTerritoryCreateWithoutSubTerritoryInput!
+  update: AgentTerritoryUpdateWithoutSubTerritoryInput!
+  where: AgentTerritoryWhereUniqueInput!
+}
+
+input AgentTerritoryWhereInput {
+  AND: [AgentTerritoryWhereInput!]
+  NOT: [AgentTerritoryWhereInput!]
+  OR: [AgentTerritoryWhereInput!]
+  agent: AgentRelationFilter
+  agentId: IntFilter
+  id: IntFilter
+  subTerritory: SubTerritoryRelationFilter
+  subTerritoryId: IntFilter
+}
+
+input AgentTerritoryWhereUniqueInput {
+  AND: [AgentTerritoryWhereInput!]
+  NOT: [AgentTerritoryWhereInput!]
+  OR: [AgentTerritoryWhereInput!]
+  agent: AgentRelationFilter
+  agentId: IntFilter
+  id: Int
+  subTerritory: SubTerritoryRelationFilter
+  subTerritoryId: IntFilter
+}
+
+enum AgentType {
+  CUSTOMER_AGENT
+  FIELD_TECHNICIAN
+}
+
+input AgentUpdateOneRequiredWithoutServiceTerritoriesNestedInput {
+  connect: AgentWhereUniqueInput
+  connectOrCreate: AgentCreateOrConnectWithoutServiceTerritoriesInput
+  create: AgentCreateWithoutServiceTerritoriesInput
+  update: AgentUpdateToOneWithWhereWithoutServiceTerritoriesInput
+  upsert: AgentUpsertWithoutServiceTerritoriesInput
+}
+
+input AgentUpdateToOneWithWhereWithoutServiceTerritoriesInput {
+  data: AgentUpdateWithoutServiceTerritoriesInput!
+  where: AgentWhereInput
+}
+
+input AgentUpdateWithoutServiceTerritoriesInput {
+  agentType: EnumAgentTypeFieldUpdateOperationsInput
+  calendars: WorkCalendarUpdateManyWithoutAgentNestedInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  designation: NullableStringFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  firstName: StringFieldUpdateOperationsInput
+  gender: EnumGenderFieldUpdateOperationsInput
+  lastName: StringFieldUpdateOperationsInput
+  middleName: NullableStringFieldUpdateOperationsInput
+  phone: NullableStringFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input AgentUpsertWithoutServiceTerritoriesInput {
+  create: AgentCreateWithoutServiceTerritoriesInput!
+  update: AgentUpdateWithoutServiceTerritoriesInput!
+  where: AgentWhereInput
+}
+
+input AgentWhereInput {
+  AND: [AgentWhereInput!]
+  NOT: [AgentWhereInput!]
+  OR: [AgentWhereInput!]
+  agentType: EnumAgentTypeFilter
+  calendars: WorkCalendarListRelationFilter
+  createdAt: DateTimeFilter
+  designation: StringNullableFilter
+  email: StringFilter
+  firstName: StringFilter
+  gender: EnumGenderFilter
+  id: IntFilter
+  lastName: StringFilter
+  middleName: StringNullableFilter
+  phone: StringNullableFilter
+  serviceTerritories: AgentTerritoryListRelationFilter
+  title: StringFilter
+  updatedAt: DateTimeFilter
+}
+
+input AgentWhereUniqueInput {
+  AND: [AgentWhereInput!]
+  NOT: [AgentWhereInput!]
+  OR: [AgentWhereInput!]
+  agentType: EnumAgentTypeFilter
+  calendars: WorkCalendarListRelationFilter
+  createdAt: DateTimeFilter
+  designation: StringNullableFilter
+  email: String
+  firstName: StringFilter
+  gender: EnumGenderFilter
+  id: Int
+  lastName: StringFilter
+  middleName: StringNullableFilter
+  phone: StringNullableFilter
+  serviceTerritories: AgentTerritoryListRelationFilter
+  title: StringFilter
+  updatedAt: DateTimeFilter
+}
+
+type AggregateAgentTerritory {
+  _avg: AgentTerritoryAvgAggregate
+  _count: AgentTerritoryCountAggregate
+  _max: AgentTerritoryMaxAggregate
+  _min: AgentTerritoryMinAggregate
+  _sum: AgentTerritorySumAggregate
+}
+
 type AggregateContact {
   _avg: ContactAvgAggregate
   _count: ContactCountAggregate
@@ -203,6 +634,22 @@ type AggregateCustomer {
   _max: CustomerMaxAggregate
   _min: CustomerMinAggregate
   _sum: CustomerSumAggregate
+}
+
+type AggregateOrganization {
+  _avg: OrganizationAvgAggregate
+  _count: OrganizationCountAggregate
+  _max: OrganizationMaxAggregate
+  _min: OrganizationMinAggregate
+  _sum: OrganizationSumAggregate
+}
+
+type AggregateServiceTerritory {
+  _avg: ServiceTerritoryAvgAggregate
+  _count: ServiceTerritoryCountAggregate
+  _max: ServiceTerritoryMaxAggregate
+  _min: ServiceTerritoryMinAggregate
+  _sum: ServiceTerritorySumAggregate
 }
 
 type Agreement {
@@ -1193,11 +1640,48 @@ input CustomerCreateManyInput {
   zipcode: String
 }
 
+input CustomerCreateManyOrganizationInput {
+  address: String
+  city: String
+  company: String!
+  country: String
+  createdAt: DateTime
+  description: String
+  domain: String!
+  email: String!
+  founded: String
+  hierarchyId: Int
+  id: Int
+  industry: String
+  linkedinUrl: String!
+  name: String!
+  phone: String
+  revenue: String
+  size: String
+  status: CompanyStatus
+  taxIdentifier: String
+  updatedAt: DateTime
+  website: String
+  zipcode: String
+}
+
+input CustomerCreateManyOrganizationInputEnvelope {
+  data: [CustomerCreateManyOrganizationInput!]!
+  skipDuplicates: Boolean
+}
+
 input CustomerCreateNestedManyWithoutHierarchyInput {
   connect: [CustomerWhereUniqueInput!]
   connectOrCreate: [CustomerCreateOrConnectWithoutHierarchyInput!]
   create: [CustomerCreateWithoutHierarchyInput!]
   createMany: CustomerCreateManyHierarchyInputEnvelope
+}
+
+input CustomerCreateNestedManyWithoutOrganizationInput {
+  connect: [CustomerWhereUniqueInput!]
+  connectOrCreate: [CustomerCreateOrConnectWithoutOrganizationInput!]
+  create: [CustomerCreateWithoutOrganizationInput!]
+  createMany: CustomerCreateManyOrganizationInputEnvelope
 }
 
 input CustomerCreateNestedOneWithoutContactsInput {
@@ -1213,6 +1697,11 @@ input CustomerCreateOrConnectWithoutContactsInput {
 
 input CustomerCreateOrConnectWithoutHierarchyInput {
   create: CustomerCreateWithoutHierarchyInput!
+  where: CustomerWhereUniqueInput!
+}
+
+input CustomerCreateOrConnectWithoutOrganizationInput {
+  create: CustomerCreateWithoutOrganizationInput!
   where: CustomerWhereUniqueInput!
 }
 
@@ -1263,6 +1752,35 @@ input CustomerCreateWithoutHierarchyInput {
   logo: LogoCreateNestedOneWithoutCustomerInput
   name: String!
   organization: OrganizationCreateNestedOneWithoutCustomersInput!
+  phone: String
+  revenue: String
+  services: ServiceCreateNestedManyWithoutCustomerInput
+  size: String
+  status: CompanyStatus
+  taxIdentifier: String
+  updatedAt: DateTime
+  website: String
+  zipcode: String
+}
+
+input CustomerCreateWithoutOrganizationInput {
+  address: String
+  addresses: AddressCreateNestedManyWithoutCustomerInput
+  agreements: AgreementCreateNestedManyWithoutCustomerInput
+  city: String
+  company: String!
+  contacts: ContactCreateNestedManyWithoutCustomerInput
+  country: String
+  createdAt: DateTime
+  description: String
+  domain: String!
+  email: String!
+  founded: String
+  hierarchy: HierarchyCreateNestedOneWithoutCustomersInput
+  industry: String
+  linkedinUrl: String!
+  logo: LogoCreateNestedOneWithoutCustomerInput
+  name: String!
   phone: String
   revenue: String
   services: ServiceCreateNestedManyWithoutCustomerInput
@@ -1700,6 +2218,11 @@ input CustomerUpdateManyWithWhereWithoutHierarchyInput {
   where: CustomerScalarWhereInput!
 }
 
+input CustomerUpdateManyWithWhereWithoutOrganizationInput {
+  data: CustomerUpdateManyMutationInput!
+  where: CustomerScalarWhereInput!
+}
+
 input CustomerUpdateManyWithoutHierarchyNestedInput {
   connect: [CustomerWhereUniqueInput!]
   connectOrCreate: [CustomerCreateOrConnectWithoutHierarchyInput!]
@@ -1712,6 +2235,20 @@ input CustomerUpdateManyWithoutHierarchyNestedInput {
   update: [CustomerUpdateWithWhereUniqueWithoutHierarchyInput!]
   updateMany: [CustomerUpdateManyWithWhereWithoutHierarchyInput!]
   upsert: [CustomerUpsertWithWhereUniqueWithoutHierarchyInput!]
+}
+
+input CustomerUpdateManyWithoutOrganizationNestedInput {
+  connect: [CustomerWhereUniqueInput!]
+  connectOrCreate: [CustomerCreateOrConnectWithoutOrganizationInput!]
+  create: [CustomerCreateWithoutOrganizationInput!]
+  createMany: CustomerCreateManyOrganizationInputEnvelope
+  delete: [CustomerWhereUniqueInput!]
+  deleteMany: [CustomerScalarWhereInput!]
+  disconnect: [CustomerWhereUniqueInput!]
+  set: [CustomerWhereUniqueInput!]
+  update: [CustomerUpdateWithWhereUniqueWithoutOrganizationInput!]
+  updateMany: [CustomerUpdateManyWithWhereWithoutOrganizationInput!]
+  upsert: [CustomerUpsertWithWhereUniqueWithoutOrganizationInput!]
 }
 
 input CustomerUpdateOneRequiredWithoutContactsNestedInput {
@@ -1729,6 +2266,11 @@ input CustomerUpdateToOneWithWhereWithoutContactsInput {
 
 input CustomerUpdateWithWhereUniqueWithoutHierarchyInput {
   data: CustomerUpdateWithoutHierarchyInput!
+  where: CustomerWhereUniqueInput!
+}
+
+input CustomerUpdateWithWhereUniqueWithoutOrganizationInput {
+  data: CustomerUpdateWithoutOrganizationInput!
   where: CustomerWhereUniqueInput!
 }
 
@@ -1790,9 +2332,44 @@ input CustomerUpdateWithoutHierarchyInput {
   zipcode: NullableStringFieldUpdateOperationsInput
 }
 
+input CustomerUpdateWithoutOrganizationInput {
+  address: NullableStringFieldUpdateOperationsInput
+  addresses: AddressUpdateManyWithoutCustomerNestedInput
+  agreements: AgreementUpdateManyWithoutCustomerNestedInput
+  city: NullableStringFieldUpdateOperationsInput
+  company: StringFieldUpdateOperationsInput
+  contacts: ContactUpdateManyWithoutCustomerNestedInput
+  country: NullableStringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  description: NullableStringFieldUpdateOperationsInput
+  domain: StringFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  founded: NullableStringFieldUpdateOperationsInput
+  hierarchy: HierarchyUpdateOneWithoutCustomersNestedInput
+  industry: NullableStringFieldUpdateOperationsInput
+  linkedinUrl: StringFieldUpdateOperationsInput
+  logo: LogoUpdateOneWithoutCustomerNestedInput
+  name: StringFieldUpdateOperationsInput
+  phone: NullableStringFieldUpdateOperationsInput
+  revenue: NullableStringFieldUpdateOperationsInput
+  services: ServiceUpdateManyWithoutCustomerNestedInput
+  size: NullableStringFieldUpdateOperationsInput
+  status: EnumCompanyStatusFieldUpdateOperationsInput
+  taxIdentifier: NullableStringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  website: NullableStringFieldUpdateOperationsInput
+  zipcode: NullableStringFieldUpdateOperationsInput
+}
+
 input CustomerUpsertWithWhereUniqueWithoutHierarchyInput {
   create: CustomerCreateWithoutHierarchyInput!
   update: CustomerUpdateWithoutHierarchyInput!
+  where: CustomerWhereUniqueInput!
+}
+
+input CustomerUpsertWithWhereUniqueWithoutOrganizationInput {
+  create: CustomerCreateWithoutOrganizationInput!
+  update: CustomerUpdateWithoutOrganizationInput!
   where: CustomerWhereUniqueInput!
 }
 
@@ -1908,6 +2485,17 @@ input DateTimeWithAggregatesFilter {
   notIn: [DateTime!]
 }
 
+input EnumAgentTypeFieldUpdateOperationsInput {
+  set: AgentType
+}
+
+input EnumAgentTypeFilter {
+  equals: AgentType
+  in: [AgentType!]
+  not: NestedEnumAgentTypeFilter
+  notIn: [AgentType!]
+}
+
 input EnumCompanyStatusFieldUpdateOperationsInput {
   set: CompanyStatus
 }
@@ -1961,6 +2549,35 @@ input EnumOranizationStatusFilter {
   notIn: [OranizationStatus!]
 }
 
+input EnumOranizationStatusWithAggregatesFilter {
+  _count: NestedIntFilter
+  _max: NestedEnumOranizationStatusFilter
+  _min: NestedEnumOranizationStatusFilter
+  equals: OranizationStatus
+  in: [OranizationStatus!]
+  not: NestedEnumOranizationStatusWithAggregatesFilter
+  notIn: [OranizationStatus!]
+}
+
+input FloatFieldUpdateOperationsInput {
+  decrement: Float
+  divide: Float
+  increment: Float
+  multiply: Float
+  set: Float
+}
+
+input FloatFilter {
+  equals: Float
+  gt: Float
+  gte: Float
+  in: [Float!]
+  lt: Float
+  lte: Float
+  not: NestedFloatFilter
+  notIn: [Float!]
+}
+
 input FloatNullableFilter {
   equals: Float
   gt: Float
@@ -1969,6 +2586,22 @@ input FloatNullableFilter {
   lt: Float
   lte: Float
   not: NestedFloatNullableFilter
+  notIn: [Float!]
+}
+
+input FloatWithAggregatesFilter {
+  _avg: NestedFloatFilter
+  _count: NestedIntFilter
+  _max: NestedFloatFilter
+  _min: NestedFloatFilter
+  _sum: NestedFloatFilter
+  equals: Float
+  gt: Float
+  gte: Float
+  in: [Float!]
+  lt: Float
+  lte: Float
+  not: NestedFloatWithAggregatesFilter
   notIn: [Float!]
 }
 
@@ -2242,6 +2875,14 @@ input IncludeCustomerInput {
   logo: Boolean
 }
 
+input IntFieldUpdateOperationsInput {
+  decrement: Int
+  divide: Int
+  increment: Int
+  multiply: Int
+  set: Int
+}
+
 input IntFilter {
   equals: Int
   gt: Int
@@ -2382,6 +3023,10 @@ input LogoWhereUniqueInput {
 }
 
 type Mutation {
+  createAgentTerritory(
+    data: AgentTerritoryCreateInput!
+    relationLoadStrategy: RelationLoadStrategy
+  ): AgentTerritory
   createContact(
     data: ContactCreateInput!
     relationLoadStrategy: RelationLoadStrategy
@@ -2390,6 +3035,10 @@ type Mutation {
     data: CustomerCreateInput!
     relationLoadStrategy: RelationLoadStrategy
   ): Customer
+  createManyAgentTerritory(
+    data: [AgentTerritoryCreateManyInput!]!
+    skipDuplicates: Boolean
+  ): AffectedRows
   createManyContact(
     data: [ContactCreateManyInput!]!
     skipDuplicates: Boolean
@@ -2398,6 +3047,26 @@ type Mutation {
     data: [CustomerCreateManyInput!]!
     skipDuplicates: Boolean
   ): AffectedRows
+  createManyOrganization(
+    data: [OrganizationCreateManyInput!]!
+    skipDuplicates: Boolean
+  ): AffectedRows
+  createManyServiceTerritory(
+    data: [ServiceTerritoryCreateManyInput!]!
+    skipDuplicates: Boolean
+  ): AffectedRows
+  createOrganization(
+    data: OrganizationCreateInput!
+    relationLoadStrategy: RelationLoadStrategy
+  ): Organization
+  createServiceTerritory(
+    data: ServiceTerritoryCreateInput!
+    relationLoadStrategy: RelationLoadStrategy
+  ): ServiceTerritory
+  deleteAgentTerritory(
+    relationLoadStrategy: RelationLoadStrategy
+    where: AgentTerritoryWhereUniqueInput!
+  ): AgentTerritory
   deleteContact(
     relationLoadStrategy: RelationLoadStrategy
     where: ContactWhereUniqueInput!
@@ -2406,8 +3075,24 @@ type Mutation {
     relationLoadStrategy: RelationLoadStrategy
     where: CustomerWhereUniqueInput!
   ): Customer
+  deleteManyAgentTerritory(where: AgentTerritoryWhereInput): AffectedRows
   deleteManyContact(where: ContactWhereInput): AffectedRows
   deleteManyCustomer(where: CustomerWhereInput): AffectedRows
+  deleteManyOrganization(where: OrganizationWhereInput): AffectedRows
+  deleteManyServiceTerritory(where: ServiceTerritoryWhereInput): AffectedRows
+  deleteOrganization(
+    relationLoadStrategy: RelationLoadStrategy
+    where: OrganizationWhereUniqueInput!
+  ): Organization
+  deleteServiceTerritory(
+    relationLoadStrategy: RelationLoadStrategy
+    where: ServiceTerritoryWhereUniqueInput!
+  ): ServiceTerritory
+  updateAgentTerritory(
+    data: AgentTerritoryUpdateInput!
+    relationLoadStrategy: RelationLoadStrategy
+    where: AgentTerritoryWhereUniqueInput!
+  ): AgentTerritory
   updateContact(
     data: ContactUpdateInput!
     relationLoadStrategy: RelationLoadStrategy
@@ -2418,6 +3103,10 @@ type Mutation {
     relationLoadStrategy: RelationLoadStrategy
     where: CustomerWhereUniqueInput!
   ): Customer
+  updateManyAgentTerritory(
+    data: AgentTerritoryUncheckedUpdateManyInput!
+    where: AgentTerritoryWhereInput
+  ): AffectedRows
   updateManyContact(
     data: ContactUpdateManyMutationInput!
     where: ContactWhereInput
@@ -2426,6 +3115,24 @@ type Mutation {
     data: CustomerUpdateManyMutationInput!
     where: CustomerWhereInput
   ): AffectedRows
+  updateManyOrganization(
+    data: OrganizationUpdateManyMutationInput!
+    where: OrganizationWhereInput
+  ): AffectedRows
+  updateManyServiceTerritory(
+    data: ServiceTerritoryUpdateManyMutationInput!
+    where: ServiceTerritoryWhereInput
+  ): AffectedRows
+  updateOrganization(
+    data: OrganizationUpdateInput!
+    relationLoadStrategy: RelationLoadStrategy
+    where: OrganizationWhereUniqueInput!
+  ): Organization
+  updateServiceTerritory(
+    data: ServiceTerritoryUpdateInput!
+    relationLoadStrategy: RelationLoadStrategy
+    where: ServiceTerritoryWhereUniqueInput!
+  ): ServiceTerritory
 }
 
 input NestedBoolFilter {
@@ -2464,6 +3171,13 @@ input NestedDateTimeWithAggregatesFilter {
   lte: DateTime
   not: NestedDateTimeWithAggregatesFilter
   notIn: [DateTime!]
+}
+
+input NestedEnumAgentTypeFilter {
+  equals: AgentType
+  in: [AgentType!]
+  not: NestedEnumAgentTypeFilter
+  notIn: [AgentType!]
 }
 
 input NestedEnumCompanyStatusFilter {
@@ -2507,6 +3221,16 @@ input NestedEnumOranizationStatusFilter {
   notIn: [OranizationStatus!]
 }
 
+input NestedEnumOranizationStatusWithAggregatesFilter {
+  _count: NestedIntFilter
+  _max: NestedEnumOranizationStatusFilter
+  _min: NestedEnumOranizationStatusFilter
+  equals: OranizationStatus
+  in: [OranizationStatus!]
+  not: NestedEnumOranizationStatusWithAggregatesFilter
+  notIn: [OranizationStatus!]
+}
+
 input NestedFloatFilter {
   equals: Float
   gt: Float
@@ -2526,6 +3250,22 @@ input NestedFloatNullableFilter {
   lt: Float
   lte: Float
   not: NestedFloatNullableFilter
+  notIn: [Float!]
+}
+
+input NestedFloatWithAggregatesFilter {
+  _avg: NestedFloatFilter
+  _count: NestedIntFilter
+  _max: NestedFloatFilter
+  _min: NestedFloatFilter
+  _sum: NestedFloatFilter
+  equals: Float
+  gt: Float
+  gte: Float
+  in: [Float!]
+  lt: Float
+  lte: Float
+  not: NestedFloatWithAggregatesFilter
   notIn: [Float!]
 }
 
@@ -2693,8 +3433,123 @@ type Organization {
   zipcode: String
 }
 
+type OrganizationAvgAggregate {
+  id: Float
+}
+
+input OrganizationAvgAggregateInput {
+  id: Boolean
+}
+
+input OrganizationAvgOrderByAggregateInput {
+  id: SortOrder
+}
+
 type OrganizationCount {
   customers: Int!
+}
+
+type OrganizationCountAggregate {
+  _all: Int!
+  address: Int!
+  city: Int!
+  company: Int!
+  country: Int!
+  createdAt: Int!
+  description: Int!
+  domain: Int!
+  email: Int!
+  id: Int!
+  linkedinUrl: Int!
+  name: Int!
+  phone: Int!
+  status: Int!
+  taxIdentifier: Int!
+  updatedAt: Int!
+  website: Int!
+  zipcode: Int!
+}
+
+input OrganizationCountAggregateInput {
+  _all: Boolean
+  address: Boolean
+  city: Boolean
+  company: Boolean
+  country: Boolean
+  createdAt: Boolean
+  description: Boolean
+  domain: Boolean
+  email: Boolean
+  id: Boolean
+  linkedinUrl: Boolean
+  name: Boolean
+  phone: Boolean
+  status: Boolean
+  taxIdentifier: Boolean
+  updatedAt: Boolean
+  website: Boolean
+  zipcode: Boolean
+}
+
+input OrganizationCountOrderByAggregateInput {
+  address: SortOrder
+  city: SortOrder
+  company: SortOrder
+  country: SortOrder
+  createdAt: SortOrder
+  description: SortOrder
+  domain: SortOrder
+  email: SortOrder
+  id: SortOrder
+  linkedinUrl: SortOrder
+  name: SortOrder
+  phone: SortOrder
+  status: SortOrder
+  taxIdentifier: SortOrder
+  updatedAt: SortOrder
+  website: SortOrder
+  zipcode: SortOrder
+}
+
+input OrganizationCreateInput {
+  address: String
+  city: String
+  company: String!
+  country: String
+  createdAt: DateTime
+  customers: CustomerCreateNestedManyWithoutOrganizationInput
+  description: String
+  domain: String!
+  email: String!
+  linkedinUrl: String!
+  logo: OrganizationLogoCreateNestedOneWithoutOrganizationInput
+  name: String!
+  phone: String
+  status: OranizationStatus
+  taxIdentifier: String
+  updatedAt: DateTime
+  website: String
+  zipcode: String
+}
+
+input OrganizationCreateManyInput {
+  address: String
+  city: String
+  company: String!
+  country: String
+  createdAt: DateTime
+  description: String
+  domain: String!
+  email: String!
+  id: Int
+  linkedinUrl: String!
+  name: String!
+  phone: String
+  status: OranizationStatus
+  taxIdentifier: String
+  updatedAt: DateTime
+  website: String
+  zipcode: String
 }
 
 input OrganizationCreateNestedOneWithoutCustomersInput {
@@ -2724,6 +3579,31 @@ input OrganizationCreateWithoutCustomersInput {
   status: OranizationStatus
   taxIdentifier: String
   updatedAt: DateTime
+  website: String
+  zipcode: String
+}
+
+type OrganizationGroupBy {
+  _avg: OrganizationAvgAggregate
+  _count: OrganizationCountAggregate
+  _max: OrganizationMaxAggregate
+  _min: OrganizationMinAggregate
+  _sum: OrganizationSumAggregate
+  address: String
+  city: String
+  company: String!
+  country: String
+  createdAt: DateTime!
+  description: String
+  domain: String!
+  email: String!
+  id: Int!
+  linkedinUrl: String!
+  name: String!
+  phone: String
+  status: OranizationStatus!
+  taxIdentifier: String
+  updatedAt: DateTime!
   website: String
   zipcode: String
 }
@@ -2813,6 +3693,151 @@ input OrganizationLogoWhereUniqueInput {
   title: StringFilter
 }
 
+type OrganizationMaxAggregate {
+  address: String
+  city: String
+  company: String
+  country: String
+  createdAt: DateTime
+  description: String
+  domain: String
+  email: String
+  id: Int
+  linkedinUrl: String
+  name: String
+  phone: String
+  status: OranizationStatus
+  taxIdentifier: String
+  updatedAt: DateTime
+  website: String
+  zipcode: String
+}
+
+input OrganizationMaxAggregateInput {
+  address: Boolean
+  city: Boolean
+  company: Boolean
+  country: Boolean
+  createdAt: Boolean
+  description: Boolean
+  domain: Boolean
+  email: Boolean
+  id: Boolean
+  linkedinUrl: Boolean
+  name: Boolean
+  phone: Boolean
+  status: Boolean
+  taxIdentifier: Boolean
+  updatedAt: Boolean
+  website: Boolean
+  zipcode: Boolean
+}
+
+input OrganizationMaxOrderByAggregateInput {
+  address: SortOrder
+  city: SortOrder
+  company: SortOrder
+  country: SortOrder
+  createdAt: SortOrder
+  description: SortOrder
+  domain: SortOrder
+  email: SortOrder
+  id: SortOrder
+  linkedinUrl: SortOrder
+  name: SortOrder
+  phone: SortOrder
+  status: SortOrder
+  taxIdentifier: SortOrder
+  updatedAt: SortOrder
+  website: SortOrder
+  zipcode: SortOrder
+}
+
+type OrganizationMinAggregate {
+  address: String
+  city: String
+  company: String
+  country: String
+  createdAt: DateTime
+  description: String
+  domain: String
+  email: String
+  id: Int
+  linkedinUrl: String
+  name: String
+  phone: String
+  status: OranizationStatus
+  taxIdentifier: String
+  updatedAt: DateTime
+  website: String
+  zipcode: String
+}
+
+input OrganizationMinAggregateInput {
+  address: Boolean
+  city: Boolean
+  company: Boolean
+  country: Boolean
+  createdAt: Boolean
+  description: Boolean
+  domain: Boolean
+  email: Boolean
+  id: Boolean
+  linkedinUrl: Boolean
+  name: Boolean
+  phone: Boolean
+  status: Boolean
+  taxIdentifier: Boolean
+  updatedAt: Boolean
+  website: Boolean
+  zipcode: Boolean
+}
+
+input OrganizationMinOrderByAggregateInput {
+  address: SortOrder
+  city: SortOrder
+  company: SortOrder
+  country: SortOrder
+  createdAt: SortOrder
+  description: SortOrder
+  domain: SortOrder
+  email: SortOrder
+  id: SortOrder
+  linkedinUrl: SortOrder
+  name: SortOrder
+  phone: SortOrder
+  status: SortOrder
+  taxIdentifier: SortOrder
+  updatedAt: SortOrder
+  website: SortOrder
+  zipcode: SortOrder
+}
+
+input OrganizationOrderByWithAggregationInput {
+  _avg: OrganizationAvgOrderByAggregateInput
+  _count: OrganizationCountOrderByAggregateInput
+  _max: OrganizationMaxOrderByAggregateInput
+  _min: OrganizationMinOrderByAggregateInput
+  _sum: OrganizationSumOrderByAggregateInput
+  address: SortOrderInput
+  city: SortOrderInput
+  company: SortOrder
+  country: SortOrderInput
+  createdAt: SortOrder
+  description: SortOrderInput
+  domain: SortOrder
+  email: SortOrder
+  id: SortOrder
+  linkedinUrl: SortOrder
+  name: SortOrder
+  phone: SortOrderInput
+  status: SortOrder
+  taxIdentifier: SortOrderInput
+  updatedAt: SortOrder
+  website: SortOrderInput
+  zipcode: SortOrderInput
+}
+
 input OrganizationOrderByWithRelationInput {
   address: SortOrderInput
   city: SortOrderInput
@@ -2838,6 +3863,101 @@ input OrganizationOrderByWithRelationInput {
 input OrganizationRelationFilter {
   is: OrganizationWhereInput
   isNot: OrganizationWhereInput
+}
+
+enum OrganizationScalarFieldEnum {
+  address
+  city
+  company
+  country
+  createdAt
+  description
+  domain
+  email
+  id
+  linkedinUrl
+  name
+  phone
+  status
+  taxIdentifier
+  updatedAt
+  website
+  zipcode
+}
+
+input OrganizationScalarWhereWithAggregatesInput {
+  AND: [OrganizationScalarWhereWithAggregatesInput!]
+  NOT: [OrganizationScalarWhereWithAggregatesInput!]
+  OR: [OrganizationScalarWhereWithAggregatesInput!]
+  address: StringNullableWithAggregatesFilter
+  city: StringNullableWithAggregatesFilter
+  company: StringWithAggregatesFilter
+  country: StringNullableWithAggregatesFilter
+  createdAt: DateTimeWithAggregatesFilter
+  description: StringNullableWithAggregatesFilter
+  domain: StringWithAggregatesFilter
+  email: StringWithAggregatesFilter
+  id: IntWithAggregatesFilter
+  linkedinUrl: StringWithAggregatesFilter
+  name: StringWithAggregatesFilter
+  phone: StringNullableWithAggregatesFilter
+  status: EnumOranizationStatusWithAggregatesFilter
+  taxIdentifier: StringNullableWithAggregatesFilter
+  updatedAt: DateTimeWithAggregatesFilter
+  website: StringNullableWithAggregatesFilter
+  zipcode: StringNullableWithAggregatesFilter
+}
+
+type OrganizationSumAggregate {
+  id: Int
+}
+
+input OrganizationSumAggregateInput {
+  id: Boolean
+}
+
+input OrganizationSumOrderByAggregateInput {
+  id: SortOrder
+}
+
+input OrganizationUpdateInput {
+  address: NullableStringFieldUpdateOperationsInput
+  city: NullableStringFieldUpdateOperationsInput
+  company: StringFieldUpdateOperationsInput
+  country: NullableStringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  customers: CustomerUpdateManyWithoutOrganizationNestedInput
+  description: NullableStringFieldUpdateOperationsInput
+  domain: StringFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  linkedinUrl: StringFieldUpdateOperationsInput
+  logo: OrganizationLogoUpdateOneWithoutOrganizationNestedInput
+  name: StringFieldUpdateOperationsInput
+  phone: NullableStringFieldUpdateOperationsInput
+  status: EnumOranizationStatusFieldUpdateOperationsInput
+  taxIdentifier: NullableStringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  website: NullableStringFieldUpdateOperationsInput
+  zipcode: NullableStringFieldUpdateOperationsInput
+}
+
+input OrganizationUpdateManyMutationInput {
+  address: NullableStringFieldUpdateOperationsInput
+  city: NullableStringFieldUpdateOperationsInput
+  company: StringFieldUpdateOperationsInput
+  country: NullableStringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  description: NullableStringFieldUpdateOperationsInput
+  domain: StringFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  linkedinUrl: StringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  phone: NullableStringFieldUpdateOperationsInput
+  status: EnumOranizationStatusFieldUpdateOperationsInput
+  taxIdentifier: NullableStringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  website: NullableStringFieldUpdateOperationsInput
+  zipcode: NullableStringFieldUpdateOperationsInput
 }
 
 input OrganizationUpdateOneRequiredWithoutCustomersNestedInput {
@@ -2930,6 +4050,18 @@ input OrganizationWhereUniqueInput {
 }
 
 type Query {
+  aggregateAgentTerritory(
+    _avg: AgentTerritoryAvgAggregateInput
+    _count: AgentTerritoryCountAggregateInput
+    _max: AgentTerritoryMaxAggregateInput
+    _min: AgentTerritoryMinAggregateInput
+    _sum: AgentTerritorySumAggregateInput
+    cursor: AgentTerritoryWhereUniqueInput
+    orderBy: [AgentTerritoryOrderByWithRelationInput!]
+    skip: Int
+    take: Int
+    where: AgentTerritoryWhereInput
+  ): AggregateAgentTerritory!
   aggregateContact(
     _avg: ContactAvgAggregateInput
     _count: ContactCountAggregateInput
@@ -2954,6 +4086,39 @@ type Query {
     take: Int
     where: CustomerWhereInput
   ): AggregateCustomer!
+  aggregateOrganization(
+    _avg: OrganizationAvgAggregateInput
+    _count: OrganizationCountAggregateInput
+    _max: OrganizationMaxAggregateInput
+    _min: OrganizationMinAggregateInput
+    _sum: OrganizationSumAggregateInput
+    cursor: OrganizationWhereUniqueInput
+    orderBy: [OrganizationOrderByWithRelationInput!]
+    skip: Int
+    take: Int
+    where: OrganizationWhereInput
+  ): AggregateOrganization!
+  aggregateServiceTerritory(
+    _avg: ServiceTerritoryAvgAggregateInput
+    _count: ServiceTerritoryCountAggregateInput
+    _max: ServiceTerritoryMaxAggregateInput
+    _min: ServiceTerritoryMinAggregateInput
+    _sum: ServiceTerritorySumAggregateInput
+    cursor: ServiceTerritoryWhereUniqueInput
+    orderBy: [ServiceTerritoryOrderByWithRelationInput!]
+    skip: Int
+    take: Int
+    where: ServiceTerritoryWhereInput
+  ): AggregateServiceTerritory!
+  findFirstAgentTerritory(
+    cursor: AgentTerritoryWhereUniqueInput
+    distinct: [AgentTerritoryScalarFieldEnum!]
+    orderBy: [AgentTerritoryOrderByWithRelationInput!]
+    relationLoadStrategy: RelationLoadStrategy
+    skip: Int
+    take: Int
+    where: AgentTerritoryWhereInput
+  ): AgentTerritory!
   findFirstContact(
     cursor: ContactWhereUniqueInput
     distinct: [ContactScalarFieldEnum!]
@@ -2972,6 +4137,28 @@ type Query {
     take: Int
     where: CustomerWhereInput
   ): Customer!
+  findFirstOrganization(
+    cursor: OrganizationWhereUniqueInput
+    distinct: [OrganizationScalarFieldEnum!]
+    orderBy: [OrganizationOrderByWithRelationInput!]
+    relationLoadStrategy: RelationLoadStrategy
+    skip: Int
+    take: Int
+    where: OrganizationWhereInput
+  ): Organization!
+  findFirstServiceTerritory(
+    cursor: ServiceTerritoryWhereUniqueInput
+    distinct: [ServiceTerritoryScalarFieldEnum!]
+    orderBy: [ServiceTerritoryOrderByWithRelationInput!]
+    relationLoadStrategy: RelationLoadStrategy
+    skip: Int
+    take: Int
+    where: ServiceTerritoryWhereInput
+  ): ServiceTerritory!
+  findUniqueAgentTerritory(
+    relationLoadStrategy: RelationLoadStrategy
+    where: AgentTerritoryWhereUniqueInput!
+  ): AgentTerritory!
   findUniqueContact(
     include: IncludeContactInput
     relationLoadStrategy: RelationLoadStrategy
@@ -2982,6 +4169,27 @@ type Query {
     relationLoadStrategy: RelationLoadStrategy
     where: CustomerWhereUniqueInput!
   ): Customer!
+  findUniqueOrganization(
+    relationLoadStrategy: RelationLoadStrategy
+    where: OrganizationWhereUniqueInput!
+  ): Organization!
+  findUniqueServiceTerritory(
+    relationLoadStrategy: RelationLoadStrategy
+    where: ServiceTerritoryWhereUniqueInput!
+  ): ServiceTerritory!
+  groupByAgentTerritory(
+    _avg: AgentTerritoryAvgAggregateInput
+    _count: AgentTerritoryCountAggregateInput
+    _max: AgentTerritoryMaxAggregateInput
+    _min: AgentTerritoryMinAggregateInput
+    _sum: AgentTerritorySumAggregateInput
+    by: [AgentTerritoryScalarFieldEnum!]!
+    having: AgentTerritoryScalarWhereWithAggregatesInput
+    orderBy: [AgentTerritoryOrderByWithAggregationInput!]
+    skip: Int
+    take: Int
+    where: AgentTerritoryWhereInput
+  ): [AgentTerritoryGroupBy!]!
   groupByContact(
     _avg: ContactAvgAggregateInput
     _count: ContactCountAggregateInput
@@ -3008,6 +4216,41 @@ type Query {
     take: Int
     where: CustomerWhereInput
   ): [CustomerGroupBy!]!
+  groupByOrganization(
+    _avg: OrganizationAvgAggregateInput
+    _count: OrganizationCountAggregateInput
+    _max: OrganizationMaxAggregateInput
+    _min: OrganizationMinAggregateInput
+    _sum: OrganizationSumAggregateInput
+    by: [OrganizationScalarFieldEnum!]!
+    having: OrganizationScalarWhereWithAggregatesInput
+    orderBy: [OrganizationOrderByWithAggregationInput!]
+    skip: Int
+    take: Int
+    where: OrganizationWhereInput
+  ): [OrganizationGroupBy!]!
+  groupByServiceTerritory(
+    _avg: ServiceTerritoryAvgAggregateInput
+    _count: ServiceTerritoryCountAggregateInput
+    _max: ServiceTerritoryMaxAggregateInput
+    _min: ServiceTerritoryMinAggregateInput
+    _sum: ServiceTerritorySumAggregateInput
+    by: [ServiceTerritoryScalarFieldEnum!]!
+    having: ServiceTerritoryScalarWhereWithAggregatesInput
+    orderBy: [ServiceTerritoryOrderByWithAggregationInput!]
+    skip: Int
+    take: Int
+    where: ServiceTerritoryWhereInput
+  ): [ServiceTerritoryGroupBy!]!
+  listAgentTerritorys(
+    cursor: AgentTerritoryWhereUniqueInput
+    distinct: [AgentTerritoryScalarFieldEnum!]
+    orderBy: [AgentTerritoryOrderByWithRelationInput!]
+    relationLoadStrategy: RelationLoadStrategy
+    skip: Int
+    take: Int
+    where: AgentTerritoryWhereInput
+  ): [AgentTerritory!]!
   listContacts(
     cursor: ContactWhereUniqueInput
     distinct: [ContactScalarFieldEnum!]
@@ -3028,6 +4271,24 @@ type Query {
     take: Int
     where: CustomerWhereInput
   ): [Customer!]!
+  listOrganizations(
+    cursor: OrganizationWhereUniqueInput
+    distinct: [OrganizationScalarFieldEnum!]
+    orderBy: [OrganizationOrderByWithRelationInput!]
+    relationLoadStrategy: RelationLoadStrategy
+    skip: Int
+    take: Int
+    where: OrganizationWhereInput
+  ): [Organization!]!
+  listServiceTerritorys(
+    cursor: ServiceTerritoryWhereUniqueInput
+    distinct: [ServiceTerritoryScalarFieldEnum!]
+    orderBy: [ServiceTerritoryOrderByWithRelationInput!]
+    relationLoadStrategy: RelationLoadStrategy
+    skip: Int
+    take: Int
+    where: ServiceTerritoryWhereInput
+  ): [ServiceTerritory!]!
 }
 
 enum QueryMode {
@@ -3246,6 +4507,380 @@ input ServiceScalarWhereInput {
   updatedAt: DateTimeFilter
 }
 
+type ServiceTerritory {
+  _count: ServiceTerritoryCount!
+  city: String!
+  country: String!
+  id: ID!
+  isocode: String!
+  latitude: Float!
+  locality: String!
+  longitude: Float!
+  name: String!
+  state: String!
+  subTerritories: [SubTerritory!]
+}
+
+type ServiceTerritoryAvgAggregate {
+  id: Float
+  latitude: Float
+  longitude: Float
+}
+
+input ServiceTerritoryAvgAggregateInput {
+  id: Boolean
+  latitude: Boolean
+  longitude: Boolean
+}
+
+input ServiceTerritoryAvgOrderByAggregateInput {
+  id: SortOrder
+  latitude: SortOrder
+  longitude: SortOrder
+}
+
+type ServiceTerritoryCount {
+  subTerritories: Int!
+}
+
+type ServiceTerritoryCountAggregate {
+  _all: Int!
+  city: Int!
+  country: Int!
+  id: Int!
+  isocode: Int!
+  latitude: Int!
+  locality: Int!
+  longitude: Int!
+  name: Int!
+  state: Int!
+}
+
+input ServiceTerritoryCountAggregateInput {
+  _all: Boolean
+  city: Boolean
+  country: Boolean
+  id: Boolean
+  isocode: Boolean
+  latitude: Boolean
+  locality: Boolean
+  longitude: Boolean
+  name: Boolean
+  state: Boolean
+}
+
+input ServiceTerritoryCountOrderByAggregateInput {
+  city: SortOrder
+  country: SortOrder
+  id: SortOrder
+  isocode: SortOrder
+  latitude: SortOrder
+  locality: SortOrder
+  longitude: SortOrder
+  name: SortOrder
+  state: SortOrder
+}
+
+input ServiceTerritoryCreateInput {
+  city: String!
+  country: String!
+  isocode: String!
+  latitude: Float!
+  locality: String!
+  longitude: Float!
+  name: String!
+  state: String!
+  subTerritories: SubTerritoryCreateNestedManyWithoutParentTerritoryInput
+}
+
+input ServiceTerritoryCreateManyInput {
+  city: String!
+  country: String!
+  id: Int
+  isocode: String!
+  latitude: Float!
+  locality: String!
+  longitude: Float!
+  name: String!
+  state: String!
+}
+
+input ServiceTerritoryCreateNestedOneWithoutSubTerritoriesInput {
+  connect: ServiceTerritoryWhereUniqueInput
+  connectOrCreate: ServiceTerritoryCreateOrConnectWithoutSubTerritoriesInput
+  create: ServiceTerritoryCreateWithoutSubTerritoriesInput
+}
+
+input ServiceTerritoryCreateOrConnectWithoutSubTerritoriesInput {
+  create: ServiceTerritoryCreateWithoutSubTerritoriesInput!
+  where: ServiceTerritoryWhereUniqueInput!
+}
+
+input ServiceTerritoryCreateWithoutSubTerritoriesInput {
+  city: String!
+  country: String!
+  isocode: String!
+  latitude: Float!
+  locality: String!
+  longitude: Float!
+  name: String!
+  state: String!
+}
+
+type ServiceTerritoryGroupBy {
+  _avg: ServiceTerritoryAvgAggregate
+  _count: ServiceTerritoryCountAggregate
+  _max: ServiceTerritoryMaxAggregate
+  _min: ServiceTerritoryMinAggregate
+  _sum: ServiceTerritorySumAggregate
+  city: String!
+  country: String!
+  id: Int!
+  isocode: String!
+  latitude: Float!
+  locality: String!
+  longitude: Float!
+  name: String!
+  state: String!
+}
+
+type ServiceTerritoryMaxAggregate {
+  city: String
+  country: String
+  id: Int
+  isocode: String
+  latitude: Float
+  locality: String
+  longitude: Float
+  name: String
+  state: String
+}
+
+input ServiceTerritoryMaxAggregateInput {
+  city: Boolean
+  country: Boolean
+  id: Boolean
+  isocode: Boolean
+  latitude: Boolean
+  locality: Boolean
+  longitude: Boolean
+  name: Boolean
+  state: Boolean
+}
+
+input ServiceTerritoryMaxOrderByAggregateInput {
+  city: SortOrder
+  country: SortOrder
+  id: SortOrder
+  isocode: SortOrder
+  latitude: SortOrder
+  locality: SortOrder
+  longitude: SortOrder
+  name: SortOrder
+  state: SortOrder
+}
+
+type ServiceTerritoryMinAggregate {
+  city: String
+  country: String
+  id: Int
+  isocode: String
+  latitude: Float
+  locality: String
+  longitude: Float
+  name: String
+  state: String
+}
+
+input ServiceTerritoryMinAggregateInput {
+  city: Boolean
+  country: Boolean
+  id: Boolean
+  isocode: Boolean
+  latitude: Boolean
+  locality: Boolean
+  longitude: Boolean
+  name: Boolean
+  state: Boolean
+}
+
+input ServiceTerritoryMinOrderByAggregateInput {
+  city: SortOrder
+  country: SortOrder
+  id: SortOrder
+  isocode: SortOrder
+  latitude: SortOrder
+  locality: SortOrder
+  longitude: SortOrder
+  name: SortOrder
+  state: SortOrder
+}
+
+input ServiceTerritoryOrderByWithAggregationInput {
+  _avg: ServiceTerritoryAvgOrderByAggregateInput
+  _count: ServiceTerritoryCountOrderByAggregateInput
+  _max: ServiceTerritoryMaxOrderByAggregateInput
+  _min: ServiceTerritoryMinOrderByAggregateInput
+  _sum: ServiceTerritorySumOrderByAggregateInput
+  city: SortOrder
+  country: SortOrder
+  id: SortOrder
+  isocode: SortOrder
+  latitude: SortOrder
+  locality: SortOrder
+  longitude: SortOrder
+  name: SortOrder
+  state: SortOrder
+}
+
+input ServiceTerritoryOrderByWithRelationInput {
+  city: SortOrder
+  country: SortOrder
+  id: SortOrder
+  isocode: SortOrder
+  latitude: SortOrder
+  locality: SortOrder
+  longitude: SortOrder
+  name: SortOrder
+  state: SortOrder
+  subTerritories: SubTerritoryOrderByRelationAggregateInput
+}
+
+input ServiceTerritoryRelationFilter {
+  is: ServiceTerritoryWhereInput
+  isNot: ServiceTerritoryWhereInput
+}
+
+enum ServiceTerritoryScalarFieldEnum {
+  city
+  country
+  id
+  isocode
+  latitude
+  locality
+  longitude
+  name
+  state
+}
+
+input ServiceTerritoryScalarWhereWithAggregatesInput {
+  AND: [ServiceTerritoryScalarWhereWithAggregatesInput!]
+  NOT: [ServiceTerritoryScalarWhereWithAggregatesInput!]
+  OR: [ServiceTerritoryScalarWhereWithAggregatesInput!]
+  city: StringWithAggregatesFilter
+  country: StringWithAggregatesFilter
+  id: IntWithAggregatesFilter
+  isocode: StringWithAggregatesFilter
+  latitude: FloatWithAggregatesFilter
+  locality: StringWithAggregatesFilter
+  longitude: FloatWithAggregatesFilter
+  name: StringWithAggregatesFilter
+  state: StringWithAggregatesFilter
+}
+
+type ServiceTerritorySumAggregate {
+  id: Int
+  latitude: Float
+  longitude: Float
+}
+
+input ServiceTerritorySumAggregateInput {
+  id: Boolean
+  latitude: Boolean
+  longitude: Boolean
+}
+
+input ServiceTerritorySumOrderByAggregateInput {
+  id: SortOrder
+  latitude: SortOrder
+  longitude: SortOrder
+}
+
+input ServiceTerritoryUpdateInput {
+  city: StringFieldUpdateOperationsInput
+  country: StringFieldUpdateOperationsInput
+  isocode: StringFieldUpdateOperationsInput
+  latitude: FloatFieldUpdateOperationsInput
+  locality: StringFieldUpdateOperationsInput
+  longitude: FloatFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  state: StringFieldUpdateOperationsInput
+  subTerritories: SubTerritoryUpdateManyWithoutParentTerritoryNestedInput
+}
+
+input ServiceTerritoryUpdateManyMutationInput {
+  city: StringFieldUpdateOperationsInput
+  country: StringFieldUpdateOperationsInput
+  isocode: StringFieldUpdateOperationsInput
+  latitude: FloatFieldUpdateOperationsInput
+  locality: StringFieldUpdateOperationsInput
+  longitude: FloatFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  state: StringFieldUpdateOperationsInput
+}
+
+input ServiceTerritoryUpdateOneRequiredWithoutSubTerritoriesNestedInput {
+  connect: ServiceTerritoryWhereUniqueInput
+  connectOrCreate: ServiceTerritoryCreateOrConnectWithoutSubTerritoriesInput
+  create: ServiceTerritoryCreateWithoutSubTerritoriesInput
+  update: ServiceTerritoryUpdateToOneWithWhereWithoutSubTerritoriesInput
+  upsert: ServiceTerritoryUpsertWithoutSubTerritoriesInput
+}
+
+input ServiceTerritoryUpdateToOneWithWhereWithoutSubTerritoriesInput {
+  data: ServiceTerritoryUpdateWithoutSubTerritoriesInput!
+  where: ServiceTerritoryWhereInput
+}
+
+input ServiceTerritoryUpdateWithoutSubTerritoriesInput {
+  city: StringFieldUpdateOperationsInput
+  country: StringFieldUpdateOperationsInput
+  isocode: StringFieldUpdateOperationsInput
+  latitude: FloatFieldUpdateOperationsInput
+  locality: StringFieldUpdateOperationsInput
+  longitude: FloatFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  state: StringFieldUpdateOperationsInput
+}
+
+input ServiceTerritoryUpsertWithoutSubTerritoriesInput {
+  create: ServiceTerritoryCreateWithoutSubTerritoriesInput!
+  update: ServiceTerritoryUpdateWithoutSubTerritoriesInput!
+  where: ServiceTerritoryWhereInput
+}
+
+input ServiceTerritoryWhereInput {
+  AND: [ServiceTerritoryWhereInput!]
+  NOT: [ServiceTerritoryWhereInput!]
+  OR: [ServiceTerritoryWhereInput!]
+  city: StringFilter
+  country: StringFilter
+  id: IntFilter
+  isocode: StringFilter
+  latitude: FloatFilter
+  locality: StringFilter
+  longitude: FloatFilter
+  name: StringFilter
+  state: StringFilter
+  subTerritories: SubTerritoryListRelationFilter
+}
+
+input ServiceTerritoryWhereUniqueInput {
+  AND: [ServiceTerritoryWhereInput!]
+  NOT: [ServiceTerritoryWhereInput!]
+  OR: [ServiceTerritoryWhereInput!]
+  city: StringFilter
+  country: StringFilter
+  id: Int
+  isocode: StringFilter
+  latitude: FloatFilter
+  locality: StringFilter
+  longitude: FloatFilter
+  name: StringFilter
+  state: StringFilter
+  subTerritories: SubTerritoryListRelationFilter
+}
+
 input ServiceUpdateManyMutationInput {
   createdAt: DateTimeFieldUpdateOperationsInput
   description: StringFieldUpdateOperationsInput
@@ -3397,4 +5032,376 @@ input StringWithAggregatesFilter {
   not: NestedStringWithAggregatesFilter
   notIn: [String!]
   startsWith: String
+}
+
+type SubTerritory {
+  _count: SubTerritoryCount!
+  agents: [AgentTerritory!]
+  id: ID!
+  latitude: Float!
+  locality: String!
+  longitude: Float!
+  name: String!
+  parentTerritory: ServiceTerritory!
+  parentTerritoryId: Int!
+}
+
+type SubTerritoryCount {
+  agents: Int!
+}
+
+input SubTerritoryCreateManyParentTerritoryInput {
+  id: Int
+  latitude: Float!
+  locality: String!
+  longitude: Float!
+  name: String!
+}
+
+input SubTerritoryCreateManyParentTerritoryInputEnvelope {
+  data: [SubTerritoryCreateManyParentTerritoryInput!]!
+  skipDuplicates: Boolean
+}
+
+input SubTerritoryCreateNestedManyWithoutParentTerritoryInput {
+  connect: [SubTerritoryWhereUniqueInput!]
+  connectOrCreate: [SubTerritoryCreateOrConnectWithoutParentTerritoryInput!]
+  create: [SubTerritoryCreateWithoutParentTerritoryInput!]
+  createMany: SubTerritoryCreateManyParentTerritoryInputEnvelope
+}
+
+input SubTerritoryCreateNestedOneWithoutAgentsInput {
+  connect: SubTerritoryWhereUniqueInput
+  connectOrCreate: SubTerritoryCreateOrConnectWithoutAgentsInput
+  create: SubTerritoryCreateWithoutAgentsInput
+}
+
+input SubTerritoryCreateOrConnectWithoutAgentsInput {
+  create: SubTerritoryCreateWithoutAgentsInput!
+  where: SubTerritoryWhereUniqueInput!
+}
+
+input SubTerritoryCreateOrConnectWithoutParentTerritoryInput {
+  create: SubTerritoryCreateWithoutParentTerritoryInput!
+  where: SubTerritoryWhereUniqueInput!
+}
+
+input SubTerritoryCreateWithoutAgentsInput {
+  latitude: Float!
+  locality: String!
+  longitude: Float!
+  name: String!
+  parentTerritory: ServiceTerritoryCreateNestedOneWithoutSubTerritoriesInput!
+}
+
+input SubTerritoryCreateWithoutParentTerritoryInput {
+  agents: AgentTerritoryCreateNestedManyWithoutSubTerritoryInput
+  latitude: Float!
+  locality: String!
+  longitude: Float!
+  name: String!
+}
+
+input SubTerritoryListRelationFilter {
+  every: SubTerritoryWhereInput
+  none: SubTerritoryWhereInput
+  some: SubTerritoryWhereInput
+}
+
+input SubTerritoryOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input SubTerritoryOrderByWithRelationInput {
+  agents: AgentTerritoryOrderByRelationAggregateInput
+  id: SortOrder
+  latitude: SortOrder
+  locality: SortOrder
+  longitude: SortOrder
+  name: SortOrder
+  parentTerritory: ServiceTerritoryOrderByWithRelationInput
+  parentTerritoryId: SortOrder
+}
+
+input SubTerritoryRelationFilter {
+  is: SubTerritoryWhereInput
+  isNot: SubTerritoryWhereInput
+}
+
+input SubTerritoryScalarWhereInput {
+  AND: [SubTerritoryScalarWhereInput!]
+  NOT: [SubTerritoryScalarWhereInput!]
+  OR: [SubTerritoryScalarWhereInput!]
+  id: IntFilter
+  latitude: FloatFilter
+  locality: StringFilter
+  longitude: FloatFilter
+  name: StringFilter
+  parentTerritoryId: IntFilter
+}
+
+input SubTerritoryUpdateManyMutationInput {
+  latitude: FloatFieldUpdateOperationsInput
+  locality: StringFieldUpdateOperationsInput
+  longitude: FloatFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+}
+
+input SubTerritoryUpdateManyWithWhereWithoutParentTerritoryInput {
+  data: SubTerritoryUpdateManyMutationInput!
+  where: SubTerritoryScalarWhereInput!
+}
+
+input SubTerritoryUpdateManyWithoutParentTerritoryNestedInput {
+  connect: [SubTerritoryWhereUniqueInput!]
+  connectOrCreate: [SubTerritoryCreateOrConnectWithoutParentTerritoryInput!]
+  create: [SubTerritoryCreateWithoutParentTerritoryInput!]
+  createMany: SubTerritoryCreateManyParentTerritoryInputEnvelope
+  delete: [SubTerritoryWhereUniqueInput!]
+  deleteMany: [SubTerritoryScalarWhereInput!]
+  disconnect: [SubTerritoryWhereUniqueInput!]
+  set: [SubTerritoryWhereUniqueInput!]
+  update: [SubTerritoryUpdateWithWhereUniqueWithoutParentTerritoryInput!]
+  updateMany: [SubTerritoryUpdateManyWithWhereWithoutParentTerritoryInput!]
+  upsert: [SubTerritoryUpsertWithWhereUniqueWithoutParentTerritoryInput!]
+}
+
+input SubTerritoryUpdateOneRequiredWithoutAgentsNestedInput {
+  connect: SubTerritoryWhereUniqueInput
+  connectOrCreate: SubTerritoryCreateOrConnectWithoutAgentsInput
+  create: SubTerritoryCreateWithoutAgentsInput
+  update: SubTerritoryUpdateToOneWithWhereWithoutAgentsInput
+  upsert: SubTerritoryUpsertWithoutAgentsInput
+}
+
+input SubTerritoryUpdateToOneWithWhereWithoutAgentsInput {
+  data: SubTerritoryUpdateWithoutAgentsInput!
+  where: SubTerritoryWhereInput
+}
+
+input SubTerritoryUpdateWithWhereUniqueWithoutParentTerritoryInput {
+  data: SubTerritoryUpdateWithoutParentTerritoryInput!
+  where: SubTerritoryWhereUniqueInput!
+}
+
+input SubTerritoryUpdateWithoutAgentsInput {
+  latitude: FloatFieldUpdateOperationsInput
+  locality: StringFieldUpdateOperationsInput
+  longitude: FloatFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  parentTerritory: ServiceTerritoryUpdateOneRequiredWithoutSubTerritoriesNestedInput
+}
+
+input SubTerritoryUpdateWithoutParentTerritoryInput {
+  agents: AgentTerritoryUpdateManyWithoutSubTerritoryNestedInput
+  latitude: FloatFieldUpdateOperationsInput
+  locality: StringFieldUpdateOperationsInput
+  longitude: FloatFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+}
+
+input SubTerritoryUpsertWithWhereUniqueWithoutParentTerritoryInput {
+  create: SubTerritoryCreateWithoutParentTerritoryInput!
+  update: SubTerritoryUpdateWithoutParentTerritoryInput!
+  where: SubTerritoryWhereUniqueInput!
+}
+
+input SubTerritoryUpsertWithoutAgentsInput {
+  create: SubTerritoryCreateWithoutAgentsInput!
+  update: SubTerritoryUpdateWithoutAgentsInput!
+  where: SubTerritoryWhereInput
+}
+
+input SubTerritoryWhereInput {
+  AND: [SubTerritoryWhereInput!]
+  NOT: [SubTerritoryWhereInput!]
+  OR: [SubTerritoryWhereInput!]
+  agents: AgentTerritoryListRelationFilter
+  id: IntFilter
+  latitude: FloatFilter
+  locality: StringFilter
+  longitude: FloatFilter
+  name: StringFilter
+  parentTerritory: ServiceTerritoryRelationFilter
+  parentTerritoryId: IntFilter
+}
+
+input SubTerritoryWhereUniqueInput {
+  AND: [SubTerritoryWhereInput!]
+  NOT: [SubTerritoryWhereInput!]
+  OR: [SubTerritoryWhereInput!]
+  agents: AgentTerritoryListRelationFilter
+  id: Int
+  latitude: FloatFilter
+  locality: StringFilter
+  longitude: FloatFilter
+  name: StringFilter
+  parentTerritory: ServiceTerritoryRelationFilter
+  parentTerritoryId: IntFilter
+}
+
+type WorkCalendar {
+  agent: Agent!
+  agentId: Int!
+  available: Boolean!
+  createdAt: DateTime!
+  day: Int!
+  endTime: DateTime!
+  id: ID!
+  month: Int!
+  startTime: DateTime!
+  updatedAt: DateTime!
+  year: Int!
+}
+
+input WorkCalendarCreateManyAgentInput {
+  available: Boolean!
+  createdAt: DateTime
+  day: Int!
+  endTime: DateTime!
+  id: Int
+  month: Int!
+  startTime: DateTime!
+  updatedAt: DateTime
+  year: Int!
+}
+
+input WorkCalendarCreateManyAgentInputEnvelope {
+  data: [WorkCalendarCreateManyAgentInput!]!
+  skipDuplicates: Boolean
+}
+
+input WorkCalendarCreateNestedManyWithoutAgentInput {
+  connect: [WorkCalendarWhereUniqueInput!]
+  connectOrCreate: [WorkCalendarCreateOrConnectWithoutAgentInput!]
+  create: [WorkCalendarCreateWithoutAgentInput!]
+  createMany: WorkCalendarCreateManyAgentInputEnvelope
+}
+
+input WorkCalendarCreateOrConnectWithoutAgentInput {
+  create: WorkCalendarCreateWithoutAgentInput!
+  where: WorkCalendarWhereUniqueInput!
+}
+
+input WorkCalendarCreateWithoutAgentInput {
+  available: Boolean!
+  createdAt: DateTime
+  day: Int!
+  endTime: DateTime!
+  month: Int!
+  startTime: DateTime!
+  updatedAt: DateTime
+  year: Int!
+}
+
+input WorkCalendarListRelationFilter {
+  every: WorkCalendarWhereInput
+  none: WorkCalendarWhereInput
+  some: WorkCalendarWhereInput
+}
+
+input WorkCalendarOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input WorkCalendarScalarWhereInput {
+  AND: [WorkCalendarScalarWhereInput!]
+  NOT: [WorkCalendarScalarWhereInput!]
+  OR: [WorkCalendarScalarWhereInput!]
+  agentId: IntFilter
+  available: BoolFilter
+  createdAt: DateTimeFilter
+  day: IntFilter
+  endTime: DateTimeFilter
+  id: IntFilter
+  month: IntFilter
+  startTime: DateTimeFilter
+  updatedAt: DateTimeFilter
+  year: IntFilter
+}
+
+input WorkCalendarUpdateManyMutationInput {
+  available: BoolFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  day: IntFieldUpdateOperationsInput
+  endTime: DateTimeFieldUpdateOperationsInput
+  month: IntFieldUpdateOperationsInput
+  startTime: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  year: IntFieldUpdateOperationsInput
+}
+
+input WorkCalendarUpdateManyWithWhereWithoutAgentInput {
+  data: WorkCalendarUpdateManyMutationInput!
+  where: WorkCalendarScalarWhereInput!
+}
+
+input WorkCalendarUpdateManyWithoutAgentNestedInput {
+  connect: [WorkCalendarWhereUniqueInput!]
+  connectOrCreate: [WorkCalendarCreateOrConnectWithoutAgentInput!]
+  create: [WorkCalendarCreateWithoutAgentInput!]
+  createMany: WorkCalendarCreateManyAgentInputEnvelope
+  delete: [WorkCalendarWhereUniqueInput!]
+  deleteMany: [WorkCalendarScalarWhereInput!]
+  disconnect: [WorkCalendarWhereUniqueInput!]
+  set: [WorkCalendarWhereUniqueInput!]
+  update: [WorkCalendarUpdateWithWhereUniqueWithoutAgentInput!]
+  updateMany: [WorkCalendarUpdateManyWithWhereWithoutAgentInput!]
+  upsert: [WorkCalendarUpsertWithWhereUniqueWithoutAgentInput!]
+}
+
+input WorkCalendarUpdateWithWhereUniqueWithoutAgentInput {
+  data: WorkCalendarUpdateWithoutAgentInput!
+  where: WorkCalendarWhereUniqueInput!
+}
+
+input WorkCalendarUpdateWithoutAgentInput {
+  available: BoolFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  day: IntFieldUpdateOperationsInput
+  endTime: DateTimeFieldUpdateOperationsInput
+  month: IntFieldUpdateOperationsInput
+  startTime: DateTimeFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  year: IntFieldUpdateOperationsInput
+}
+
+input WorkCalendarUpsertWithWhereUniqueWithoutAgentInput {
+  create: WorkCalendarCreateWithoutAgentInput!
+  update: WorkCalendarUpdateWithoutAgentInput!
+  where: WorkCalendarWhereUniqueInput!
+}
+
+input WorkCalendarWhereInput {
+  AND: [WorkCalendarWhereInput!]
+  NOT: [WorkCalendarWhereInput!]
+  OR: [WorkCalendarWhereInput!]
+  agent: AgentRelationFilter
+  agentId: IntFilter
+  available: BoolFilter
+  createdAt: DateTimeFilter
+  day: IntFilter
+  endTime: DateTimeFilter
+  id: IntFilter
+  month: IntFilter
+  startTime: DateTimeFilter
+  updatedAt: DateTimeFilter
+  year: IntFilter
+}
+
+input WorkCalendarWhereUniqueInput {
+  AND: [WorkCalendarWhereInput!]
+  NOT: [WorkCalendarWhereInput!]
+  OR: [WorkCalendarWhereInput!]
+  agent: AgentRelationFilter
+  agentId: IntFilter
+  available: BoolFilter
+  createdAt: DateTimeFilter
+  day: IntFilter
+  endTime: DateTimeFilter
+  id: Int
+  month: IntFilter
+  startTime: DateTimeFilter
+  updatedAt: DateTimeFilter
+  year: IntFilter
 }

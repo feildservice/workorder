@@ -224,6 +224,457 @@ export type AffectedRows = {
   count: Scalars["Int"]["output"];
 };
 
+export type Agent = {
+  __typename?: "Agent";
+  _count: AgentCount;
+  agentType: AgentType;
+  calendars?: Maybe<Array<WorkCalendar>>;
+  createdAt: Scalars["DateTime"]["output"];
+  designation?: Maybe<Scalars["String"]["output"]>;
+  email: Scalars["String"]["output"];
+  firstName: Scalars["String"]["output"];
+  gender: Gender;
+  id: Scalars["ID"]["output"];
+  lastName: Scalars["String"]["output"];
+  middleName?: Maybe<Scalars["String"]["output"]>;
+  phone?: Maybe<Scalars["String"]["output"]>;
+  serviceTerritories?: Maybe<Array<AgentTerritory>>;
+  title: Scalars["String"]["output"];
+  updatedAt: Scalars["DateTime"]["output"];
+};
+
+export type AgentCount = {
+  __typename?: "AgentCount";
+  calendars: Scalars["Int"]["output"];
+  serviceTerritories: Scalars["Int"]["output"];
+};
+
+export type AgentCreateNestedOneWithoutServiceTerritoriesInput = {
+  connect?: InputMaybe<AgentWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<AgentCreateOrConnectWithoutServiceTerritoriesInput>;
+  create?: InputMaybe<AgentCreateWithoutServiceTerritoriesInput>;
+};
+
+export type AgentCreateOrConnectWithoutServiceTerritoriesInput = {
+  create: AgentCreateWithoutServiceTerritoriesInput;
+  where: AgentWhereUniqueInput;
+};
+
+export type AgentCreateWithoutServiceTerritoriesInput = {
+  agentType: AgentType;
+  calendars?: InputMaybe<WorkCalendarCreateNestedManyWithoutAgentInput>;
+  createdAt?: InputMaybe<Scalars["DateTime"]["input"]>;
+  designation?: InputMaybe<Scalars["String"]["input"]>;
+  email: Scalars["String"]["input"];
+  firstName: Scalars["String"]["input"];
+  gender?: InputMaybe<Gender>;
+  lastName: Scalars["String"]["input"];
+  middleName?: InputMaybe<Scalars["String"]["input"]>;
+  phone?: InputMaybe<Scalars["String"]["input"]>;
+  title: Scalars["String"]["input"];
+  updatedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
+};
+
+export type AgentOrderByWithRelationInput = {
+  agentType?: InputMaybe<SortOrder>;
+  calendars?: InputMaybe<WorkCalendarOrderByRelationAggregateInput>;
+  createdAt?: InputMaybe<SortOrder>;
+  designation?: InputMaybe<SortOrderInput>;
+  email?: InputMaybe<SortOrder>;
+  firstName?: InputMaybe<SortOrder>;
+  gender?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  lastName?: InputMaybe<SortOrder>;
+  middleName?: InputMaybe<SortOrderInput>;
+  phone?: InputMaybe<SortOrderInput>;
+  serviceTerritories?: InputMaybe<AgentTerritoryOrderByRelationAggregateInput>;
+  title?: InputMaybe<SortOrder>;
+  updatedAt?: InputMaybe<SortOrder>;
+};
+
+export type AgentRelationFilter = {
+  is?: InputMaybe<AgentWhereInput>;
+  isNot?: InputMaybe<AgentWhereInput>;
+};
+
+export type AgentTerritory = {
+  __typename?: "AgentTerritory";
+  agent: Agent;
+  agentId: Scalars["Int"]["output"];
+  id: Scalars["ID"]["output"];
+  subTerritory: SubTerritory;
+  subTerritoryId: Scalars["Int"]["output"];
+};
+
+export type AgentTerritoryAvgAggregate = {
+  __typename?: "AgentTerritoryAvgAggregate";
+  agentId?: Maybe<Scalars["Float"]["output"]>;
+  id?: Maybe<Scalars["Float"]["output"]>;
+  subTerritoryId?: Maybe<Scalars["Float"]["output"]>;
+};
+
+export type AgentTerritoryAvgAggregateInput = {
+  agentId?: InputMaybe<Scalars["Boolean"]["input"]>;
+  id?: InputMaybe<Scalars["Boolean"]["input"]>;
+  subTerritoryId?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
+export type AgentTerritoryAvgOrderByAggregateInput = {
+  agentId?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  subTerritoryId?: InputMaybe<SortOrder>;
+};
+
+export type AgentTerritoryCountAggregate = {
+  __typename?: "AgentTerritoryCountAggregate";
+  _all: Scalars["Int"]["output"];
+  agentId: Scalars["Int"]["output"];
+  id: Scalars["Int"]["output"];
+  subTerritoryId: Scalars["Int"]["output"];
+};
+
+export type AgentTerritoryCountAggregateInput = {
+  _all?: InputMaybe<Scalars["Boolean"]["input"]>;
+  agentId?: InputMaybe<Scalars["Boolean"]["input"]>;
+  id?: InputMaybe<Scalars["Boolean"]["input"]>;
+  subTerritoryId?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
+export type AgentTerritoryCountOrderByAggregateInput = {
+  agentId?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  subTerritoryId?: InputMaybe<SortOrder>;
+};
+
+export type AgentTerritoryCreateInput = {
+  agent: AgentCreateNestedOneWithoutServiceTerritoriesInput;
+  subTerritory: SubTerritoryCreateNestedOneWithoutAgentsInput;
+};
+
+export type AgentTerritoryCreateManyInput = {
+  agentId: Scalars["Int"]["input"];
+  id?: InputMaybe<Scalars["Int"]["input"]>;
+  subTerritoryId: Scalars["Int"]["input"];
+};
+
+export type AgentTerritoryCreateManySubTerritoryInput = {
+  agentId: Scalars["Int"]["input"];
+  id?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+export type AgentTerritoryCreateManySubTerritoryInputEnvelope = {
+  data: Array<AgentTerritoryCreateManySubTerritoryInput>;
+  skipDuplicates?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
+export type AgentTerritoryCreateNestedManyWithoutSubTerritoryInput = {
+  connect?: InputMaybe<Array<AgentTerritoryWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<
+    Array<AgentTerritoryCreateOrConnectWithoutSubTerritoryInput>
+  >;
+  create?: InputMaybe<Array<AgentTerritoryCreateWithoutSubTerritoryInput>>;
+  createMany?: InputMaybe<AgentTerritoryCreateManySubTerritoryInputEnvelope>;
+};
+
+export type AgentTerritoryCreateOrConnectWithoutSubTerritoryInput = {
+  create: AgentTerritoryCreateWithoutSubTerritoryInput;
+  where: AgentTerritoryWhereUniqueInput;
+};
+
+export type AgentTerritoryCreateWithoutSubTerritoryInput = {
+  agent: AgentCreateNestedOneWithoutServiceTerritoriesInput;
+};
+
+export type AgentTerritoryGroupBy = {
+  __typename?: "AgentTerritoryGroupBy";
+  _avg?: Maybe<AgentTerritoryAvgAggregate>;
+  _count?: Maybe<AgentTerritoryCountAggregate>;
+  _max?: Maybe<AgentTerritoryMaxAggregate>;
+  _min?: Maybe<AgentTerritoryMinAggregate>;
+  _sum?: Maybe<AgentTerritorySumAggregate>;
+  agentId: Scalars["Int"]["output"];
+  id: Scalars["Int"]["output"];
+  subTerritoryId: Scalars["Int"]["output"];
+};
+
+export type AgentTerritoryListRelationFilter = {
+  every?: InputMaybe<AgentTerritoryWhereInput>;
+  none?: InputMaybe<AgentTerritoryWhereInput>;
+  some?: InputMaybe<AgentTerritoryWhereInput>;
+};
+
+export type AgentTerritoryMaxAggregate = {
+  __typename?: "AgentTerritoryMaxAggregate";
+  agentId?: Maybe<Scalars["Int"]["output"]>;
+  id?: Maybe<Scalars["Int"]["output"]>;
+  subTerritoryId?: Maybe<Scalars["Int"]["output"]>;
+};
+
+export type AgentTerritoryMaxAggregateInput = {
+  agentId?: InputMaybe<Scalars["Boolean"]["input"]>;
+  id?: InputMaybe<Scalars["Boolean"]["input"]>;
+  subTerritoryId?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
+export type AgentTerritoryMaxOrderByAggregateInput = {
+  agentId?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  subTerritoryId?: InputMaybe<SortOrder>;
+};
+
+export type AgentTerritoryMinAggregate = {
+  __typename?: "AgentTerritoryMinAggregate";
+  agentId?: Maybe<Scalars["Int"]["output"]>;
+  id?: Maybe<Scalars["Int"]["output"]>;
+  subTerritoryId?: Maybe<Scalars["Int"]["output"]>;
+};
+
+export type AgentTerritoryMinAggregateInput = {
+  agentId?: InputMaybe<Scalars["Boolean"]["input"]>;
+  id?: InputMaybe<Scalars["Boolean"]["input"]>;
+  subTerritoryId?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
+export type AgentTerritoryMinOrderByAggregateInput = {
+  agentId?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  subTerritoryId?: InputMaybe<SortOrder>;
+};
+
+export type AgentTerritoryOrderByRelationAggregateInput = {
+  _count?: InputMaybe<SortOrder>;
+};
+
+export type AgentTerritoryOrderByWithAggregationInput = {
+  _avg?: InputMaybe<AgentTerritoryAvgOrderByAggregateInput>;
+  _count?: InputMaybe<AgentTerritoryCountOrderByAggregateInput>;
+  _max?: InputMaybe<AgentTerritoryMaxOrderByAggregateInput>;
+  _min?: InputMaybe<AgentTerritoryMinOrderByAggregateInput>;
+  _sum?: InputMaybe<AgentTerritorySumOrderByAggregateInput>;
+  agentId?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  subTerritoryId?: InputMaybe<SortOrder>;
+};
+
+export type AgentTerritoryOrderByWithRelationInput = {
+  agent?: InputMaybe<AgentOrderByWithRelationInput>;
+  agentId?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  subTerritory?: InputMaybe<SubTerritoryOrderByWithRelationInput>;
+  subTerritoryId?: InputMaybe<SortOrder>;
+};
+
+export enum AgentTerritoryScalarFieldEnum {
+  AgentId = "agentId",
+  Id = "id",
+  SubTerritoryId = "subTerritoryId",
+}
+
+export type AgentTerritoryScalarWhereInput = {
+  AND?: InputMaybe<Array<AgentTerritoryScalarWhereInput>>;
+  NOT?: InputMaybe<Array<AgentTerritoryScalarWhereInput>>;
+  OR?: InputMaybe<Array<AgentTerritoryScalarWhereInput>>;
+  agentId?: InputMaybe<IntFilter>;
+  id?: InputMaybe<IntFilter>;
+  subTerritoryId?: InputMaybe<IntFilter>;
+};
+
+export type AgentTerritoryScalarWhereWithAggregatesInput = {
+  AND?: InputMaybe<Array<AgentTerritoryScalarWhereWithAggregatesInput>>;
+  NOT?: InputMaybe<Array<AgentTerritoryScalarWhereWithAggregatesInput>>;
+  OR?: InputMaybe<Array<AgentTerritoryScalarWhereWithAggregatesInput>>;
+  agentId?: InputMaybe<IntWithAggregatesFilter>;
+  id?: InputMaybe<IntWithAggregatesFilter>;
+  subTerritoryId?: InputMaybe<IntWithAggregatesFilter>;
+};
+
+export type AgentTerritorySumAggregate = {
+  __typename?: "AgentTerritorySumAggregate";
+  agentId?: Maybe<Scalars["Int"]["output"]>;
+  id?: Maybe<Scalars["Int"]["output"]>;
+  subTerritoryId?: Maybe<Scalars["Int"]["output"]>;
+};
+
+export type AgentTerritorySumAggregateInput = {
+  agentId?: InputMaybe<Scalars["Boolean"]["input"]>;
+  id?: InputMaybe<Scalars["Boolean"]["input"]>;
+  subTerritoryId?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
+export type AgentTerritorySumOrderByAggregateInput = {
+  agentId?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  subTerritoryId?: InputMaybe<SortOrder>;
+};
+
+export type AgentTerritoryUncheckedUpdateManyInput = {
+  agentId?: InputMaybe<IntFieldUpdateOperationsInput>;
+  id?: InputMaybe<IntFieldUpdateOperationsInput>;
+  subTerritoryId?: InputMaybe<IntFieldUpdateOperationsInput>;
+};
+
+export type AgentTerritoryUncheckedUpdateManyWithoutSubTerritoryInput = {
+  agentId?: InputMaybe<IntFieldUpdateOperationsInput>;
+  id?: InputMaybe<IntFieldUpdateOperationsInput>;
+};
+
+export type AgentTerritoryUpdateInput = {
+  agent?: InputMaybe<AgentUpdateOneRequiredWithoutServiceTerritoriesNestedInput>;
+  subTerritory?: InputMaybe<SubTerritoryUpdateOneRequiredWithoutAgentsNestedInput>;
+};
+
+export type AgentTerritoryUpdateManyWithWhereWithoutSubTerritoryInput = {
+  data: AgentTerritoryUncheckedUpdateManyWithoutSubTerritoryInput;
+  where: AgentTerritoryScalarWhereInput;
+};
+
+export type AgentTerritoryUpdateManyWithoutSubTerritoryNestedInput = {
+  connect?: InputMaybe<Array<AgentTerritoryWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<
+    Array<AgentTerritoryCreateOrConnectWithoutSubTerritoryInput>
+  >;
+  create?: InputMaybe<Array<AgentTerritoryCreateWithoutSubTerritoryInput>>;
+  createMany?: InputMaybe<AgentTerritoryCreateManySubTerritoryInputEnvelope>;
+  delete?: InputMaybe<Array<AgentTerritoryWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<AgentTerritoryScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<AgentTerritoryWhereUniqueInput>>;
+  set?: InputMaybe<Array<AgentTerritoryWhereUniqueInput>>;
+  update?: InputMaybe<
+    Array<AgentTerritoryUpdateWithWhereUniqueWithoutSubTerritoryInput>
+  >;
+  updateMany?: InputMaybe<
+    Array<AgentTerritoryUpdateManyWithWhereWithoutSubTerritoryInput>
+  >;
+  upsert?: InputMaybe<
+    Array<AgentTerritoryUpsertWithWhereUniqueWithoutSubTerritoryInput>
+  >;
+};
+
+export type AgentTerritoryUpdateWithWhereUniqueWithoutSubTerritoryInput = {
+  data: AgentTerritoryUpdateWithoutSubTerritoryInput;
+  where: AgentTerritoryWhereUniqueInput;
+};
+
+export type AgentTerritoryUpdateWithoutSubTerritoryInput = {
+  agent?: InputMaybe<AgentUpdateOneRequiredWithoutServiceTerritoriesNestedInput>;
+};
+
+export type AgentTerritoryUpsertWithWhereUniqueWithoutSubTerritoryInput = {
+  create: AgentTerritoryCreateWithoutSubTerritoryInput;
+  update: AgentTerritoryUpdateWithoutSubTerritoryInput;
+  where: AgentTerritoryWhereUniqueInput;
+};
+
+export type AgentTerritoryWhereInput = {
+  AND?: InputMaybe<Array<AgentTerritoryWhereInput>>;
+  NOT?: InputMaybe<Array<AgentTerritoryWhereInput>>;
+  OR?: InputMaybe<Array<AgentTerritoryWhereInput>>;
+  agent?: InputMaybe<AgentRelationFilter>;
+  agentId?: InputMaybe<IntFilter>;
+  id?: InputMaybe<IntFilter>;
+  subTerritory?: InputMaybe<SubTerritoryRelationFilter>;
+  subTerritoryId?: InputMaybe<IntFilter>;
+};
+
+export type AgentTerritoryWhereUniqueInput = {
+  AND?: InputMaybe<Array<AgentTerritoryWhereInput>>;
+  NOT?: InputMaybe<Array<AgentTerritoryWhereInput>>;
+  OR?: InputMaybe<Array<AgentTerritoryWhereInput>>;
+  agent?: InputMaybe<AgentRelationFilter>;
+  agentId?: InputMaybe<IntFilter>;
+  id?: InputMaybe<Scalars["Int"]["input"]>;
+  subTerritory?: InputMaybe<SubTerritoryRelationFilter>;
+  subTerritoryId?: InputMaybe<IntFilter>;
+};
+
+export enum AgentType {
+  CustomerAgent = "CUSTOMER_AGENT",
+  FieldTechnician = "FIELD_TECHNICIAN",
+}
+
+export type AgentUpdateOneRequiredWithoutServiceTerritoriesNestedInput = {
+  connect?: InputMaybe<AgentWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<AgentCreateOrConnectWithoutServiceTerritoriesInput>;
+  create?: InputMaybe<AgentCreateWithoutServiceTerritoriesInput>;
+  update?: InputMaybe<AgentUpdateToOneWithWhereWithoutServiceTerritoriesInput>;
+  upsert?: InputMaybe<AgentUpsertWithoutServiceTerritoriesInput>;
+};
+
+export type AgentUpdateToOneWithWhereWithoutServiceTerritoriesInput = {
+  data: AgentUpdateWithoutServiceTerritoriesInput;
+  where?: InputMaybe<AgentWhereInput>;
+};
+
+export type AgentUpdateWithoutServiceTerritoriesInput = {
+  agentType?: InputMaybe<EnumAgentTypeFieldUpdateOperationsInput>;
+  calendars?: InputMaybe<WorkCalendarUpdateManyWithoutAgentNestedInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  designation?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  email?: InputMaybe<StringFieldUpdateOperationsInput>;
+  firstName?: InputMaybe<StringFieldUpdateOperationsInput>;
+  gender?: InputMaybe<EnumGenderFieldUpdateOperationsInput>;
+  lastName?: InputMaybe<StringFieldUpdateOperationsInput>;
+  middleName?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  phone?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  title?: InputMaybe<StringFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+};
+
+export type AgentUpsertWithoutServiceTerritoriesInput = {
+  create: AgentCreateWithoutServiceTerritoriesInput;
+  update: AgentUpdateWithoutServiceTerritoriesInput;
+  where?: InputMaybe<AgentWhereInput>;
+};
+
+export type AgentWhereInput = {
+  AND?: InputMaybe<Array<AgentWhereInput>>;
+  NOT?: InputMaybe<Array<AgentWhereInput>>;
+  OR?: InputMaybe<Array<AgentWhereInput>>;
+  agentType?: InputMaybe<EnumAgentTypeFilter>;
+  calendars?: InputMaybe<WorkCalendarListRelationFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  designation?: InputMaybe<StringNullableFilter>;
+  email?: InputMaybe<StringFilter>;
+  firstName?: InputMaybe<StringFilter>;
+  gender?: InputMaybe<EnumGenderFilter>;
+  id?: InputMaybe<IntFilter>;
+  lastName?: InputMaybe<StringFilter>;
+  middleName?: InputMaybe<StringNullableFilter>;
+  phone?: InputMaybe<StringNullableFilter>;
+  serviceTerritories?: InputMaybe<AgentTerritoryListRelationFilter>;
+  title?: InputMaybe<StringFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
+};
+
+export type AgentWhereUniqueInput = {
+  AND?: InputMaybe<Array<AgentWhereInput>>;
+  NOT?: InputMaybe<Array<AgentWhereInput>>;
+  OR?: InputMaybe<Array<AgentWhereInput>>;
+  agentType?: InputMaybe<EnumAgentTypeFilter>;
+  calendars?: InputMaybe<WorkCalendarListRelationFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  designation?: InputMaybe<StringNullableFilter>;
+  email?: InputMaybe<Scalars["String"]["input"]>;
+  firstName?: InputMaybe<StringFilter>;
+  gender?: InputMaybe<EnumGenderFilter>;
+  id?: InputMaybe<Scalars["Int"]["input"]>;
+  lastName?: InputMaybe<StringFilter>;
+  middleName?: InputMaybe<StringNullableFilter>;
+  phone?: InputMaybe<StringNullableFilter>;
+  serviceTerritories?: InputMaybe<AgentTerritoryListRelationFilter>;
+  title?: InputMaybe<StringFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
+};
+
+export type AggregateAgentTerritory = {
+  __typename?: "AggregateAgentTerritory";
+  _avg?: Maybe<AgentTerritoryAvgAggregate>;
+  _count?: Maybe<AgentTerritoryCountAggregate>;
+  _max?: Maybe<AgentTerritoryMaxAggregate>;
+  _min?: Maybe<AgentTerritoryMinAggregate>;
+  _sum?: Maybe<AgentTerritorySumAggregate>;
+};
+
 export type AggregateContact = {
   __typename?: "AggregateContact";
   _avg?: Maybe<ContactAvgAggregate>;
@@ -240,6 +691,24 @@ export type AggregateCustomer = {
   _max?: Maybe<CustomerMaxAggregate>;
   _min?: Maybe<CustomerMinAggregate>;
   _sum?: Maybe<CustomerSumAggregate>;
+};
+
+export type AggregateOrganization = {
+  __typename?: "AggregateOrganization";
+  _avg?: Maybe<OrganizationAvgAggregate>;
+  _count?: Maybe<OrganizationCountAggregate>;
+  _max?: Maybe<OrganizationMaxAggregate>;
+  _min?: Maybe<OrganizationMinAggregate>;
+  _sum?: Maybe<OrganizationSumAggregate>;
+};
+
+export type AggregateServiceTerritory = {
+  __typename?: "AggregateServiceTerritory";
+  _avg?: Maybe<ServiceTerritoryAvgAggregate>;
+  _count?: Maybe<ServiceTerritoryCountAggregate>;
+  _max?: Maybe<ServiceTerritoryMaxAggregate>;
+  _min?: Maybe<ServiceTerritoryMinAggregate>;
+  _sum?: Maybe<ServiceTerritorySumAggregate>;
 };
 
 export type Agreement = {
@@ -1259,6 +1728,36 @@ export type CustomerCreateManyInput = {
   zipcode?: InputMaybe<Scalars["String"]["input"]>;
 };
 
+export type CustomerCreateManyOrganizationInput = {
+  address?: InputMaybe<Scalars["String"]["input"]>;
+  city?: InputMaybe<Scalars["String"]["input"]>;
+  company: Scalars["String"]["input"];
+  country?: InputMaybe<Scalars["String"]["input"]>;
+  createdAt?: InputMaybe<Scalars["DateTime"]["input"]>;
+  description?: InputMaybe<Scalars["String"]["input"]>;
+  domain: Scalars["String"]["input"];
+  email: Scalars["String"]["input"];
+  founded?: InputMaybe<Scalars["String"]["input"]>;
+  hierarchyId?: InputMaybe<Scalars["Int"]["input"]>;
+  id?: InputMaybe<Scalars["Int"]["input"]>;
+  industry?: InputMaybe<Scalars["String"]["input"]>;
+  linkedinUrl: Scalars["String"]["input"];
+  name: Scalars["String"]["input"];
+  phone?: InputMaybe<Scalars["String"]["input"]>;
+  revenue?: InputMaybe<Scalars["String"]["input"]>;
+  size?: InputMaybe<Scalars["String"]["input"]>;
+  status?: InputMaybe<CompanyStatus>;
+  taxIdentifier?: InputMaybe<Scalars["String"]["input"]>;
+  updatedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
+  website?: InputMaybe<Scalars["String"]["input"]>;
+  zipcode?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+export type CustomerCreateManyOrganizationInputEnvelope = {
+  data: Array<CustomerCreateManyOrganizationInput>;
+  skipDuplicates?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
 export type CustomerCreateNestedManyWithoutHierarchyInput = {
   connect?: InputMaybe<Array<CustomerWhereUniqueInput>>;
   connectOrCreate?: InputMaybe<
@@ -1266,6 +1765,15 @@ export type CustomerCreateNestedManyWithoutHierarchyInput = {
   >;
   create?: InputMaybe<Array<CustomerCreateWithoutHierarchyInput>>;
   createMany?: InputMaybe<CustomerCreateManyHierarchyInputEnvelope>;
+};
+
+export type CustomerCreateNestedManyWithoutOrganizationInput = {
+  connect?: InputMaybe<Array<CustomerWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<
+    Array<CustomerCreateOrConnectWithoutOrganizationInput>
+  >;
+  create?: InputMaybe<Array<CustomerCreateWithoutOrganizationInput>>;
+  createMany?: InputMaybe<CustomerCreateManyOrganizationInputEnvelope>;
 };
 
 export type CustomerCreateNestedOneWithoutContactsInput = {
@@ -1281,6 +1789,11 @@ export type CustomerCreateOrConnectWithoutContactsInput = {
 
 export type CustomerCreateOrConnectWithoutHierarchyInput = {
   create: CustomerCreateWithoutHierarchyInput;
+  where: CustomerWhereUniqueInput;
+};
+
+export type CustomerCreateOrConnectWithoutOrganizationInput = {
+  create: CustomerCreateWithoutOrganizationInput;
   where: CustomerWhereUniqueInput;
 };
 
@@ -1331,6 +1844,35 @@ export type CustomerCreateWithoutHierarchyInput = {
   logo?: InputMaybe<LogoCreateNestedOneWithoutCustomerInput>;
   name: Scalars["String"]["input"];
   organization: OrganizationCreateNestedOneWithoutCustomersInput;
+  phone?: InputMaybe<Scalars["String"]["input"]>;
+  revenue?: InputMaybe<Scalars["String"]["input"]>;
+  services?: InputMaybe<ServiceCreateNestedManyWithoutCustomerInput>;
+  size?: InputMaybe<Scalars["String"]["input"]>;
+  status?: InputMaybe<CompanyStatus>;
+  taxIdentifier?: InputMaybe<Scalars["String"]["input"]>;
+  updatedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
+  website?: InputMaybe<Scalars["String"]["input"]>;
+  zipcode?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+export type CustomerCreateWithoutOrganizationInput = {
+  address?: InputMaybe<Scalars["String"]["input"]>;
+  addresses?: InputMaybe<AddressCreateNestedManyWithoutCustomerInput>;
+  agreements?: InputMaybe<AgreementCreateNestedManyWithoutCustomerInput>;
+  city?: InputMaybe<Scalars["String"]["input"]>;
+  company: Scalars["String"]["input"];
+  contacts?: InputMaybe<ContactCreateNestedManyWithoutCustomerInput>;
+  country?: InputMaybe<Scalars["String"]["input"]>;
+  createdAt?: InputMaybe<Scalars["DateTime"]["input"]>;
+  description?: InputMaybe<Scalars["String"]["input"]>;
+  domain: Scalars["String"]["input"];
+  email: Scalars["String"]["input"];
+  founded?: InputMaybe<Scalars["String"]["input"]>;
+  hierarchy?: InputMaybe<HierarchyCreateNestedOneWithoutCustomersInput>;
+  industry?: InputMaybe<Scalars["String"]["input"]>;
+  linkedinUrl: Scalars["String"]["input"];
+  logo?: InputMaybe<LogoCreateNestedOneWithoutCustomerInput>;
+  name: Scalars["String"]["input"];
   phone?: InputMaybe<Scalars["String"]["input"]>;
   revenue?: InputMaybe<Scalars["String"]["input"]>;
   services?: InputMaybe<ServiceCreateNestedManyWithoutCustomerInput>;
@@ -1772,6 +2314,11 @@ export type CustomerUpdateManyWithWhereWithoutHierarchyInput = {
   where: CustomerScalarWhereInput;
 };
 
+export type CustomerUpdateManyWithWhereWithoutOrganizationInput = {
+  data: CustomerUpdateManyMutationInput;
+  where: CustomerScalarWhereInput;
+};
+
 export type CustomerUpdateManyWithoutHierarchyNestedInput = {
   connect?: InputMaybe<Array<CustomerWhereUniqueInput>>;
   connectOrCreate?: InputMaybe<
@@ -1794,6 +2341,28 @@ export type CustomerUpdateManyWithoutHierarchyNestedInput = {
   >;
 };
 
+export type CustomerUpdateManyWithoutOrganizationNestedInput = {
+  connect?: InputMaybe<Array<CustomerWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<
+    Array<CustomerCreateOrConnectWithoutOrganizationInput>
+  >;
+  create?: InputMaybe<Array<CustomerCreateWithoutOrganizationInput>>;
+  createMany?: InputMaybe<CustomerCreateManyOrganizationInputEnvelope>;
+  delete?: InputMaybe<Array<CustomerWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<CustomerScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<CustomerWhereUniqueInput>>;
+  set?: InputMaybe<Array<CustomerWhereUniqueInput>>;
+  update?: InputMaybe<
+    Array<CustomerUpdateWithWhereUniqueWithoutOrganizationInput>
+  >;
+  updateMany?: InputMaybe<
+    Array<CustomerUpdateManyWithWhereWithoutOrganizationInput>
+  >;
+  upsert?: InputMaybe<
+    Array<CustomerUpsertWithWhereUniqueWithoutOrganizationInput>
+  >;
+};
+
 export type CustomerUpdateOneRequiredWithoutContactsNestedInput = {
   connect?: InputMaybe<CustomerWhereUniqueInput>;
   connectOrCreate?: InputMaybe<CustomerCreateOrConnectWithoutContactsInput>;
@@ -1809,6 +2378,11 @@ export type CustomerUpdateToOneWithWhereWithoutContactsInput = {
 
 export type CustomerUpdateWithWhereUniqueWithoutHierarchyInput = {
   data: CustomerUpdateWithoutHierarchyInput;
+  where: CustomerWhereUniqueInput;
+};
+
+export type CustomerUpdateWithWhereUniqueWithoutOrganizationInput = {
+  data: CustomerUpdateWithoutOrganizationInput;
   where: CustomerWhereUniqueInput;
 };
 
@@ -1870,9 +2444,44 @@ export type CustomerUpdateWithoutHierarchyInput = {
   zipcode?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
 };
 
+export type CustomerUpdateWithoutOrganizationInput = {
+  address?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  addresses?: InputMaybe<AddressUpdateManyWithoutCustomerNestedInput>;
+  agreements?: InputMaybe<AgreementUpdateManyWithoutCustomerNestedInput>;
+  city?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  company?: InputMaybe<StringFieldUpdateOperationsInput>;
+  contacts?: InputMaybe<ContactUpdateManyWithoutCustomerNestedInput>;
+  country?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  description?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  domain?: InputMaybe<StringFieldUpdateOperationsInput>;
+  email?: InputMaybe<StringFieldUpdateOperationsInput>;
+  founded?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  hierarchy?: InputMaybe<HierarchyUpdateOneWithoutCustomersNestedInput>;
+  industry?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  linkedinUrl?: InputMaybe<StringFieldUpdateOperationsInput>;
+  logo?: InputMaybe<LogoUpdateOneWithoutCustomerNestedInput>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  phone?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  revenue?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  services?: InputMaybe<ServiceUpdateManyWithoutCustomerNestedInput>;
+  size?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  status?: InputMaybe<EnumCompanyStatusFieldUpdateOperationsInput>;
+  taxIdentifier?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  website?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  zipcode?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+};
+
 export type CustomerUpsertWithWhereUniqueWithoutHierarchyInput = {
   create: CustomerCreateWithoutHierarchyInput;
   update: CustomerUpdateWithoutHierarchyInput;
+  where: CustomerWhereUniqueInput;
+};
+
+export type CustomerUpsertWithWhereUniqueWithoutOrganizationInput = {
+  create: CustomerCreateWithoutOrganizationInput;
+  update: CustomerUpdateWithoutOrganizationInput;
   where: CustomerWhereUniqueInput;
 };
 
@@ -1983,6 +2592,17 @@ export type DateTimeWithAggregatesFilter = {
   notIn?: InputMaybe<Array<Scalars["DateTime"]["input"]>>;
 };
 
+export type EnumAgentTypeFieldUpdateOperationsInput = {
+  set?: InputMaybe<AgentType>;
+};
+
+export type EnumAgentTypeFilter = {
+  equals?: InputMaybe<AgentType>;
+  in?: InputMaybe<Array<AgentType>>;
+  not?: InputMaybe<NestedEnumAgentTypeFilter>;
+  notIn?: InputMaybe<Array<AgentType>>;
+};
+
 export type EnumCompanyStatusFieldUpdateOperationsInput = {
   set?: InputMaybe<CompanyStatus>;
 };
@@ -2036,6 +2656,35 @@ export type EnumOranizationStatusFilter = {
   notIn?: InputMaybe<Array<OranizationStatus>>;
 };
 
+export type EnumOranizationStatusWithAggregatesFilter = {
+  _count?: InputMaybe<NestedIntFilter>;
+  _max?: InputMaybe<NestedEnumOranizationStatusFilter>;
+  _min?: InputMaybe<NestedEnumOranizationStatusFilter>;
+  equals?: InputMaybe<OranizationStatus>;
+  in?: InputMaybe<Array<OranizationStatus>>;
+  not?: InputMaybe<NestedEnumOranizationStatusWithAggregatesFilter>;
+  notIn?: InputMaybe<Array<OranizationStatus>>;
+};
+
+export type FloatFieldUpdateOperationsInput = {
+  decrement?: InputMaybe<Scalars["Float"]["input"]>;
+  divide?: InputMaybe<Scalars["Float"]["input"]>;
+  increment?: InputMaybe<Scalars["Float"]["input"]>;
+  multiply?: InputMaybe<Scalars["Float"]["input"]>;
+  set?: InputMaybe<Scalars["Float"]["input"]>;
+};
+
+export type FloatFilter = {
+  equals?: InputMaybe<Scalars["Float"]["input"]>;
+  gt?: InputMaybe<Scalars["Float"]["input"]>;
+  gte?: InputMaybe<Scalars["Float"]["input"]>;
+  in?: InputMaybe<Array<Scalars["Float"]["input"]>>;
+  lt?: InputMaybe<Scalars["Float"]["input"]>;
+  lte?: InputMaybe<Scalars["Float"]["input"]>;
+  not?: InputMaybe<NestedFloatFilter>;
+  notIn?: InputMaybe<Array<Scalars["Float"]["input"]>>;
+};
+
 export type FloatNullableFilter = {
   equals?: InputMaybe<Scalars["Float"]["input"]>;
   gt?: InputMaybe<Scalars["Float"]["input"]>;
@@ -2044,6 +2693,22 @@ export type FloatNullableFilter = {
   lt?: InputMaybe<Scalars["Float"]["input"]>;
   lte?: InputMaybe<Scalars["Float"]["input"]>;
   not?: InputMaybe<NestedFloatNullableFilter>;
+  notIn?: InputMaybe<Array<Scalars["Float"]["input"]>>;
+};
+
+export type FloatWithAggregatesFilter = {
+  _avg?: InputMaybe<NestedFloatFilter>;
+  _count?: InputMaybe<NestedIntFilter>;
+  _max?: InputMaybe<NestedFloatFilter>;
+  _min?: InputMaybe<NestedFloatFilter>;
+  _sum?: InputMaybe<NestedFloatFilter>;
+  equals?: InputMaybe<Scalars["Float"]["input"]>;
+  gt?: InputMaybe<Scalars["Float"]["input"]>;
+  gte?: InputMaybe<Scalars["Float"]["input"]>;
+  in?: InputMaybe<Array<Scalars["Float"]["input"]>>;
+  lt?: InputMaybe<Scalars["Float"]["input"]>;
+  lte?: InputMaybe<Scalars["Float"]["input"]>;
+  not?: InputMaybe<NestedFloatWithAggregatesFilter>;
   notIn?: InputMaybe<Array<Scalars["Float"]["input"]>>;
 };
 
@@ -2325,6 +2990,14 @@ export type IncludeCustomerInput = {
   logo?: InputMaybe<Scalars["Boolean"]["input"]>;
 };
 
+export type IntFieldUpdateOperationsInput = {
+  decrement?: InputMaybe<Scalars["Int"]["input"]>;
+  divide?: InputMaybe<Scalars["Int"]["input"]>;
+  increment?: InputMaybe<Scalars["Int"]["input"]>;
+  multiply?: InputMaybe<Scalars["Int"]["input"]>;
+  set?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
 export type IntFilter = {
   equals?: InputMaybe<Scalars["Int"]["input"]>;
   gt?: InputMaybe<Scalars["Int"]["input"]>;
@@ -2467,18 +3140,41 @@ export type LogoWhereUniqueInput = {
 
 export type Mutation = {
   __typename?: "Mutation";
+  createAgentTerritory?: Maybe<AgentTerritory>;
   createContact?: Maybe<Contact>;
   createCustomer?: Maybe<Customer>;
+  createManyAgentTerritory?: Maybe<AffectedRows>;
   createManyContact?: Maybe<AffectedRows>;
   createManyCustomer?: Maybe<AffectedRows>;
+  createManyOrganization?: Maybe<AffectedRows>;
+  createManyServiceTerritory?: Maybe<AffectedRows>;
+  createOrganization?: Maybe<Organization>;
+  createServiceTerritory?: Maybe<ServiceTerritory>;
+  deleteAgentTerritory?: Maybe<AgentTerritory>;
   deleteContact?: Maybe<Contact>;
   deleteCustomer?: Maybe<Customer>;
+  deleteManyAgentTerritory?: Maybe<AffectedRows>;
   deleteManyContact?: Maybe<AffectedRows>;
   deleteManyCustomer?: Maybe<AffectedRows>;
+  deleteManyOrganization?: Maybe<AffectedRows>;
+  deleteManyServiceTerritory?: Maybe<AffectedRows>;
+  deleteOrganization?: Maybe<Organization>;
+  deleteServiceTerritory?: Maybe<ServiceTerritory>;
+  updateAgentTerritory?: Maybe<AgentTerritory>;
   updateContact?: Maybe<Contact>;
   updateCustomer?: Maybe<Customer>;
+  updateManyAgentTerritory?: Maybe<AffectedRows>;
   updateManyContact?: Maybe<AffectedRows>;
   updateManyCustomer?: Maybe<AffectedRows>;
+  updateManyOrganization?: Maybe<AffectedRows>;
+  updateManyServiceTerritory?: Maybe<AffectedRows>;
+  updateOrganization?: Maybe<Organization>;
+  updateServiceTerritory?: Maybe<ServiceTerritory>;
+};
+
+export type MutationCreateAgentTerritoryArgs = {
+  data: AgentTerritoryCreateInput;
+  relationLoadStrategy?: InputMaybe<RelationLoadStrategy>;
 };
 
 export type MutationCreateContactArgs = {
@@ -2491,6 +3187,11 @@ export type MutationCreateCustomerArgs = {
   relationLoadStrategy?: InputMaybe<RelationLoadStrategy>;
 };
 
+export type MutationCreateManyAgentTerritoryArgs = {
+  data: Array<AgentTerritoryCreateManyInput>;
+  skipDuplicates?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
 export type MutationCreateManyContactArgs = {
   data: Array<ContactCreateManyInput>;
   skipDuplicates?: InputMaybe<Scalars["Boolean"]["input"]>;
@@ -2499,6 +3200,31 @@ export type MutationCreateManyContactArgs = {
 export type MutationCreateManyCustomerArgs = {
   data: Array<CustomerCreateManyInput>;
   skipDuplicates?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
+export type MutationCreateManyOrganizationArgs = {
+  data: Array<OrganizationCreateManyInput>;
+  skipDuplicates?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
+export type MutationCreateManyServiceTerritoryArgs = {
+  data: Array<ServiceTerritoryCreateManyInput>;
+  skipDuplicates?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
+export type MutationCreateOrganizationArgs = {
+  data: OrganizationCreateInput;
+  relationLoadStrategy?: InputMaybe<RelationLoadStrategy>;
+};
+
+export type MutationCreateServiceTerritoryArgs = {
+  data: ServiceTerritoryCreateInput;
+  relationLoadStrategy?: InputMaybe<RelationLoadStrategy>;
+};
+
+export type MutationDeleteAgentTerritoryArgs = {
+  relationLoadStrategy?: InputMaybe<RelationLoadStrategy>;
+  where: AgentTerritoryWhereUniqueInput;
 };
 
 export type MutationDeleteContactArgs = {
@@ -2511,12 +3237,40 @@ export type MutationDeleteCustomerArgs = {
   where: CustomerWhereUniqueInput;
 };
 
+export type MutationDeleteManyAgentTerritoryArgs = {
+  where?: InputMaybe<AgentTerritoryWhereInput>;
+};
+
 export type MutationDeleteManyContactArgs = {
   where?: InputMaybe<ContactWhereInput>;
 };
 
 export type MutationDeleteManyCustomerArgs = {
   where?: InputMaybe<CustomerWhereInput>;
+};
+
+export type MutationDeleteManyOrganizationArgs = {
+  where?: InputMaybe<OrganizationWhereInput>;
+};
+
+export type MutationDeleteManyServiceTerritoryArgs = {
+  where?: InputMaybe<ServiceTerritoryWhereInput>;
+};
+
+export type MutationDeleteOrganizationArgs = {
+  relationLoadStrategy?: InputMaybe<RelationLoadStrategy>;
+  where: OrganizationWhereUniqueInput;
+};
+
+export type MutationDeleteServiceTerritoryArgs = {
+  relationLoadStrategy?: InputMaybe<RelationLoadStrategy>;
+  where: ServiceTerritoryWhereUniqueInput;
+};
+
+export type MutationUpdateAgentTerritoryArgs = {
+  data: AgentTerritoryUpdateInput;
+  relationLoadStrategy?: InputMaybe<RelationLoadStrategy>;
+  where: AgentTerritoryWhereUniqueInput;
 };
 
 export type MutationUpdateContactArgs = {
@@ -2531,6 +3285,11 @@ export type MutationUpdateCustomerArgs = {
   where: CustomerWhereUniqueInput;
 };
 
+export type MutationUpdateManyAgentTerritoryArgs = {
+  data: AgentTerritoryUncheckedUpdateManyInput;
+  where?: InputMaybe<AgentTerritoryWhereInput>;
+};
+
 export type MutationUpdateManyContactArgs = {
   data: ContactUpdateManyMutationInput;
   where?: InputMaybe<ContactWhereInput>;
@@ -2539,6 +3298,28 @@ export type MutationUpdateManyContactArgs = {
 export type MutationUpdateManyCustomerArgs = {
   data: CustomerUpdateManyMutationInput;
   where?: InputMaybe<CustomerWhereInput>;
+};
+
+export type MutationUpdateManyOrganizationArgs = {
+  data: OrganizationUpdateManyMutationInput;
+  where?: InputMaybe<OrganizationWhereInput>;
+};
+
+export type MutationUpdateManyServiceTerritoryArgs = {
+  data: ServiceTerritoryUpdateManyMutationInput;
+  where?: InputMaybe<ServiceTerritoryWhereInput>;
+};
+
+export type MutationUpdateOrganizationArgs = {
+  data: OrganizationUpdateInput;
+  relationLoadStrategy?: InputMaybe<RelationLoadStrategy>;
+  where: OrganizationWhereUniqueInput;
+};
+
+export type MutationUpdateServiceTerritoryArgs = {
+  data: ServiceTerritoryUpdateInput;
+  relationLoadStrategy?: InputMaybe<RelationLoadStrategy>;
+  where: ServiceTerritoryWhereUniqueInput;
 };
 
 export type NestedBoolFilter = {
@@ -2577,6 +3358,13 @@ export type NestedDateTimeWithAggregatesFilter = {
   lte?: InputMaybe<Scalars["DateTime"]["input"]>;
   not?: InputMaybe<NestedDateTimeWithAggregatesFilter>;
   notIn?: InputMaybe<Array<Scalars["DateTime"]["input"]>>;
+};
+
+export type NestedEnumAgentTypeFilter = {
+  equals?: InputMaybe<AgentType>;
+  in?: InputMaybe<Array<AgentType>>;
+  not?: InputMaybe<NestedEnumAgentTypeFilter>;
+  notIn?: InputMaybe<Array<AgentType>>;
 };
 
 export type NestedEnumCompanyStatusFilter = {
@@ -2620,6 +3408,16 @@ export type NestedEnumOranizationStatusFilter = {
   notIn?: InputMaybe<Array<OranizationStatus>>;
 };
 
+export type NestedEnumOranizationStatusWithAggregatesFilter = {
+  _count?: InputMaybe<NestedIntFilter>;
+  _max?: InputMaybe<NestedEnumOranizationStatusFilter>;
+  _min?: InputMaybe<NestedEnumOranizationStatusFilter>;
+  equals?: InputMaybe<OranizationStatus>;
+  in?: InputMaybe<Array<OranizationStatus>>;
+  not?: InputMaybe<NestedEnumOranizationStatusWithAggregatesFilter>;
+  notIn?: InputMaybe<Array<OranizationStatus>>;
+};
+
 export type NestedFloatFilter = {
   equals?: InputMaybe<Scalars["Float"]["input"]>;
   gt?: InputMaybe<Scalars["Float"]["input"]>;
@@ -2639,6 +3437,22 @@ export type NestedFloatNullableFilter = {
   lt?: InputMaybe<Scalars["Float"]["input"]>;
   lte?: InputMaybe<Scalars["Float"]["input"]>;
   not?: InputMaybe<NestedFloatNullableFilter>;
+  notIn?: InputMaybe<Array<Scalars["Float"]["input"]>>;
+};
+
+export type NestedFloatWithAggregatesFilter = {
+  _avg?: InputMaybe<NestedFloatFilter>;
+  _count?: InputMaybe<NestedIntFilter>;
+  _max?: InputMaybe<NestedFloatFilter>;
+  _min?: InputMaybe<NestedFloatFilter>;
+  _sum?: InputMaybe<NestedFloatFilter>;
+  equals?: InputMaybe<Scalars["Float"]["input"]>;
+  gt?: InputMaybe<Scalars["Float"]["input"]>;
+  gte?: InputMaybe<Scalars["Float"]["input"]>;
+  in?: InputMaybe<Array<Scalars["Float"]["input"]>>;
+  lt?: InputMaybe<Scalars["Float"]["input"]>;
+  lte?: InputMaybe<Scalars["Float"]["input"]>;
+  not?: InputMaybe<NestedFloatWithAggregatesFilter>;
   notIn?: InputMaybe<Array<Scalars["Float"]["input"]>>;
 };
 
@@ -2807,9 +3621,126 @@ export type Organization = {
   zipcode?: Maybe<Scalars["String"]["output"]>;
 };
 
+export type OrganizationAvgAggregate = {
+  __typename?: "OrganizationAvgAggregate";
+  id?: Maybe<Scalars["Float"]["output"]>;
+};
+
+export type OrganizationAvgAggregateInput = {
+  id?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
+export type OrganizationAvgOrderByAggregateInput = {
+  id?: InputMaybe<SortOrder>;
+};
+
 export type OrganizationCount = {
   __typename?: "OrganizationCount";
   customers: Scalars["Int"]["output"];
+};
+
+export type OrganizationCountAggregate = {
+  __typename?: "OrganizationCountAggregate";
+  _all: Scalars["Int"]["output"];
+  address: Scalars["Int"]["output"];
+  city: Scalars["Int"]["output"];
+  company: Scalars["Int"]["output"];
+  country: Scalars["Int"]["output"];
+  createdAt: Scalars["Int"]["output"];
+  description: Scalars["Int"]["output"];
+  domain: Scalars["Int"]["output"];
+  email: Scalars["Int"]["output"];
+  id: Scalars["Int"]["output"];
+  linkedinUrl: Scalars["Int"]["output"];
+  name: Scalars["Int"]["output"];
+  phone: Scalars["Int"]["output"];
+  status: Scalars["Int"]["output"];
+  taxIdentifier: Scalars["Int"]["output"];
+  updatedAt: Scalars["Int"]["output"];
+  website: Scalars["Int"]["output"];
+  zipcode: Scalars["Int"]["output"];
+};
+
+export type OrganizationCountAggregateInput = {
+  _all?: InputMaybe<Scalars["Boolean"]["input"]>;
+  address?: InputMaybe<Scalars["Boolean"]["input"]>;
+  city?: InputMaybe<Scalars["Boolean"]["input"]>;
+  company?: InputMaybe<Scalars["Boolean"]["input"]>;
+  country?: InputMaybe<Scalars["Boolean"]["input"]>;
+  createdAt?: InputMaybe<Scalars["Boolean"]["input"]>;
+  description?: InputMaybe<Scalars["Boolean"]["input"]>;
+  domain?: InputMaybe<Scalars["Boolean"]["input"]>;
+  email?: InputMaybe<Scalars["Boolean"]["input"]>;
+  id?: InputMaybe<Scalars["Boolean"]["input"]>;
+  linkedinUrl?: InputMaybe<Scalars["Boolean"]["input"]>;
+  name?: InputMaybe<Scalars["Boolean"]["input"]>;
+  phone?: InputMaybe<Scalars["Boolean"]["input"]>;
+  status?: InputMaybe<Scalars["Boolean"]["input"]>;
+  taxIdentifier?: InputMaybe<Scalars["Boolean"]["input"]>;
+  updatedAt?: InputMaybe<Scalars["Boolean"]["input"]>;
+  website?: InputMaybe<Scalars["Boolean"]["input"]>;
+  zipcode?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
+export type OrganizationCountOrderByAggregateInput = {
+  address?: InputMaybe<SortOrder>;
+  city?: InputMaybe<SortOrder>;
+  company?: InputMaybe<SortOrder>;
+  country?: InputMaybe<SortOrder>;
+  createdAt?: InputMaybe<SortOrder>;
+  description?: InputMaybe<SortOrder>;
+  domain?: InputMaybe<SortOrder>;
+  email?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  linkedinUrl?: InputMaybe<SortOrder>;
+  name?: InputMaybe<SortOrder>;
+  phone?: InputMaybe<SortOrder>;
+  status?: InputMaybe<SortOrder>;
+  taxIdentifier?: InputMaybe<SortOrder>;
+  updatedAt?: InputMaybe<SortOrder>;
+  website?: InputMaybe<SortOrder>;
+  zipcode?: InputMaybe<SortOrder>;
+};
+
+export type OrganizationCreateInput = {
+  address?: InputMaybe<Scalars["String"]["input"]>;
+  city?: InputMaybe<Scalars["String"]["input"]>;
+  company: Scalars["String"]["input"];
+  country?: InputMaybe<Scalars["String"]["input"]>;
+  createdAt?: InputMaybe<Scalars["DateTime"]["input"]>;
+  customers?: InputMaybe<CustomerCreateNestedManyWithoutOrganizationInput>;
+  description?: InputMaybe<Scalars["String"]["input"]>;
+  domain: Scalars["String"]["input"];
+  email: Scalars["String"]["input"];
+  linkedinUrl: Scalars["String"]["input"];
+  logo?: InputMaybe<OrganizationLogoCreateNestedOneWithoutOrganizationInput>;
+  name: Scalars["String"]["input"];
+  phone?: InputMaybe<Scalars["String"]["input"]>;
+  status?: InputMaybe<OranizationStatus>;
+  taxIdentifier?: InputMaybe<Scalars["String"]["input"]>;
+  updatedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
+  website?: InputMaybe<Scalars["String"]["input"]>;
+  zipcode?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+export type OrganizationCreateManyInput = {
+  address?: InputMaybe<Scalars["String"]["input"]>;
+  city?: InputMaybe<Scalars["String"]["input"]>;
+  company: Scalars["String"]["input"];
+  country?: InputMaybe<Scalars["String"]["input"]>;
+  createdAt?: InputMaybe<Scalars["DateTime"]["input"]>;
+  description?: InputMaybe<Scalars["String"]["input"]>;
+  domain: Scalars["String"]["input"];
+  email: Scalars["String"]["input"];
+  id?: InputMaybe<Scalars["Int"]["input"]>;
+  linkedinUrl: Scalars["String"]["input"];
+  name: Scalars["String"]["input"];
+  phone?: InputMaybe<Scalars["String"]["input"]>;
+  status?: InputMaybe<OranizationStatus>;
+  taxIdentifier?: InputMaybe<Scalars["String"]["input"]>;
+  updatedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
+  website?: InputMaybe<Scalars["String"]["input"]>;
+  zipcode?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 export type OrganizationCreateNestedOneWithoutCustomersInput = {
@@ -2841,6 +3772,32 @@ export type OrganizationCreateWithoutCustomersInput = {
   updatedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
   website?: InputMaybe<Scalars["String"]["input"]>;
   zipcode?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+export type OrganizationGroupBy = {
+  __typename?: "OrganizationGroupBy";
+  _avg?: Maybe<OrganizationAvgAggregate>;
+  _count?: Maybe<OrganizationCountAggregate>;
+  _max?: Maybe<OrganizationMaxAggregate>;
+  _min?: Maybe<OrganizationMinAggregate>;
+  _sum?: Maybe<OrganizationSumAggregate>;
+  address?: Maybe<Scalars["String"]["output"]>;
+  city?: Maybe<Scalars["String"]["output"]>;
+  company: Scalars["String"]["output"];
+  country?: Maybe<Scalars["String"]["output"]>;
+  createdAt: Scalars["DateTime"]["output"];
+  description?: Maybe<Scalars["String"]["output"]>;
+  domain: Scalars["String"]["output"];
+  email: Scalars["String"]["output"];
+  id: Scalars["Int"]["output"];
+  linkedinUrl: Scalars["String"]["output"];
+  name: Scalars["String"]["output"];
+  phone?: Maybe<Scalars["String"]["output"]>;
+  status: OranizationStatus;
+  taxIdentifier?: Maybe<Scalars["String"]["output"]>;
+  updatedAt: Scalars["DateTime"]["output"];
+  website?: Maybe<Scalars["String"]["output"]>;
+  zipcode?: Maybe<Scalars["String"]["output"]>;
 };
 
 export type OrganizationLogo = {
@@ -2929,6 +3886,153 @@ export type OrganizationLogoWhereUniqueInput = {
   title?: InputMaybe<StringFilter>;
 };
 
+export type OrganizationMaxAggregate = {
+  __typename?: "OrganizationMaxAggregate";
+  address?: Maybe<Scalars["String"]["output"]>;
+  city?: Maybe<Scalars["String"]["output"]>;
+  company?: Maybe<Scalars["String"]["output"]>;
+  country?: Maybe<Scalars["String"]["output"]>;
+  createdAt?: Maybe<Scalars["DateTime"]["output"]>;
+  description?: Maybe<Scalars["String"]["output"]>;
+  domain?: Maybe<Scalars["String"]["output"]>;
+  email?: Maybe<Scalars["String"]["output"]>;
+  id?: Maybe<Scalars["Int"]["output"]>;
+  linkedinUrl?: Maybe<Scalars["String"]["output"]>;
+  name?: Maybe<Scalars["String"]["output"]>;
+  phone?: Maybe<Scalars["String"]["output"]>;
+  status?: Maybe<OranizationStatus>;
+  taxIdentifier?: Maybe<Scalars["String"]["output"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]["output"]>;
+  website?: Maybe<Scalars["String"]["output"]>;
+  zipcode?: Maybe<Scalars["String"]["output"]>;
+};
+
+export type OrganizationMaxAggregateInput = {
+  address?: InputMaybe<Scalars["Boolean"]["input"]>;
+  city?: InputMaybe<Scalars["Boolean"]["input"]>;
+  company?: InputMaybe<Scalars["Boolean"]["input"]>;
+  country?: InputMaybe<Scalars["Boolean"]["input"]>;
+  createdAt?: InputMaybe<Scalars["Boolean"]["input"]>;
+  description?: InputMaybe<Scalars["Boolean"]["input"]>;
+  domain?: InputMaybe<Scalars["Boolean"]["input"]>;
+  email?: InputMaybe<Scalars["Boolean"]["input"]>;
+  id?: InputMaybe<Scalars["Boolean"]["input"]>;
+  linkedinUrl?: InputMaybe<Scalars["Boolean"]["input"]>;
+  name?: InputMaybe<Scalars["Boolean"]["input"]>;
+  phone?: InputMaybe<Scalars["Boolean"]["input"]>;
+  status?: InputMaybe<Scalars["Boolean"]["input"]>;
+  taxIdentifier?: InputMaybe<Scalars["Boolean"]["input"]>;
+  updatedAt?: InputMaybe<Scalars["Boolean"]["input"]>;
+  website?: InputMaybe<Scalars["Boolean"]["input"]>;
+  zipcode?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
+export type OrganizationMaxOrderByAggregateInput = {
+  address?: InputMaybe<SortOrder>;
+  city?: InputMaybe<SortOrder>;
+  company?: InputMaybe<SortOrder>;
+  country?: InputMaybe<SortOrder>;
+  createdAt?: InputMaybe<SortOrder>;
+  description?: InputMaybe<SortOrder>;
+  domain?: InputMaybe<SortOrder>;
+  email?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  linkedinUrl?: InputMaybe<SortOrder>;
+  name?: InputMaybe<SortOrder>;
+  phone?: InputMaybe<SortOrder>;
+  status?: InputMaybe<SortOrder>;
+  taxIdentifier?: InputMaybe<SortOrder>;
+  updatedAt?: InputMaybe<SortOrder>;
+  website?: InputMaybe<SortOrder>;
+  zipcode?: InputMaybe<SortOrder>;
+};
+
+export type OrganizationMinAggregate = {
+  __typename?: "OrganizationMinAggregate";
+  address?: Maybe<Scalars["String"]["output"]>;
+  city?: Maybe<Scalars["String"]["output"]>;
+  company?: Maybe<Scalars["String"]["output"]>;
+  country?: Maybe<Scalars["String"]["output"]>;
+  createdAt?: Maybe<Scalars["DateTime"]["output"]>;
+  description?: Maybe<Scalars["String"]["output"]>;
+  domain?: Maybe<Scalars["String"]["output"]>;
+  email?: Maybe<Scalars["String"]["output"]>;
+  id?: Maybe<Scalars["Int"]["output"]>;
+  linkedinUrl?: Maybe<Scalars["String"]["output"]>;
+  name?: Maybe<Scalars["String"]["output"]>;
+  phone?: Maybe<Scalars["String"]["output"]>;
+  status?: Maybe<OranizationStatus>;
+  taxIdentifier?: Maybe<Scalars["String"]["output"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]["output"]>;
+  website?: Maybe<Scalars["String"]["output"]>;
+  zipcode?: Maybe<Scalars["String"]["output"]>;
+};
+
+export type OrganizationMinAggregateInput = {
+  address?: InputMaybe<Scalars["Boolean"]["input"]>;
+  city?: InputMaybe<Scalars["Boolean"]["input"]>;
+  company?: InputMaybe<Scalars["Boolean"]["input"]>;
+  country?: InputMaybe<Scalars["Boolean"]["input"]>;
+  createdAt?: InputMaybe<Scalars["Boolean"]["input"]>;
+  description?: InputMaybe<Scalars["Boolean"]["input"]>;
+  domain?: InputMaybe<Scalars["Boolean"]["input"]>;
+  email?: InputMaybe<Scalars["Boolean"]["input"]>;
+  id?: InputMaybe<Scalars["Boolean"]["input"]>;
+  linkedinUrl?: InputMaybe<Scalars["Boolean"]["input"]>;
+  name?: InputMaybe<Scalars["Boolean"]["input"]>;
+  phone?: InputMaybe<Scalars["Boolean"]["input"]>;
+  status?: InputMaybe<Scalars["Boolean"]["input"]>;
+  taxIdentifier?: InputMaybe<Scalars["Boolean"]["input"]>;
+  updatedAt?: InputMaybe<Scalars["Boolean"]["input"]>;
+  website?: InputMaybe<Scalars["Boolean"]["input"]>;
+  zipcode?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
+export type OrganizationMinOrderByAggregateInput = {
+  address?: InputMaybe<SortOrder>;
+  city?: InputMaybe<SortOrder>;
+  company?: InputMaybe<SortOrder>;
+  country?: InputMaybe<SortOrder>;
+  createdAt?: InputMaybe<SortOrder>;
+  description?: InputMaybe<SortOrder>;
+  domain?: InputMaybe<SortOrder>;
+  email?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  linkedinUrl?: InputMaybe<SortOrder>;
+  name?: InputMaybe<SortOrder>;
+  phone?: InputMaybe<SortOrder>;
+  status?: InputMaybe<SortOrder>;
+  taxIdentifier?: InputMaybe<SortOrder>;
+  updatedAt?: InputMaybe<SortOrder>;
+  website?: InputMaybe<SortOrder>;
+  zipcode?: InputMaybe<SortOrder>;
+};
+
+export type OrganizationOrderByWithAggregationInput = {
+  _avg?: InputMaybe<OrganizationAvgOrderByAggregateInput>;
+  _count?: InputMaybe<OrganizationCountOrderByAggregateInput>;
+  _max?: InputMaybe<OrganizationMaxOrderByAggregateInput>;
+  _min?: InputMaybe<OrganizationMinOrderByAggregateInput>;
+  _sum?: InputMaybe<OrganizationSumOrderByAggregateInput>;
+  address?: InputMaybe<SortOrderInput>;
+  city?: InputMaybe<SortOrderInput>;
+  company?: InputMaybe<SortOrder>;
+  country?: InputMaybe<SortOrderInput>;
+  createdAt?: InputMaybe<SortOrder>;
+  description?: InputMaybe<SortOrderInput>;
+  domain?: InputMaybe<SortOrder>;
+  email?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  linkedinUrl?: InputMaybe<SortOrder>;
+  name?: InputMaybe<SortOrder>;
+  phone?: InputMaybe<SortOrderInput>;
+  status?: InputMaybe<SortOrder>;
+  taxIdentifier?: InputMaybe<SortOrderInput>;
+  updatedAt?: InputMaybe<SortOrder>;
+  website?: InputMaybe<SortOrderInput>;
+  zipcode?: InputMaybe<SortOrderInput>;
+};
+
 export type OrganizationOrderByWithRelationInput = {
   address?: InputMaybe<SortOrderInput>;
   city?: InputMaybe<SortOrderInput>;
@@ -2954,6 +4058,102 @@ export type OrganizationOrderByWithRelationInput = {
 export type OrganizationRelationFilter = {
   is?: InputMaybe<OrganizationWhereInput>;
   isNot?: InputMaybe<OrganizationWhereInput>;
+};
+
+export enum OrganizationScalarFieldEnum {
+  Address = "address",
+  City = "city",
+  Company = "company",
+  Country = "country",
+  CreatedAt = "createdAt",
+  Description = "description",
+  Domain = "domain",
+  Email = "email",
+  Id = "id",
+  LinkedinUrl = "linkedinUrl",
+  Name = "name",
+  Phone = "phone",
+  Status = "status",
+  TaxIdentifier = "taxIdentifier",
+  UpdatedAt = "updatedAt",
+  Website = "website",
+  Zipcode = "zipcode",
+}
+
+export type OrganizationScalarWhereWithAggregatesInput = {
+  AND?: InputMaybe<Array<OrganizationScalarWhereWithAggregatesInput>>;
+  NOT?: InputMaybe<Array<OrganizationScalarWhereWithAggregatesInput>>;
+  OR?: InputMaybe<Array<OrganizationScalarWhereWithAggregatesInput>>;
+  address?: InputMaybe<StringNullableWithAggregatesFilter>;
+  city?: InputMaybe<StringNullableWithAggregatesFilter>;
+  company?: InputMaybe<StringWithAggregatesFilter>;
+  country?: InputMaybe<StringNullableWithAggregatesFilter>;
+  createdAt?: InputMaybe<DateTimeWithAggregatesFilter>;
+  description?: InputMaybe<StringNullableWithAggregatesFilter>;
+  domain?: InputMaybe<StringWithAggregatesFilter>;
+  email?: InputMaybe<StringWithAggregatesFilter>;
+  id?: InputMaybe<IntWithAggregatesFilter>;
+  linkedinUrl?: InputMaybe<StringWithAggregatesFilter>;
+  name?: InputMaybe<StringWithAggregatesFilter>;
+  phone?: InputMaybe<StringNullableWithAggregatesFilter>;
+  status?: InputMaybe<EnumOranizationStatusWithAggregatesFilter>;
+  taxIdentifier?: InputMaybe<StringNullableWithAggregatesFilter>;
+  updatedAt?: InputMaybe<DateTimeWithAggregatesFilter>;
+  website?: InputMaybe<StringNullableWithAggregatesFilter>;
+  zipcode?: InputMaybe<StringNullableWithAggregatesFilter>;
+};
+
+export type OrganizationSumAggregate = {
+  __typename?: "OrganizationSumAggregate";
+  id?: Maybe<Scalars["Int"]["output"]>;
+};
+
+export type OrganizationSumAggregateInput = {
+  id?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
+export type OrganizationSumOrderByAggregateInput = {
+  id?: InputMaybe<SortOrder>;
+};
+
+export type OrganizationUpdateInput = {
+  address?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  city?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  company?: InputMaybe<StringFieldUpdateOperationsInput>;
+  country?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  customers?: InputMaybe<CustomerUpdateManyWithoutOrganizationNestedInput>;
+  description?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  domain?: InputMaybe<StringFieldUpdateOperationsInput>;
+  email?: InputMaybe<StringFieldUpdateOperationsInput>;
+  linkedinUrl?: InputMaybe<StringFieldUpdateOperationsInput>;
+  logo?: InputMaybe<OrganizationLogoUpdateOneWithoutOrganizationNestedInput>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  phone?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  status?: InputMaybe<EnumOranizationStatusFieldUpdateOperationsInput>;
+  taxIdentifier?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  website?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  zipcode?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+};
+
+export type OrganizationUpdateManyMutationInput = {
+  address?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  city?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  company?: InputMaybe<StringFieldUpdateOperationsInput>;
+  country?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  description?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  domain?: InputMaybe<StringFieldUpdateOperationsInput>;
+  email?: InputMaybe<StringFieldUpdateOperationsInput>;
+  linkedinUrl?: InputMaybe<StringFieldUpdateOperationsInput>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  phone?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  status?: InputMaybe<EnumOranizationStatusFieldUpdateOperationsInput>;
+  taxIdentifier?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  website?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
+  zipcode?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
 };
 
 export type OrganizationUpdateOneRequiredWithoutCustomersNestedInput = {
@@ -3047,16 +4247,44 @@ export type OrganizationWhereUniqueInput = {
 
 export type Query = {
   __typename?: "Query";
+  aggregateAgentTerritory: AggregateAgentTerritory;
   aggregateContact: AggregateContact;
   aggregateCustomer: AggregateCustomer;
+  aggregateOrganization: AggregateOrganization;
+  aggregateServiceTerritory: AggregateServiceTerritory;
+  findFirstAgentTerritory: AgentTerritory;
   findFirstContact: Contact;
   findFirstCustomer: Customer;
+  findFirstOrganization: Organization;
+  findFirstServiceTerritory: ServiceTerritory;
+  findUniqueAgentTerritory: AgentTerritory;
   findUniqueContact: Contact;
   findUniqueCustomer: Customer;
+  findUniqueOrganization: Organization;
+  findUniqueServiceTerritory: ServiceTerritory;
+  groupByAgentTerritory: Array<AgentTerritoryGroupBy>;
   groupByContact: Array<ContactGroupBy>;
   groupByCustomer: Array<CustomerGroupBy>;
+  groupByOrganization: Array<OrganizationGroupBy>;
+  groupByServiceTerritory: Array<ServiceTerritoryGroupBy>;
+  listAgentTerritorys: Array<AgentTerritory>;
   listContacts: Array<Contact>;
   listCustomers: Array<Customer>;
+  listOrganizations: Array<Organization>;
+  listServiceTerritorys: Array<ServiceTerritory>;
+};
+
+export type QueryAggregateAgentTerritoryArgs = {
+  _avg?: InputMaybe<AgentTerritoryAvgAggregateInput>;
+  _count?: InputMaybe<AgentTerritoryCountAggregateInput>;
+  _max?: InputMaybe<AgentTerritoryMaxAggregateInput>;
+  _min?: InputMaybe<AgentTerritoryMinAggregateInput>;
+  _sum?: InputMaybe<AgentTerritorySumAggregateInput>;
+  cursor?: InputMaybe<AgentTerritoryWhereUniqueInput>;
+  orderBy?: InputMaybe<Array<AgentTerritoryOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars["Int"]["input"]>;
+  take?: InputMaybe<Scalars["Int"]["input"]>;
+  where?: InputMaybe<AgentTerritoryWhereInput>;
 };
 
 export type QueryAggregateContactArgs = {
@@ -3085,6 +4313,42 @@ export type QueryAggregateCustomerArgs = {
   where?: InputMaybe<CustomerWhereInput>;
 };
 
+export type QueryAggregateOrganizationArgs = {
+  _avg?: InputMaybe<OrganizationAvgAggregateInput>;
+  _count?: InputMaybe<OrganizationCountAggregateInput>;
+  _max?: InputMaybe<OrganizationMaxAggregateInput>;
+  _min?: InputMaybe<OrganizationMinAggregateInput>;
+  _sum?: InputMaybe<OrganizationSumAggregateInput>;
+  cursor?: InputMaybe<OrganizationWhereUniqueInput>;
+  orderBy?: InputMaybe<Array<OrganizationOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars["Int"]["input"]>;
+  take?: InputMaybe<Scalars["Int"]["input"]>;
+  where?: InputMaybe<OrganizationWhereInput>;
+};
+
+export type QueryAggregateServiceTerritoryArgs = {
+  _avg?: InputMaybe<ServiceTerritoryAvgAggregateInput>;
+  _count?: InputMaybe<ServiceTerritoryCountAggregateInput>;
+  _max?: InputMaybe<ServiceTerritoryMaxAggregateInput>;
+  _min?: InputMaybe<ServiceTerritoryMinAggregateInput>;
+  _sum?: InputMaybe<ServiceTerritorySumAggregateInput>;
+  cursor?: InputMaybe<ServiceTerritoryWhereUniqueInput>;
+  orderBy?: InputMaybe<Array<ServiceTerritoryOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars["Int"]["input"]>;
+  take?: InputMaybe<Scalars["Int"]["input"]>;
+  where?: InputMaybe<ServiceTerritoryWhereInput>;
+};
+
+export type QueryFindFirstAgentTerritoryArgs = {
+  cursor?: InputMaybe<AgentTerritoryWhereUniqueInput>;
+  distinct?: InputMaybe<Array<AgentTerritoryScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<AgentTerritoryOrderByWithRelationInput>>;
+  relationLoadStrategy?: InputMaybe<RelationLoadStrategy>;
+  skip?: InputMaybe<Scalars["Int"]["input"]>;
+  take?: InputMaybe<Scalars["Int"]["input"]>;
+  where?: InputMaybe<AgentTerritoryWhereInput>;
+};
+
 export type QueryFindFirstContactArgs = {
   cursor?: InputMaybe<ContactWhereUniqueInput>;
   distinct?: InputMaybe<Array<ContactScalarFieldEnum>>;
@@ -3105,6 +4369,31 @@ export type QueryFindFirstCustomerArgs = {
   where?: InputMaybe<CustomerWhereInput>;
 };
 
+export type QueryFindFirstOrganizationArgs = {
+  cursor?: InputMaybe<OrganizationWhereUniqueInput>;
+  distinct?: InputMaybe<Array<OrganizationScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<OrganizationOrderByWithRelationInput>>;
+  relationLoadStrategy?: InputMaybe<RelationLoadStrategy>;
+  skip?: InputMaybe<Scalars["Int"]["input"]>;
+  take?: InputMaybe<Scalars["Int"]["input"]>;
+  where?: InputMaybe<OrganizationWhereInput>;
+};
+
+export type QueryFindFirstServiceTerritoryArgs = {
+  cursor?: InputMaybe<ServiceTerritoryWhereUniqueInput>;
+  distinct?: InputMaybe<Array<ServiceTerritoryScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<ServiceTerritoryOrderByWithRelationInput>>;
+  relationLoadStrategy?: InputMaybe<RelationLoadStrategy>;
+  skip?: InputMaybe<Scalars["Int"]["input"]>;
+  take?: InputMaybe<Scalars["Int"]["input"]>;
+  where?: InputMaybe<ServiceTerritoryWhereInput>;
+};
+
+export type QueryFindUniqueAgentTerritoryArgs = {
+  relationLoadStrategy?: InputMaybe<RelationLoadStrategy>;
+  where: AgentTerritoryWhereUniqueInput;
+};
+
 export type QueryFindUniqueContactArgs = {
   include?: InputMaybe<IncludeContactInput>;
   relationLoadStrategy?: InputMaybe<RelationLoadStrategy>;
@@ -3115,6 +4404,30 @@ export type QueryFindUniqueCustomerArgs = {
   include?: InputMaybe<IncludeCustomerInput>;
   relationLoadStrategy?: InputMaybe<RelationLoadStrategy>;
   where: CustomerWhereUniqueInput;
+};
+
+export type QueryFindUniqueOrganizationArgs = {
+  relationLoadStrategy?: InputMaybe<RelationLoadStrategy>;
+  where: OrganizationWhereUniqueInput;
+};
+
+export type QueryFindUniqueServiceTerritoryArgs = {
+  relationLoadStrategy?: InputMaybe<RelationLoadStrategy>;
+  where: ServiceTerritoryWhereUniqueInput;
+};
+
+export type QueryGroupByAgentTerritoryArgs = {
+  _avg?: InputMaybe<AgentTerritoryAvgAggregateInput>;
+  _count?: InputMaybe<AgentTerritoryCountAggregateInput>;
+  _max?: InputMaybe<AgentTerritoryMaxAggregateInput>;
+  _min?: InputMaybe<AgentTerritoryMinAggregateInput>;
+  _sum?: InputMaybe<AgentTerritorySumAggregateInput>;
+  by: Array<AgentTerritoryScalarFieldEnum>;
+  having?: InputMaybe<AgentTerritoryScalarWhereWithAggregatesInput>;
+  orderBy?: InputMaybe<Array<AgentTerritoryOrderByWithAggregationInput>>;
+  skip?: InputMaybe<Scalars["Int"]["input"]>;
+  take?: InputMaybe<Scalars["Int"]["input"]>;
+  where?: InputMaybe<AgentTerritoryWhereInput>;
 };
 
 export type QueryGroupByContactArgs = {
@@ -3145,6 +4458,44 @@ export type QueryGroupByCustomerArgs = {
   where?: InputMaybe<CustomerWhereInput>;
 };
 
+export type QueryGroupByOrganizationArgs = {
+  _avg?: InputMaybe<OrganizationAvgAggregateInput>;
+  _count?: InputMaybe<OrganizationCountAggregateInput>;
+  _max?: InputMaybe<OrganizationMaxAggregateInput>;
+  _min?: InputMaybe<OrganizationMinAggregateInput>;
+  _sum?: InputMaybe<OrganizationSumAggregateInput>;
+  by: Array<OrganizationScalarFieldEnum>;
+  having?: InputMaybe<OrganizationScalarWhereWithAggregatesInput>;
+  orderBy?: InputMaybe<Array<OrganizationOrderByWithAggregationInput>>;
+  skip?: InputMaybe<Scalars["Int"]["input"]>;
+  take?: InputMaybe<Scalars["Int"]["input"]>;
+  where?: InputMaybe<OrganizationWhereInput>;
+};
+
+export type QueryGroupByServiceTerritoryArgs = {
+  _avg?: InputMaybe<ServiceTerritoryAvgAggregateInput>;
+  _count?: InputMaybe<ServiceTerritoryCountAggregateInput>;
+  _max?: InputMaybe<ServiceTerritoryMaxAggregateInput>;
+  _min?: InputMaybe<ServiceTerritoryMinAggregateInput>;
+  _sum?: InputMaybe<ServiceTerritorySumAggregateInput>;
+  by: Array<ServiceTerritoryScalarFieldEnum>;
+  having?: InputMaybe<ServiceTerritoryScalarWhereWithAggregatesInput>;
+  orderBy?: InputMaybe<Array<ServiceTerritoryOrderByWithAggregationInput>>;
+  skip?: InputMaybe<Scalars["Int"]["input"]>;
+  take?: InputMaybe<Scalars["Int"]["input"]>;
+  where?: InputMaybe<ServiceTerritoryWhereInput>;
+};
+
+export type QueryListAgentTerritorysArgs = {
+  cursor?: InputMaybe<AgentTerritoryWhereUniqueInput>;
+  distinct?: InputMaybe<Array<AgentTerritoryScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<AgentTerritoryOrderByWithRelationInput>>;
+  relationLoadStrategy?: InputMaybe<RelationLoadStrategy>;
+  skip?: InputMaybe<Scalars["Int"]["input"]>;
+  take?: InputMaybe<Scalars["Int"]["input"]>;
+  where?: InputMaybe<AgentTerritoryWhereInput>;
+};
+
 export type QueryListContactsArgs = {
   cursor?: InputMaybe<ContactWhereUniqueInput>;
   distinct?: InputMaybe<Array<ContactScalarFieldEnum>>;
@@ -3165,6 +4516,26 @@ export type QueryListCustomersArgs = {
   skip?: InputMaybe<Scalars["Int"]["input"]>;
   take?: InputMaybe<Scalars["Int"]["input"]>;
   where?: InputMaybe<CustomerWhereInput>;
+};
+
+export type QueryListOrganizationsArgs = {
+  cursor?: InputMaybe<OrganizationWhereUniqueInput>;
+  distinct?: InputMaybe<Array<OrganizationScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<OrganizationOrderByWithRelationInput>>;
+  relationLoadStrategy?: InputMaybe<RelationLoadStrategy>;
+  skip?: InputMaybe<Scalars["Int"]["input"]>;
+  take?: InputMaybe<Scalars["Int"]["input"]>;
+  where?: InputMaybe<OrganizationWhereInput>;
+};
+
+export type QueryListServiceTerritorysArgs = {
+  cursor?: InputMaybe<ServiceTerritoryWhereUniqueInput>;
+  distinct?: InputMaybe<Array<ServiceTerritoryScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<ServiceTerritoryOrderByWithRelationInput>>;
+  relationLoadStrategy?: InputMaybe<RelationLoadStrategy>;
+  skip?: InputMaybe<Scalars["Int"]["input"]>;
+  take?: InputMaybe<Scalars["Int"]["input"]>;
+  where?: InputMaybe<ServiceTerritoryWhereInput>;
 };
 
 export enum QueryMode {
@@ -3388,6 +4759,389 @@ export type ServiceScalarWhereInput = {
   updatedAt?: InputMaybe<DateTimeFilter>;
 };
 
+export type ServiceTerritory = {
+  __typename?: "ServiceTerritory";
+  _count: ServiceTerritoryCount;
+  city: Scalars["String"]["output"];
+  country: Scalars["String"]["output"];
+  id: Scalars["ID"]["output"];
+  isocode: Scalars["String"]["output"];
+  latitude: Scalars["Float"]["output"];
+  locality: Scalars["String"]["output"];
+  longitude: Scalars["Float"]["output"];
+  name: Scalars["String"]["output"];
+  state: Scalars["String"]["output"];
+  subTerritories?: Maybe<Array<SubTerritory>>;
+};
+
+export type ServiceTerritoryAvgAggregate = {
+  __typename?: "ServiceTerritoryAvgAggregate";
+  id?: Maybe<Scalars["Float"]["output"]>;
+  latitude?: Maybe<Scalars["Float"]["output"]>;
+  longitude?: Maybe<Scalars["Float"]["output"]>;
+};
+
+export type ServiceTerritoryAvgAggregateInput = {
+  id?: InputMaybe<Scalars["Boolean"]["input"]>;
+  latitude?: InputMaybe<Scalars["Boolean"]["input"]>;
+  longitude?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
+export type ServiceTerritoryAvgOrderByAggregateInput = {
+  id?: InputMaybe<SortOrder>;
+  latitude?: InputMaybe<SortOrder>;
+  longitude?: InputMaybe<SortOrder>;
+};
+
+export type ServiceTerritoryCount = {
+  __typename?: "ServiceTerritoryCount";
+  subTerritories: Scalars["Int"]["output"];
+};
+
+export type ServiceTerritoryCountAggregate = {
+  __typename?: "ServiceTerritoryCountAggregate";
+  _all: Scalars["Int"]["output"];
+  city: Scalars["Int"]["output"];
+  country: Scalars["Int"]["output"];
+  id: Scalars["Int"]["output"];
+  isocode: Scalars["Int"]["output"];
+  latitude: Scalars["Int"]["output"];
+  locality: Scalars["Int"]["output"];
+  longitude: Scalars["Int"]["output"];
+  name: Scalars["Int"]["output"];
+  state: Scalars["Int"]["output"];
+};
+
+export type ServiceTerritoryCountAggregateInput = {
+  _all?: InputMaybe<Scalars["Boolean"]["input"]>;
+  city?: InputMaybe<Scalars["Boolean"]["input"]>;
+  country?: InputMaybe<Scalars["Boolean"]["input"]>;
+  id?: InputMaybe<Scalars["Boolean"]["input"]>;
+  isocode?: InputMaybe<Scalars["Boolean"]["input"]>;
+  latitude?: InputMaybe<Scalars["Boolean"]["input"]>;
+  locality?: InputMaybe<Scalars["Boolean"]["input"]>;
+  longitude?: InputMaybe<Scalars["Boolean"]["input"]>;
+  name?: InputMaybe<Scalars["Boolean"]["input"]>;
+  state?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
+export type ServiceTerritoryCountOrderByAggregateInput = {
+  city?: InputMaybe<SortOrder>;
+  country?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  isocode?: InputMaybe<SortOrder>;
+  latitude?: InputMaybe<SortOrder>;
+  locality?: InputMaybe<SortOrder>;
+  longitude?: InputMaybe<SortOrder>;
+  name?: InputMaybe<SortOrder>;
+  state?: InputMaybe<SortOrder>;
+};
+
+export type ServiceTerritoryCreateInput = {
+  city: Scalars["String"]["input"];
+  country: Scalars["String"]["input"];
+  isocode: Scalars["String"]["input"];
+  latitude: Scalars["Float"]["input"];
+  locality: Scalars["String"]["input"];
+  longitude: Scalars["Float"]["input"];
+  name: Scalars["String"]["input"];
+  state: Scalars["String"]["input"];
+  subTerritories?: InputMaybe<SubTerritoryCreateNestedManyWithoutParentTerritoryInput>;
+};
+
+export type ServiceTerritoryCreateManyInput = {
+  city: Scalars["String"]["input"];
+  country: Scalars["String"]["input"];
+  id?: InputMaybe<Scalars["Int"]["input"]>;
+  isocode: Scalars["String"]["input"];
+  latitude: Scalars["Float"]["input"];
+  locality: Scalars["String"]["input"];
+  longitude: Scalars["Float"]["input"];
+  name: Scalars["String"]["input"];
+  state: Scalars["String"]["input"];
+};
+
+export type ServiceTerritoryCreateNestedOneWithoutSubTerritoriesInput = {
+  connect?: InputMaybe<ServiceTerritoryWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<ServiceTerritoryCreateOrConnectWithoutSubTerritoriesInput>;
+  create?: InputMaybe<ServiceTerritoryCreateWithoutSubTerritoriesInput>;
+};
+
+export type ServiceTerritoryCreateOrConnectWithoutSubTerritoriesInput = {
+  create: ServiceTerritoryCreateWithoutSubTerritoriesInput;
+  where: ServiceTerritoryWhereUniqueInput;
+};
+
+export type ServiceTerritoryCreateWithoutSubTerritoriesInput = {
+  city: Scalars["String"]["input"];
+  country: Scalars["String"]["input"];
+  isocode: Scalars["String"]["input"];
+  latitude: Scalars["Float"]["input"];
+  locality: Scalars["String"]["input"];
+  longitude: Scalars["Float"]["input"];
+  name: Scalars["String"]["input"];
+  state: Scalars["String"]["input"];
+};
+
+export type ServiceTerritoryGroupBy = {
+  __typename?: "ServiceTerritoryGroupBy";
+  _avg?: Maybe<ServiceTerritoryAvgAggregate>;
+  _count?: Maybe<ServiceTerritoryCountAggregate>;
+  _max?: Maybe<ServiceTerritoryMaxAggregate>;
+  _min?: Maybe<ServiceTerritoryMinAggregate>;
+  _sum?: Maybe<ServiceTerritorySumAggregate>;
+  city: Scalars["String"]["output"];
+  country: Scalars["String"]["output"];
+  id: Scalars["Int"]["output"];
+  isocode: Scalars["String"]["output"];
+  latitude: Scalars["Float"]["output"];
+  locality: Scalars["String"]["output"];
+  longitude: Scalars["Float"]["output"];
+  name: Scalars["String"]["output"];
+  state: Scalars["String"]["output"];
+};
+
+export type ServiceTerritoryMaxAggregate = {
+  __typename?: "ServiceTerritoryMaxAggregate";
+  city?: Maybe<Scalars["String"]["output"]>;
+  country?: Maybe<Scalars["String"]["output"]>;
+  id?: Maybe<Scalars["Int"]["output"]>;
+  isocode?: Maybe<Scalars["String"]["output"]>;
+  latitude?: Maybe<Scalars["Float"]["output"]>;
+  locality?: Maybe<Scalars["String"]["output"]>;
+  longitude?: Maybe<Scalars["Float"]["output"]>;
+  name?: Maybe<Scalars["String"]["output"]>;
+  state?: Maybe<Scalars["String"]["output"]>;
+};
+
+export type ServiceTerritoryMaxAggregateInput = {
+  city?: InputMaybe<Scalars["Boolean"]["input"]>;
+  country?: InputMaybe<Scalars["Boolean"]["input"]>;
+  id?: InputMaybe<Scalars["Boolean"]["input"]>;
+  isocode?: InputMaybe<Scalars["Boolean"]["input"]>;
+  latitude?: InputMaybe<Scalars["Boolean"]["input"]>;
+  locality?: InputMaybe<Scalars["Boolean"]["input"]>;
+  longitude?: InputMaybe<Scalars["Boolean"]["input"]>;
+  name?: InputMaybe<Scalars["Boolean"]["input"]>;
+  state?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
+export type ServiceTerritoryMaxOrderByAggregateInput = {
+  city?: InputMaybe<SortOrder>;
+  country?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  isocode?: InputMaybe<SortOrder>;
+  latitude?: InputMaybe<SortOrder>;
+  locality?: InputMaybe<SortOrder>;
+  longitude?: InputMaybe<SortOrder>;
+  name?: InputMaybe<SortOrder>;
+  state?: InputMaybe<SortOrder>;
+};
+
+export type ServiceTerritoryMinAggregate = {
+  __typename?: "ServiceTerritoryMinAggregate";
+  city?: Maybe<Scalars["String"]["output"]>;
+  country?: Maybe<Scalars["String"]["output"]>;
+  id?: Maybe<Scalars["Int"]["output"]>;
+  isocode?: Maybe<Scalars["String"]["output"]>;
+  latitude?: Maybe<Scalars["Float"]["output"]>;
+  locality?: Maybe<Scalars["String"]["output"]>;
+  longitude?: Maybe<Scalars["Float"]["output"]>;
+  name?: Maybe<Scalars["String"]["output"]>;
+  state?: Maybe<Scalars["String"]["output"]>;
+};
+
+export type ServiceTerritoryMinAggregateInput = {
+  city?: InputMaybe<Scalars["Boolean"]["input"]>;
+  country?: InputMaybe<Scalars["Boolean"]["input"]>;
+  id?: InputMaybe<Scalars["Boolean"]["input"]>;
+  isocode?: InputMaybe<Scalars["Boolean"]["input"]>;
+  latitude?: InputMaybe<Scalars["Boolean"]["input"]>;
+  locality?: InputMaybe<Scalars["Boolean"]["input"]>;
+  longitude?: InputMaybe<Scalars["Boolean"]["input"]>;
+  name?: InputMaybe<Scalars["Boolean"]["input"]>;
+  state?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
+export type ServiceTerritoryMinOrderByAggregateInput = {
+  city?: InputMaybe<SortOrder>;
+  country?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  isocode?: InputMaybe<SortOrder>;
+  latitude?: InputMaybe<SortOrder>;
+  locality?: InputMaybe<SortOrder>;
+  longitude?: InputMaybe<SortOrder>;
+  name?: InputMaybe<SortOrder>;
+  state?: InputMaybe<SortOrder>;
+};
+
+export type ServiceTerritoryOrderByWithAggregationInput = {
+  _avg?: InputMaybe<ServiceTerritoryAvgOrderByAggregateInput>;
+  _count?: InputMaybe<ServiceTerritoryCountOrderByAggregateInput>;
+  _max?: InputMaybe<ServiceTerritoryMaxOrderByAggregateInput>;
+  _min?: InputMaybe<ServiceTerritoryMinOrderByAggregateInput>;
+  _sum?: InputMaybe<ServiceTerritorySumOrderByAggregateInput>;
+  city?: InputMaybe<SortOrder>;
+  country?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  isocode?: InputMaybe<SortOrder>;
+  latitude?: InputMaybe<SortOrder>;
+  locality?: InputMaybe<SortOrder>;
+  longitude?: InputMaybe<SortOrder>;
+  name?: InputMaybe<SortOrder>;
+  state?: InputMaybe<SortOrder>;
+};
+
+export type ServiceTerritoryOrderByWithRelationInput = {
+  city?: InputMaybe<SortOrder>;
+  country?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  isocode?: InputMaybe<SortOrder>;
+  latitude?: InputMaybe<SortOrder>;
+  locality?: InputMaybe<SortOrder>;
+  longitude?: InputMaybe<SortOrder>;
+  name?: InputMaybe<SortOrder>;
+  state?: InputMaybe<SortOrder>;
+  subTerritories?: InputMaybe<SubTerritoryOrderByRelationAggregateInput>;
+};
+
+export type ServiceTerritoryRelationFilter = {
+  is?: InputMaybe<ServiceTerritoryWhereInput>;
+  isNot?: InputMaybe<ServiceTerritoryWhereInput>;
+};
+
+export enum ServiceTerritoryScalarFieldEnum {
+  City = "city",
+  Country = "country",
+  Id = "id",
+  Isocode = "isocode",
+  Latitude = "latitude",
+  Locality = "locality",
+  Longitude = "longitude",
+  Name = "name",
+  State = "state",
+}
+
+export type ServiceTerritoryScalarWhereWithAggregatesInput = {
+  AND?: InputMaybe<Array<ServiceTerritoryScalarWhereWithAggregatesInput>>;
+  NOT?: InputMaybe<Array<ServiceTerritoryScalarWhereWithAggregatesInput>>;
+  OR?: InputMaybe<Array<ServiceTerritoryScalarWhereWithAggregatesInput>>;
+  city?: InputMaybe<StringWithAggregatesFilter>;
+  country?: InputMaybe<StringWithAggregatesFilter>;
+  id?: InputMaybe<IntWithAggregatesFilter>;
+  isocode?: InputMaybe<StringWithAggregatesFilter>;
+  latitude?: InputMaybe<FloatWithAggregatesFilter>;
+  locality?: InputMaybe<StringWithAggregatesFilter>;
+  longitude?: InputMaybe<FloatWithAggregatesFilter>;
+  name?: InputMaybe<StringWithAggregatesFilter>;
+  state?: InputMaybe<StringWithAggregatesFilter>;
+};
+
+export type ServiceTerritorySumAggregate = {
+  __typename?: "ServiceTerritorySumAggregate";
+  id?: Maybe<Scalars["Int"]["output"]>;
+  latitude?: Maybe<Scalars["Float"]["output"]>;
+  longitude?: Maybe<Scalars["Float"]["output"]>;
+};
+
+export type ServiceTerritorySumAggregateInput = {
+  id?: InputMaybe<Scalars["Boolean"]["input"]>;
+  latitude?: InputMaybe<Scalars["Boolean"]["input"]>;
+  longitude?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
+export type ServiceTerritorySumOrderByAggregateInput = {
+  id?: InputMaybe<SortOrder>;
+  latitude?: InputMaybe<SortOrder>;
+  longitude?: InputMaybe<SortOrder>;
+};
+
+export type ServiceTerritoryUpdateInput = {
+  city?: InputMaybe<StringFieldUpdateOperationsInput>;
+  country?: InputMaybe<StringFieldUpdateOperationsInput>;
+  isocode?: InputMaybe<StringFieldUpdateOperationsInput>;
+  latitude?: InputMaybe<FloatFieldUpdateOperationsInput>;
+  locality?: InputMaybe<StringFieldUpdateOperationsInput>;
+  longitude?: InputMaybe<FloatFieldUpdateOperationsInput>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  state?: InputMaybe<StringFieldUpdateOperationsInput>;
+  subTerritories?: InputMaybe<SubTerritoryUpdateManyWithoutParentTerritoryNestedInput>;
+};
+
+export type ServiceTerritoryUpdateManyMutationInput = {
+  city?: InputMaybe<StringFieldUpdateOperationsInput>;
+  country?: InputMaybe<StringFieldUpdateOperationsInput>;
+  isocode?: InputMaybe<StringFieldUpdateOperationsInput>;
+  latitude?: InputMaybe<FloatFieldUpdateOperationsInput>;
+  locality?: InputMaybe<StringFieldUpdateOperationsInput>;
+  longitude?: InputMaybe<FloatFieldUpdateOperationsInput>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  state?: InputMaybe<StringFieldUpdateOperationsInput>;
+};
+
+export type ServiceTerritoryUpdateOneRequiredWithoutSubTerritoriesNestedInput =
+  {
+    connect?: InputMaybe<ServiceTerritoryWhereUniqueInput>;
+    connectOrCreate?: InputMaybe<ServiceTerritoryCreateOrConnectWithoutSubTerritoriesInput>;
+    create?: InputMaybe<ServiceTerritoryCreateWithoutSubTerritoriesInput>;
+    update?: InputMaybe<ServiceTerritoryUpdateToOneWithWhereWithoutSubTerritoriesInput>;
+    upsert?: InputMaybe<ServiceTerritoryUpsertWithoutSubTerritoriesInput>;
+  };
+
+export type ServiceTerritoryUpdateToOneWithWhereWithoutSubTerritoriesInput = {
+  data: ServiceTerritoryUpdateWithoutSubTerritoriesInput;
+  where?: InputMaybe<ServiceTerritoryWhereInput>;
+};
+
+export type ServiceTerritoryUpdateWithoutSubTerritoriesInput = {
+  city?: InputMaybe<StringFieldUpdateOperationsInput>;
+  country?: InputMaybe<StringFieldUpdateOperationsInput>;
+  isocode?: InputMaybe<StringFieldUpdateOperationsInput>;
+  latitude?: InputMaybe<FloatFieldUpdateOperationsInput>;
+  locality?: InputMaybe<StringFieldUpdateOperationsInput>;
+  longitude?: InputMaybe<FloatFieldUpdateOperationsInput>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  state?: InputMaybe<StringFieldUpdateOperationsInput>;
+};
+
+export type ServiceTerritoryUpsertWithoutSubTerritoriesInput = {
+  create: ServiceTerritoryCreateWithoutSubTerritoriesInput;
+  update: ServiceTerritoryUpdateWithoutSubTerritoriesInput;
+  where?: InputMaybe<ServiceTerritoryWhereInput>;
+};
+
+export type ServiceTerritoryWhereInput = {
+  AND?: InputMaybe<Array<ServiceTerritoryWhereInput>>;
+  NOT?: InputMaybe<Array<ServiceTerritoryWhereInput>>;
+  OR?: InputMaybe<Array<ServiceTerritoryWhereInput>>;
+  city?: InputMaybe<StringFilter>;
+  country?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IntFilter>;
+  isocode?: InputMaybe<StringFilter>;
+  latitude?: InputMaybe<FloatFilter>;
+  locality?: InputMaybe<StringFilter>;
+  longitude?: InputMaybe<FloatFilter>;
+  name?: InputMaybe<StringFilter>;
+  state?: InputMaybe<StringFilter>;
+  subTerritories?: InputMaybe<SubTerritoryListRelationFilter>;
+};
+
+export type ServiceTerritoryWhereUniqueInput = {
+  AND?: InputMaybe<Array<ServiceTerritoryWhereInput>>;
+  NOT?: InputMaybe<Array<ServiceTerritoryWhereInput>>;
+  OR?: InputMaybe<Array<ServiceTerritoryWhereInput>>;
+  city?: InputMaybe<StringFilter>;
+  country?: InputMaybe<StringFilter>;
+  id?: InputMaybe<Scalars["Int"]["input"]>;
+  isocode?: InputMaybe<StringFilter>;
+  latitude?: InputMaybe<FloatFilter>;
+  locality?: InputMaybe<StringFilter>;
+  longitude?: InputMaybe<FloatFilter>;
+  name?: InputMaybe<StringFilter>;
+  state?: InputMaybe<StringFilter>;
+  subTerritories?: InputMaybe<SubTerritoryListRelationFilter>;
+};
+
 export type ServiceUpdateManyMutationInput = {
   createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   description?: InputMaybe<StringFieldUpdateOperationsInput>;
@@ -3543,4 +5297,399 @@ export type StringWithAggregatesFilter = {
   not?: InputMaybe<NestedStringWithAggregatesFilter>;
   notIn?: InputMaybe<Array<Scalars["String"]["input"]>>;
   startsWith?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+export type SubTerritory = {
+  __typename?: "SubTerritory";
+  _count: SubTerritoryCount;
+  agents?: Maybe<Array<AgentTerritory>>;
+  id: Scalars["ID"]["output"];
+  latitude: Scalars["Float"]["output"];
+  locality: Scalars["String"]["output"];
+  longitude: Scalars["Float"]["output"];
+  name: Scalars["String"]["output"];
+  parentTerritory: ServiceTerritory;
+  parentTerritoryId: Scalars["Int"]["output"];
+};
+
+export type SubTerritoryCount = {
+  __typename?: "SubTerritoryCount";
+  agents: Scalars["Int"]["output"];
+};
+
+export type SubTerritoryCreateManyParentTerritoryInput = {
+  id?: InputMaybe<Scalars["Int"]["input"]>;
+  latitude: Scalars["Float"]["input"];
+  locality: Scalars["String"]["input"];
+  longitude: Scalars["Float"]["input"];
+  name: Scalars["String"]["input"];
+};
+
+export type SubTerritoryCreateManyParentTerritoryInputEnvelope = {
+  data: Array<SubTerritoryCreateManyParentTerritoryInput>;
+  skipDuplicates?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
+export type SubTerritoryCreateNestedManyWithoutParentTerritoryInput = {
+  connect?: InputMaybe<Array<SubTerritoryWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<
+    Array<SubTerritoryCreateOrConnectWithoutParentTerritoryInput>
+  >;
+  create?: InputMaybe<Array<SubTerritoryCreateWithoutParentTerritoryInput>>;
+  createMany?: InputMaybe<SubTerritoryCreateManyParentTerritoryInputEnvelope>;
+};
+
+export type SubTerritoryCreateNestedOneWithoutAgentsInput = {
+  connect?: InputMaybe<SubTerritoryWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<SubTerritoryCreateOrConnectWithoutAgentsInput>;
+  create?: InputMaybe<SubTerritoryCreateWithoutAgentsInput>;
+};
+
+export type SubTerritoryCreateOrConnectWithoutAgentsInput = {
+  create: SubTerritoryCreateWithoutAgentsInput;
+  where: SubTerritoryWhereUniqueInput;
+};
+
+export type SubTerritoryCreateOrConnectWithoutParentTerritoryInput = {
+  create: SubTerritoryCreateWithoutParentTerritoryInput;
+  where: SubTerritoryWhereUniqueInput;
+};
+
+export type SubTerritoryCreateWithoutAgentsInput = {
+  latitude: Scalars["Float"]["input"];
+  locality: Scalars["String"]["input"];
+  longitude: Scalars["Float"]["input"];
+  name: Scalars["String"]["input"];
+  parentTerritory: ServiceTerritoryCreateNestedOneWithoutSubTerritoriesInput;
+};
+
+export type SubTerritoryCreateWithoutParentTerritoryInput = {
+  agents?: InputMaybe<AgentTerritoryCreateNestedManyWithoutSubTerritoryInput>;
+  latitude: Scalars["Float"]["input"];
+  locality: Scalars["String"]["input"];
+  longitude: Scalars["Float"]["input"];
+  name: Scalars["String"]["input"];
+};
+
+export type SubTerritoryListRelationFilter = {
+  every?: InputMaybe<SubTerritoryWhereInput>;
+  none?: InputMaybe<SubTerritoryWhereInput>;
+  some?: InputMaybe<SubTerritoryWhereInput>;
+};
+
+export type SubTerritoryOrderByRelationAggregateInput = {
+  _count?: InputMaybe<SortOrder>;
+};
+
+export type SubTerritoryOrderByWithRelationInput = {
+  agents?: InputMaybe<AgentTerritoryOrderByRelationAggregateInput>;
+  id?: InputMaybe<SortOrder>;
+  latitude?: InputMaybe<SortOrder>;
+  locality?: InputMaybe<SortOrder>;
+  longitude?: InputMaybe<SortOrder>;
+  name?: InputMaybe<SortOrder>;
+  parentTerritory?: InputMaybe<ServiceTerritoryOrderByWithRelationInput>;
+  parentTerritoryId?: InputMaybe<SortOrder>;
+};
+
+export type SubTerritoryRelationFilter = {
+  is?: InputMaybe<SubTerritoryWhereInput>;
+  isNot?: InputMaybe<SubTerritoryWhereInput>;
+};
+
+export type SubTerritoryScalarWhereInput = {
+  AND?: InputMaybe<Array<SubTerritoryScalarWhereInput>>;
+  NOT?: InputMaybe<Array<SubTerritoryScalarWhereInput>>;
+  OR?: InputMaybe<Array<SubTerritoryScalarWhereInput>>;
+  id?: InputMaybe<IntFilter>;
+  latitude?: InputMaybe<FloatFilter>;
+  locality?: InputMaybe<StringFilter>;
+  longitude?: InputMaybe<FloatFilter>;
+  name?: InputMaybe<StringFilter>;
+  parentTerritoryId?: InputMaybe<IntFilter>;
+};
+
+export type SubTerritoryUpdateManyMutationInput = {
+  latitude?: InputMaybe<FloatFieldUpdateOperationsInput>;
+  locality?: InputMaybe<StringFieldUpdateOperationsInput>;
+  longitude?: InputMaybe<FloatFieldUpdateOperationsInput>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+};
+
+export type SubTerritoryUpdateManyWithWhereWithoutParentTerritoryInput = {
+  data: SubTerritoryUpdateManyMutationInput;
+  where: SubTerritoryScalarWhereInput;
+};
+
+export type SubTerritoryUpdateManyWithoutParentTerritoryNestedInput = {
+  connect?: InputMaybe<Array<SubTerritoryWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<
+    Array<SubTerritoryCreateOrConnectWithoutParentTerritoryInput>
+  >;
+  create?: InputMaybe<Array<SubTerritoryCreateWithoutParentTerritoryInput>>;
+  createMany?: InputMaybe<SubTerritoryCreateManyParentTerritoryInputEnvelope>;
+  delete?: InputMaybe<Array<SubTerritoryWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<SubTerritoryScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<SubTerritoryWhereUniqueInput>>;
+  set?: InputMaybe<Array<SubTerritoryWhereUniqueInput>>;
+  update?: InputMaybe<
+    Array<SubTerritoryUpdateWithWhereUniqueWithoutParentTerritoryInput>
+  >;
+  updateMany?: InputMaybe<
+    Array<SubTerritoryUpdateManyWithWhereWithoutParentTerritoryInput>
+  >;
+  upsert?: InputMaybe<
+    Array<SubTerritoryUpsertWithWhereUniqueWithoutParentTerritoryInput>
+  >;
+};
+
+export type SubTerritoryUpdateOneRequiredWithoutAgentsNestedInput = {
+  connect?: InputMaybe<SubTerritoryWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<SubTerritoryCreateOrConnectWithoutAgentsInput>;
+  create?: InputMaybe<SubTerritoryCreateWithoutAgentsInput>;
+  update?: InputMaybe<SubTerritoryUpdateToOneWithWhereWithoutAgentsInput>;
+  upsert?: InputMaybe<SubTerritoryUpsertWithoutAgentsInput>;
+};
+
+export type SubTerritoryUpdateToOneWithWhereWithoutAgentsInput = {
+  data: SubTerritoryUpdateWithoutAgentsInput;
+  where?: InputMaybe<SubTerritoryWhereInput>;
+};
+
+export type SubTerritoryUpdateWithWhereUniqueWithoutParentTerritoryInput = {
+  data: SubTerritoryUpdateWithoutParentTerritoryInput;
+  where: SubTerritoryWhereUniqueInput;
+};
+
+export type SubTerritoryUpdateWithoutAgentsInput = {
+  latitude?: InputMaybe<FloatFieldUpdateOperationsInput>;
+  locality?: InputMaybe<StringFieldUpdateOperationsInput>;
+  longitude?: InputMaybe<FloatFieldUpdateOperationsInput>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+  parentTerritory?: InputMaybe<ServiceTerritoryUpdateOneRequiredWithoutSubTerritoriesNestedInput>;
+};
+
+export type SubTerritoryUpdateWithoutParentTerritoryInput = {
+  agents?: InputMaybe<AgentTerritoryUpdateManyWithoutSubTerritoryNestedInput>;
+  latitude?: InputMaybe<FloatFieldUpdateOperationsInput>;
+  locality?: InputMaybe<StringFieldUpdateOperationsInput>;
+  longitude?: InputMaybe<FloatFieldUpdateOperationsInput>;
+  name?: InputMaybe<StringFieldUpdateOperationsInput>;
+};
+
+export type SubTerritoryUpsertWithWhereUniqueWithoutParentTerritoryInput = {
+  create: SubTerritoryCreateWithoutParentTerritoryInput;
+  update: SubTerritoryUpdateWithoutParentTerritoryInput;
+  where: SubTerritoryWhereUniqueInput;
+};
+
+export type SubTerritoryUpsertWithoutAgentsInput = {
+  create: SubTerritoryCreateWithoutAgentsInput;
+  update: SubTerritoryUpdateWithoutAgentsInput;
+  where?: InputMaybe<SubTerritoryWhereInput>;
+};
+
+export type SubTerritoryWhereInput = {
+  AND?: InputMaybe<Array<SubTerritoryWhereInput>>;
+  NOT?: InputMaybe<Array<SubTerritoryWhereInput>>;
+  OR?: InputMaybe<Array<SubTerritoryWhereInput>>;
+  agents?: InputMaybe<AgentTerritoryListRelationFilter>;
+  id?: InputMaybe<IntFilter>;
+  latitude?: InputMaybe<FloatFilter>;
+  locality?: InputMaybe<StringFilter>;
+  longitude?: InputMaybe<FloatFilter>;
+  name?: InputMaybe<StringFilter>;
+  parentTerritory?: InputMaybe<ServiceTerritoryRelationFilter>;
+  parentTerritoryId?: InputMaybe<IntFilter>;
+};
+
+export type SubTerritoryWhereUniqueInput = {
+  AND?: InputMaybe<Array<SubTerritoryWhereInput>>;
+  NOT?: InputMaybe<Array<SubTerritoryWhereInput>>;
+  OR?: InputMaybe<Array<SubTerritoryWhereInput>>;
+  agents?: InputMaybe<AgentTerritoryListRelationFilter>;
+  id?: InputMaybe<Scalars["Int"]["input"]>;
+  latitude?: InputMaybe<FloatFilter>;
+  locality?: InputMaybe<StringFilter>;
+  longitude?: InputMaybe<FloatFilter>;
+  name?: InputMaybe<StringFilter>;
+  parentTerritory?: InputMaybe<ServiceTerritoryRelationFilter>;
+  parentTerritoryId?: InputMaybe<IntFilter>;
+};
+
+export type WorkCalendar = {
+  __typename?: "WorkCalendar";
+  agent: Agent;
+  agentId: Scalars["Int"]["output"];
+  available: Scalars["Boolean"]["output"];
+  createdAt: Scalars["DateTime"]["output"];
+  day: Scalars["Int"]["output"];
+  endTime: Scalars["DateTime"]["output"];
+  id: Scalars["ID"]["output"];
+  month: Scalars["Int"]["output"];
+  startTime: Scalars["DateTime"]["output"];
+  updatedAt: Scalars["DateTime"]["output"];
+  year: Scalars["Int"]["output"];
+};
+
+export type WorkCalendarCreateManyAgentInput = {
+  available: Scalars["Boolean"]["input"];
+  createdAt?: InputMaybe<Scalars["DateTime"]["input"]>;
+  day: Scalars["Int"]["input"];
+  endTime: Scalars["DateTime"]["input"];
+  id?: InputMaybe<Scalars["Int"]["input"]>;
+  month: Scalars["Int"]["input"];
+  startTime: Scalars["DateTime"]["input"];
+  updatedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
+  year: Scalars["Int"]["input"];
+};
+
+export type WorkCalendarCreateManyAgentInputEnvelope = {
+  data: Array<WorkCalendarCreateManyAgentInput>;
+  skipDuplicates?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
+export type WorkCalendarCreateNestedManyWithoutAgentInput = {
+  connect?: InputMaybe<Array<WorkCalendarWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<
+    Array<WorkCalendarCreateOrConnectWithoutAgentInput>
+  >;
+  create?: InputMaybe<Array<WorkCalendarCreateWithoutAgentInput>>;
+  createMany?: InputMaybe<WorkCalendarCreateManyAgentInputEnvelope>;
+};
+
+export type WorkCalendarCreateOrConnectWithoutAgentInput = {
+  create: WorkCalendarCreateWithoutAgentInput;
+  where: WorkCalendarWhereUniqueInput;
+};
+
+export type WorkCalendarCreateWithoutAgentInput = {
+  available: Scalars["Boolean"]["input"];
+  createdAt?: InputMaybe<Scalars["DateTime"]["input"]>;
+  day: Scalars["Int"]["input"];
+  endTime: Scalars["DateTime"]["input"];
+  month: Scalars["Int"]["input"];
+  startTime: Scalars["DateTime"]["input"];
+  updatedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
+  year: Scalars["Int"]["input"];
+};
+
+export type WorkCalendarListRelationFilter = {
+  every?: InputMaybe<WorkCalendarWhereInput>;
+  none?: InputMaybe<WorkCalendarWhereInput>;
+  some?: InputMaybe<WorkCalendarWhereInput>;
+};
+
+export type WorkCalendarOrderByRelationAggregateInput = {
+  _count?: InputMaybe<SortOrder>;
+};
+
+export type WorkCalendarScalarWhereInput = {
+  AND?: InputMaybe<Array<WorkCalendarScalarWhereInput>>;
+  NOT?: InputMaybe<Array<WorkCalendarScalarWhereInput>>;
+  OR?: InputMaybe<Array<WorkCalendarScalarWhereInput>>;
+  agentId?: InputMaybe<IntFilter>;
+  available?: InputMaybe<BoolFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  day?: InputMaybe<IntFilter>;
+  endTime?: InputMaybe<DateTimeFilter>;
+  id?: InputMaybe<IntFilter>;
+  month?: InputMaybe<IntFilter>;
+  startTime?: InputMaybe<DateTimeFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
+  year?: InputMaybe<IntFilter>;
+};
+
+export type WorkCalendarUpdateManyMutationInput = {
+  available?: InputMaybe<BoolFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  day?: InputMaybe<IntFieldUpdateOperationsInput>;
+  endTime?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  month?: InputMaybe<IntFieldUpdateOperationsInput>;
+  startTime?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  year?: InputMaybe<IntFieldUpdateOperationsInput>;
+};
+
+export type WorkCalendarUpdateManyWithWhereWithoutAgentInput = {
+  data: WorkCalendarUpdateManyMutationInput;
+  where: WorkCalendarScalarWhereInput;
+};
+
+export type WorkCalendarUpdateManyWithoutAgentNestedInput = {
+  connect?: InputMaybe<Array<WorkCalendarWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<
+    Array<WorkCalendarCreateOrConnectWithoutAgentInput>
+  >;
+  create?: InputMaybe<Array<WorkCalendarCreateWithoutAgentInput>>;
+  createMany?: InputMaybe<WorkCalendarCreateManyAgentInputEnvelope>;
+  delete?: InputMaybe<Array<WorkCalendarWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<WorkCalendarScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<WorkCalendarWhereUniqueInput>>;
+  set?: InputMaybe<Array<WorkCalendarWhereUniqueInput>>;
+  update?: InputMaybe<
+    Array<WorkCalendarUpdateWithWhereUniqueWithoutAgentInput>
+  >;
+  updateMany?: InputMaybe<
+    Array<WorkCalendarUpdateManyWithWhereWithoutAgentInput>
+  >;
+  upsert?: InputMaybe<
+    Array<WorkCalendarUpsertWithWhereUniqueWithoutAgentInput>
+  >;
+};
+
+export type WorkCalendarUpdateWithWhereUniqueWithoutAgentInput = {
+  data: WorkCalendarUpdateWithoutAgentInput;
+  where: WorkCalendarWhereUniqueInput;
+};
+
+export type WorkCalendarUpdateWithoutAgentInput = {
+  available?: InputMaybe<BoolFieldUpdateOperationsInput>;
+  createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  day?: InputMaybe<IntFieldUpdateOperationsInput>;
+  endTime?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  month?: InputMaybe<IntFieldUpdateOperationsInput>;
+  startTime?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
+  year?: InputMaybe<IntFieldUpdateOperationsInput>;
+};
+
+export type WorkCalendarUpsertWithWhereUniqueWithoutAgentInput = {
+  create: WorkCalendarCreateWithoutAgentInput;
+  update: WorkCalendarUpdateWithoutAgentInput;
+  where: WorkCalendarWhereUniqueInput;
+};
+
+export type WorkCalendarWhereInput = {
+  AND?: InputMaybe<Array<WorkCalendarWhereInput>>;
+  NOT?: InputMaybe<Array<WorkCalendarWhereInput>>;
+  OR?: InputMaybe<Array<WorkCalendarWhereInput>>;
+  agent?: InputMaybe<AgentRelationFilter>;
+  agentId?: InputMaybe<IntFilter>;
+  available?: InputMaybe<BoolFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  day?: InputMaybe<IntFilter>;
+  endTime?: InputMaybe<DateTimeFilter>;
+  id?: InputMaybe<IntFilter>;
+  month?: InputMaybe<IntFilter>;
+  startTime?: InputMaybe<DateTimeFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
+  year?: InputMaybe<IntFilter>;
+};
+
+export type WorkCalendarWhereUniqueInput = {
+  AND?: InputMaybe<Array<WorkCalendarWhereInput>>;
+  NOT?: InputMaybe<Array<WorkCalendarWhereInput>>;
+  OR?: InputMaybe<Array<WorkCalendarWhereInput>>;
+  agent?: InputMaybe<AgentRelationFilter>;
+  agentId?: InputMaybe<IntFilter>;
+  available?: InputMaybe<BoolFilter>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  day?: InputMaybe<IntFilter>;
+  endTime?: InputMaybe<DateTimeFilter>;
+  id?: InputMaybe<Scalars["Int"]["input"]>;
+  month?: InputMaybe<IntFilter>;
+  startTime?: InputMaybe<DateTimeFilter>;
+  updatedAt?: InputMaybe<DateTimeFilter>;
+  year?: InputMaybe<IntFilter>;
 };

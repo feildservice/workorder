@@ -9,7 +9,7 @@ export const customerQueries = (type: string, params: any) => {
         return {
             query: gql`
                 mutation createCustomer(
-                    $first_name: String!
+                    $company: String!
                     $last_name: String!
                     $email: String!
                     $address: String
