@@ -30,7 +30,7 @@ export const generatOrganizations = (
         linkedinUrl: `https://www.linkedin.com/company/${name
           .toLowerCase()
           .replace(regex, '_')}`,
-        taxIdentifier: faker.random.alphaNumeric(10),
+        taxIdentifier: faker.string.alphanumeric(10),
         logo: {
           create: {
             title: faker.lorem.text().substring(0, 1),

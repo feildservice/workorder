@@ -49,7 +49,7 @@ export const generateCompanies = (
         linkedinUrl: `https://www.linkedin.com/company/${name
           .toLowerCase()
           .replace(regex, '_')}`,
-        taxIdentifier: faker.random.alphaNumeric(10),
+        taxIdentifier: faker.string.alphanumeric(10),
         size: faker.helpers.arrayElement(['1', '10', '50+', '250+', '500+']),
         revenue: faker.helpers.arrayElement(['$1M', '$10M', '$100M', '$1B']),
         logo: {
