@@ -1,1 +1,1 @@
-sudo docker compose -f mongo-replica-compose.yaml -f quickstart-postgres.yml -f quickstart.yml up
+sudo docker compose -f mongo-replica-compose.yaml -f quickstart.yml -f quickstart-postgres.yml up

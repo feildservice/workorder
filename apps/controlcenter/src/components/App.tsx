@@ -14,6 +14,7 @@ import englishMessages from '../i18n/en';
 import dataProviderFactory from './dataProvider';
 import companies  from './companies';
 import contacts  from './contacts';
+import {authProvider} from './auth/authProvider';
 
 const i18nProvider = polyglotI18nProvider(
     (locale: string) => {
@@ -43,7 +44,7 @@ const App = () => {
                 process.env.REACT_APP_DATA_PROVIDER || ''
             )}
             store={store}
-            // authProvider={authProvider}
+            authProvider={authProvider}
             // dashboard={Dashboard}
             // loginPage={Login}
             layout={Layout}
