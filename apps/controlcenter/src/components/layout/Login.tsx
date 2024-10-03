@@ -31,6 +31,7 @@ const Login = () => {
 
     const handleSubmit = (auth: FormValues) => {
         setLoading(true);
+        debugger;
         login(
             auth,
             location.state ? (location.state as any).nextPathname : '/'

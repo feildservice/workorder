@@ -37,6 +37,7 @@ localStorage.setItem(USER_STORAGE_KEY, JSON.stringify({ ...DEFAULT_USER }));
 export const authProvider: AuthProvider = {
     login: async ({ email }) => {
         
+        debugger;
         // const user = await dataProvider.login({ email });
         const user = DEFAULT_USER;
 
