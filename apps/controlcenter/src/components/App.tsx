@@ -46,7 +46,7 @@ const App = () => {
             store={store}
             authProvider={authProvider}
             // dashboard={Dashboard}
-            // loginPage={Login}
+            loginPage={Login}
             layout={Layout}
             i18nProvider={i18nProvider}
             disableTelemetry

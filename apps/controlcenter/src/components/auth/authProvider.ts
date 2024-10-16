@@ -32,7 +32,7 @@ export const DEFAULT_USER = {
 
 export const USER_STORAGE_KEY = 'user';
 
-localStorage.setItem(USER_STORAGE_KEY, JSON.stringify({ ...DEFAULT_USER }));
+// localStorage.setItem(USER_STORAGE_KEY, JSON.stringify({ ...DEFAULT_USER }));
 
 export const authProvider: AuthProvider = {
     login: async ({ email }) => {
@@ -56,11 +56,17 @@ export const authProvider: AuthProvider = {
         localStorage.removeItem(USER_STORAGE_KEY);
         return Promise.resolve();
     },
-    checkError: () => Promise.resolve(),
-    checkAuth: () =>
-        localStorage.getItem(USER_STORAGE_KEY)
-            ? Promise.resolve()
-            : Promise.reject(),
+    checkError: () => {
+        return Promise.resolve();
+    },
+    checkAuth: () => {
+        debugger;        
+        var userFrom = localStorage.getItem(USER_STORAGE_KEY);
+        if(userFrom){
+            return Promise.resolve();
+        }
+        return Promise.reject();
+    },
     getPermissions: async () => {
         const userItem = localStorage.getItem(USER_STORAGE_KEY);
         // const localUser = userItem ? (JSON.parse(userItem) as Sale) : null;
